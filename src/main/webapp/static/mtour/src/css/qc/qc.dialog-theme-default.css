@@ -1,0 +1,203 @@
+/*S弹窗样式*/
+@keyframes qc-dialog-theme-default-flyin {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes qc-dialog-theme-default-flyout {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+}
+.qc-dialog.qc-dialog-theme-default {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header {
+  height: 36px;
+  background-color: #586e9d;
+  padding-left: 10px;
+  border-bottom: 1px solid #dddddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #ffffff;
+  overflow: hidden;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title {
+  line-height: 36px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title span {
+  display: inline-block;
+  float: left;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title span.add {
+  width: 20px;
+  height: 20px;
+  background-color: #2BA01B;
+  margin: 12px 0 4px -20px;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 20px;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title span.add.disabled .fa {
+  color: #999999;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title span.add.disabled .fa:hover {
+  color: #999999;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title span.add .fa {
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 20px;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title span.add .fa:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title .tab {
+  float: left;
+  width: 338px;
+  margin: 11px 0 0 11px;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title .tab li {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  width: 60px;
+  height: 25px;
+  background-color: #ffffff;
+  padding: 0 2px;
+  margin-right: 2px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+  font-size: 12px;
+  font-weight: normal;
+  color: #666666;
+  line-height: 25px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title .tab li.active {
+  background-color: #fffaed;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title .tab li em {
+  display: block;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  z-index: 99999;
+  width: 10px;
+  height: 10px;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title .tab li em.fa {
+  font-size: 10px;
+  color: #fff9e7;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header .qc-dialog-title .tab li em.fa:hover {
+  color: #333333;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header span .text-input-sm {
+  border-radius: 5px;
+  color: #333333;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-header span label {
+  font-size: 14px;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-body {
+  padding: 10px;
+  overflow: hidden;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-footer {
+  /*height: 40px;*/
+  padding: 10px;
+  border-top: solid 1px #dddddd;
+  text-align: center;
+  background-color: #f8f8f8;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-close:before {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border-radius: 3px;
+  color: #ffffff;
+  content: '\00D7';
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-close:hover:before,
+.qc-dialog.qc-dialog-theme-default .qc-dialog-close:active:before {
+  color: #ffffff;
+}
+.qc-dialog.qc-dialog-theme-default .qc-dialog-content {
+  animation: qc-dialog-theme-default-flyin 0.6571s;
+  background: #ffffff;
+  border-radius: 5px;
+  color: #333333;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 3px;
+  position: relative;
+  width: 450px;
+}
+.qc-dialog.qc-dialog-theme-default.qc-dialog-closing .qc-dialog-content {
+  animation: qc-dialog-theme-default-flyout 0.6571s;
+}
+.line-dash-base {
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  border-bottom-color: #cccccc;
+}
+.qc-dialog-close-base {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.qc-dialog-close-base:before {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border-radius: 3px;
+  color: #999999;
+  content: '\00D7';
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+}
+.qc-dialog-close-base:hover:before,
+.qc-dialog-close-base:active:before {
+  color: #666666;
+}
+/*E弹窗样式*/

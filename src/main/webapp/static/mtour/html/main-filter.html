@@ -1,0 +1,10 @@
+<div class="main-filter">
+    <div class="filter-tab">
+        <ul>
+            <li ng-repeat="item in items" ng-class="{'active':item==selectedItem}"
+                ng-click="select(item)" >
+                {{item[itemText]}}
+            </li>
+        </ul>
+    </div>
+</div>

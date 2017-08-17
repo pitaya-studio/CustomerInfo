@@ -1,0 +1,97 @@
+@import "variables.less";
+@import "mixins.less";
+
+
+/*S弹窗样式*/
+
+@keyframes qc-dialog-theme-cover-scaleUp {
+    .cover-scale-up();
+}
+
+@keyframes qc-dialog-theme-cover-scaleDown {
+    .cover-scale-down();
+}
+
+.qc-dialog{
+    &.qc-dialog-theme-cover {
+        padding-bottom: 0px;
+        padding-top: 0px;
+        .qc-dialog-content {
+            position: @position-absolute;
+            .position-zero(10px;);
+            .padding-base(3px);
+            animation: qc-dialog-theme-cover-scaleUp (@time-animate-base*.3);
+            background: @background-color-white;
+            .border-radius(5px); 
+            color: @text-color; 
+        }
+        .qc-dialog-header {
+            height: 36px;
+            background-color: #586e9d;
+//          margin-bottom: 10px;
+            padding-left: 10px;
+            border-bottom: 1px solid #dddddd;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            color: @text-color-white;
+//          cursor: pointer;
+            overflow:@overflow-hidden;
+            .qc-dialog-title {
+                line-height: 36px;
+                font-size: 20px;
+                font-weight: @font-weight-bold;
+            }
+        }
+        .qc-dialog-body{
+            .padding-base(10px);
+            overflow: @overflow-auto;
+        }
+        .qc-dialog-footer {
+            /*height: 40px;*/
+            .padding-base(10px);
+            border-top: solid 1px #dddddd;
+            /*background-color: #ff0000;*/
+        }
+        .qc-dialog-close {
+            position: @position-absolute;
+            right: 0;
+            top: 0;
+            .border-radius(5px); 
+            cursor: @cursor;
+            &:before{
+                position: @position-absolute;
+                top: 3px;
+                right: 3px;
+                width: 30px;
+                height: 30px;
+                background: @background-transparent;
+                .border-radius(3px);
+                color: @text-color;
+                content: '\00D7';
+                font-size: 36px;
+                font-weight: 400;
+                line-height: 36px;
+                text-align: @text-center;
+            }
+            &:hover,
+            &:active{
+                &:before{
+                    color: @text-color;
+                }
+            }
+        }
+        &.qc-dialog-closing{
+            .qc-dialog-content {
+                animation: qc-dialog-theme-cover-scaleDown (@time-animate-base*.3);
+            }
+        } 
+    }
+}
+
+
+
+
+
+
+
+/*E弹窗蒙版样式*/

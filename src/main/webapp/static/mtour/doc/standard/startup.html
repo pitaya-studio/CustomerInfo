@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" >
+    <meta charset="UTF-8">
+    <title></title>
+    <!--[if false]>-->
+    <!--为了提示,我们也是蛮拼的-->
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/static/css/common/bootstrap.css">
+    <!--<![endif]-->
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+    <script type="text/javascript">
+        var startupModule = angular.module('startupModule',['qc','docModule']);
+        startupModule.controller('NavController',['$scope','docNavInfo', function ($scope,docNavInfo) {
+            $scope.navInfo = docNavInfo;
+            $scope.navInfo.current = 'startup';
+        }]);
+    </script>
+</head>
+<body class="fixed-top"  ng-app="startupModule">
+<doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+<div class="container">
+    <div class="docs-header">
+       <h1>项目起步</h1>
+       <p>
+           描述如何开始项目.包括安装哪些工具,配置哪些缓解,需要调用哪些资源等
+       </p>
+   </div>
+    <div class="page-header">
+        <h1>工具</h1>
+    </div>
+    <div>
+        <h3>WebStorm</h3>
+        <p>WebStorm 是jetbrains公司旗下一款JavaScript 开发工具。被广大中国JS开发者誉为“Web前端开发神器”、“最强大的HTML5编辑器”、“最智能的JavaScript IDE”等。与IntelliJ IDEA同源，继承了IntelliJ IDEA强大的JS部分的功能。</p>
+        <h3>SVN</h3>
+        <p>集中式代码管理的核心是服务器，所有开发者在开始新一天的工作之前必须从服务器获取代码，然后开发，最后解决冲突，提交。所有的版本信息都放在服务器上。如果脱离了服务器，开发者基本上可以说是无法工作的。下面举例说明：</p>
+        <blockquote>
+            开始新一天的工作：
+            <ol>
+                <li>从服务器下载项目组最新代码。</li>
+                <li>进入自己的分支，进行工作，每隔一个小时向服务器自己的分支提交一次代码（很多人都有这个习惯。因为有时候自己对代码改来改去，最后又想还原到前一个小时的版本，或者看看前一个小时自己修改了哪些代码，就需要这样做了）</li>
+                <li>下班时间快到了，把自己的分支合并到服务器主分支上，一天的工作完成，并反映给服务器。</li>
+            </ol>
+        </blockquote>
+        <p>本项目使用SVN进行文件管理,所有的代码,文档都需要通过SVN</p>
+        <h3>GIT</h3>
+        <p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
+        <p>GIT和SVN的功能基本相同,GIT一般会用于开源项目.本次项目只通过git来对bower进行管理(随后会有bower相关介绍).</p>
+    </div>
+    <div class="page-header">
+        <h1>开发环境</h1>
+    </div>
+    <div>
+        <h3>Nodejs</h3>
+        <p>
+            Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node.js 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行的数据密集型的实时应用。
+        </p>
+        <p>
+            本项目使用Node.js,主要是为了构建项目环境,不会使用Node.js构建服务端
+        </p>
+        <p>安装: <a href="https://nodejs.org/">Nodejs</a></p>
+        <h3>NPM</h3>
+        <p>NPM的全称是Node Package Manager，是一个NodeJS包管理和分发工具，已经成为了非官方的发布Node模块（包）的标准。</p>
+        <p>Nodejs自身提供了基本的模块，但是开发实际应用过程中仅仅依靠这些基本模块则还需要较多的工作。幸运的是，Nodejs库和框架为我们提供了帮助，让我们减少工作量。但是成百上千的库或者框架管理起来又很麻烦，有了NPM，可以很快的找到特定服务要使用的包，进行下载、安装以及管理已经安装的包。</p>
+
+        <h3>bower</h3>
+        <p>Bower是一个客户端技术的软件包管理器，它可用于搜索、安装和卸载如JavaScript、HTML、CSS之类的网络资源。其他一些建立在Bower基础之上的开发工具，如YeoMan和Grunt</p>
+        <p>为了安装bower，你首先需要安装如下文件：</p>
+        <blockquote>
+            <ol>
+                <li>Node：下载最新版本的<a rel="nofollow" href="http://nodejs.org/" target="_blank">node.js</a> </li>
+                <li>NPM：<a rel="nofollow" href="http://npmjs.org/" target="_blank">NPM</a>是node程序包管理器。它是捆绑在nodejs的安装程序上的，所以一旦你已经安装了node，NPM也就安装好了。</li>
+                <li>Git：你需要从git仓库获取一些代码包。</li>
+            </ol>
+        </blockquote>
+        <pre>$ npm install -g bower</pre>
+        <p>这行命令是Bower的全局安装，<code>-g</code> 操作表示全局。</p>
+        <h3>grunt</h3>
+        <p>对于需要重复执行的任务，例如压缩、编译、单元测试等，自动化工具可以减少你的工作量，使你的工作更轻松。</p>
+        <p>Grunt 有庞大的生态圈，且每天都在发展。依靠成千上百可供选择的插件，你可以利用 Grunt 自动完成几乎任何事。</p>
+        <p>grunt的安装</p>
+        <pre>$ npm install -g grunt-cli//grunt的命令行接口</pre>
+        <pre>$ npm install  grunt --save-dev//在项目的根目录下运行该命令,给项目安装指定版本的grunt</pre>
+    </div>
+    <div class="page-header">
+            <h1>引用第三方包</h1>
+    </div>
+    <div>
+        <h3>jQuery1.*</h3>
+        <p>jQuery是一个兼容多浏览器的javascript库，核心理念是write less,do more(写得更少,做得更多)。jQuery在2006年1月由美国人John Resig在纽约的barcamp发布，吸引了来自世界各地的众多JavaScript高手加入，由Dave Methvin率领团队进行开发。如今，jQuery已经成为最流行的javascript库，在世界前10000个访问最多的网站中，有超过55%在使用jQuery。</p>
+        <p>由于jQuery2.0以上版本不再支持IE6/7/8浏览器,所以本次项目使用的是jQuery1.*</p>
+        <h3>angular1.2.*</h3>
+        <p>AngularJS有着诸多特性，最为核心的是：MVVM、模块化、自动化双向数据绑定、语义化标签、依赖注入等等。</p>
+        <p>AngularJS试图成为WEB应用中的一种端对端的解决方案。这意味着它不只是你的WEB应用中的一个小部分，还是一个完整的端对端的解决方案。这会让AngularJS在构建一个CRUD（增加Create、查询Retrieve、更新Update、删除Delete）的应用时显得很“固执”（原文为 opinionated,意指没有太多的其他方式）。但是，尽管它很“固执”，它仍然能确保它的“固执”只是在你构建应用的起点，并且你仍能灵活变动。</p>
+        <p>由于angular1.3以上版本不再支持ie8,所以本次项目使用的是angular1.2.*</p>
+        <h3>to be continue...</h3>
+    </div>
+</div>
+<doc-footer></doc-footer>
+</body>
+</html>

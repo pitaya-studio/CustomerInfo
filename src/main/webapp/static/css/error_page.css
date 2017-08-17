@@ -1,0 +1,15 @@
+.wrong-page{
+	width:570px;
+	margin:3% auto;
+}
+
+.wrong-page p{
+	margin-top:20px;
+	font-size:14px;
+	line-height:22px;
+}
+
+.wrong-page p a{
+	color:#5bb2f4;
+	font-weight:bold;
+}

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+    <style>
+        .tab-height{
+            height: 200px;
+        }
+        table thead th{
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+    <script type="text/javascript">
+        var tabModule = angular.module('tabModule', ['qc', 'docModule']);
+        tabModule.controller('NavController',['$scope','docNavInfo', function ($scope,docNavInfo) {
+            $scope.navInfo = docNavInfo;
+            $scope.navInfo.current = 'qc';
+            $scope.navInfo.sub = 'interact';
+        }]);
+        tabModule.controller('DialogController', ['$scope', 'qcDialog', function ($scope, qcDialog) {
+            $scope.show1 = function () {
+                var dialog = qcDialog.open({
+                    title: 'this is dialog title(我可以拖哦!)',
+                    template: '<div style="padding: 10px;">this is dialog body' +
+                    '<br>可以点击关闭图标来关闭,也可以按esc键来关闭,还可以点击弹窗外的区域来关闭' +
+                    '</div>' +
+                    '<div class="qc-dialog-footer" > this is dialog footer(给我加个按钮会有惊xi[a])</div>',
+                    plain: true,
+                    closeByDocument: true,
+                    closeByEscape: true,
+                    scope: $scope
+
+                });
+                dialog.closePromise.then(function () {
+                    alert('this is closePromise!!!');
+                });
+            };
+            $scope.show2 = function () {
+                qcDialog.open({
+                    title: 'title2',
+                    template: 'template/dialog2.html',
+                    plain: false,
+                    showClose: false,
+                    width: 600,
+                    controller: ['$scope', '$window', function (dialogScope, $win) {
+                        dialogScope.desc = $scope.desc;
+                        dialogScope.getUrl = function () {
+                            dialogScope.url = $win.location.href;
+                        };
+                        dialogScope.save = function () {
+                            $scope.desc = dialogScope.desc;
+                            dialogScope.closeThisDialog();
+                        };
+                    }]
+                });
+            };
+            $scope.show3 = function () {
+                qcDialog.openCover({
+                    template: '<div class="qc-dialog-body">' +
+                    '<h3>this is a cover dialog</h3>' +
+                    'you can click the next button to show 2nd floor dialog<button ng-click="show4()">show4</button>' +
+                    '</div>',
+                    plain: true,
+                    controller: ['$scope', function (dialogScope) {
+                        dialogScope.show4 = function () {
+                            qcDialog.open({
+                                title: 'title4',
+                                template: '',
+                                plain: true
+                            });
+                        };
+                    }]
+                });
+            };
+        }]);
+        tabModule.controller('MessageController', ['$scope', 'qcMessage', function ($scope, qcMessage) {
+            $scope.warning = function () {
+                qcMessage.warning('没事别瞎点!');
+            };
+            $scope.error = function () {
+                qcMessage.error('发生未知异常<br>请联系管理员!');
+            };
+            $scope.confirm = function () {
+                qcMessage.confirm('今天天气不是很好.<br>你确认外出打鸡血吗?')
+                        .then(function () {
+                            alert('什么也不能阻止我对鸡血的渴望!!!');
+                        }, function () {
+                            alert('今天还有人查水表,还是算了吧!!!');
+                        });
+            };
+            $scope.showTip = function () {
+                if ($scope.tipMessage) {
+                    qcMessage.tip($scope.tipMessage);
+                } else {
+                    qcMessage.tip('naochi啊你!!!你不输入你想提示个毛啊?');
+                }
+            };
+            $scope.showInfo = function () {
+                if ($scope.infoMessage) {
+                    qcMessage.info($scope.infoMessage);
+                } else {
+                    qcMessage.info('naochi啊你!!!你不输入你想info个毛啊?');
+                }
+            };
+        }]);
+    </script>
+</head>
+<body class="fixed-top" ng-app="tabModule">
+<doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+<div class="container">
+    <div class="docs-header">
+        <h1>项目UI交互</h1>
+
+        <p>
+            项目中实现页面交互,layout调整的组件
+        </p>
+    </div>
+    <div class="breadcrumb">Quauq Doc > 前端开发文档 > UI交互</div>
+    <div class="page-header">
+        <h1>Tab</h1>
+    </div>
+    <div>
+        <h3>准备工作</h3>
+
+        <p>依赖项:angular.js,qc.basic.js,qc.js</p>
+        <p>依赖模块:qc module</p>
+        <pre>    &ltscript type="text/javascript" src="/static/js/common/angular.js">&lt/script>
+    &ltscript type="text/javascript" src="/static/js/common/qc.basic.js">&ltscript>
+    &ltscript type="text/javascript" src="/static/js/common/qc.js">&lt/script>
+    &ltscript type="text/javascript">
+          var tabModule = angular.module('tabModule', ['qc']);//加载qc模块
+    &lt/script></pre>
+        <h3>tab设置</h3>
+        <p>tab容器(qc-tab)划定了tab控件在页面中的区域,在该区域内设计tab的header和个tab页.</p>
+        <p>tab容器(qc-tab)上可以设置默认显示的tab页(active-tab="...")</p>
+        <p>tab头部(qc-tab-header)和tab页(qc-tab-body),都可以设置tab名称(qc-tab-name="tab2"),点击tab头时,会将相同tab名的tab页显示</p>
+        <pre>    &ltdiv qc-tab active-tab="tab1">
+        &ltdiv qc-tab-header qc-tab-name="tab1" >tab1&lt/div>
+        &ltdiv qc-tab-header qc-tab-name="tab2" >tab2&lt/div>
+        &ltdiv qc-tab-body qc-tab-name="tab1">
+            tab1的内容
+        &lt/div>
+        &ltdiv qc-tab-body  qc-tab-name="tab2">
+            tab2的内容
+        &lt/div>
+    &lt/div></pre>
+        <h3>样式和布局</h3>
+        <p>没有特定的要求,随心所欲,随心而动,为所欲为!下面的示例请自行脑补</p>
+        <hr/>
+        <div qc-tab active-tab="tab2">
+            <div>
+                <div qc-tab-header qc-tab-name="tab1" class="btn ">
+                  tab1
+                </div>
+                <div qc-tab-header qc-tab-name="tab2" class="btn ">tab2</div>
+            </div>
+            <div qc-tab-body qc-tab-name="tab1" class="bg-danger tab-height">
+                tab1的内容
+            </div>
+            <div qc-tab-body  qc-tab-name="tab2" class="bg-info tab-height">
+                tab2的内容
+            </div>
+        </div>
+        <hr/>
+        <div qc-tab active-tab="tab1">
+            <div  >
+                <div class="pull-right">
+                    <div qc-tab-header qc-tab-name="tab1" class="btn btn-info ">
+                        <span >tab1</span>
+                    </div>
+                    <div qc-tab-header qc-tab-name="tab2" class="btn btn-info ">tab2</div>
+                </div>
+                <button class="btn btn-default">其他功能</button>
+            </div>
+            <div class="clearfix">
+                <div  class="bg-success col-md-6 tab-height">
+                    固定的内容
+                </div>
+                <div qc-tab-body qc-tab-name="tab1" class="bg-danger col-md-6 tab-height">
+                    1:tab1的内容
+                </div>
+
+                <div qc-tab-body qc-tab-name="tab2"class="bg-info col-md-6 tab-height">
+                    tab2的内容{{qcTabName!=activeTab}}支持{{activeTab}}
+                </div>
+            </div>
+
+        </div>
+        <hr/>
+        <div class="row">
+            <div qc-tab active-tab="tab2" class="col-md-6">
+                <div >
+                    <button class="btn btn-default" >其他功能</button>
+                </div>
+                <div>
+                    <div qc-tab-body qc-tab-name="tab1" class="bg-danger tab-height">
+                        1:tab1的内容
+                    </div>
+
+                    <div qc-tab-body qc-tab-name="tab2" class="bg-info  tab-height">
+                        tab2的内容
+                    </div>
+                </div>
+                <div>
+                    <div qc-tab-header qc-tab-name="tab1" class="btn btn-success ">
+                        <span>tab1</span>
+                    </div>
+                    <div qc-tab-header qc-tab-name="tab2" class="btn btn-success">tab2</div>
+
+                </div>
+            </div>
+            <div qc-tab active-tab="tab3" class="col-md-6">
+                <div class="clearfix">
+                    <button class="btn btn-default pull-right">其他功能</button>
+                </div>
+                <div>
+                    <div qc-tab-body qc-tab-name="tab3" class="bg-danger tab-height">
+                        tab3的内容
+                    </div>
+
+                    <div qc-tab-body qc-tab-name="tab4" class="bg-info  tab-height">
+                       <div class="well">tab4的内容</div>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class=" pull-right">
+                        <div qc-tab-header qc-tab-name="tab3" class="btn btn-info ">
+                            <span>tab3</span>
+                        </div>
+                        <div qc-tab-header qc-tab-name="tab4" class="btn btn-info">tab4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+        <h1>弹出框</h1>
+    </div>
+    <div ng-controller="DialogController">
+        <h3>准备工作</h3>
+
+        <div>
+            <p>依赖项:jquery.js,jquery-ui.js,angular.js,qc.basic.js,qc.js,</p>
+
+            <p>依赖模块:qc module</p>
+          <pre>    &lt;script type="text/javascript" src="/static/js/common/src/jquery.js">&lt;/script&gt
+    &lt;script type="text/javascript" src="/static/js/common/src/jquery-ui.js">&lt;/script&gt
+    &lt;script type="text/javascript" src="/static/js/common/angular.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="/static/js/common/qc.basic.js"&gt;&lt;script&gt;
+    &lt;script type="text/javascript" src="/static/js/common/qc.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+          var commonModule = angular.module('commonModule', ['qc']);//加载qc模块
+    &lt;/script&gt;</pre>
+        </div>
+        <h3>常用配置项说明</h3>
+
+        <div>
+            <p>draggable:是否可拖动</p>
+
+            <p>template:弹出框内容模板</p>
+
+            <p>plain:模板是否是string,如果为false表示加载一个url地址的模板</p>
+
+            <p>title:显示的标题内容(无值的时候不显示弹出框头部,开发者在这种情况下可自定义弹出框头部)</p>
+
+            <p>showClose:是否显示关闭图标</p>
+
+            <p>closeByDocument:是否允许点击弹窗外的区域关闭弹出窗</p>
+
+            <p>closeByEscape:是否允许esc键关闭弹出窗</p>
+
+            <p>preCloseCallback:关闭前的函数,返回false会阻止弹出窗关闭</p>
+
+            <p>controller:弹窗框的控制器</p>
+
+            <p>scope:默认复制rootScope,可以复制指定scope(该scope的变化不会影响被复制的scope).弹出框会给scope添加closeThisDialog方法,方便弹出框内容调用</p>
+
+            <p>width:设置弹出框的宽度</p>
+        </div>
+        <h3>公共方法</h3>
+
+        <div>
+            <p>open:通过上面的配置项打开弹出框,返回一个对象{id:dialogId',closePromise:defer.promise,close:关闭该弹出框的function}</p>
+
+            <p>openCover:打开一个全屏弹出窗(不可拖动,只能通过关闭图标或者自定义的关闭按钮来关闭弹出框),其他和open相同</p>
+        </div>
+        <h3>实例</h3>
+
+        <div>
+            <div>
+                <button ng-click="show1()">show1</button>
+                <pre>    commonModule.controller('dialogController', ['$scope', 'qcDialog', function ($scope, qcDialog) {
+        $scope.show1 = function () {
+            var dialog = qcDialog.open({
+                title: 'this is dialog title(我可以拖哦!)',
+                template: '&lt;div style="padding: 10px;">this is dialog body ' +
+                '&lt;br>可以点击关闭图标来关闭,也可以按esc键来关闭,还可以点击弹窗外的区域来关闭' +
+                '&lt;/div>' +
+                '&lt;div class="qc-dialog-footer" > this is dialog footer(给我加个按钮会有惊xi[a])&lt;/div>',
+                closeByDocument: true,
+                closeByEscape: true,
+                scope: $scope,
+                plain: true
+            });
+            dialog.closePromise.then(function () {
+                alert('this is closePromise!!!');
+            });
+        };
+    }]);</pre>
+
+            </div>
+            <div>
+                <button ng-click="show2()">show2</button>
+                <div>弹出框输入的内容:<span class="text-danger">{{desc}}</span></div>
+                <pre>   $scope.show2 = function () {
+        qcDialog.open({
+            title: 'title2',
+            template: 'template/dialog2.html',
+            plain: false,
+            showClose: false,
+            width: 600,
+            controller: ['$scope', '$window', function (dialogScope, $win) {
+                dialogScope.desc=$scope.desc;
+                dialogScope.getUrl = function () {
+                    dialogScope.url = $win.location.href;
+                };
+                dialogScope.save=function(){
+                    $scope.desc=dialogScope.desc;
+                    dialogScope.closeThisDialog();
+                };
+            }]
+        });
+    };</pre>
+
+            </div>
+            <div>
+                <button ng-click="show3()">show3</button>
+                <pre>   $scope.show3=function(){
+        qcDialog.openCover({
+            template:'&lt;div class="qc-dialog-body">' +
+                '&lt;h3>this is a cover dialog&lt;/h3>' +
+                'you can click the next button to show 2nd floor dialog&lt;button ng-click="show4()">show4&lt;/button>' +
+                '&lt;/div>',
+            plain:true,
+            controller:['$scope',function(dialogScope){
+                dialogScope.show4=function(){
+                    qcDialog.open({
+                        title:'title4',
+                        template:'',
+                        plain:true
+                    });
+                };
+            }]
+        });
+    };</pre>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+        <h1>Message</h1>
+    </div>
+    <div ng-controller="MessageController">
+        <h3>准备工作</h3>
+
+        <div>
+            <p>依赖项:jquery.js,,angular.js,qc.basic.js,qc.js,</p>
+
+            <p>依赖模块:qc module</p>
+        </div>
+        <h3>qcMessage</h3>
+
+        <div>
+            <pre>    commonModule.controller('MessageController', ['$scope', 'qcMessage', function ($scope, qcMessage) {
+        $scope.warning = function () {
+            qcMessage.warning('没事别瞎点!');
+        };
+        $scope.error = function () {
+            qcMessage.error('发生未知异常&lt;br>请联系管理员!');
+        };
+        $scope.confirm = function () {
+            qcMessage.confirm('今天天气不是很好.&lt;br>你确认外出打鸡血吗?')
+                    .then(function () {
+                        alert('什么也不能阻止我对鸡血的渴望!!!');
+                    }, function () {
+                        alert('今天还有人查水表,还是算了吧!!!');
+                    });
+        };
+        $scope.showTip = function () {
+            if ($scope.tipMessage) {
+                qcMessage.tip($scope.tipMessage);
+            } else {
+                qcMessage.tip('naochi啊你!!!你不输入你想提示个毛啊?');
+            }
+        };
+    }]);</pre>
+            <div>
+                <button class="btn btn-warning" ng-click="warning()">warning</button>
+                <button class="btn btn-danger" ng-click="error()">error</button>
+                <button class="btn btn-primary" ng-click="confirm()">confirm</button>
+            </div>
+            <br/>
+
+            <div>
+                <label>tip message</label>
+                <button class="btn btn-info pull-right" ng-click="showTip()">showTip</button>
+                <input type="text" class="form-control" ng-model="tipMessage"/>
+            </div>
+            <br/>
+            <div>
+                <label>info message</label>
+                <button class="btn btn-info pull-right" ng-click="showInfo()">show info</button>
+                <input type="text" class="form-control" ng-model="infoMessage"/>
+            </div>
+        </div>
+    </div>
+
+</div>
+<doc-footer></doc-footer>
+</body>
+</html>

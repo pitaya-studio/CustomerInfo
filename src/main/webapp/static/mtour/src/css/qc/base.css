@@ -1,0 +1,102 @@
+body {
+  color: #333333;
+  background: #eff3f5;
+  font-family: "Microsoft Yahei", "Tahoma", "SimSun";
+  font-size: 14px;
+  line-height: 150%;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+img {
+  border: 0;
+  display: block;
+}
+i,
+em {
+  font-style: normal;
+}
+ul,
+ol,
+dl,
+dt,
+dd {
+  list-style: none;
+}
+li {
+  list-style: outside none none;
+}
+a,
+a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+h2,
+h3,
+h4,
+h5 {
+  margin: 0px;
+  padding: 0px;
+}
+h2 {
+  font-size: 14px;
+}
+.f-l {
+  float: left;
+}
+.f-r {
+  float: right;
+}
+.cls {
+  clear: both;
+  *zoom: 1;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+.header {
+  position: relative;
+  z-index: 99;
+  min-width: 1200px;
+  margin: 0 auto;
+  background-color: #262930;
+  height: 47px;
+}
+.band-logo {
+  width: 150px;
+  height: 50px;
+  background-image: url(../../img/common/background/quauq_logo.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.main {
+  padding-top: 0px;
+}
+.main-left {
+  float: left;
+  width: 150px;
+  background-color: #262930;
+  overflow: auto;
+}
+.main-right {
+  position: relative;
+  z-index: 0;
+  min-width: 1030px;
+  margin-left: 150px;
+  margin-right: 0;
+  font-family: "Microsoft Yahei", "Tahoma", "SimSun";
+}
+.main_frame {
+  min-width: 1160px;
+}

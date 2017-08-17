@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+  version="2.0">
+    
+  <description>JSTL 1.1 functions library</description>
+  <display-name>JSTL functions cms</display-name>
+  <tlib-version>1.1</tlib-version>
+  <short-name>fnc</short-name>
+  <uri>http://java.sun.com/jsp/jstl/functionsc</uri>
+
+  <function>
+    <description>对字符串进行格式化</description>
+    <name>getStrFromVal</name>
+    <function-class>com.trekiz.admin.common.utils.StringFormatLX</function-class>
+    <function-signature>String getStrFromVal(java.lang.String)</function-signature>
+    <example>${lx:getStrFromVal(val)}</example>  
+  </function>
+  
+  <function>
+    <description>取字符串数组中的前两个字符串</description>
+    <name>getStrFromOne2two</name>
+    <function-class>com.trekiz.admin.common.utils.StringFormatLX</function-class>
+    <function-signature>String getStrFromOne2two(java.lang.String)</function-signature>
+    <example>${lx:getStrFromOne2two(val)}</example>  
+  </function>
+  
+   <function>
+    <description>截取字符串开头的特定字符</description>
+    <name>getChildString</name>
+    <function-class>com.trekiz.admin.common.utils.StringFormatLX</function-class>
+    <function-signature>String getChildString(java.lang.String,java.lang.String)</function-signature>
+    <example>${lx:getChildString(val1,val2)}</example>  
+  </function>
+  
+  <function>
+    <description>合并字符串，并去掉字符串开头的重复部分</description>
+    <name>meragerStr</name>
+    <function-class>com.trekiz.admin.common.utils.StringFormatLX</function-class>
+    <function-signature>String meragerStr(java.lang.String,java.lang.String)</function-signature>
+    <example>${lx:meragerStr(val1,val2)}</example>  
+  </function>
+
+</taglib>

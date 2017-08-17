@@ -1,0 +1,67 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+    	<span>成本录入-详情</span>
+    </div>
+</div>
+<div class="dialog-body-md-collect-other dialog-body-cost-input qc-scroll">
+    <div class="first-step-info">
+    	<ul>
+        	<li>
+            	<label>款项名称：</label>
+                <div class="show-text-base">巨款</div>
+            </li>
+            <li>
+            	<label><i class="require">*</i>大编号：</label><div class="show-text-base">P7644411320</div>
+            </li>
+            <li>
+            	<label><i class="require">*</i>人数：</label> <div class="show-text-base">2 </div>      
+            </li>
+            <li>
+            	<label><i class="require">*</i>单价：</label ><div class="show-text-base">$224,876,98</div>
+            </li>
+            <li class="money">
+            	<span><label>货币换算：</label>
+                <div class="qc-input-group-base-third qc-input-group-md-third">
+                    <div class="qc-dropdown"
+                                                        qc-dropdown
+                                                         ng-model="item.currencyCode"
+                                                         item-text="{{qcDropdownItem.code}}"
+                                                         dropdown-text="{{selectedItem?selectedItem.code:''}}"
+                                                         items="currencies"> 
+                                                </div><input type="text" class="text-input" value="汇率=6.4">
+                    </div>
+                </span>
+                <span><label>总价：</label>2345,128,00 美元</span>
+            </li>
+        </ul>
+    </div>
+    <div class="second-step-info">
+    	<ul>
+        	<li class="collect">
+            	<span><label><i class="require">*</i>类别选择：</label></span>
+                <div class="show-text-base">地接社</div>
+            </li>
+        	<li>
+            	<label>地接社类型：</label> <div class="show-text-base">机票</div>
+            </li>
+            <li>
+            	<label>地接社名称：</label> <div class="show-text-base">东方航空</div>
+            </li>
+            <li><label>汇款行名称：</label>
+            	<div class="show-text-base">中国银行</div>     
+            </li>
+            <li>
+            	<label>汇款账户：</label><div class="show-text-base">62258 8893 8865 8873 2277</div>
+            </li>
+            <li><label>备注：</label><div class="show-text-paragraph">无</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="btn btn-primary " ng-click="ok(selectedPerson1)">保存并提交</button>
+        <button class="btn btn-default " ng-click="closeThisDialog()">修改</button>
+    </div>
+</div>
+<div class="qc-dialog-close"></div>

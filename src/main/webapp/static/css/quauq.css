@@ -1,0 +1,2790 @@
+/*-S-0018锟剿匡拷-锟缴憋拷录锟斤拷-锟斤拷签证锟斤拷品锟斤拷*/
+.main-right-topbutt.upgrade {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    text-align: right;
+}
+
+.bg-white input[readonly] {
+    background: #ffffff;
+}
+
+.main-right-topbutt.upgrade a {
+    position: relative;
+    display: inline-block;
+    float: none;
+    height: 50px;
+    padding: 0px 30px;
+    margin: 0 5px;
+    background: #0088cc;
+    border-radius: 2px;
+    color: #fff;
+    right: 0px;
+    top: 10px;
+    font-size: 14px;
+}
+
+.order-list-tab1, .order-list-tab2 {
+    display: inline-block;
+    margin: 0 3px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.order-list-tab1.active, .order-list-tab2.active {
+    font-weight: bold;
+    color: #3C74B1;
+}
+
+.table-order-list-container {
+    width: 100%;
+    margin: 0px auto;
+    font-size: 12px;
+}
+
+.table-order-list-container .mod_information_dzhan,
+{
+    width: 100%;
+}
+
+.order-tourist-list-container .page,
+.budget-cost-enter-container .page,
+.order-tourist-list-container .page,
+.other-income-enter-container .page,
+.reality-cost-enter-container .page {
+    width: 98%;
+    margin: 0 auto;
+}
+
+/*锟竭硷拷锟斤拷锟斤拷锟斤拷嵌锟斤拷锟斤拷诓锟�/
+.activitylist_bodyer_right_team_co1.inner {
+    width: 350px;
+}
+
+.activitylist_bodyer_right_team_co1.inner .inputTxt {
+    width: 260px;
+}
+
+/*锟斤拷锟斤拷锟叫憋拷&锟轿匡拷锟叫憋拷锟铰凤拷锟斤拷钮*/
+.pagination.add-op dl dd {
+    width: auto;
+    padding: 0 5px;
+}
+
+.pagination.add-op dl dd a {
+    width: auto;
+    padding: 0 5px;
+}
+
+/*锟角凤拷锟斤拷锟斤拷预锟斤拷锟斤拷*/
+.ydxbd.expend .activitylist_team_co3_text {
+    width: 90px;
+}
+/*锟竭硷拷筛选锟街段筹拷锟斤拷锟斤拷示锟斤拷全*/
+.ydxbd.expend .activitylist_bodyer_right_team_co1,.ydxbd.expend .activitylist_bodyer_right_team_co3 {
+    width: 20%;
+}
+.ydxbd.expend .activitylist_bodyer_right_team_co2 {
+    width:38%;
+}
+.builder-prediction-container span {
+    margin: 0 5px;
+}
+
+.builder-prediction-container span input[type="radio"] {
+    width: auto;
+    margin: 0;
+}
+
+/*确锟较碉拷锟斤拷*/
+.confirm-do-account-container {
+    height: 150px;
+    margin: 0;
+    padding: 0;
+}
+
+.confirm-do-account-container p {
+    line-height: 100px;
+    text-align: center;
+}
+
+/*锟斤拷锟截碉拷锟斤拷*/
+.confirm-do-reject-container {
+    margin-top: 10px;
+    vertical-align: top;
+}
+
+.confirm-do-reject-container p {
+    height: 120px;
+}
+
+.confirm-do-reject-container p label {
+    height: 120px;
+    vertical-align: top;
+    padding: 10px;
+}
+
+.confirm-do-reject-container textarea {
+    width: 300px;
+    height: 100px;
+}
+
+/*锟斤拷锟斤拷*/
+.confirm-undo-op-container {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+/*tips锟斤拷锟姐单锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟缴筹拷锟斤拷锟斤拷*/
+
+/*锟斤拷锟斤拷锟斤拷锟斤拷录锟诫弹锟斤拷*/
+.project-name-space {
+    width: 100px !important;
+    padding: 0;
+}
+
+.project-batch-operator-height {
+    height: 40px;;
+}
+
+.batch-operator-other-income-enter input[type="text"],
+.batch-operator-other-income-enter select {
+    margin: 0;
+}
+
+.batch-operator-other-income-enter .custom-combobox-input {
+    width: 163px;
+}
+
+span.local-travel-agency {
+    margin-right: 18px;
+}
+
+.local-travel-agency input[type="radio"] {
+    margin: 0 3px;
+}
+
+.other-income-entry-textbox {
+    width: 195px;
+}
+
+input.other-income-entry-textbox-mds {
+    width: 170px;
+    margin-left: 3px;
+}
+
+.other-income-entry-textbox-md {
+    width: 123px;
+    margin-left: 3px;
+}
+
+input.other-income-entry-textbox-md2 {
+    width: 94px;
+    margin-left: 3px;
+}
+
+input.other-income-entry-textbox-sms {
+    width: 50px;
+}
+
+input.other-income-entry-textbox-number {
+    width: 20px;
+}
+
+.other-income-entry-sel {
+    width: 210px;
+}
+
+.other-income-entry-sel-sm {
+    width: 80px;
+}
+
+.other-income-entry-sel-sms {
+    width: 65px;
+}
+
+.batch-operator-container-new {
+    width: 98%;
+    height: 93px;
+    margin: 0 auto;
+    background: #fffdf9;
+}
+
+.batch-operator-container-new ul {
+    height: 45px;
+    margin: 0;
+    padding: 0;
+}
+
+.batch-operator-container-new ul:first-child li {
+    float: left;
+    line-height: 45px;
+    margin: 0 9px;
+}
+
+.batch-operator-container-new ul:first-child li:last-child {
+    margin: 0 0 0 17px;
+}
+
+.batch-operator-container-new ul:last-child li {
+    width: 100%;
+    line-height: 45px;
+}
+
+.batch-operator-container-new input[type="text"],
+.batch-operator-container-new select {
+    margin: 0;
+}
+
+.batch-operator-container-new.cost {
+    width: 98%;
+    height: 93px;
+    margin: 0 auto;
+    background: #fffdf9;
+}
+
+.batch-operator-container-new.cost ul {
+    height: 45px;
+    margin: 0;
+    padding: 0;
+}
+
+.batch-operator-container-new.cost ul:first-child li {
+    float: left;
+    line-height: 45px;
+    margin: 0 22px;
+}
+
+.batch-operator-container-new.cost ul:first-child li:last-child {
+    margin: 0 0 0 17px;
+}
+
+.batch-operator-container-new.cost ul:last-child li {
+    width: 100%;
+    line-height: 45px;
+}
+
+.batch-operator-container-new.cost input[type="text"],
+.batch-operator-container-new.cost select {
+    margin: 0;
+}
+
+.apply-inall-total {
+    color: #ff9900;
+    margin-right: 5px;
+}
+
+.apply-inall {
+    height: auto;
+    line-height: normal;
+    background: #ff9900;
+    color: #ffffff;
+    padding: 3px 10px;
+    border: 1px solid #df8908;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.remarks-total {
+    width: 98%;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.remarks-total.file {
+    margin: 20px auto 0 auto;
+}
+.remarks-total.file label  {
+    display: inline-block;
+    vertical-align: middle;
+}
+.remarks-total.file ul {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+}
+.remarks-total label {
+    vertical-align: top;
+}
+
+.remarks-total textarea {
+    width: 390px;
+    height: 55px;
+    resize: none;
+}
+.upload-files-list {
+    margin-left: 70px;
+}
+.upload-files-list ol li {
+    list-style: decimal;
+}
+.container-top-m {
+    width: 98%;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.table-toggel {
+    border: 1px solid #dddddd;
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+}
+
+.set-batch-op-butn {
+    float: right;
+    width: 64px;
+    height: auto;
+    padding: 3px 10px;
+    background: #ffffff;
+    border: 1px solid #c2c2c2;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    color: #1776ec;
+    cursor: pointer;
+}
+
+.set-batch-op-butn em {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-right: 2px;
+    vertical-align: middle;
+    background: transparent url("../images/set-batch-butn-bj.png") no-repeat scroll 0px 0px;
+}
+
+/*锟斤拷锟斤拷预锟斤拷锟斤拷-锟斤拷锟斤拷锟斤拷锟斤拷预锟斤拷锟斤拷*/
+
+.pagination.extend dl dd a {
+    width: auto;
+    padding: 0 10px;
+}
+.pagination.extend dl dd {
+    width: 300px;
+}
+/*签证预锟斤拷锟斤拷锟斤拷畈伙拷锟斤拷锟�/
+.activitylist_bodyer_table.currency p{
+    white-space:nowrap;
+}
+
+
+
+
+
+
+/*-E-0018锟剿匡拷-锟缴憋拷录锟斤拷-锟斤拷签证锟斤拷品锟斤拷*/
+
+/*-S-109--锟脚硷拷锟斤拷锟斤拷--锟脚伙拷-*/
+
+.discount-setting-container {
+    width: 98%;
+    overflow: auto;
+    margin: 0 auto;
+}
+
+.discount-setting-pop .first-part {
+    position: relative;
+    height: 30px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.discount-setting-pop .first-part.open {
+    height: auto;
+}
+
+.discount-setting-pop .first-part .control-display {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.discount-setting-pop .first-part li {
+    float: left;
+    width: 45%;
+    margin: 5px 0;
+}
+
+.discount-setting-pop .first-part input[type="text"] {
+    width: 120px;
+    margin: 0;
+}
+
+.discount-setting-pop .mod_details2_tabletype table {
+    margin: 10px auto;
+}
+
+.discount-setting-pop .mod_details2_tabletype table tbody td {
+    padding: 4px;
+}
+
+.discount-setting-pop .mod_details2_tabletype input[type="text"] {
+    width: 80px;
+    margin: 0;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.none-discount-setting-pop table tbody tr td {
+    height: 40px !important;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.activitylist_bodyer_table.discount-tourist .display-inline-block {
+    width: 75%;
+    margin: 0;
+}
+
+.nosel-group-discount-setting-pop {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+/*锟斤拷锟斤拷锟轿匡拷锟斤拷息-锟斤拷锟斤拷*/
+.traveler-rebatesDiv-discount-limit {
+    padding: 5px 0;
+}
+
+.traveler-rebatesDiv-discount-limit .discount-limit {
+    width: 65px;
+}
+
+.traveler-rebatesDiv-discount-limit p {
+    text-align: left;
+}
+
+.traveler-rebatesDiv-discount-limit p em {
+    display: inline-block;
+}
+
+.traveler-rebatesDiv-discount-limit p.ydLable2 {
+    color: #ff0000;
+}
+
+.traveler-rebatesDiv-discount-limit p.ydLable2 label {
+    color: #000000;
+}
+
+.traveler-rebatesDiv-discount-limit p.ydLable2.total {
+    font-size: 14px;
+    color: #ff0000;
+}
+
+.traveler-rebatesDiv-discount-limit p.ydLable2.total label {
+    font-size: 14px;
+    color: #ff0000;
+}
+
+/*锟斤拷锟斤拷锟轿匡拷锟斤拷锟叫碉拷锟斤拷锟脚惠凤拷围*/
+.tips-tourist-fee-less-pop {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+/*锟斤拷锟斤拷锟脚惠边撅拷*/
+.discount-button-mr {
+    margin-right: 10px;
+}
+
+.apply-for-tourist-fee-pop table {
+    width: 98%;
+    margin: 10px auto;
+}
+
+.apply-for-tourist-fee-pop input[type='text'] {
+    width: 80px;
+    margin: 0;
+}
+
+.apply-for-tourist-fee-pop .remark input[type='text'] {
+    width: 80%;
+    margin: 0;
+}
+
+/*全选input去锟斤拷锟竭讹拷*/
+
+.none-height-input {
+    height: auto;
+}
+
+.costrmb .ipt-tips2.new {
+    left: 0px
+}
+
+.ydBtn.ydBtn2.extend {
+    width: 500px;
+}
+
+/*-E-109--锟脚硷拷锟斤拷锟斤拷--锟脚伙拷-*/
+
+/*锟睫革拷C473bug--锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟侥憋拷锟斤拷锟斤拷*/
+
+.payment-log-view {
+    border: 1px solid #cccccc;
+    margin: 0 auto;
+}
+
+.payment-log-view .money {
+    display: inline-block;
+    line-height: normal;
+}
+
+.payment-log-view thead tr th {
+    border: 1px solid #cccccc;
+    padding: 5px 0;
+    background: #E9F3FD;
+}
+
+.payment-log-view tbody tr td {
+    padding: 5px 0;
+    border: 1px solid #cccccc;
+    vertical-align: top;
+
+}
+
+/*锟睫革拷C473bug--锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟侥憋拷锟斤拷锟斤拷*/
+
+/***S***C223锟斤拷锟斤拷-锟捷伙拷之锟斤拷-锟斤拷锟斤拷******/
+
+.plate-view-container {
+    z-index: 1;
+    position: fixed;
+    top: 100px;
+    right: -1060px;
+    width: 1035px;
+    height: 570px;
+    padding: 25px 0 25px 25px;
+    -moz-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    /* background: #303030; */
+    /* filter:alpha(opacity=80); */
+    /* -moz-opacity:0.8; */
+    /* -khtml-opacity: 0.8; */
+    /* opacity: 0.8; */
+    background: rgba(51,51,51,0.85);
+}
+
+
+.plate-view-container ul {
+    padding: 0;
+    margin: 0;
+}
+
+.plate-view-container .vessel {
+    width: 1035px;
+    height: 570px;
+    background: transparent;
+}
+
+/*锟斤拷嗖匡拷锟�*/
+.vessel .left {
+    float: left;
+    width: 820px;
+    height: 570px;
+    margin-right: 10px;
+    background: transparent;
+}
+
+.vessel .left .title-container {
+    height: 30px;
+    padding: 15px 20px 15px 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-top-left-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    -moz-border-top-right-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    /*background: #5c5c5c;*/
+    background: #555555;
+    /*filter:alpha(opacity=30);*/
+    /*-moz-opacity:0.3;*/
+    /*-khtml-opacity: 0.3;*/
+    /*opacity: 0.3;*/
+    background: rgba(110,110,110,0.70);
+}
+
+/*锟斤拷选锟斤拷*/
+.checkbox-made{
+    display: inline-block;
+    width:13px;
+    height: 13px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -126px -175px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.checkbox-made.active{
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -126px -220px;
+}
+.checkbox-made.marrten{
+    margin-right: 5px;
+}
+.checkbox-made.marrten.active{
+    margin-right: 5px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -126px -220px;
+}
+/*.checkbox-made{*/
+    /*display: inline-block;*/
+    /*max-width: 170px;*/
+/*}*/
+.checkbox-made~label{
+    display: inline-block;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+/*锟揭的讹拷锟斤拷-锟斤拷锟斤拷*/
+.pull-down-own{
+    display: inline-block;
+    width:13px;
+    height: 13px;
+    margin: 0px 0px 0px 3px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -160px -175px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.product-sel .copySelect {
+    float: left;
+    position: relative;
+    display:block;
+    width: 200px;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    color: #ffffff;
+}
+
+.product-sel .copySelect-text span {
+    /*padding: 0 10px 0 5px;*/
+    display: block;
+    float: left;
+    border: none 0;
+    width: 115px;
+    padding: 0;
+    background: none;
+    font-size:20px;
+    color: #ffffff;
+}
+
+
+
+.product-sel .copySelect ul {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #000000;
+    border:none;
+    /*border-top: none 0;*/
+    /*display: block;*/
+    border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+}
+
+.cabin .copySelect {
+    float: left;
+    position: relative;
+    display:block;
+    width: 100px;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    color: #ffffff;
+}
+
+.cabin .copySelect-text span {
+    /*padding: 0 10px 0 5px;*/
+    display: block;
+    float: left;
+    border: none 0;
+    width: 115px;
+    padding: 0;
+    background: none;
+    font-size:20px;
+    color: #ffffff;
+}
+
+
+.cabin .copySelect ul {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #000000;
+    border:none;
+    /*border-top: none 0;*/
+    /*display: block;*/
+    border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+}
+
+.cabin .checkbox-made~label{
+    max-width:60px;
+}
+
+.start .copySelect {
+    float: left;
+    position: relative;
+    display:block;
+    width: 100px;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    color: #ffffff;
+}
+
+.start .copySelect-text span {
+    /*padding: 0 10px 0 5px;*/
+    display: block;
+    float: left;
+    border: none 0;
+    width: 115px;
+    padding: 0;
+    background: none;
+    font-size:20px;
+    color: #ffffff;
+}
+
+
+.start .copySelect ul {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #000000;
+    border:none;
+    /*border-top: none 0;*/
+    /*display: block;*/
+    border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+}
+
+.start .checkbox-made~label{
+    max-width:60px;
+}
+
+.copySelect ul li {
+    height: 30px;
+    margin-top: -1px;
+    border-top: none;
+    line-height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0 8px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.copySelect ul li:hover {
+    color: #ff7300;
+}
+
+.copySelect ul li.copySelect-liOn {
+    color: #fff;
+    background-color: #7d96b1;
+}
+
+.copySelectIndex {
+    z-index: 9;
+    background: #fff;
+}
+
+.copySelectIndex .copySelect-text {
+    background: #fff;
+}
+
+.copySelectSmail {
+    width: 110px;
+}
+
+.copySelectSmail .copySelect-text input {
+    width: 70px;
+}
+
+.copySelectBig {
+    width: 220px;
+}
+
+.copySelectBig .copySelect-text input {
+    width: 180px;
+}
+
+
+
+
+
+
+
+/*刷锟斤拷*/
+.title-container .refresh {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -4px -30px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.title-container .refresh:hover {
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -4px -66px;
+}
+
+/*锟斤拷锟斤拷-锟斤拷锟斤拷锟斤拷锟斤拷*/
+.title-container .boat {
+    display: inline-block;
+    width: 540px;
+    height: 30px;
+    font-size: 28px;
+    color: #ffffff;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+.copySelect.boat {
+    width: 530px;
+}
+.copySelect.boat span {
+    width: 505px;
+}
+.copySelect.boat ul li {
+    text-align: left;
+}
+.title-container .boat {
+    display: inline-block;
+    width: 540px;
+    height: 30px;
+    font-size: 28px;
+    color: #ffffff;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+/*锟斤拷锟斤拷-锟斤拷锟斤拷锟斤拷锟斤拷-锟揭的讹拷锟斤拷*/
+.boat{
+    display: inline-block;
+    vertical-align: middle;
+}
+.title-container .boat-order {
+    display: inline-block;
+    width: 540px;
+    height: 30px;
+    font-size: 28px;
+    color: #ffffff;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+.copySelect.boat-order {
+    width: 330px;
+    vertical-align: middle;
+}
+.copySelect.boat-order span {
+    max-width: 305px;
+    margin: 0 20px 0 10px;
+    font-size: 14px;
+}
+.copySelect.boat-order ul li {
+    text-align: left;
+}
+.title-container .boat-order {
+    display: inline-block;
+    width: 540px;
+    height: 30px;
+    font-size: 28px;
+    color: #ffffff;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+.copySelect.boat-order .copySelect-text em {
+    display:inline-block;
+    border:none;
+    width: 11px;
+    float: left;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -52px -30px;
+    vertical-align: middle;
+}
+/*锟斤拷锟斤拷锟斤拷锟斤拷*/
+.copySelect.number {
+    float: none;
+    display: inline-block;
+    width: 45px;
+    vertical-align: middle;
+}
+.copySelect.number .copySelect-text {
+    display: inline-block;
+    /*width: 110px;*/
+    height: 20px;
+    padding: 0 2px;
+    margin-right: 5px;
+    line-height: 20px;
+    color: #ffffff;
+    border: 1px solid  #464646;
+    border-radius: 2px;
+    background:transparent;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.copySelect.number .copySelect-text em {
+    display:block;
+    border:none;
+    width: 11px;
+    height: 20px;
+    line-height: 20px;
+    float: right;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -52px -35px;
+}
+.copySelect.number span {
+    width: 20px;
+    font-size: 12px;
+}
+.copySelect.number ul li {
+    text-align: left;
+}
+/*锟揭的讹拷锟斤拷锟铰凤拷锟斤拷锟斤拷*/
+.time-container.order {
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    vertical-align: middle;
+}
+.time-container.order .month {
+    width: 200px;
+    height: 30px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -138px -106px;
+}
+.time-container.order .month .text {
+    float: left;
+    width: 47px;
+    height: 30px;
+    margin: 0;
+    line-height: 30px;
+    text-align: right;
+    color: #d5d5d5;
+}
+.time-container.order .month .copySelect{
+    width:112px;
+    color: #d5d5d5;
+}
+.time-container.order .month .copySelect .copySelect-text {
+    width: 102px;
+}
+.time-container.order .month .copySelect-text span {
+    /*padding: 0 10px 0 5px;*/
+    display: block;
+    float: left;
+    border: none 0;
+    width: 80px;
+    padding: 0;
+    background: none;
+    font-size:14px;
+    color: #d5d5d5;
+}
+
+.time-container.order .month .copySelect-text em {
+    display:block;
+    border:none;
+    width: 11px;
+    height: 30px;
+    float: right;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -52px -30px;
+}
+/*锟斤拷锟斤拷-锟铰凤拷*/
+.title-container .time-container {
+    display: inline-block;
+    width: 210px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.title-container .time-container .month {
+    width: 210px;
+    height: 30px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -50px 0px;
+}
+
+.title-container .time-container .month .text {
+    float: left;
+    width: 36px;
+    height: 30px;
+    margin: 0;
+    line-height: 33px;
+    text-align: center;
+    color: #ffffff;
+    margin-left: 8px;
+    text-align: right;
+}
+
+.vessel .left .bottom-container {
+    height: 500px;
+    margin-bottom: 10px;
+    border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    /*background: #303030;*/
+    /*filter:alpha(opacity=30);*/
+    /*-moz-opacity:0.3;*/
+    /*-khtml-opacity: 0.3;*/
+    /*opacity: 0.3;*/
+}
+
+
+/*锟斤拷锟斤拷&锟斤拷位&锟斤拷锟�/
+.cabin-surplus-repertory {
+    height: 100px;
+    color: #ffffff;
+}
+
+.cabin-surplus-repertory .con {
+    float: left;
+    width: 85px;
+    height: 100px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -269px 0px;
+}
+
+.cabin-surplus-repertory .con.list {
+    float: left;
+    width: 735px;
+    height: 100px;
+    text-align: center;
+    background-image: url(../images/bj_ul_cabin.png);
+    background-repeat: repeat-x;
+    /*x锟斤拷锟斤拷锟�/
+    /*overflow-x: auto;*/
+    overflow:hidden;
+}
+
+.cabin-surplus-repertory .con.list table thead tr th{
+    width: 160px;
+}
+
+
+.cabin-surplus-repertory .con.list ul {
+    padding: 0;
+    margin: 0;
+}
+
+.cabin-surplus-repertory .con.list ul li {
+    float: left;
+    /*vertical-align: middle;*/
+    display:block;
+    width: 160px;
+    height: 100px;
+}
+
+.cabin-surplus-repertory .con.list ul li:hover {
+    background: #8c8c8c;
+}
+
+.cabin-surplus-repertory .con.list em:first-child {
+    font-size: 28px;
+}
+
+.cabin-surplus-repertory .con.list em:last-child {
+    font-size: 12px;
+}
+
+.cabin-surplus-repertory .con p {
+    margin: 0;
+}
+
+.cabin-surplus-repertory .con p:first-child {
+    height: 39px;
+    line-height: 39px;
+    background: #484848;
+}
+
+.cabin-surplus-repertory .con p:last-child {
+    height: 61px;
+    line-height: 61px;
+    background: #717171;
+}
+
+.cabin-surplus-repertory table {
+    /*width: 100%;*/
+    table-layout: fixed;
+}
+
+.cabin-surplus-repertory table thead tr th.wd {
+    width: 160px;
+}
+
+.cabin-surplus-repertory table thead tr th.wdi {
+    width: 85px;
+}
+
+.ullage{
+    width: 160px;
+    height: 110px;
+}
+
+.ullage.active{
+    width: 160px;
+    height: 110px;
+    margin-top: 0px;
+    /*background: #adadad;*/
+    color: #ffffff;
+    background-image: url(../images/quauq-icons-group.png);
+    background-repeat: no-repeat;
+    background-position: -11px -305px;
+    /*filter:alpha(opacity=60);*/
+    /*-moz-opacity:0.60;*/
+    /*-khtml-opacity: 0.60;*/
+    /*opacity: 0.60;*/
+}
+
+
+/*锟斤拷锟斤拷&锟斤拷品图示*/
+/*锟斤拷锟桔诧拷锟斤拷*/
+.bottom-container .sales-porduct-view {
+    height: 400px;
+    /*overflow: auto;*/
+}
+
+.sales-porduct-view .sales {
+    float: left;
+    width: 85px;
+    height: 400px;
+    color: #ffffff;
+    /*x锟斤拷锟斤拷锟�/
+    /*overflow-y: auto;*/
+    overflow: hidden;
+}
+
+
+
+.sales-porduct-view .sales ul li {
+    width: 85px;
+    height: 132px;
+    /*line-height: 132px;*/
+    text-align: center;
+}
+.sales-porduct-view .sales ul li.active {
+    background: #8d8d8d;
+}
+
+.sales-porduct-view .sales ul li:nth-child(2n) {
+    background:rgba(255,255,255,0.1);
+}
+.sales-porduct-view .sales ul li:nth-child(2n+1) {
+    background:rgba(75,75,75,0.9);
+}
+.sales-porduct-view .sales ul li:nth-child(2n).active  {
+    background: #8d8d8d;
+}
+.sales-porduct-view .sales ul li:nth-child(2n+1).active  {
+    background: #8d8d8d;
+}
+.bottom-container .sales-porduct-view .porduct-view table tbody:nth-child(2n+1)  li {
+    background: rgba(255,255,255,0.05);
+}
+
+/*锟斤拷品图示*/
+.bottom-container .sales-porduct-view .porduct-view {
+    float: left;
+    width: 735px;
+    height: 400px;
+    color: #ffffff;
+    /*x锟斤拷锟斤拷锟�/
+    /*overflow: auto;*/
+    overflow: hidden;
+    /*background: #303030;*/
+    background:rgba(69,69,69,0.5)
+}
+
+.bottom-container .sales-porduct-view .porduct-view table {
+    /*width: 100%;*/
+    table-layout: fixed;
+}
+.bottom-container .sales-porduct-view .porduct-view table thead tr th {
+    width: 160px;
+}
+.bottom-container .sales-porduct-view .porduct-view table tbody tr td {
+    height:132px;
+    vertical-align: top;
+}
+/*锟斤拷品锟叫憋拷*/
+.bottom-container .sales-porduct-view .porduct-view li {
+    position: relative;
+    height: 122px;
+    padding: 5px 0px;
+}
+/*锟斤拷昃拷锟�/
+.bottom-container .sales-porduct-view .porduct-view  li:hover {
+    /*background: #796e6e;*/
+    background: rgba(121,110,110,0.9);
+
+}
+.bottom-container .sales-porduct-view .porduct-view  li.active {
+    /*background: #443737;*/
+    background: rgba(253,24,24,0.05);
+}
+/*锟斤拷锟斤拷图锟斤拷*/
+.bottom-container .sales-porduct-view .porduct-view  li .view-all-pro-minification {
+    clear: both;
+    width: 142px;
+    height: 10px;
+    margin: 4px auto 0 auto;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -187px -177px;
+    cursor: pointer;
+}
+.bottom-container .sales-porduct-view .porduct-view  li:hover .view-all-pro-minification {
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -187px -225px;
+}
+/*锟介看全锟斤拷*/
+.porduct-view  li .view-all-prolist {
+    position: absolute !important;
+    z-index: 999999999999999;
+    top: 0px;
+    left: 0px;
+    width: 160px;
+    height: 200px;
+    padding: 10px 3px;
+    border: 1px solid #404d57;
+    background: #695f5f;
+    overflow: hidden;
+    display:none;
+}
+.porduct-view  li .view-all-prolist-bottom {
+    position: absolute;
+    z-index: 999999999999999;
+    top: -90px;
+    left: 0px;
+    width: 160px;
+    height: 200px;
+    padding: 10px 3px;
+    border: 1px solid #404d57;
+    background: #695f5f;
+    overflow: hidden;
+}
+
+
+.porduct-view  li {
+    float: left;
+    width: 160px;
+   /* height: 132px;*/
+}
+
+/*.porduct-view li .country {*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*width: auto;*/
+    /*height: 14px;*/
+    /*padding: 0 3px;*/
+    /*margin: 1px;*/
+    /*background: transparent;*/
+    /*vertical-align: middle;*/
+    /*border-radius: 2px;*/
+    /*-webkit-border-radius: 2px;*/
+    /*border-radius: 2px;*/
+    /*line-height: 14px;*/
+/*}*/
+.porduct-view li .country {
+    position: relative;
+    float: left;
+    display: block;
+    width: auto;
+    height: 14px;
+    padding: 0 3px;
+    margin: 2px;
+    background: transparent;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    line-height: 14px;
+}
+.porduct-view li .country span i {
+    position: relative;
+}
+.porduct-view li .country span:last-child {
+    color: #000000;
+}
+.porduct-view  li .country.country_01 {
+    background: #f3a497;
+    border: 1px solid #ee7b6f;
+}
+
+.porduct-view  li .country.country_02 {
+    background: #afb043;
+    border: 1px solid #7b7c38;
+}
+
+.porduct-view li .country.country_03 {
+    background: #9b80a2;
+    border: 1px solid #8d6794;
+}
+
+.porduct-view  li .country.country_04 {
+    background: #856969;
+    border: 1px solid #624141;
+}
+
+/*锟斤拷锟斤拷*/
+/*锟斤拷锟斤拷*/
+.copySelect {
+    float: left;
+    position: relative;
+    display:block;
+    width: 140px;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    color: #ffffff;
+}
+
+.copySelect:hover .copySelect-text {
+    background:transparent;
+    color: #ffffff;
+}
+
+.copySelect-text {
+    /*width: 110px;*/
+    height: 28px;
+    line-height: 30px;
+    color: #ffffff;
+    border: 1px solid  transparent;
+    border-radius: 2px;
+    background:transparent;
+    cursor: pointer;
+}
+
+.copySelect-text span {
+    /*padding: 0 10px 0 5px;*/
+    display: block;
+    float: left;
+    border: none 0;
+    width: 173px;
+    padding: 0;
+    background: none;
+    font-size:20px;
+    color: #ffffff;
+}
+
+.copySelect-text em {
+    display:block;
+    border:none;
+    width: 11px;
+    height: 30px;
+    float: right;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -52px -30px;
+   
+}
+
+
+
+.copySelect ul {
+    position: absolute;
+    top: 31px;
+    max-height: 209px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    left: 0;
+    right: 0;
+    background: #000000;
+    border:none;
+    /*border-top: none 0;*/
+    /*display: block;*/
+    border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    z-index: 99;
+}
+
+.copySelect ul li {
+    height: 30px;
+    margin-top: -1px;
+    border-top: none;
+    line-height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0 8px;
+    overflow: hidden;
+    z-index: 2000000;
+}
+
+.copySelect ul li:hover {
+    color: #ff7300;
+}
+
+.copySelect ul li.copySelect-liOn {
+    color: #fff;
+    background-color: #7d96b1;
+}
+
+.copySelectIndex {
+    z-index: 9;
+    background: #fff;
+}
+
+.copySelectIndex .copySelect-text {
+    background: #fff;
+}
+
+.copySelectSmail {
+    width: 110px;
+}
+
+.copySelectSmail .copySelect-text input {
+    width: 70px;
+}
+
+.copySelectBig {
+    width: 220px;
+}
+
+.copySelectBig .copySelect-text input {
+    width: 180px;
+}
+
+/*锟斤拷锟斤拷锟斤拷锟斤拷-锟斤拷品&锟斤拷锟斤拷*/
+.copySelect.product {
+    float: none;
+    position: relative;
+    display:inline-block;
+    width: 184px;
+    height: 19px;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #3e3e3e;
+    border: 1px solid #464646;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.copySelect.product:hover .copySelect-text {
+    background:transparent;
+    color: #ffffff;
+}
+
+.copySelect.product .copySelect-text {
+    /*width: 110px;*/
+    height: 19px;
+    line-height: 19px;
+    color: #ffffff;
+    border: 1px solid  transparent;
+    border-radius: 2px;
+    background:transparent;
+    cursor: pointer;
+}
+
+.copySelect.product .copySelect-text span {
+    /*padding: 0 10px 0 5px;*/
+    display: block;
+    float: left;
+    border: none 0;
+    width: 115px;
+    padding: 0;
+    background: none;
+    font-size:12px;
+    color: #ffffff;
+}
+
+.copySelect.product .copySelect-text em {
+    display:block;
+    border:none;
+    width: 11px;
+    height: 19px;
+    margin-right: 6px;
+    float: right;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -52px -36px;
+}
+
+.copySelect.product ul {
+    position: absolute;
+    z-index: 99;
+    top: 5px;
+    max-height: 209px;
+    padding: 0px !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    left: 0;
+    right: 0;
+    background: #000000;
+    border:none;
+    /*border-top: none 0;*/
+    /*display: block;*/
+    border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+}
+
+.copySelect.product  ul li {
+    margin-top: -1px;
+    border-top: none;
+    line-height: 24px !important;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0 8px;
+    overflow: hidden;
+}
+
+.copySelect ul li:hover {
+    color: #ff7300;
+}
+
+.copySelect ul li.copySelect-liOn {
+    color: #fff;
+    background-color: #7d96b1;
+}
+
+.copySelectIndex {
+    z-index: 9;
+    background: #fff;
+}
+
+.copySelectIndex .copySelect-text {
+    background: #fff;
+}
+
+.copySelectSmail {
+    width: 110px;
+}
+
+.copySelectSmail .copySelect-text input {
+    width: 70px;
+}
+
+.copySelectBig {
+    width: 220px;
+}
+
+.copySelectBig .copySelect-text input {
+    width: 180px;
+}
+
+/*锟斤拷锟斤拷*/
+
+/*锟揭侧部锟斤拷*/
+.vessel .right {
+    float: right;
+    width: 185px;
+    height: 536px;
+    padding: 17px 10px;
+    border-top-left-radius: 10px;
+    -moz-border-top-left-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    background: #262525;
+    /*background: #000000;*/
+    /*filter:alpha(opacity=30);*/
+    /*-moz-opacity:0.3;*/
+    /*-khtml-opacity: 0.3;*/
+    /*opacity: 0.3;*/
+}
+
+.vessel .right .function-part-f {
+    height: 28px;
+    margin-bottom: 17px;
+    text-align: center;
+}
+
+.vessel .right .function-part-f .butn-sign {
+    display: inline-block;
+    padding: 4px 8px;
+    margin: 0 auto;
+    background: #f08200;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+
+}
+
+.vessel .right .function-part-f .butn-sign:hover {
+    background: #ff9c27;
+
+}
+
+.vessel .right .function-part-f .butn-order {
+    display: inline-block;
+    padding: 3px 7px;
+    margin: 0 auto;
+    background: transparent;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+
+}
+
+.vessel .right .function-part-f .butn-order:hover {
+    background: #858585;
+    border: 1px solid transparent;
+
+}
+
+.function-part-f .butn-sign em {
+    display: inline-block;
+    width: 12px;
+    height: 14px;
+    margin-right: 5px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -4px -3px;
+
+}
+/*锟斤拷锟斤拷-锟斤拷锟斤拷*/
+.butn-save {
+    display: inline-block;
+    padding: 3px 7px;
+    margin: 17px auto;
+    background: #606060;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    border:none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle; 
+
+}
+
+.butn-save.active {
+    background: #f08200;
+    border: none;
+    color: #ffffff;
+}
+.butn-save{
+	cursor:auto;
+    background: #606060;
+    border: none;
+    color: #cdcdcd;
+}
+.butn-save em {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    margin-right: 5px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -93px -218px;
+}
+
+.function-part-f .butn-order em {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -4px -105px;
+}
+
+/*锟斤拷位锟酵匡拷娌匡拷锟�/
+.surplus-repertory {
+    height: auto;
+    overflow: hidden;
+}
+
+.surplus-repertory .title {
+    height: 41px;
+    border-bottom: 1px dashed #ffffff;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 41px;
+}
+
+.surplus-repertory.margin-bottom-div .title span:first-child em:first-child {
+    font-size: 28px;
+}
+
+.surplus-repertory.margin-bottom-div .title span:first-child em:last-child {
+    font-size: 12px;
+}
+
+
+/*锟侥憋拷锟斤拷锟斤拷锟斤拷式*/
+.surplus-repertory .bottom.prs_prn {
+    height: 290px;
+    border-bottom: 1px dashed #ffffff;
+    color: #ffffff;
+    overflow-y: auto;
+    clear: both;
+}
+
+.surplus-repertory .bottom.prs_prn > ul {
+    margin: 0;
+    padding: 0;
+}
+
+.surplus-repertory .bottom.prs_prn > ul li {
+    line-height: 26px;
+    margin-top: 25px;
+}
+.surplus-repertory .bottom.prs_prn > ul li span{
+    display: inline-block;
+}
+.surplus-repertory .bottom.prs_prn > ul li span .product-name{
+    display: inline-block;
+    width:140px;
+    max-height: 52px;;
+    vertical-align: top;
+}
+
+.surplus-repertory .bottom.prs_prn > ul li span input[type="checkbox"] {
+    display: inline-block;
+    vertical-align: middle;
+    margin:0 10px 0 0;
+    border: none;
+}
+.surplus-repertory .bottom.prs_prn em {
+    display: inline-block;
+    width: 70px;
+    height: 11px;
+    margin:0 10px 0 20px;
+    background: transparent;
+    vertical-align: middle;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+
+}
+
+.surplus-repertory .bottom em.country_01 {
+    background: #f3a497;
+    border: 1px solid #ee7b6f;
+}
+
+.surplus-repertory .bottom.prs_prn em.country_02 {
+    background: #afb043;
+    border: 1px solid #7b7c38;
+}
+
+.surplus-repertory .bottom.prs_prn em.country_03 {
+    background: #9b80a2;
+    border: 1px solid #8d6794;
+}
+
+.surplus-repertory .bottom.prs_prn em.country_04 {
+    background: #856969;
+    border: 1px solid #624141;
+}
+
+.surplus-repertory .bottom.prs_prn label {
+    margin: 0;
+    max-width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+
+
+/*锟侥憋拷前锟斤拷锟斤拷锟斤拷式*/
+.surplus-repertory .bottom {
+    height: 145px;
+    border-bottom: 1px dashed #ffffff;
+    color: #ffffff;
+    overflow-y: auto;
+    clear: both;
+}
+
+.surplus-repertory .bottom > ul {
+    margin: 0;
+    padding: 0;
+}
+
+.surplus-repertory .bottom > ul li {
+    line-height: 26px;
+}
+
+.surplus-repertory .bottom input[type="checkbox"] {
+    margin-right: 10px;
+    border: none;
+}
+
+
+/*锟斤拷品锟揭诧拷图示*/
+.surplus-repertory .bottom em {
+    display: inline-block;
+    width: 36px;
+    height: 16px;
+    background: transparent;
+    vertical-align: middle;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+
+}
+
+.surplus-repertory .bottom em.country_01 {
+    background: #f3a497;
+    border: 1px solid #ee7b6f;
+}
+
+.surplus-repertory .bottom em.country_02 {
+    background: #afb043;
+    border: 1px solid #7b7c38;
+}
+
+.surplus-repertory .bottom em.country_03 {
+    background: #9b80a2;
+    border: 1px solid #8d6794;
+}
+
+.surplus-repertory .bottom em.country_04 {
+    background: #856969;
+    border: 1px solid #624141;
+}
+
+.surplus-repertory .bottom label {
+    margin: 0;
+    max-width: 95px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+/*锟斤拷锟斤拷锟截诧拷锟斤拷*/
+.surplus-repertory.margin-bottom-div {
+    margin-bottom: 10px;
+}
+
+.surplus-repertory .bottom.place {
+    height: 104px;
+    padding: 10px 0;
+}
+
+/*拼锟斤拷锟斤拷*/
+.surplus-repertory .bottom.man {
+    height: 78px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #484948;
+}
+
+.surplus-repertory .bottom.man label {
+    margin: 0 6px;
+    text-align: center;
+}
+
+/*确锟斤拷*/
+.function-part-last .butn-confirm {
+    width: 39px;
+    padding: 1px 0;
+    margin: 0 auto;
+    background: #4b4949;
+    font-size: 14px;
+    color: #9b9b9b;
+    text-align: center;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.function-part-last .butn-confirm:hover {
+    background: #5f5f5f;
+    color: #f5f5f5;
+}
+
+/*锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷时锟斤拷筛选*/
+.tips-together {
+    position: absolute;
+    top:-4px;
+    /*right: -3px;*/
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -27px -7px;
+}
+
+.tips-together.pr {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -27px -7px;
+}
+
+/*锟斤拷锟斤拷锟斤拷*/
+/*锟斤拷锟街诧拷*/
+.masking-out-layer-shade-fir{
+    position: fixed;
+    z-index: 99999;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: #000000;
+    filter:alpha(opacity=30);
+    -moz-opacity:0.3;
+    -khtml-opacity: 0.3;
+    opacity: 0.3;
+    pointer-events: auto;
+}
+/*锟斤拷锟斤拷锟叫碉拷锟斤拷锟街诧拷*/
+.masking-out-layer-shade-sec{
+    position: fixed;
+    z-index:19891047;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: #000000;
+    filter:alpha(opacity=30);
+    -moz-opacity:0.3;
+    -khtml-opacity: 0.3;
+    opacity: 0.3;
+    pointer-events: auto;
+}
+
+/*锟斤拷锟斤拷头锟斤拷&锟截闭帮拷钮*/
+.masking-out-layer-header{
+      height: 45px;
+    background-color: #484848;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.masking-out-layer-header.delete{
+    height: 45px;
+    background-color: #333333;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.masking-out-layer-header.gray{
+    padding: 0;
+    background: #484848;
+    border-bottom: 1px solid #000000;
+    -moz-border-top-left-radius: 3px;
+    -moz-border-top-right-radius: 3px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.masking-out-layer-header h1{
+    display: inline-block;
+    width: 80px;
+    padding: 0 5px 0 10px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+
+.masking-out-layer-header .close {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 15px 14px;
+    background: transparent url("../images/close1.png") no-repeat scroll -3px -2px;
+    vertical-align: middle;
+}
+
+.masking-out-layer-header .close:hover{
+	
+	 background: transparent url("../images/close1.png") no-repeat scroll -3px -14px;
+}
+
+
+/*锟斤拷锟捷诧拷锟斤拷*/
+.masking-out-layer-content{
+    /*height:100%;*/
+    padding:15px;
+}
+/*锟斤拷锟斤拷锟阶诧拷&锟斤拷锟斤拷锟斤拷钮*/
+.masking-out-layer-footer{
+    height: 60px;
+    border-top: 1px solid #000000;
+    background: #484848;
+    border-bottom-left-radius: 3px;
+    -moz-border-bottom-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    text-align: center;
+    /*cursor: pointer;*/
+
+}
+.butn-cancel{
+    display: inline-block;
+    padding: 3px 7px;
+    margin: 17px auto;
+    background: #7b7b7b;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    border:none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.butn-cancel.active {
+    background: #f08200;
+    color: #ffffff;
+}
+.butn-cancel em{
+    display: inline-block;
+    width: 20px;
+    height: 12px;
+    margin-right: 3px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -15px -131px;
+ }
+.butn-cancel.active em{
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -93px -131px;
+}
+.butn-confirm.active em{
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -93px -218px;
+}
+.butn-confirm em{
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    margin-right: 3px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -93px -173px;
+}
+.butn-confirm{
+    display: inline-block;
+    padding: 3px 7px;
+    margin: 17px auto;
+    background: #7b7b7b;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    border:none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.butn-confirm{
+    cursor: auto;
+    background: #606060;
+    border: none;
+    color: #cdcdcd;	
+}
+.butn-confirm.active {
+    background: #f08200;
+    border: none;
+    color: #ffffff;
+}
+/*删锟斤拷锟斤拷示*/
+.masking-out-layer-tips{
+    position:absolute;
+    z-index: 19891045;
+    top:50%;
+    left: 50%;
+    margin: -123px 0px 0px -185px;
+    width: 370px;
+    height: 246px;
+    background-color: #000000;
+    box-shadow: none;
+    color: #FFF;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor:hand;
+}
+/*删锟斤拷锟斤拷示*/
+.masking-out-layer-tips.delete{
+    z-index:19891048;
+}
+
+.masking-out-layer-content.tips{
+    height:110px;
+    background:#333333;
+}
+.masking-out-layer-content.tips p{
+   line-height:100px;
+   font-size: 18px;
+   color: #b7b7b7;
+   font-weight: bold;
+   text-align: center;
+}
+/*锟斤拷锟斤拷*/
+.masking-out-layer-tips.sign-up{
+    position:absolute;
+    z-index: 19891046;
+    top:50%;
+    left: 50%;
+    margin: -123px 0px 0px -185px;
+    width: 320px;
+    height: 362px;
+    background-color: #000000;
+    box-shadow: none;
+    color: #FFF;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    cursor:hand;
+    
+    filter:alpha(opacity=100); 
+-moz-opacity:1; 
+opacity:1;
+
+}
+.masking-out-layer-content.sign-up.tips{
+    height:249px;
+    /* background:#333333; */
+    background: rgba(48,48,48,0.8);
+}
+.masking-out-layer-content.sign-up.tips ul:last-child{
+    border-top: 1px dashed #696969;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+.masking-out-layer-content.sign-up.tips ul li{
+    text-align:left;
+    line-height: 30px;
+}
+.masking-out-layer-content.sign-up.tips label{
+    display: inline-block;
+    width: 80px;
+    margin: 0;
+    line-height: 32px;
+    font-size: 12px;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: right;
+    vertical-align: middle;
+}
+.masking-out-layer-content.sign-up.tips p{
+    display: inline-block;
+    margin: 0;
+    line-height: 32px;
+    font-size: 12px;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: left;
+    vertical-align: middle;
+}
+/*锟揭的讹拷锟斤拷锟斤拷锟斤拷*/
+.masking-out-layer-tips.order{
+    position:absolute;
+    z-index: 19891045;
+    top:50%;
+    left: 50%;
+    margin: -204px 0px 0px -340px;
+    width: 680px;
+    height: 408px;
+    background-color: #000000;
+    box-shadow: none;
+    color: #FFF;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor:hand;
+}
+.masking-out-layer-content.tips.order {
+    height: 300px;
+    padding:1px;
+    background: #333333;
+}
+.title-container-mini{
+    display: inline-block;
+    vertical-align: middle;
+}
+.title-container-mini > span {
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: middle;
+}
+/*锟揭的讹拷锟斤拷锟斤拷锟�/
+.masking-out-layer-content.order.tips table{
+    table-layout: fixed;
+    width: 100%;
+    border: 1px solid #4b4b4b;
+}
+.masking-out-layer-content.order.tips table thead tr th{
+    height: 40px;
+    padding: 0px 8px;
+    border: 1px solid #4b4b4b;
+    font-weight: normal;
+    text-align: left;
+}
+.masking-out-layer-content.order.tips table tbody .operator{
+    display:none;
+    text-align: left;
+}
+.masking-out-layer-content.order.tips table tbody .operator i{
+    display: inline-block;
+    width:20px;
+    height: 20px;
+    margin-right:10px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -55px -173px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.masking-out-layer-content.order.tips table tbody .operator i:hover{
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -55px -220px;
+}
+.masking-out-layer-content.order.tips table tbody .operator em{
+    display:inline-block;
+    width:20px;
+    height: 20px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -13px -173px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.masking-out-layer-content.order.tips table tbody .operator em.disabled:hover {
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -13px -173px;
+    cursor: default;
+}
+.masking-out-layer-content.order.tips table tbody .operator em:hover{
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -13px -220px;
+}
+.masking-out-layer-content.order.tips table tbody tr:hover .operator{
+    display:block;
+}
+.masking-out-layer-content.order.tips table tbody tr td{
+    height: 30px;
+    padding: 0px 8px;
+    border: 1px solid #4b4b4b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+.masking-out-layer-content.order.tips .cabin{
+    width:41px;
+}
+.masking-out-layer-content.order.tips .counter{
+    width:50px;
+}
+.masking-out-layer-content.order.tips .product-sel{
+    width:200px;
+}
+.masking-out-layer-content.order.tips .f-group{
+    width:60px;
+}
+.masking-out-layer-content.order.tips .m-group{
+    width:60px;
+}
+.masking-out-layer-content.order.tips .start{
+    width:70px;
+}
+.masking-out-layer-content.order.tips .operation{
+    /*width:41px;*/
+}
+.ellipsis-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+.conter-select{
+    width: 38px;
+    padding: 0;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+.conter-select~input[type="checkbox"]{
+    vertical-align: middle;
+}
+/*锟侥憋拷锟斤拷*/
+input[type="text"].sex-count-in{
+    width:47px;
+    height: 20px;
+    padding: 0;
+    margin: 0 10px 0 0;
+    background: #3e3e3e;
+    border: 1px solid #464646;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+input[type="text"].number-count-in{
+    display: none;
+    width:28px;
+    height: 20px;
+    padding: 0 5px;
+    margin: 0 10px 0 0;
+    background: #3e3e3e;
+    border: 1px solid #464646;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+/*锟斤拷选*/
+input[type="checkbox"].sex-count-check{
+    padding: 0;
+    margin: 0 10px 0 10px;
+}
+/*锟斤拷锟斤拷*/
+select.sex-count-sel{
+    width:185px;
+    height: 20px;
+    margin: 0px !important;
+    background: #3e3e3e;
+    border: 1px solid #464646;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+/*锟斤拷示图锟斤拷*/
+.masking-out-layer-content.tips p em{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -93px -66px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+/*锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟揭筹拷锟�/
+.add-del-container{
+    clear: both;
+    height: auto;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.add-del-container .mod_information_d2:first-child{
+    clear: both;
+    margin-top: 0px;
+}
+.add-del-container .mod_information_d2{
+    clear: both;
+    margin-top: 20px;
+}
+.add-del-container .mod_information_d2 span {
+    display: inline-block;
+    width: 60px;
+    height: 28px;
+    vertical-align: middle;
+}
+.add-del-container .mod_information_d2 span em {
+    display: inline-block;
+    width: 30px;
+    height: 28px;
+    background-image: url(../images/ico_main_bj.png);
+    background-repeat: no-repeat;
+    background-position: -11px -28px;
+    cursor: pointer;
+}
+
+.add-del-container .mod_information_d2 span i {
+    display: inline-block;
+    width: 30px;
+    height: 28px;
+    background-image: url(../images/ico_main_bj.png);
+    background-repeat: no-repeat;
+    background-position: -20px 1px;
+    cursor: pointer;
+}
+/*锟斤拷颖锟阶�/
+.add-remarks{
+    margin: 20px 0;
+    height: auto;
+    overflow: hidden;
+}
+.add-remarks span{
+    display: block;
+    width: 100px;
+    vertical-align: middle;
+    text-align: right;
+}
+.add-remarks span~textarea{
+    width: 630px;
+    height: 100px;
+    margin:-20px 0 0 100px;
+    resize: none;
+}
+.mod_information_3.update-document{
+    width: 100%;
+}
+.mod_information_3.update-document .batch-ol{
+    padding-top: 2px;
+}
+.upload_file_list table{
+    width: 100%;
+}
+.upload_file_list table tbody tr td:first-child,.add-remarks.detail  table tbody tr td:first-child{
+    width: 100px;
+}
+.color-gray{
+    color: #999999;
+}
+/*锟斤拷锟斤拷锟斤拷息-锟斤拷锟斤拷-锟斤拷锟介部锟斤拷*/
+.mod_information_d1.detail .text-show{
+    display: inline-block;
+    vertical-align: middle;
+    width:380px;
+}
+.ellipsis-text-detail {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mod_information_d2.detail .text-show{
+    display: inline-block;
+    vertical-align: middle;
+    width:150px;
+}
+.add-remarks.detail {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+}
+.add-remarks.detail  table{
+    width: 100%;
+}
+.add-remarks.detail  table tbody tr td{
+    word-break: break-all;
+}
+
+/*锟斤拷锟斤拷锟斤拷录锟斤拷锟斤拷*/
+.relevance-record-pop{
+}
+
+.relevance-record-pop table.table{
+    width:95%;
+    margin: 10px auto;
+}
+/*锟斤拷锟斤拷锟斤拷*/
+.date-roll-list-table{
+    height: auto;
+    overflow: hidden;
+}
+/*锟斤拷锟斤拷锟斤拷锟斤拷薷锟�/
+.text-show{
+    display: inline-block;
+    vertical-align: middle;
+    width:150px;
+}
+
+/*锟斤拷锟斤拷锟斤拷锟斤拷薷锟�/
+.relevance-record-edit-batch-pop .part-f{
+    height: 30px;
+}
+.relevance-record-edit-batch-pop .part-s{
+    height: 30px;
+    margin-top: 20px;
+}
+.relevance-record-edit-batch-pop .part-s  input,.relevance-record-edit-batch-pop .part-s select{
+    display: inline-block;
+    width: 100px;
+    vertical-align: middle;
+}
+.relevance-record-edit-batch-pop .part-f input[type="checkbox"]{
+    height: 30px;
+    margin-right: 5px;
+}
+.relevance-record-edit-batch-pop .part-f ul li{
+    float: left;
+    padding: 0 10px;
+}
+
+/*锟斤拷品-锟斤拷品锟斤拷锟斤拷-锟斤拷锟斤拷锟脚控憋拷*/
+.create-group-control-pop .part-f{
+    height: 30px;
+    margin-top: 20px;
+}
+.create-group-control-pop .part-f span{
+    float: left;
+    display: inline-block;
+    width: 48%;
+}
+.create-group-control-pop .part-f span select{
+    width: 100px;
+}
+.create-group-control-pop .table-striped{
+    width:95% ;
+    margin: 10px auto;
+}
+.create-group-control-pop .table-striped tbody tr td{
+    word-break: break-all;
+}
+
+
+/*锟洁辑锟斤拷锟斤拷锟脚控憋拷*/
+.edit-group-control-pop .table-striped{
+    width:98% ;
+    margin: 10px auto;
+}
+.edit-group-control-pop .table-striped tbody tr td{
+    word-break: break-all;
+}
+.edit-group-control-pop select{
+    width:95% ;
+}
+.edit-group-control-pop .table-striped tbody tr td.tc a{
+    display: inline-block;
+    width:95%;
+}
+/*锟睫改的达拷锟斤拷/锟缴癸拷锟斤拷示*/
+
+.operate-tips-pop{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    width: auto;
+    height: 40px;
+    padding: 0 20px;
+    margin-left:-250px;
+    margin-top: -25px;
+    background:#000000;
+    border-radius: 5px;
+    color: #ffffff;
+    line-height: 40px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.operate-tips-pop em{
+    display: inline-block;
+    vertical-align: middle;
+    width:24px;
+    height: 24px;
+    margin-right: 10px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -370px -7px;
+}
+.operate-tips-pop.fail em{
+    display: inline-block;
+    vertical-align: middle;
+    width:24px;
+    height: 24px;
+    margin-right: 10px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -405px -7px;
+}
+/*展锟斤拷锟斤拷锟斤拷锟斤拷锟�/
+.plate-set{
+    position: absolute;
+    top: 20px;
+    left: -40px;
+    width: 40px;
+    height: 40px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -12px -254px;
+    cursor: pointer;
+}
+
+.container-sales-nale {
+  display:table;
+  border:none;
+  background:transparent;
+  width:75px;
+  height:132px;
+  padding:0 5px;
+  _position:relative;
+  overflow:hidden;
+  float:left;
+  }
+ .subwrap-name {
+  vertical-align:middle;
+  display:table-cell;
+  _position:absolute;
+  _top:50%;
+ }
+
+ .content-name {
+  _position:relative;
+  _top:-50%;
+ }
+ 
+
+
+
+/*锟睫改的达拷锟斤拷/锟缴癸拷锟斤拷示*/
+
+/***E**C223锟斤拷锟斤拷-锟捷伙拷之锟斤拷-锟斤拷锟斤拷*******/
+
+
+/*锟斤拷锟接贺匡拷*/
+.pop-hapyy-new-year-mask{
+    position: fixed;
+    z-index: 99999;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: #000000;
+    filter:alpha(opacity=30);
+    -moz-opacity:0.3;
+    -khtml-opacity: 0.3;
+    opacity: 0.3;
+}
+.scroll-text-show{
+    position: absolute;
+    left: 200px;
+    top: 20px;
+    width: 400px;
+    height: 60px;
+    z-index: 9999
+}
+.pop-hapyy-new-year{
+    /*display: none;*/
+    position: fixed;
+    z-index: 999999;
+    top: 50%;
+    left:50%;
+    margin-left:-535px;
+    margin-top: -300px;
+    width: 1070px;
+    height: 600px;
+    background: transparent url("../images/happy-newyear-2016.jpg") no-repeat;
+    filter:alpha(opacity=100);
+    -moz-opacity:1;
+    -khtml-opacity: 1;
+    opacity: 1;
+}
+.pop-hapyy-new-year.small{
+    /*display: none;*/
+    position: fixed;
+    top: 50%;
+    left:50%;
+    margin-left:-508px;
+    margin-top: -285px;
+    width: 1016px;
+    height: 570px;
+    background: transparent url("../images/happy-newyear-2016.jpg") no-repeat;
+}
+.pop-hapyy-new-year .closes{
+    position: absolute;
+    z-index: 99999;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background: transparent url("../images/close-ico.png") no-repeat 0 0;
+}
+.pop-hapyy-new-year .closes:hover{
+    position: absolute;
+    z-index: 99999;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background: transparent url("../images/close-ico.png") no-repeat 0 -25px;
+}
+
+
+/***S**0082-锟捷伙拷之锟斤拷-签证*******/
+
+input[type="text"].company-info-fill{
+    width: 200px;
+    padding: 4px 6px;
+}
+.additional-information{
+    height: auto;
+    overflow: hidden;
+}
+.additional-information .area_code{
+    width: 80px;
+}
+.additional-information .other{
+    width: 400px;
+}
+.additional-information ul li label{
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    vertical-align: middle;
+}
+.social-relations{
+    width: 100%;
+    min-width: 1100px;
+}
+.social-relations tbody tr td{
+    text-align: center;
+}
+.social-relations tbody tr td.tr{
+    text-align: right;
+}
+.social-relations tbody tr td.tl{
+    text-align: left;
+}
+.social-relations select,.social-relations input[type="text"]{
+    width: 95%;
+    margin:2px auto;
+}
+
+
+/*展锟斤拷锟斤拷锟斤拷锟斤拷锟�23*/
+.plate-set{
+    position: absolute;
+    top: 0px;
+    left: -40px;
+    width: 40px;
+    height: 40px;
+    background: transparent url("../images/quauq-icons-group.png") no-repeat scroll -12px -254px;
+    cursor: pointer;
+}
+.masking-out-layer-content.sign-up.tips ul li:first-child,.copySelect ul li:first-child,.copySelect ul li:first-child {
+  margin-top:10px;
+}
+.biggerFont {
+    font-size: 17px;
+    display: inline-block;
+    width: 25px;
+    vertical-align: middle;
+}
+.smallerFont   {
+    display: inline-block;
+    width: 25px;
+    font-size: 12px;
+    text-align:right;
+}
+
+
+.copySelect.product ul:last-child {
+    border: none !important;
+    padding: 0px !important;
+    margin-top:15px !important;
+}
+
+/***E**0082-锟捷伙拷之锟斤拷-签证*******/

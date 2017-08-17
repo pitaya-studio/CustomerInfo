@@ -1,0 +1,1140 @@
+@charset "utf-8";
+/*订单跟踪页面样式*/
+
+/*上部分、基本样式*/
+
+/*当屏幕大小小于1000px时，将浮动按钮隐藏*/
+@media (max-width: 1000px) {
+    .orderT_top, .orderT_close {
+        background-color: #009535;
+        display: none;
+        float: right;
+        position: relative;
+        left: 90%;
+    }
+}
+
+.fa {
+    display: inline-block;
+    margin-right: 0px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 微软雅黑, Arial, 宋体;
+    color: #333;
+    background: #ffffff;
+    font-size: 12px;
+    width: 100%;
+    height: 100%;
+}
+
+div, form, img, ul, ol, li, dl, dt, dd {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+i, em {
+    display: inline-block;
+}
+
+.blur_background {
+    /*filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);*/
+    -webkit-filter: blur(12px); /* Chrome, Opera */
+    -moz-filter: blur(12px);
+    -ms-filter: blur(12px);
+    -o-filter: blur(12px);
+    filter: blur(12px);
+}
+
+.blur_background > header > .hedear {
+    position: static;
+}
+.orderT_close{
+    background: url("../images/newOrder.png") -135px -213px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+}
+.orderT_close:hover{
+    background: url("../images/newOrder.png") -134px -261px;
+}
+
+.ot_refresh {
+    color: #797c7c;
+    cursor: pointer;
+    width: 1250px;
+    margin: 0 auto;
+    text-align: right;
+    line-height: 40px;
+    height: 40px;
+}
+.ot_refresh i {
+    font-size: 14px;
+}
+.ot_refresh:hover{
+    color: #3fa3ff;
+}
+
+.orderTracking_back {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    background: url("../images/T1T2/bg_opacity_80.png")\9;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    display: none;
+}
+.orderTracking_all *::selection {
+    background:#cccccc;
+    color:#333333;
+}
+.orderTracking_all {
+    position: relative;
+    z-index: 20;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+.orderTracking_top, .orderT_content {
+    color: #ffffff;
+    text-align: center;
+    height: auto;
+    width: 1250px;
+    margin: auto;
+    border-radius: 3px;
+}
+
+.orderT_top_title {
+    border-bottom: 1px solid #333a3e;
+    text-align: center;
+    font-size: 16px;
+    height: 80px;
+    background: rgba(0,0,0,0.15);
+}
+.orderText{
+    color: #3895eb;
+    border-bottom: 2px solid #3895eb;
+    padding-bottom: 8px;
+    display: inline-block;
+    margin-top: 48px;
+    cursor: pointer;
+}
+.orderBorder{
+    margin: -3px 7px;
+    border-left: 1px solid #ffffff;
+    line-height: 15px;
+    display: inline-block;
+    height: 15px;
+}
+.orderTracking_top .dataStatistics:first-child{
+    margin-left: 0;
+}
+.dataStatistics{
+    height: 70px;
+    width: 360px;
+    background:url('../images/T1T2/bg_opacity_50.png');
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 0px 0 40px 21px;
+    display: inline-block;
+    padding: 20px;
+    cursor: pointer;
+}
+.data_title{
+    font-size: 14px;
+    color: #7e8287;
+    margin-bottom: 3px;
+}
+.data_number{
+    margin-top: 18px;
+    font-size: 40px;
+    color: #adb3bb;
+}
+.dataStatistics:hover .data_title{
+    -webkit-transition: color 0.25s;
+    transition: color 0.25s;
+    color:#ffffff;
+}
+.dataStatistics:hover .data_number{
+    -webkit-transition: color 0.25s;
+    transition: color 0.25s;
+    color:#3fa3ff;
+}
+
+.orderTracking_top .selectData{
+    background: url("../images/newOrder.png") -25px -28px;
+}
+.selectData .data_title{
+    -webkit-transition: color 0.25s;
+    transition: color 0.25s;
+    color:#ffffff;
+}
+.selectData .data_number{
+    -webkit-transition: color 0.25s;
+    transition: color 0.25s;
+    color:#3fa3ff;
+}
+
+
+.orderT_title{
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+    background: rgba(38,38,38,0.65);
+    text-align: left;
+    border-bottom: 1px solid #262626;
+}
+.orderT_title span{
+    display: inline-block;
+}
+.orderT_info{
+    background: url("../images/T1T2/bg_opacity_40.png");
+    padding: 10px 5px 10px 5px;
+    height: inherit;
+}
+.orderT_left,.orderT_right{
+    display: inline-block;
+    vertical-align: text-top;
+    overflow: hidden;
+}
+.orderT_left{
+    color:#808080;
+    position: relative;
+    width: 422px;
+    height: inherit;
+    padding-left: 1px;
+}
+.orderT_left li{
+    width: 370px;
+    border: 1px solid #404040;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    padding: 20px;
+    background: #262626;
+    box-shadow: 0 0 0 1px #0a0809;
+    text-align: left;
+    cursor: pointer;
+}
+.orderT_left li p{
+    display: none\9;
+    -webkit-transition: opacity 0.25s;
+    transition: opacity 0.25s;
+    opacity: 0;
+    filter: alpha(opacity=0); /* IE6及以上 */
+    margin-left: 50px;
+}
+.orderT_left li:hover{
+    background: rgba(20,20,20,0.7);
+    color:#ffffff;
+}
+.orderT_left li:hover .saler_number{
+    background: #3fa3ff;
+    color: #ffffff;
+}
+
+
+.storeIcon{
+    background: url("../images/newOrder.png") -78px -258px;
+    width: 35px;
+    height: 35px;
+}
+.innerTitle{
+    display: inline-block;
+    text-align: left;
+    font-size: 16px;
+    vertical-align: baseline;
+    width: 280px;
+    margin-left: 15px;
+}
+.innerTitle span{
+    font-size: 16px;
+    overflow: hidden;
+    width: 280px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+}
+.innerTitle span:first-child{
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+.saler_number{
+    display: inline-block;
+    width: 30px;
+    height: 18px;
+    border-radius: 10px;
+    line-height: 18px;
+    text-align: center;
+    background: #333333;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+
+.orderT_left .selectStore{
+    margin-right: -11px;
+    position: relative;
+    z-index: 2;
+    border: 1px solid #808080;
+    background: rgba(20,20,20,0.7);
+    border-right: 1px solid #1b1b1b;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: -3px 0px 0px -2px #808080;
+}
+.selectStore .innerTitle{
+    color: #ffffff;
+}
+
+.orderT_left .selectStore p{
+    display: block;
+    margin-left: 50px;
+    overflow: hidden;
+    -webkit-transition: opacity 0.6s;
+    transition: opacity 0.6s;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    margin-top: 12px;
+    height: 34px;
+    line-height: 16px;
+    margin-bottom: 0;
+}
+.selectStore .innerTitle{
+    color: #ffffff;
+}
+
+/*上部分移动的蓝色边框*/
+.orderT_left .selectedMoveLi{
+    position: absolute!important;
+    /*margin-right: -11px;*/
+    z-index: 10;
+    border: none;
+    background: none;
+    height: 81px;
+    box-shadow: none;
+    border-left: 3px solid #3fa3ff;
+    border-right: 1px solid #1b1b1b;
+    width: 377px;
+    margin-bottom: 0px;
+}
+.orderT_left .selectedMoveLi:hover {
+    background: none;
+}
+.selectStore .storeIcon{
+    background: url("../images/newOrder.png") -78px -213px;
+    width: 35px;
+    height: 35px;
+}
+.selectStore .saler_number{
+    background: #3fa3ff;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+
+.orderT_right{
+    width: 807px;
+    height: 730px;
+    border: 1px solid #808080;
+    border-radius: 3px;
+    background: rgba(20,20,20,0.7);
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+.no_data{
+    height: inherit;
+    display: inline-table;
+}
+.no_data div{
+    vertical-align: middle;
+    display: table-cell;
+}
+.no_data span{
+    background: url("../images/newOrder.png") -184px -145px no-repeat;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+}
+.orderT_right_ul{
+    height: inherit;
+}
+.orderT_right_ul>li{
+    -webkit-transition: height 0.4s;
+    transition: height 0.4s;
+    height: 60px;
+    margin-bottom: 10px;
+    display: inline-table;
+    cursor: pointer;
+}
+.orderT_right_ul>li:first-child{
+    margin-top: 10px;
+}
+.store_saler{
+    display: table-cell;
+    color: #4d4d4d;
+    vertical-align: middle;
+    position: relative;
+}
+
+.store_sal{
+    background: url("../images/newOrder.png") -20px -211px;
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;
+    opacity: 0.2;
+    position: relative;
+    z-index: 3;
+}
+
+.store_saler_icon{
+    background: url("../images/newOrder.png") -24px -211px;
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;
+    opacity: 0.2;
+    position: relative;
+    z-index: 3;
+}
+
+.fromWechat{
+    background: url(../images/orderOrigin.png) -35px -2px;
+}
+
+.fromComputer{
+    background: url(../images/orderOrigin.png) -2px -2px;
+}
+
+.allDetail{
+    display: inline-table;
+    background: #333435;
+    width: 700px;
+    height: inherit;
+    border-radius: 3px;
+    margin-left: 3px;
+}
+
+.allDetail>div{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.lighting_part{
+    width: 575px;
+    padding-left: 40px;
+    height: 100%;
+}
+.separate_part{
+    width: 5px;
+    background: #1b1b1b;
+}
+.detaile_part{
+    position: relative;
+}
+
+.order_information{
+    background: url("../images/newOrder.png") -70px -153px;
+    width: 18px;
+    height: 19px;
+    display: inline-block;
+    opacity: 0.2;
+}
+.confirm_slip{
+    background: url("../images/newOrder.png") -25px -154px;
+    width: 28px;
+    height: 19px;
+    display: inline-block;
+    opacity: 0.2;
+}
+
+.orderT_right{
+    height: inherit;
+    margin-left: -5px;
+}
+
+.fa-phone{
+    vertical-align: text-bottom;
+}
+
+.linkman{
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    opacity: 0;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=1);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=1);
+}
+
+.orderT_right_ul .red_light{
+    background: url('../images/red_ball.png');
+    width: 277px;
+    height: 34px;
+    top: -8px;
+    right: -7px;
+    z-index: 1;
+}
+.orderT_right_ul .blue_light{
+    background: url('../images/blue_ball.png');
+    width: 277px;
+    height: 34px;
+    top: -8px;
+    right: -7px;
+    z-index: 1;
+}
+.orderT_right_ul .yellow_light{
+    background: url('../images/yellow_ball.png');
+    width: 277px;
+    height: 34px;
+    top: -8px;
+    right: -7px;
+    z-index: 1;
+}
+.useTime{
+    width: 245px;
+    z-index: 3;
+    color: #cccccc;
+}
+.small_lighting .red_light,
+.small_lighting .blue_light,
+.small_lighting .yellow_light{
+    width: 34px;
+    background-position: -240px 0px;
+    margin-left: -10px;
+    position: static;
+}
+
+/*hover时的li样式*/
+.orderT_right_ul li:hover .store_saler_icon,
+.orderT_right_ul li:hover .store_saler,
+.orderT_right_ul li:hover .detaile_part .order_information,
+.orderT_right_ul li:hover .detaile_part .confirm_slip{
+    -webkit-transition: opacity 0.25s;
+    transition: opacity 0.25s;
+    opacity: 1;
+}
+.orderT_right_ul li:hover .store_saler{
+    -webkit-transition: color 0.25s;
+    transition: color 0.25s;
+    color: #ffffff;
+}
+.orderT_right_ul li:hover .allDetail{
+    -webkit-transition: background 0.25s;
+    transition: background 0.25s;
+    background: #2c2e35;
+}
+.orderT_right_ul li:hover .separate_part{
+    -webkit-transition: background 0.25s;
+    transition: background 0.25s;
+    background: #2c2e35;
+}
+/*hover时闪烁灯光*/
+.orderT_right_ul li:hover .red_light,
+.orderT_right_ul li:hover .blue_light,
+.orderT_right_ul li:hover .yellow_light{
+    width: 277px;
+    height: 34px;
+    top: -8px;
+    right: -7px;
+    z-index: 2;
+}
+.orderT_right_ul li:hover .red_light{
+    -webkit-transition: background 0.4s;
+    transition: background 0.4s;
+    background: url('../images/red_hover.gif');
+}
+.orderT_right_ul li:hover .blue_light{
+    -webkit-transition: background 0.4s;
+    transition: background 0.4s;
+    background: url('../images/blue_hover.gif');
+}
+.orderT_right_ul li:hover .yellow_light{
+    -webkit-transition: background 0.4s;
+    transition: background 0.4s;
+    background: url('../images/yellow_hover.gif');
+}
+.orderT_right_ul li:hover .small_lighting .red_light,
+.orderT_right_ul li:hover .small_lighting .blue_light,
+.orderT_right_ul li:hover .small_lighting .yellow_light{
+    width: 34px;
+    background-position: -240px 0px;
+}
+
+.orderT_right_ul li:hover .last_no_light .red_light,
+.orderT_right_ul li:hover .last_no_light .blue_light,
+.orderT_right_ul li:hover .last_no_light .yellow_light{
+	z-index:1;
+}
+
+/*click选择的li样式*/
+.orderT_right_ul .orRight_li_select{
+    -webkit-transition: height 0.4s;
+    transition: height 0.4s;
+    height: 115px;
+    display: inline-table;
+}
+.orRight_li_select .store_saler_icon{
+    opacity: 1;
+}
+.orRight_li_select .store_saler{
+    -webkit-transition: color 0.6s;
+    transition: color 0.6s;
+    color: #ffffff;
+    vertical-align: middle;
+    display: table-cell;
+}
+.orRight_li_select .allDetail,.orRight_li_select .separate_part{
+    background: #2c2e35;
+}
+
+.orRight_li_select .order_information,
+.orRight_li_select .confirm_slip,
+.orRight_li_select .upward_time,
+.orRight_li_select .saler_up_time,
+.orRight_li_select .linkman
+{
+    -webkit-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+    opacity: 1;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+}
+
+.orRight_li_select .useTime{
+    top: 20px;
+}
+/*展开时闪烁灯光*/
+.orderT_right_ul .orRight_li_select:hover .red_light,
+.orRight_li_select .red_light{
+     background: url('../images/red.gif');
+     width: 275px;
+     height: 34px;
+     top: -8px;
+     left: -7px;
+     z-index: 2;
+}
+.orderT_right_ul .orRight_li_select:hover .blue_light,
+.orRight_li_select .blue_light{
+    background: url('../images/blue.gif');
+    width: 275px;
+    height: 34px;
+    top: -8px;
+    left: -7px;
+    z-index: 2;
+}
+.orderT_right_ul .orRight_li_select:hover .yellow_light,
+.orRight_li_select .yellow_light{
+    background: url('../images/yellow.gif');
+    width: 275px;
+    height: 34px;
+    top: -8px;
+    left: -7px;
+    z-index: 2;
+}
+.orderT_right_ul .orRight_li_select:hover .small_lighting .red_light,
+.orRight_li_select .small_lighting .red_light{
+    background: url('../images/red_hover.gif')-240px 0px;
+    width:35px;
+}
+.orderT_right_ul .orRight_li_select:hover .small_lighting .blue_light,
+.orRight_li_select .small_lighting .blue_light{
+    background: url('../images/blue_hover.gif')-240px 0px;
+    width:35px;
+}
+.orderT_right_ul .orRight_li_select:hover .small_lighting .yellow_light,
+.orRight_li_select .small_lighting .yellow_light{
+    background: url('../images/yellow_hover.gif')-240px 0px;
+    width:35px;
+}
+
+/* *最后一个节点没有划过效果 * */
+.orderT_right_ul .orRight_li_select .last_no_light .red_light{
+    -webkit-transition: background 0.4s;
+    transition: background 0.4s;
+    background: url('../images/red_hover.gif');
+    z-index:1;
+}
+.orderT_right_ul .orRight_li_select .last_no_light .blue_light{
+    -webkit-transition: background 0.4s;
+    transition: background 0.4s;
+    background: url('../images/blue_hover.gif');
+    z-index:1;
+}
+.orderT_right_ul .orRight_li_select .last_no_light .yellow_light{
+    -webkit-transition: background 0.4s;
+    transition: background 0.4s;
+    background: url('../images/yellow_hover.gif');
+    z-index:1;
+}
+
+.gray_div{
+    background: #424345;
+    width: 250px;
+    height: 6px;
+    top: 6px;
+    left: -3px;
+}
+
+
+.lighting_part{
+    text-align: left;
+}
+.lighting_part>div{
+    float: left;
+    position: relative;
+}
+.upward_time{
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    width: 80px;
+    top:-32px;
+    right: -31px;
+    line-height: 13px;
+    z-index:3;
+    color: #afafaf;
+    opacity: 0;
+}
+.small_lighting>div{
+    position: absolute;
+    text-align: center;
+}
+.other_lighting{
+    width: 263px;
+    text-align: right;
+    height:18px;
+}
+.other_lighting div{
+    position: absolute;
+    text-align: center;
+}
+.other_lighting span,.small_lighting span{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background: url('../images/newOrder.png') -105px -154px;
+    position: relative;
+    z-index: 3;
+}
+.other_lighting .closeOrder,.small_lighting .closeOrder{
+    background-position: -151px -154px;
+}
+.saler_up_time{
+    position: absolute;
+    top: 13px;
+    left: -17px;
+    width: 80px;
+    line-height: 13px;
+    z-index: 1;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    opacity: 0;
+    color: #afafaf;
+}
+
+/*联系人样式*/
+.linkman{
+    width: 20px;
+    height: 30px;
+    top: 20px;
+    right: 0px;
+}
+.one_person{
+    background: url('../images/newOrder.png') -65px -302px;
+}
+.more_person{
+    background: url('../images/newOrder.png') -26px -301px;
+}
+
+.small_lighting .wait_light + .more_person{
+    right: 4px;
+}
+.small_lighting .wait_light + .one_person{
+    right: 4px;
+}
+/*右侧hover显示表单的样式*/
+.saler_phone{
+    /*display: block;*/
+    display: none;
+    position: absolute;
+    margin-top: -7px;
+    width: 147px;
+    height: 70px;
+    color: #333333;
+}
+.saler_phone dl{
+    display: block;
+    position: absolute;
+    background: #ffffff;
+    height: 46px;
+    width: 121px;
+    z-index: 50;
+    border-radius: 3px;
+    border: 1px solid #666666;
+    margin-top: -3px;
+    color: #333;
+    padding: 7px 12px;
+    line-height: 21px;
+}
+.saler_phone .upArrow{
+    width: 15px;
+    height: 10px;
+    background: url("../images/T1T2/arrow.png");
+    position: relative;
+    top: 4px;
+    z-index: 60;
+    left: -55px;
+}
+.saler_phone dt{
+    font-weight: normal;
+    vertical-align: middle;
+    display: inline-block;
+    width: 32%;
+}
+.saler_phone dd{
+    display: inline-block;
+    text-align: left;
+    width: 68%;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/*联系方式的面板*/
+.contact_panel{
+    position: relative;
+    display: none;
+    top: 22px;
+    left: -18px;
+}
+.contact_panel .upArrow{
+    width: 15px;
+    height: 10px;
+    background: url("../images/T1T2/arrow.png");
+    position: relative;
+    top: 6px;
+    z-index: 60;
+    left: -45px;
+}
+.contact_panel_content{
+    display: block;
+    background: #ffffff;
+    z-index: 50;
+    position: relative;
+    color: #333333;
+    padding: 10px 4px 0px 14px;
+    border-radius: 3px;
+}
+/*一个人的样式*/
+.one_person .contact_panel{
+    width: 146px;
+}
+.one_person .contact_panel_content{
+    height: 46px;
+    width: 121px;
+    padding: 7px 12px;
+    line-height: 21px;
+}
+.one_person .contact_panel dt{
+    font-weight: normal;
+    vertical-align: middle;
+    display: inline-block;
+    width: 32%;
+}
+.one_person .contact_panel dd{
+    display: inline-block;
+    text-align: left;
+    width: 68%;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+/*多人的样式*/
+.more_person .contact_panel{
+    width: 315px;
+}
+.more_person .contact_panel_content{
+    width: 314px;
+    max-height: 145px;
+    text-align: left;
+}
+.more_person .contact_panel .upArrow{
+    left: -130px;
+}
+.more_person .contact_panel dl{
+    display: inline-block;
+    line-height: 21px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #e5e5e5;
+    background: #fafafa;
+    height: 46px;
+    width: 121px;
+    padding: 7px 12px;
+}
+.more_person .contact_panel dt{
+    font-weight: normal;
+    vertical-align: middle;
+    display: inline-block;
+    width: 32%;
+}
+.more_person .contact_panel dd{
+    display: inline-block;
+    text-align: left;
+    width: 68%;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/*靠近右侧hover出来联系人的样式*/
+/*添加在linkman之后的样式*/
+.right_contact.more_person .contact_panel {
+    left: auto;
+    right: 0px;
+}
+.right_contact.more_person .contact_panel .upArrow{
+    left: auto;
+    right: -148px;
+}
+.right_contact.one_person .contact_panel .upArrow{
+	right: -62px;
+}
+
+
+/*订单列表hover*/
+.orderDetail_bottom{
+    width: 350px;
+    max-height: 305px;
+    position: absolute;
+    z-index: 50;
+    right: 0px;
+    color: #333;
+    overflow: hidden;
+    margin-top: -7px;
+    display: none;
+}
+.orderDetail_bottom>.upArrow{
+    width: 15px;
+    height: 10px;
+    background: url('../images/T1T2/arrow.png');
+    position: relative;
+    z-index: 60;
+    left: 121px;
+    top:2px;
+}
+.detailOrder{
+    width: 348px;
+    max-height: 290px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    margin-top: -5px;
+}
+.orderdetail_title{
+    color: #666666;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #D9D9D9;
+    margin: 0px 20px;
+    padding: 12px 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+}
+.orderdetail_ul{
+    text-align: left;
+    padding: 10px 20px;
+    line-height: 20px;
+}
+.orderdetail_ul li label{
+    width: 85px;
+    color: #808080;
+    display: inline-block;
+}
+.orderdetail_ul li span{
+    width: 215px;
+    display: inline-flex;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.orderdetail_ul li span em{
+    color: #999999;
+    font-size: 12px;
+    font-style: normal;
+}
+.orderdetail_ul li span .fa-phone{
+    font-size: 14px;
+}
+
+/*确认单样式*/
+.confirm_bottom{
+    position: absolute;
+    right: 2px;
+    display: none;
+}
+.confirm_bottom .upArrow{
+    width: 15px;
+    height: 10px;
+    background: url(../images/T1T2/arrow.png);
+    position: relative;
+    z-index: 60;
+    right: -20px;
+    top: -3px;
+}
+.confirm_bottom span{
+    background: #ffffff;
+    display: inline-block;
+    color: #333333;
+    padding: 10px 7px;
+    width: 76px;
+    height: 20px;
+    border-radius: 3px;
+    margin-top: -9px;
+}
+
+/*确认单不可见样式*/
+.unVisibility{
+    visibility: hidden;
+}
+
+/*向上显示详情的样式，包括点击后的样式*/
+.upShowPanel{
+    
+}
+.upShowPanel .upArrow{
+    display: none;
+}
+.upShowPanel .downArrow{
+    width: 15px;
+    height: 10px;
+    background: url('../images/T1T2/arrow_down.png');
+    position: relative;
+    z-index: 60;
+}
+/*门店销售号码向上显示*/
+.upShowPanel .saler_phone{
+    bottom: 40px;
+}
+.upShowPanel .saler_phone .downArrow{
+    top: 53px;
+    right: 49px;
+}
+.upShowPanel.orRight_li_select .saler_phone{
+    bottom: 70px;
+}
+/*电话号码向上显示*/
+.upShowPanel .one_person .contact_panel{
+    top: -59px;
+}
+.upShowPanel .one_person .downArrow{
+    top: 53px;
+    left: -46px;
+}
+.upShowPanel .small_lighting .one_person .downArrow{
+	top: -8px;
+}
+.upShowPanel .more_person .contact_panel{
+    bottom: 16px;
+    top: initial;
+}
+.upShowPanel .more_person .contact_panel_content{
+    bottom: 11px;
+}
+.upShowPanel .more_person .downArrow{
+    right: 131px;
+}
+.upShowPanel .more_person.right_contact .downArrow{
+    right: 0;
+    left: 146px;
+}
+/*订单详情向上显示*/
+.upShowPanel .orderDetail_bottom{
+    -webkit-transition: bottom 1s;
+    transition: bottom 1s;
+    bottom: 37px;
+}
+.upShowPanel.orRight_li_select .orderDetail_bottom{
+    bottom: 64px;
+}
+.upShowPanel .detailOrder{
+    margin-top: 0px;
+}
+.upShowPanel .orderDetail_bottom .downArrow{
+    top: -6px;
+    right: -120px;
+}
+/*确认单向上显示*/
+.upShowPanel .confirm_bottom{
+    bottom: 39px;
+}
+.upShowPanel.orRight_li_select .confirm_bottom{
+    bottom: 66px;
+}
+.upShowPanel .confirm_bottom span{
+    margin-top: 0px;
+    margin-bottom: -5px;
+}
+.upShowPanel .confirm_bottom .downArrow{
+    left: 22px;
+}
+
+/*ie样式针对性调整*/
+@media screen and(-ms-high-contrast:active),(-ms-high-contrast:none) {
+    .orderTracking_back{
+        background: url("../images/T1T2/bg_opacity_90.png");
+    }
+    .dataStatistics{
+        background: url("../images/T1T2/bg_opacity_80.png");
+    }
+    .orderT_info{
+        background: #0f0f0f;
+    }
+    .orderT_title{
+        background: rgba(45,45,45,0.75);
+    }
+}
+
+@media screen and (min-width:0\0) {
+    .orderTracking_back{
+        background: url("../images/T1T2/bg_opacity_90.png");
+    }
+    .dataStatistics{
+        background: url("../images/T1T2/bg_opacity_80.png");
+    }
+    .orderT_info{
+        background: #0f0f0f;
+    }
+    .orderT_title{
+        background: rgba(45,45,45,0.75);
+    }
+}

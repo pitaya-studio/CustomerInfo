@@ -1,0 +1,39 @@
+{
+  "name": "quauq",
+  "version": "0.0.0",
+  "keywords": [
+    "quauq"
+  ],
+  "authors": [
+    "quauq"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "1.*",
+    "jquery-ui": "1.*",
+    "angular": "1.2.*",
+    "angular-animate": "~1.2.*",
+    "angular-cookies": "~1.2.*",
+    "angular-ui-select": "~0.12.0",
+    "angular-ui-router": "~0.2.15",
+    "angular-ui-sortable": "~0.13.4",
+    "angular-ui-scrollpoint": "~1.0.1",
+    "angular-ui-validate": "~1.1.1",
+    "ngDialog": "~0.5.1",
+    "angular-dragdrop": "~1.0.11",
+    "angular-loading-bar": "~0.8.0",
+    "respond": "~1.4.2",
+    "angular-ui-date": "~0.0.8",
+    "angular-resource": "~1.4.5",
+    "font-awesome": "~4.4.0"
+  }
+}

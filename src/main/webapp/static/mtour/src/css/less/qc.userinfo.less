@@ -1,0 +1,48 @@
+@import "variables.less";
+
+
+/*S用户登录信息样式文件*/
+
+.user-info{
+    position: @position-absolute;
+    right: 0;
+//  width: 750px;
+    height: 47px;
+    right: 20px;
+    text-align: @text-right;
+    font-size:@fontsize;
+    font-weight: normal;
+    color: @text-color-white;
+    li{
+        float: @floatleft;
+        margin-right: 10px;
+        line-height: 47px;
+        &.spacer{
+            width: 1px;
+            height: @font-size-xs;
+            margin-top: 19px;
+            padding: 0px;
+            background: #444444 none repeat scroll 0% 0%;
+            overflow: @overflow-hidden;
+        }
+        span{
+            label{
+                color: @text-color-light;
+                font-weight: normal;
+            }
+        }
+        i{
+            padding: 0 10px;
+        }
+    }
+    .fa{
+        font-size: 16px;
+        color: @text-color-white;
+        &:hover{
+            color: @text-color-white;
+            cursor: @cursor;
+        }
+    }
+}
+
+/*E用户登录信息样式文件*/

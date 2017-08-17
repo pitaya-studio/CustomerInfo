@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.table.operator.css"/>
+    <link rel="stylesheet" href="/src/css/qc/qc.dropdown.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.table.fixedheader.css">
+    <link href="../../../css/qc/quauq.css" rel="stylesheet" type="text/css">
+    <link href="../../../components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    /*    .qc-table-operator {
+            height: 400px;
+            width: 150px;
+			background-color: #eeeeee;
+        }
+
+        tbody tr:hover {
+            background-color: #eeeeee;
+        }
+
+        tbody tr:hover td.empty {
+            background-color: #ffffff;
+        }
+
+        table td {
+            word-break: normal;
+        }
+
+        .qc-table-operator:hover {
+            background-color: #eeeeee;
+        }*/
+        .table-container{
+            overflow: auto;
+            background-color: #c0c1d2;
+            height: 500px;;
+        }
+    </style>
+    
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+    <script type="text/javascript" src="/src/components/angular-animate/angular-animate.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.table.operator.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.subTable.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.dropdownList.js"></script>
+    <script type="text/javascript" src="/src/js/qc/filter/qc.propsFilter.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.table.fixedHeader.js"></script>
+    <script type="text/javascript">
+        var operator = angular.module('operator', ['qc']);
+        operator.controller('OperatorController', ['$scope','$timeout', function ($scope,$timeout) {
+			$scope.currencies=[
+				{code:'¥',name:'人民币'},
+				{code:'C$',name:'加元'}
+			];
+            $scope.list = [];
+            for(var i =0;i<10;i++){
+                $scope.list.push({
+                    name: 'z1 zc z',
+                    age: 12,
+                    salary: 21212,
+                    desc: '辛苦',
+					currencyCode:$scope.currencies[0],
+                    operator: [['详细', '查看', '修改', '删除', '新增'],[ '打印','测试数据显示方式','测试数据显示方式超长']]
+                });
+            }
+			
+			
+			$scope.orderers=[
+				{name:'张3'},{name:'李4'}
+			];
+
+            $scope.defaultOptions = {
+                activeDelay: 200,
+                inactiveDelay: 195
+            };
+            $scope.show=true;
+
+
+            $scope.toggle= function () {
+                $scope.show=  false;
+                $timeout(function () {
+                    $scope.show= true;
+                },1000);
+            }
+
+            $scope.spreadSubTables={};
+            $scope.spreadAll = function () {
+                $scope.$broadcast('subTable.spreadAll');
+            };
+            $scope.foldAll = function () {
+                $scope.$broadcast('subTable.foldAll');
+            };
+            $scope.toggleSubTable = function (qcSubTableId) {
+                if( $scope.spreadSubTables[qcSubTableId]){
+                    $scope.$broadcast('subTable.fold.ready.'+qcSubTableId);
+                }
+                else{
+                    $scope.$broadcast('subTable.spread.ready.'+qcSubTableId);
+                }
+                $scope.spreadSubTables[qcSubTableId]=!$scope.spreadSubTables[qcSubTableId];
+            };
+
+        }]);
+
+    </script>
+</head>
+<body ng-app="operator">
+<div class="container"  ng-controller="OperatorController" qc-table-container>
+  <div style="height: 400px">
+      <label>显示延迟时间 <input type="text" ng-model="defaultOptions.activeDelay"/></label>
+      <label>消失延迟时间 <input type="text" ng-model="defaultOptions.inactiveDelay"/></label>
+      <button ng-click="toggle()">重新生成 </button>
+      <button ng-click="spreadAll()">展开全部 </button>
+      <button ng-click="foldAll()">折叠全部 </button>
+  </div>
+
+    <div ng-if="show" class="table-container  wrap-lg">
+        <table id="contentTable" class=" table-list-lg" qc-table-fixed-header>
+            <thead>
+            <tr>
+                <th class="table-th-default-width">status</th>
+                   <th class="table-th-default-width">name</th>
+                <th class="table-th-default-width">age</th>
+                <th class="table-th-default-width">salary</th>
+                <th class="table-th-default-width">desc</th>
+                <th style="width: 150px">操作</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody class="fold"  ng-class="{'odd':$odd,'even':$even}" ng-repeat-start="item in list">
+            <tr>
+            	<td>fold</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.salary}}</td>
+                <td>{{item.desc}}</td>
+                <td>
+                    <div class="qc-table-operator" qc-table-operator-option="defaultOptions">
+                        <a class="active" href="javascript:void(0);" ng-click="toggleSubTable('fold'+$index)">toggle
+                            order</a>
+                           <div class="divider" ng-repeat="subOperators in item.operator">
+                            	<a href="javascript:void(0);" ng-repeat="o in subOperators">{{o}}</a>
+                           </div>
+
+                    </div>
+                </td>
+                <td class="empty">
+
+                </td>
+            </tr>
+            </tbody>
+            <tbody ng-repeat-end style="display:none">
+            <tr>
+                <td colspan="7">
+                    <div class="table-list-md-container" qc-sub-table qc-sub-table-id="{{'fold'+$index}}" >
+                       <table width="600" class="table-list-md">
+								<thead>
+									<tr><th class="">全选</th>
+									<th class="">姓名</th>
+									<th class="">电话</th>
+									<th class="">性别</th>
+									<th class="">地址</th>
+									<th class="">备注</th>
+									<th class="">下單人</th>
+									</tr>
+                                    </thead>
+                                    <tbody class="even">
+										<tr>
+											<td>0</td>
+											<td>1</td>
+											<td>2</td>
+											<td>3</td>
+											<td>4</td>
+											<td>5</td>
+											<td>5</td>
+										</tr>
+                                      </tbody>
+                                      <tbody class="odd">
+										<tr>
+											<td>1</td>
+											<td>2</td>
+											<td>3</td>
+											<td>4</td>
+											<td>5</td>
+											<td>6</td>
+											<td>5</td>
+										</tr>
+									</tbody>
+							</table>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            <tbody class="spread"  ng-class="{'odd':$odd,'even':$even}" ng-repeat-start="item in list">
+            <tr>
+            	<td>spread</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.salary}}</td>
+                <td>{{item.desc}}</td>
+                <td>
+                    <div class="qc-table-operator">
+                        <a class="active" href="javascript:void(0);" ng-click="toggleSubTable('spread'+$index)"  >toggle
+                            order</a>
+                           <div class="divider" ng-repeat="subOperators in item.operator">
+                            	<a href="javascript:void(0);" ng-repeat="o in subOperators">{{o}}</a>
+                           </div>
+
+                    </div>
+                </td>
+                <td class="empty">
+
+                </td>
+            </tr>
+            </tbody>
+            <tbody ng-repeat-end style="display:none">
+            <tr>
+                <td colspan="7">
+                    <div class="table-list-md-container" qc-sub-table qc-sub-table-id="{{'spread'+$index}}" >
+                       <table width="600" class="table-list-md">
+								<thead>
+									<tr><th class="table-th-default-width">申请日期</th>
+									<th class="table-th-default-width">款项</th>
+									<th class="table-th-default-width">累计借款</th>
+									<th class="table-th-default-width">本次借款</th>
+									<th class="table-th-default-width">申请人</th>
+									<th class="table-th-default-width">状态</th>
+									<th class="table-th-md-width">备注</th>
+                                    <th class="table-th-sm-width">操作</th>
+									</tr>
+                                    </thead>
+                                    <tbody class="even active">
+										<tr>
+											<td>2015-09-18</td>
+											<td><input class="text-input-xs" name="" type="text"></td>
+											<td>
+                                            <div class="qc-input-group-base qc-input-group-md">
+                                            <div class="qc-dropdown"
+                                                    qc-dropdown
+                                                     ng-model="item.currencyCode"
+                                                     item-text="{{qcDropdownItem.code}}"
+                                                     dropdown-text="{{selectedItem?selectedItem.code:''}}"
+                                                     items="currencies">
+                                                </div><input class="text-input" name="" type="text"></div>
+
+                                            </td>
+                                            <td>----</td>
+											<td>
+                                            	<div class="qc-dropdown-xs" qc-dropdown
+                                                     ng-model="item.orderer"
+                                                     item-text="{{qcDropdownItem.name}}"
+                                                      filter-expression="name"
+                                                     dropdown-text="{{selectedItem?selectedItem.name:''}}"
+                                                     items="orderers">
+                                                </div>
+                                            </td>
+                                            <td>----</td>
+											<td><input class="text-input-lg" name="" type="text"></td>
+                                            <td><span class="base-operator"><a href="javascript:void(0);">清空</a> <a href="javascript:void(0);">提交</a><em class="fa fa-plus"></em> <em class="fa fa-times"></em></span></td>
+										</tr>
+                                      </tbody>
+                                      <tbody class="odd active">
+										<tr>
+											<tr>
+											<td>2015-09-18</td>
+											<td><input class="text-input-xs" name="" type="text"></td>
+											<td>
+                                            <div class="qc-input-group-base qc-input-group-md"><div class="qc-dropdown"
+                                                    qc-dropdown
+                                                     ng-model="item.currencyCode"
+                                                     item-text="{{qcDropdownItem.code}}"
+                                                     dropdown-text="{{selectedItem?selectedItem.code:''}}"
+                                                     items="currencies">
+                                                </div><input class="text-input" name="" type="text"></div>
+
+                                            </td>
+                                            <td>----</td>
+											<td>
+                                            	<div class="qc-dropdown-xs" qc-dropdown
+                                                     ng-model="item.orderer"
+                                                     item-text="{{qcDropdownItem.name}}"
+                                                      filter-expression="name"
+                                                     dropdown-text="{{selectedItem?selectedItem.name:''}}"
+                                                     items="orderers">
+                                                </div>
+                                            </td>
+                                            <td>----</td>
+											<td><input class="text-input-lg" name="" type="text"></td>
+                                            <td><span class="base-operator"><a href="javascript:void(0);">清空</a> <a href="javascript:void(0);">提交</a> <em class="fa fa-times"></em>
+                                            <div class="bottom">
+                                                <button class="butn" type="button" name="clear-both">全部清空</button>
+                                                <button type="button" name="clear-both">全部提交</button>
+                                        	</div>
+                                            </span></td>
+										</tr>
+									</tbody>
+                                    <tbody class="even">
+										<tr>
+											<td>1</td>
+											<td>2</td>
+											<td>3</td>
+											<td>4</td>
+											<td>5</td>
+											<td>6</td>
+											<td>5</td>
+                                            <td>5</td>
+										</tr>
+									</tbody>
+                                    <tbody class="odd">
+										<tr>
+											<td>1</td>
+											<td>2</td>
+											<td>3</td>
+											<td>4</td>
+											<td>5</td>
+											<td>6</td>
+											<td>5</td>
+                                            <td>5</td>
+										</tr>
+									</tbody>
+							</table>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

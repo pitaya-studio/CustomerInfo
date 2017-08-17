@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>支出单弹窗</title>
+    <link href="http://www.trekiz.com/favicon.ico" rel="shortcut icon"/>
+    <link href="../../components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../static/css/common/quauq.css" rel="stylesheet" type="text/css">
+    <link href="../../components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="payment-document-set-container">
+    <div class="part-first">
+        <ul>
+            <li><label for="">团号：</label><span>jp2015122314521</span></li>
+            <li><label for="">申请人：</label><span>张三</span></li>
+            <li>
+                <label for="">支付对象：</label>
+						<span>
+							<div class="qc-dropdown-sm mar-r-default" qc-dropdown
+                                 ng-model="item.orderer"
+                                 item-text=""
+                                 filter-expression="name"
+                                 dropdown-text=""
+                                 items="currencies">
+                            </div>
+						</span>
+            </li>
+        </ul>
+    </div>
+    <div class="part-second">
+        <table class="table-list-md">
+            <thead>
+            <tr class="">
+                <th class="table-th-sm-fifty text-center"><input type="checkbox"/></th>
+                <th>报批日期</th>
+                <th>款项类型</th>
+                <th>款项名称</th>
+                <th>PNR</th>
+                <th>应付金额</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="text-center"><input type="checkbox"/></td>
+                <td>2016-01-01</td>
+                <td>成本</td>
+                <td>机票</td>
+                <td>PNR154123</td>
+                <td class="text-right">$100.00</td>
+            </tr>
+            <tr>
+                <td class="text-center"><input type="checkbox"/></td>
+                <td>2016-01-01</td>
+                <td>成本</td>
+                <td>机票</td>
+                <td>PNR154123</td>
+                <td class="text-right">$100.00</td>
+            </tr>
+            <tr>
+                <td class="text-center"><input type="checkbox"/></td>
+                <td>2016-01-01</td>
+                <td>成本</td>
+                <td>机票</td>
+                <td>PNR154123</td>
+                <td class="text-right">$100.00</td>
+            </tr>
+            <tr>
+                <td class="text-center"><input type="checkbox"/></td>
+                <td>2016-01-01</td>
+                <td>成本</td>
+                <td>机票</td>
+                <td>PNR154123</td>
+                <td class="text-right">$100.00</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><label for="">应付总额：</label><i>￥1000.00</i>+<i>￥1000.00</i>+<i>￥1000.00</i>+<i>￥1000.00</i>+<i>￥1000.00</i></p>
+</div>
+</body>
+
+</html>

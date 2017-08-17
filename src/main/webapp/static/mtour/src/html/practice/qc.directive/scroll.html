@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.scroll.css">
+
+
+    <style type="text/css">
+        .qc-scroll {
+
+        }
+
+        .left-menu {
+            position: fixed;
+            top: 100px;
+            bottom: 5px;
+            left: 5px;
+            width: 150px;
+            border-radius: 5px;
+            background-color: #eeeeee;
+            border-top: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .menus {
+            height: 2000px;
+        }
+    </style>
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script src="/src/components/jquery-nicescroll/jquery.nicescroll.js"></script>
+
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+    <script type="text/javascript" src="/src/components/angular-animate/angular-animate.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.scroll.js"></script>
+
+
+    <script type="text/javascript">
+        var scroll = angular.module('scroll', ['qc']);
+        scroll.controller('MenuController', ['$scope', function ($scope) {
+            $scope.menus = [];
+            for(var i = 1;i<200;i++){
+                $scope.menus.push({
+                    menuName:'menu'+i
+                });
+            }
+        }]);
+    </script>
+</head>
+<body ng-app="scroll">
+<div class="left-menu qc-scroll " qc-scroll-options="" ng-controller="MenuController">
+    <div class="menus list-group">
+        <div class="list-group-item" ng-repeat="menu in menus">
+            <a href="#">
+                {{menu.menuName}}
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="page-header">
+        <h1>自定义滚动条</h1>
+    </div>
+
+</div>
+
+</body>
+</html>

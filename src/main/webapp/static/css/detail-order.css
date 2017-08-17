@@ -1,0 +1,301 @@
+/*
+*create by gaolijuan
+*2016-10-11
+*/
+/*538需求下单页面css*/
+.product-info{
+    margin: 20px 30px 0px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 20px;
+    /*height:20px;*/
+}
+.product-item{
+    margin: 5px 30px;
+    background-color: #f7f7f7;
+    white-space: nowrap;
+    overflow: hidden;
+    height:20px;
+    line-height: 20px;
+}
+.item-detail{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 20px;
+    max-width: 160px;
+    color: #666;
+    font-size: 12px;
+}
+div#ord label{
+    display: inline-block;
+    margin: 20px 30px 10px;
+    font-size: 16px;
+}
+.saler-name{
+    width: 198px;
+    display: inline-block;
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+}
+.contacts{
+    margin: 0px 30px;
+    border: 1px solid #d9d9d9;
+    padding: 20px;
+}
+div.small-dl{
+    margin-right: 50px;
+    width: 120px;
+    overflow: hidden;
+    vertical-align: bottom;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+table.sus-table{
+    width: 93%;
+    margin: 0px 30px;
+    border: 1px solid #d9d9d9;
+}
+table.sus-table thead  tr{
+    height: 35px;
+    line-height: 35px;
+    background-color: #f7f7f7;
+    text-align: right;
+}
+table.sus-table thead  tr th,table.sus-table tbody  tr td{
+    padding-right:20px;
+    font-weight:normal;
+}
+table.sus-table tbody  tr{
+    text-align: right;
+    border-bottom:1px solid #d9d9d9;
+}
+table.sus-table tbody  tr td:first-child{
+    text-align: left;
+    padding-left:30px;
+}
+table.sus-table tbody  tr td.summary{
+    text-align: right;
+}
+table.sus-table tbody  tr td.summary  span{
+    font-size: 22px;
+    color: #ff8d41;
+}
+.remark-order{
+    display: block;
+    margin: 0px 30px;
+    height: 80px;
+    width: 93%;
+    border:1px solid #d9d9d9;
+    padding: 5px;
+    resize: none;
+}
+.buttons{
+    margin: 20px  30px;
+    text-align: center;
+}
+div.buttons span{
+    width: 96px;
+    height: 34px;
+    display: inline-block;
+    line-height: 34px;
+    text-align: center;
+    color: #fff !important;
+    background-color: #ff7d27;
+    border-radius: 3px;
+    cursor: pointer !important;
+}
+div.buttons span.unable{
+    background-color: #aaa !important;
+    margin-right:20px;
+}
+.dl-select ul.select-option{
+    top:27px !important;
+}
+#pay .pay-tip,#pay .tab-container{
+    margin: 30px 40px 20px;
+}
+#pay .tab-container{
+    margin: 0px 40px;
+    height: 430px;
+}
+#pay  ul.tabs{
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 40px;
+    border-bottom: 1px solid #ff8d12;
+    width: 100%;
+}
+#pay  ul.tabs li{
+    float: left;
+    margin: 0;
+    padding: 0px 20px;
+    height: 39px;
+    line-height: 39px;
+    border: 1px solid #ccc;
+    border-bottom: #ff8d12;
+    border-left: none;
+    margin-bottom: -1px;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+#pay  ul.tabs li:first-child{
+    border-left:1px solid #ccc;
+}
+#pay  ul.tabs li.active{
+     background: #fff;
+     border: 1px solid #ff8d12;
+     border-bottom: 1px solid #fff;
+ }
+#pay ul.tabs li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    font-size: 1.2em;
+    padding: 0 20px;
+    border: 1px solid #fff;
+    outline: none;
+}
+#pay  ul.tabs li:hover a,#pay  ul.tabs li.active a{
+    color: #ff8d12;
+}
+.tab_content{
+    height: 374px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.bank-list{
+    /*height: 100%;*/
+    /*overflow: auto;*/
+    padding: 20px 0px;
+}
+.bank-list li{
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 20px;
+    cursor: pointer;
+}
+.bank-list li:hover{
+    background-color: #fff3e7;
+}
+.bank-list li .alipy_img,.bank-list li .wechat_img{
+    vertical-align: top;
+    width: 140px;
+    margin-top: 9px;
+}
+.bank-list li input[type='radio']{
+    margin-right: 10px;
+    margin-top: 20px;
+    vertical-align: top;
+}
+.bank-list li  span{
+    font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+}
+.bank-list li  span.bank-info{
+    width: 130px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    padding-right: 10px;
+}
+.bank-list li  span.card-info{
+    padding-left: 12px;
+    height: 31px;
+    line-height: 31px;
+    border-left: 1px solid #ccc;
+    margin: 10px 30px 10px 0;
+    width: 200px;
+    display: inline-block;
+}
+.bank-list li  span.card-name{
+
+}
+.alipy_img{
+    display: inline-block;
+    width:122px;
+    height:33px;
+    background: url("../images/alipay.png") no-repeat;
+}
+.wechat_img{
+    display: inline-block;
+    width:122px;
+    height:33px;
+    background: url("../images/wechat.png") no-repeat;
+}
+.orderRecord label{
+    display: inline-block;
+    margin: 20px 30px 10px;
+    font-size: 16px;
+}
+.orderRecord{text-align: left}
+.remark_use{
+    border-top:1px solid #d9d9d9;
+    margin: 0px 30px;
+    padding:10px 0;
+    word-break: break-all;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .remark_use{
+        word-break:break-word;
+    }
+}
+.orderStatusDiv{
+    margin: 30px 30px 0px;
+    height:60px;
+    text-align:center;
+}
+.orderStatusImg{
+    background: url("../images/orderStatusImg.png") no-repeat;
+    width: 328px;
+    height:15px;
+}
+.StatusImg1{
+    background-position:-3px -7px;
+}
+.StatusImg2{
+    background-position:-3px -47px;
+}
+.StatusImg3{
+    background-position:-3px -87px;
+}
+.orderStatus1,.orderStatus2,.orderStatus3,.orderStatus4{
+    position:relative;
+}
+.orderStatusDown1,.orderStatusDown2{
+    position: absolute;
+}
+.orderStatusDown1{
+     left: 118px;
+    top:20px;
+}
+.orderStatusDown2{
+    left: 288px;
+    top:20px;
+}
+.dateGray{
+    color:#999;
+}
+.susTdGray{
+    color: #999;
+}
+#pay ul.tabs li.borderLN{
+    border-left: none;
+}
+#pay ul.tabs li.borderRN{
+    border-right: none;
+}
+

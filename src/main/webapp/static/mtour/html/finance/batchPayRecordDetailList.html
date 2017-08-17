@@ -1,0 +1,110 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>详情</span>
+    </div>
+</div>
+<div class=" qc-scroll">
+    <div class="first-step-info">
+        <div class="payment-detail">
+            <div class="blank-container"></div>
+            <p>
+                <label style="display:inline-block;width: 55px;text-align: right">付款日期:</label>
+                <em>{{detailList.paymentDate}}</em>
+                <label style="display:inline-block;width: 100px;text-align: right">付款方式:</label>
+                <em>{{detailList.paymentMethodName}}</em>
+            </p>
+            <div class="blank-container"></div>
+            <table class="table-list-md">
+                <thead>
+                    <tr class="">
+                        <th class="table-th-default-width">序号</th>
+                        <th class="table-th-default-width">报批日期</th>
+                        <th class="table-th-default-width">款项类型</th>
+                        <th class="table-th-md-width">申请人</th>
+                        <th class="table-th-default-width text-right"><p>应付金额</p>
+
+                            <p>已付金额</p></th>
+                        <th class="table-th-default-width">汇率</th>
+                        <th class="table-th-default-width">本次付款金额</th>
+                        <th class="table-th-default-width">付款状态</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="detail in detailList.recordList" class="normal odd-even-display-color">
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{detail.approvalDate}}</td>
+                        <td>{{detail.fundsTypeName}}</td>
+                        <td>{{detail.applicant}}</td>
+                        <td class="text-right"><p>{{detail.payableAmount}}</p>
+
+                            <p>{{detail.paidAmount}}</p></td>
+                        <td>{{detail.exchangeRate}}</td>
+                        <td class="text-right">{{detail.paymentAmount}}</td>
+                        <td>{{detail.paymentStatusName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="blank-container"></div>
+            <p class="text-right">
+                <label style="display:inline-block;width: 100px">付款总额:</label>
+                <em class="orange-font">{{detailList.paymentTotalAmount}}</em>
+            </p>
+            <p class="text-right">
+                <label style="display:inline-block;width: 100px">转换后金额:</label>
+                <em class="table-th-default-width orange-font">{{detailList.convertedTotalAmount}}</em>
+            </p>
+            <div class="blank-container"></div>
+            <!--<div class="line-solid"></div>-->
+        </div>
+        <table class="table-list-md border-none detail-describe-line">
+            <tbody class="normal">
+            <tr ng-show="detailList.paymentMethodCode=='1'">
+                <td class="table-th-default-width  text-right">支票号:</td>
+                <td class="table-th-lg-width normal">{{detailList.checkNo}}</td>
+                <td class="table-th-default-width  text-right">支票日期:</td>
+                <td class="table-th-lg-width normal">{{detailList.checkIssueDate}}</td>
+            </tr>
+            <tr ng-show="detailList.paymentMethodCode=='4'">
+                <td class="table-th-default-width text-right">付款行:</td>
+                <td colspan="3"  class="table-th-lg-width ellipsis">{{detailList.paymentBank}}</td>
+            </tr>
+            <tr ng-show="detailList.paymentMethodCode=='4'">
+                <td class="table-th-default-width text-right">付款账户:</td>
+                <td colspan="3" class="table-th-lg-width ellipsis">{{detailList.paymentAccount}}</td>
+            </tr>
+            <tr ng-show="detailList.paymentMethodCode=='4'">
+                <td class="table-th-default-width text-right">收款行:</td>
+                <td colspan="3" class="table-th-lg-width ellipsis">{{detailList.receiveBank}}</td>
+            </tr>
+            <tr ng-show="detailList.paymentMethodCode=='4'">
+                <td class="table-th-default-width text-right">收款账户:</td>
+                <td colspan="3" class="table-th-lg-width ellipsis">{{detailList.receiveAccount}}</td>
+            </tr>
+            <tr>
+                <td class="table-th-default-width text-right">收款单位:</td>
+                <td  colspan="3"  class="table-th-lg-width ellipsis">{{detailList.receiveCompany}}</td>
+            </tr>
+            <tr>
+                <td class="table-th-default-width text-right">付款凭证:</td>
+                <td class="table-th-lg-width ellipsis">
+                    <a>{{attach.fileName}}</a>
+                    <a class="text-link" ng-href="{{uploadFileUrl+attach.attachmentUuid}}" target="_blank"
+                       ng-repeat="attach in detailList.attachments"
+                       ng-bind="attach.fileName"></a>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-th-default-width text-right">备注:</td>
+                <td colspan="3" class="table-th-lg-width">{{detailList.memo}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="butn butn-default" ng-click="closeThisDialog()">关闭</button>
+    </div>
+</div>

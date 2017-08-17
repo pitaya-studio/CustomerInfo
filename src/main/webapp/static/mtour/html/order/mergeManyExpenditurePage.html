@@ -1,0 +1,73 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>批量下载支出单</span>
+    </div>
+</div>
+<div class="qc-scroll">
+    <div class="first-step-info"  style="height:500px;">
+        <div class="blank-container"></div>
+        <table table class="margin-auto filtrate " style="width: 800px">
+            <tbody>
+            <tr>
+                <td  style="width: 8%;text-align: center;" class="table-th-default-width text-right">申请人:</td>
+                <td class="table-th-md-width">{{applicant}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+        <div  ng-repeat="expenditure in result.expenditureList">
+             <div  style="margin: 10px 20px;">
+                 <span style="display: inline-block;margin-right: 20px;">团号：{{expenditure.groupNo}}</span>
+                 <span  style="display: inline-block;">支付对象：
+                     <span  class="mod_tip">
+                         <input class="mod_input"  type="checkbox"  ng-click="chkAllPayObj($event,expenditure.payObj,expenditure,result.expenditureList[$index])" ng-checked="expenditure.chkAllObj" ng-modle="expenditure.chkAllObj">全选</span>
+                     <span ng-repeat="payObjDetail in expenditure.payObj"   class="mod_tip">
+                         <input class="mod_input"  type="checkbox" ng-click="chkPayObj($event,payObjDetail,result.expenditureList[$parent.$index])" ng-model="payObjDetail.batchChecked" ng-checked="payObjDetail.batchChecked" >{{payObjDetail.paymentObjectName}}
+                     </span>
+                 </span>
+             </div>
+             <table class="table-list-md margin-auto" style="width: 774px;margin-bottom:20px;">
+                <thead>
+                    <tr class="">
+                        <th class="table-th-sm-fifty"  style="width:25px;">
+                            <input style="position: relative;top: 2px;" type="checkbox" id="chkAll" ng-click="chkAll($event,expenditure.paymentObject)" ng-model="expenditure.checkAll" ng-checked="expenditure.checkAll">
+                        </th>
+                        <th class="table-th-md-width"  style="width:180px;">支付对象</th>
+                        <th class="table-th-md-width"  style="width:80px;">报批日期</th>
+                        <th class="table-th-default-width"  style="width:80px;">款项类型</th>
+                        <th class="table-th-md-width"  style="width:150px;">款项名称</th>
+                        <th class="table-th-default-width"  style="width:80px;">PNR</th>
+                        <th class="table-th-default-width"  style="width:80px;">应付金额</th>
+                    </tr>
+                </thead>
+                <tbody  class="normal odd-even-display-color" >
+                    <tr ng-repeat="payDetail in expenditure.paymentObject|expenditureHide:expenditure.displays">
+                        <td>
+                            <input style="position: relative;top: 2px;"  ng-click="chkAlone($event,payDetail,result.expenditureList[$parent.$index])"  type="checkbox" ng-model="payDetail.checkedDetail" ng-checked="payDetail.checkedDetail">
+                        </td>
+                        <td>{{payDetail.paymentObjectName}}</td>
+                        <td>{{payDetail.approvalDate}}</td>
+                        <td>{{payDetail.fundsTypeName}}</td>
+                        <td>{{payDetail.fundsName}}</td>
+                        <td class="table-th-default-width ellipsis" title="{{payDetail.fundsPNR}}">{{payDetail.fundsPNR}}</td>
+                        <td>{{payDetail.fundsCost}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+      <!--  <p>目前以选中的id</p>
+        <p>{{selectedUuid}}</p>
+        <p>{{returnDownObj}}</p>
+        <button class="butn butn-default " ng-click="getChecked()">
+            获取选中
+        </button>-->
+        <button class="butn butn-default " ng-click="getCheckedAndDownLoad()">
+        <!--<button class="butn butn-default " ng-click="getCheckedAndDownLoad()" ng-disabled="!penditureBtnEnabled()">-->
+            下载
+        </button>
+    </div>
+</div>

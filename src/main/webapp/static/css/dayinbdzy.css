@@ -1,0 +1,146 @@
+/*2015-04-13
+ ��ӡ��ר��css
+*/
+*{ margin:0;padding:0;}
+body { padding: 0; margin: 0; font-family:΢���ź�, Arial,����; color: #333;background:#ffffff;font-size: 12px;}
+.clear{clear:both;}
+.dayinzy{width:700px;line-height:30px;margin:0 auto;border-spacing: 0;margin-top:20px;white-space:nowrap;}
+.dayinzy .dayinzy_w1{width:170px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w2{width:120px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w3{width:590px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w4{width:380px;overflow:hidden;height:60px;line-height:30px;}
+.dayinzy .dayinzy_w5{width:312px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w6{width:170px;overflow:hidden;height:60px;line-height:30px;}
+.dayinzy .dayinzy_w7{width:130px;overflow:hidden;height:30px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w8{width:54px;overflow:hidden;height:30px;float:left;border-left:1px solid #000;line-height:30px;}
+.dayinzy .dayinzy_w9{width:64px;overflow:hidden;height:30px;float:left;border-right:1px solid #000;line-height:30px;}
+.dayinzy .dayinzy_w10{width:102px;overflow:hidden;height:30px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w11{width:40px;overflow:hidden;height:30px;float:left;border-left:1px solid #000;line-height:30px;}
+.dayinzy .dayinzy_w12{width:364px;overflow:hidden;height:30px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w13{width:90px;overflow:hidden;height:30px;float:left;border-right:1px solid #000;line-height:30px;}
+.dayinzy .dayinzy_w14{width:60px;overflow:hidden;height:30px;float:left;border-right:1px solid #000;line-height:30px;}
+.dayinzy .dayinzy_w15{width:40px;overflow:hidden;height:30px;float:left;line-height:30px;}
+
+/*16212 bug 2016/10/12 start*/
+/*.dayinzy thead tr:last-child th{border-bottom: 1px solid #000000;}*//*选择thead最下面一行的tr添加bottom-border,如果未来每个打印页面都添加了bot_border的class,该行可以删去*/
+/*.bot_border{border-bottom: 1px solid #000000;}!*bot_border 给标题部分最下面一行添加 bottom-border*!
+.dayinzy tbody tr td {empty-cells: show;border-right: 1px solid #000; border-bottom: 1px solid #000;}*/
+/*.dayinzy tbody td:first-child{border-left: 1px solid #000000;}*/
+.dayinzy tbody tr td.noborder{border:none!important;}
+/*16212 bug 2016/10/12 end*/
+
+.dayinzy .dayinzy_w140_2{width:120px;overflow:hidden;max-height:60px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w40_2{width:40px;overflow:hidden;max-height:60px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w153_2{width:133px;overflow:hidden;max-height:60px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w80_2{width:70px;overflow:hidden;max-height:60px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w90_2{width:80px;overflow:hidden;max-height:60px;float:left;line-height:30px;}
+
+.dayinzy .dayinzy_w275{width:235px;overflow:hidden;height:30px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w272{width:232px;overflow:hidden;height:30px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w275_2{width:235px;overflow:hidden;max-height:60px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w272_2{width:232px;overflow:hidden;max-height:60px;float:left;line-height:30px;}
+.dayinzy .dayinzy_w140{width:120px;overflow:hidden;height:30px;float:left;line-height:30px;}
+
+.dayinzy .dayinzy_w50{width:50px;overflow:hidden;height:30px;float:left;line-height:30px;border-left:1px solid #000;}
+.dayinzy .dayinzy_w300{width:260px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w320{width:280px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w698{width:628px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w373{width:323px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w193{width:173px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w130{width:110px;overflow:hidden;height:30px;line-height:30px;}
+.dayinzy .dayinzy_w152{width:122px;overflow:hidden;height:30px;line-height:30px;}
+
+
+
+.dayinzy tr{width:700px;max-height:30px;overflow:hidden;}
+.dayinzy td{border: solid 1px #000;text-align:center;overflow:hidden;white-space:nowrap;table-layout:fixed;}
+.dayinzy .normal{overflow:hidden;white-space:normal;table-layout:fixed;}
+.dayinzy .left{float:left;}
+.dayinzy .right{float:right;}
+.dayinzy .fl{text-align:left;}
+.dayinzy .fc{text-align:center;}
+.dayinzy .fr{text-align:right;}
+.dayinzy .paddl{padding-left:20px;}
+.dayinzy .paddr{padding-right:20px;}
+.dayinzy .f1{font-weight:bold;font-size:16px;}
+.dayinzy .f2{font-size:12px;font-weight:bold;}
+.dayinzy .f3{font-size:12px;font-weight:400;}
+.dayinzy .f4{font-size:12px;font-weight:400;}
+.dayinzy .danhangnormal{overflow:hidden;white-space:normal !important; table-layout:fixed;max-height:60px;word-wrap: break-word; }
+.dayinzy .duohangnormal{overflow:auto;white-space:normal !important; table-layout:fixed; }
+
+.dayinzys{width:700px;line-height:40px;margin:0 auto;border-collapse:collapse;margin-top:20px;white-space:nowrap;table-layout:fixed;font-size:14px;}
+.dayinzys table{border-collapse:collapse;white-space:nowrap;table-layout:fixed;}
+.dayinzys tr{border-top:1px solid gray;border-left:1px solid gray;}
+.dayinzys td{line-height:20px;border-bottom:1px solid gray;border-right:1px solid gray;overflow:hidden;white-space:nowrap;table-layout:fixed;padding:0 5px 0 5px;}
+.dayinzys .bgcolorccc{background-color:#eeeeee;}
+.dayinzys .noborder{border:none;}
+.dayinzys .danhangnormal{overflow:hidden;white-space:normal !important; table-layout:fixed;max-height:38px; word-wrap: break-word; }
+.dayinzys .duohangnormal{overflow:hidden;white-space:normal !important; table-layout:fixed; word-break: break-all;}
+.dayinzys .leftmenu{font-family: "Microsoft YaHei UI", arial;font-size: 14px;font-weight: bold;color: #333;width:19px;padding:0 5px 0 5px;height:100%;float:left;line-height:20px;text-align:center;}
+.dayinzys .w334{/*width:254px;max-height:40px;*/overflow:hidden;word-break: break-word;}
+.dayinzys .w364{/*width:325px;max-height:40px;*/overflow:hidden;}
+.dayinzys .danwkk{margin-top:1px;border:1px solid gray;border-right:none;}
+.dayinzys .borderleft2{border-left:2px solid gray;}
+.dayinzys .bordertop2{border-top:2px solid gray;}
+.dayinzys .borderright2{border-right:2px solid gray;}
+.dayinzys .borderbottom2{border-bottom:2px solid gray;}
+.text_normal {
+	font-family: "Microsoft YaHei UI", arial;
+	font-size: 14px;
+	color: #555;
+	line-height: 0px;
+}
+.text_normal_white {
+	font-family: "Microsoft YaHei UI", arial;
+	font-size: 14px;
+	color: #FFF;
+	line-height: 0px;
+}
+.text_title {
+	font-family: "Microsoft YaHei UI", arial;
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
+	line-height: 24px;
+}
+.text_little_title {
+	font-family: "Microsoft YaHei UI", arial;
+	font-size: 14px;
+	line-height: 0px;
+	font-weight: bold;
+	color: #333;
+}
+/*396ÐèÇó*/
+.dayinzys .leftmenu1{font-family: "Microsoft YaHei UI", arial;font-size: 14px;font-weight: bold;color: #333;width:38px;padding:0 5px 0 5px;height:100%;float:left;line-height:20px;text-align:center;}
+
+/*需求504*/
+.zhicuhpindan td{
+	line-height:30px;
+}
+/*打印页面ie兼容问题*/
+table.dayInIe{
+	border-collapse: collapse;
+	border:none !important;
+	border-top:1px solid #000 !important;
+	border-left:1px solid #000  !important;
+	margin-top:0px;
+}
+table.dayInIe tbody  tr td{
+	empty-cells: show;
+	border:none !important;
+	border-right: 1px solid #000 !important;
+	border-bottom:1px solid #000  !important;
+}
+table.dayInIe tbody  tr td.noborder {
+	border-left:0px solid #000  !important;
+}
+table.TopHeight{
+	margin-top:0px;
+}
+.print_Div{
+	text-align: center;
+}
+.dayinzy{
+	border-collapse: collapse;
+}

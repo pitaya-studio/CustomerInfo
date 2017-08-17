@@ -1,0 +1,88 @@
+/*S*/
+.qc-input-group-md {
+  width: 90px;
+  height: 20px;
+}
+.qc-input-group-two-level {
+  width: 70px;
+  height: 22px;
+}
+.qc-input-group-two-level .text-input {
+  padding: 0 1px;
+  line-height: 22px;
+}
+.qc-input-group-md-second {
+  width: 80px;
+  height: 26px;
+}
+.qc-input-group-md-third {
+  display: inline-block;
+  width: 120px;
+  height: 26px;
+}
+.qc-input-group-base-seond {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  background-color: #ffffff;
+}
+.qc-input-group-base-seond > .qc-dropdown {
+  float: left;
+  width: 35px;
+  height: 18px;
+  border: none;
+}
+.qc-input-group-base-seond .text-input {
+  float: left;
+  width: 40px;
+  padding: 0 5px;
+  background-color: transparent;
+  border: none;
+  line-height: 27px;
+}
+.qc-input-group-base-third {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  background-color: #ffffff;
+}
+.qc-input-group-base-third > .qc-dropdown {
+  float: left;
+  width: 35px;
+  height: 26px;
+  border: none;
+}
+.qc-input-group-base-third > .qc-dropdown > .qc-dropdown-text-container {
+  height: 24px;
+  line-height: 26px;
+}
+.qc-input-group-base-third > .qc-dropdown > .qc-dropdown-text-container > .qc-dropdown-text {
+  font-size: 12px;
+}
+.qc-input-group-base-third .text-input {
+  float: left;
+  width: 75px;
+  padding: 0 5px;
+  background-color: transparent;
+  color: #999999;
+  border: none;
+  line-height: 27px;
+}
+.qc-input-group-base {
+  border: 1px solid #ffe0c1;
+  background-color: #ffffff;
+}
+.qc-input-group-base > .qc-dropdown {
+  float: left;
+  width: 30px;
+  height: 18px;
+  border: none;
+}
+.qc-input-group-base .text-input {
+  float: left;
+  width: 30px;
+  background-color: transparent;
+  border: none;
+  font-size: 10px;
+}
+/*E*/

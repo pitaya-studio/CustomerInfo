@@ -1,0 +1,15 @@
+/***定义logo归属***/
+.hedear .hedear-logo { height:60px; width:200px; float: left; background-image:url(../images/kshj-logo-125-60.png);}
+.hedear .hedear-logo  img { height: 40px; width: auto; border: 0 }
+
+/****定义用户登陆 欢迎页面图片****/
+.denglu-hy{ margin:20px auto auto; overflow:hidden;}
+.denglu-hy-top{ height:160px; background:url(../images/kshj-dengluhy_01.jpg) center no-repeat;}
+.denglu-hy-center{ height:200px; background:url(../images/kshj-dengluhy_02.jpg) center no-repeat; }
+.denglu-hy-center p{ overflow:hidden; width:800px; margin:auto;}
+.denglu-hy-center span{display: none;}
+.denglu-hy-center b{display: none;}
+.denglu-hy-center i{ font-family:"微软雅黑"; font-size:30px; color:#fff; text-shadow:1px 1px 5px #0062b1,-1px -1px 5px #0062b1; padding:0 10px; float:left; margin-top:95px; height:30px; line-height:30px;}
+.denglu-hy-foot{ height:267px; background:url(../images/kshj-dengluhy_03.jpg) center no-repeat;}
+.denglu-hy-bottom{ display: none;}
+.denglu-hy-center i.denglu-hy-center-name{color:#4B4C4E;text-shadow: 1px 1px 5px #0062b1,-1px -1px 5px #ccc}

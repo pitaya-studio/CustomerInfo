@@ -1,0 +1,368 @@
+/*S表格样式文件*/
+.table-list-lg {
+  width: 100%;
+  border: 1px solid #ffffff;
+  border-collapse: collapse;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.table-list-lg thead tr th {
+  height: 25px;
+  border: none;
+  padding: 5px;
+  color: #000000;
+  font-family: "microsoft yahei";
+  font-size: 12px;
+  text-align: left;
+  background-image: url(../../img/common/background/table-lg-th-bj.png);
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+.table-list-lg thead tr th.text-right {
+  text-align: right;
+}
+.table-list-lg thead tr th.text-left {
+  text-align: left;
+}
+.table-list-lg thead tr th:first-child {
+  padding-left: 20px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.table-list-lg tbody {
+  background-color: #ffffff;
+  border: none;
+}
+.table-list-lg tbody.fold:hover {
+  background-color: none;
+}
+.table-list-lg tbody.fold:hover tr td {
+  padding: 5px;
+}
+.table-list-lg tbody.fold:hover tr td a:link,
+.table-list-lg tbody.fold:hover tr td a:hover,
+.table-list-lg tbody.fold:hover tr td a:visited,
+.table-list-lg tbody.fold:hover tr td a:active {
+  color: #2581e3;
+}
+.table-list-lg tbody.fold:hover tr td.empty {
+  background: transparent;
+}
+.table-list-lg tbody.spread:hover {
+  background-color: #ffffff;
+}
+.table-list-lg tbody.spread:hover tr td a:link,
+.table-list-lg tbody.spread:hover tr td a:hover,
+.table-list-lg tbody.spread:hover tr td a:visited,
+.table-list-lg tbody.spread:hover tr td a:active {
+  color: #2581e3;
+}
+.table-list-lg tbody.spread:hover tr td.empty {
+  background: transparent;
+}
+.table-list-lg tbody.odd {
+  background-color: #ffffff;
+}
+.table-list-lg tbody.even {
+  background-color: #f4f4f4;
+}
+.table-list-lg tbody:hover {
+  background-color: #FFECE6;
+  border: none;
+}
+.table-list-lg tbody.active {
+  background-color: #fbedea;
+  border-top-color: #f4c9c8;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-bottom-color: #f4c9c8;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+.table-list-lg tbody tr td {
+  line-height: 15px;
+  height: 32px;
+  padding: 5px;
+  border: none;
+  text-align: left;
+}
+.table-list-lg tbody tr td a {
+  color: #2581e3;
+}
+.table-list-lg tbody tr td.text-right {
+  text-align: right;
+}
+.table-list-lg tbody tr td:first-child {
+  padding-left: 20px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.table-list-md-container {
+  padding: 10px;
+  margin: 0 10px;
+  background-color: #fff8f7;
+  border: 1px solid #ffeae5;
+}
+.table-list-md {
+  padding: 0;
+  margin: 15px;
+  border: 1px solid #dae3f1;
+  border-radius: 5px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: #666666;
+  font-size: 12px;
+  box-shadow: 0px 1px 1px #f4f4f4;
+}
+.qc-dialog .table-list-md {
+  margin: 0px;
+}
+.table-list-md thead tr th {
+  height: 24px;
+  background-color: #e9f2ff !important;
+  border: none;
+  padding: 5px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #dae3f1;
+  background-image: none;
+  font-weight: normal;
+  text-align: left;
+}
+.table-list-md thead tr th.text-right {
+  text-align: right;
+}
+.table-list-md thead tr th:last-child {
+  position: relative;
+}
+.qc-dialog .table-list-md thead tr th:last-child {
+  position: static;
+}
+.table-list-md tbody {
+  background-color: #fff9e7;
+  border: none;
+}
+.table-list-md tbody.odd {
+  background-color: #e9f2ff;
+}
+.table-list-md tbody.even {
+  background-color: #f7faff;
+}
+.table-list-md tbody.active {
+  background-color: #fff9e7;
+  border: 1px solid #ffbd7d;
+}
+.table-list-md tbody tr td {
+  height: 18px;
+  border: none;
+  text-align: left;
+  padding: 5px;
+}
+.table-list-md tbody tr td.text-right {
+  text-align: right;
+}
+.table-list-md tbody tr td a:link,
+.table-list-md tbody tr td a:hover,
+.table-list-md tbody tr td a:visited,
+.table-list-md tbody tr td a:active {
+  color: #2581e3;
+}
+.table-list-md tbody tr td.bold {
+  font-weight: bold;
+}
+.table-list-md tbody tr td.normal {
+  font-weight: normal;
+}
+.table-list-md tbody:last-child {
+  background-color: #ffffff;
+  font-weight: bold;
+  text-align: right;
+}
+.table-list-md tbody.normal {
+  font-weight: normal;
+}
+.table-list-md tbody.normal-bg {
+  background-color: #fff9e7;
+}
+.table-list-md tbody.odd-even-display-color:nth-child(2n+1) {
+  background: #fff9e7;
+}
+.table-list-md tbody.odd-even-display-color:nth-child(2n) {
+  background: #ffffff;
+}
+.table-list-md.mar-top-primary {
+  margin-top: 8px;
+}
+.table-list-md.mar-top-primary tbody tr td {
+  border: 1px solid #b8cae1;
+}
+.table-list-md.margin-auto {
+  margin: 0 auto;
+}
+.table-list-md.border-none {
+  border: none;
+}
+.table-list-md.detail-describe-line {
+  width: 800px;
+  margin: 0 auto;
+}
+.table-list-md.detail-describe-line .table-th-lg-width {
+  width: 700px;
+  text-align: left;
+}
+.table-list-md.detail-describe-line .table-th-lg-width.normal {
+  width: 300px;
+}
+.table-list-md.detail-describe-line .table-th-default-width {
+  width: 100px;
+}
+.table-th-little-width {
+  width: 50px;
+}
+.table-th-little-width.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+span.table-th-little-width.ellipsis {
+  display: block;
+}
+.table-th-default-width {
+  width: 100px;
+}
+.table-th-default-width.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+span.table-th-default-width.ellipsis {
+  display: block;
+}
+.table-th-lg-width {
+  width: 300px;
+}
+.table-th-lg-width.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+span.table-th-lg-width.ellipsis {
+  display: block;
+}
+.table-th-md-width {
+  width: 200px;
+}
+.table-th-md-width.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+span.table-th-md-width.ellipsis {
+  display: block;
+}
+.table-th-sm-width {
+  width: 150px;
+}
+.table-th-sm-width.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+span.table-th-sm-width.ellipsis {
+  display: block;
+}
+.table-th-sm-fifty,
+.table-serial-number {
+  width: 50px;
+}
+.divider {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  border-bottom-color: #ead5d0;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px;
+}
+.divider:last-child {
+  border: none;
+}
+.base-operator {
+  position: relative;
+}
+.base-operator > button {
+  background-color: transparent;
+  padding: 0px 4px;
+  border: none;
+  color: #3f8be5;
+  cursor: pointer;
+}
+.base-operator > button:hover {
+  text-decoration: underline;
+}
+.base-operator > button[disabled] {
+  color: #cccccc;
+  cursor: default;
+  text-decoration: none;
+}
+.base-operator em.fa:hover {
+  color: #ffba7d;
+}
+.base-operator .bottom {
+  position: absolute;
+  top: 22px;
+  left: -838px;
+  width: 950px;
+  height: 30px;
+  background-color: #fcd1a7;
+  text-align: right;
+}
+.table-bg-two-level {
+  border: 1px solid #fcd1a7;
+}
+.table-bg-two-level tr td {
+  background-color: #fcd1a7;
+  border: 1px solid #dca675 !important;
+}
+.table-close {
+  position: absolute;
+  top: -1px;
+  right: -26px;
+  width: 26px;
+  height: 26px;
+  background-color: #e9f2ff;
+  border: 1px solid #d1dbed;
+  line-height: 26px !important;
+  text-align: center;
+}
+.table-close.fa {
+  color: #c1c1c1;
+}
+.table-close.fa:hover {
+  color: #ff9900;
+}
+.display-none {
+  display: none;
+}
+.payment-state-mark {
+  display: inline-block;
+  padding: 1px 5px;
+  background: #e3b22b;
+  border-radius: 3px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  vertical-align: middle;
+}
+.payment-state-markc {
+  display: inline-block;
+  padding: 1px 5px;
+  background: #3ca12b;
+  border-radius: 3px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  vertical-align: middle;
+}
+/*E表表格样式文件*/

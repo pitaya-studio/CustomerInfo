@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.table.operator.css"/>
+    <link rel="stylesheet" href="/src/css/qc/qc.table.resizecolumn.css"/>
+    <style type="text/css">
+        .table-container {
+            border: 1px solid blue;
+            padding: 0px;
+            height: 400px;
+            overflow: auto;
+        }
+
+        tbody tr:hover {
+            background-color: #eeeeee;
+        }
+
+        tbody tr:hover td.empty {
+            background-color: #ffffff;
+        }
+
+        table td {
+            word-break: normal;
+        }
+
+        .qc-table-operator:hover {
+            background-color: #d6e9c6;
+        }
+
+        .qc-paging-container {
+            float: right;
+        }
+
+        .qc-paging-container .qc-paging-index {
+            margin-left: 20px;
+        }
+
+        .qc-paging-container .qc-paging-index input {
+            width: 40px;
+            text-align: right;
+        }
+
+        .qc-paging-container .qc-paging-rowcount {
+            margin-left: 20px;
+        }
+
+        .qc-paging-container .qc-paging-rowcount input {
+            width: 40px;
+            text-align: right;
+        }
+    </style>
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+    <script type="text/javascript" src="/src/components/angular-animate/angular-animate.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.table.resizecolumn.js"></script>
+    <script type="text/javascript" src="/src/js/qc/filter/qc.paging.js"></script>
+    <script type="text/javascript">
+        var resizeColumn = angular.module('resizeColumn', ['qc']);
+        resizeColumn.controller('resizeController', ['$scope', function ($scope) {
+            $scope.pageIndex = 1;
+            $scope.rowCount = 20;
+            $scope.list = [];
+            $scope.list.push({
+                name: 'z1 zc z',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '查看', '修改', '删除', '新增', '打印']
+            });
+            $scope.list.push({
+                name: 'z2',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '查看', '修改', '删除', '新增']
+            });
+            $scope.list.push({
+                name: 'z3',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '查看', '修改', '新增']
+            });
+            $scope.list.push({
+                name: 'z4',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '查看', '删除', '新增', '打印']
+            });
+            $scope.list.push({
+                name: 'z5',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['查看', '修改', '删除', '新增', '打印']
+            });
+            $scope.list.push({
+                name: 'z6',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '打印']
+            });
+            $scope.list.push({
+                name: 'z7',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['打印']
+            });
+            for (var i = 0; i < 2500; i++) {
+                $scope.list.push({
+                    name: 'z' + (8 + i),
+                    age: 12,
+                    salary: 21212,
+                    desc: '辛苦',
+                    operator: ['详细', '删除', '打印']
+                });
+            }
+        }]);
+        $(document).ready(function () {
+            $('table th').on('el.resize', function () {
+                alert(this);
+            });
+        });
+    </script>
+</head>
+<body ng-app="resizeColumn">
+<div class="container">
+    <div class="page-header">
+        <h1>表格调整列宽</h1>
+    </div>
+    <div ng-controller="resizeController">
+
+        <table id="contentTable" class="table table-bordered qc-table-resizecolumn">
+            <thead>
+            <tr>
+                <th>index</th>
+                <th>职 员姓名</th>
+                <th>age</th>
+                <th>employee salary</th>
+                <th>desc</th>
+                <th style="width: 250px; min-width: 250px;">操作</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody qc-sub-table-container>
+            <tr ng-repeat="item in list | qcPaging:rowCount:pageIndex" ng-cloak>
+                <td>{{$index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.salary}}</td>
+                <td>{{item.desc}}</td>
+                <td>
+                    <div class="">
+                        <a href="#" ng-repeat-start="o in item.operator">{{o}}</a>
+                        <span ng-if="!$last" ng-repeat-end>| </span>
+                    </div>
+                </td>
+                <td class="">
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <div class="qc-paging-container">
+                <label class="qc-paging-index">index <input type="text" ng-model="pageIndex"/></label>
+                <label class="qc-paging-rowcount">row count <input type="text" ng-model="rowCount"/></label>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

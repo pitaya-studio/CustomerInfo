@@ -1,0 +1,174 @@
+.divParent {
+    width: 560px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    float: left;
+    height:552px;
+}
+
+.divParentBorder {
+    border: 1px solid #e9e9e9;
+    position: absolute;
+    width: 559px;
+    height: 550px;
+    z-index: 2;
+    top: -1px;
+}
+
+.divChild {
+    width: 80px;
+    float: left;
+    height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    background: #ffffff;
+    position: relative;
+}
+
+.dc_1 {
+    background-color: #e9f3ff;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.otherMonth {
+    background-color: #fafafa;
+}
+
+.dc_2 {
+
+}
+
+.divChild p {
+    height: 12px;
+    margin: 0px;
+    font-size: 12px;
+
+}
+
+.divChild .p_top {
+    margin-top: 10px;
+    color: #999999;
+}
+
+.divChild .p_middle {
+    margin-top: 15px;
+    color: #333333;
+}
+
+.divChild .p_bottom {
+    margin-top: 10px;
+    color: #ff8d12;
+}
+
+.orange {
+    color: #ff8d12;
+}
+
+.divChild_absolute {
+    position: absolute;
+    width: 79px;
+    height: 79px;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background:url("../images/T1T2/bg_opacity_0.png") repeat ;
+}
+
+.divChild_absolute:hover {
+    border: 1px solid #ffe3c5;
+    z-index: 100;
+}
+
+.border_gray {
+    border: 1px solid #e9e9e9;
+
+}
+
+/*Ĭ��ѡ�е�����*/
+.border_orange {
+    border: 1px solid #ffe3c5;
+}
+
+.background_orange {
+    background: #FFF9E4;
+}
+
+.date_top {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    z-index: 3;
+}
+
+.date_top_left, .date_top_right {
+    height: 100%;
+    width: 30px;
+    cursor: pointer;
+}
+
+.date_top_center {
+    width: 500px;
+    height: 40px;
+    overflow:hidden; /*//hidden*/
+    font-size: 12px;
+}
+
+.date_top_use {
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.date_top_use > div {
+    height: 20px;
+    line-height: 16px;
+}
+.date_top_use > div:first-child {
+    line-height: 30px;
+}
+
+.date_top > div {
+    float: left;
+}
+
+.date_top_center > div {
+    float: left;
+}
+
+.active {
+    background: #e9f3ff;
+}
+
+.date_top_left i {
+    background: url("../images/left_right_491.png") no-repeat -14px -34px;
+    display: inline-block;
+    width: 9px;
+    height: 18px;
+    margin-top: 10px;
+}
+
+.date_top_left i:hover {
+    background-position: -14px -14px;
+}
+
+.date_top_right i {
+    background: url("../images/left_right_491.png") no-repeat -34px -14px;
+    display: inline-block;
+    width: 9px;
+    height: 18px;
+    margin-top: 10px;
+}
+
+.date_top_right i:hover {
+    background-position: -34px -34px;
+}
+.top_hide{
+    display: none;
+}
+.top_show{
+    display: block;
+}

@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+/*S远程度假更换logo图片 add on  2015/08/03*/
+.remote-vacation-hedear-logo { height:60px; width:125px; float: left; background-image:url(../images/logo-remote-vacation.png);}
+/*E远程度假更换logo图片 add on  2015/08/03*/
+
+/*E远程度假更换登陆背景图片 add on  2015/08/14*/
+.remote-vacation-loginDiv {
+    font-size: 12px;
+    margin-top: 106px;
+    display: table;
+    width: 100%;
+    background: transparent url("../images/login-bg-yclx.jpg") no-repeat scroll center top;}
+    
+.remote-vacation-loginDiv { font-size: 12px; margin-top: 106px; display: table; width: 100%; background: transparent url("../images/login-bg-yclx.jpg") no-repeat scroll center top; }
+.remote-vacation-login { width: 335px; height: 643px; float: right; margin-right: 40px; background: transparent url("../images/login-opacity-yclx.png") repeat scroll 0% 0%; }

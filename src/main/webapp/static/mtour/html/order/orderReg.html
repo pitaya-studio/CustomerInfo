@@ -1,0 +1,72 @@
+<div>
+    <div class="qc-dialog-header">
+        <div class="qc-dialog-title ng-binding">
+            <span ng-if="currentOrder.saveModel!='commit' &&  currentOrder.editModel=='edit'">快速生成订单</span>
+            <span ng-if="currentOrder.saveModel=='commit' &&  currentOrder.editModel=='edit'">订单-修改</span>
+            <span ng-if="currentOrder.editModel=='detail'">订单-详情</span>
+            <ul class="tab" ng-show="false">
+                <li ng-class="{'active':currentOrder==order}"
+                    ng-repeat="order  in orders"
+                    ng-click="changeCurrentOrder(order)">
+                    录入{{$index+1}}
+                    <em class="fa fa-times" ng-click="orders.remove(order)"></em>
+                </li>
+            </ul>
+	        <span class="add abled" ng-click="addOrder()" ng-if="orders.length<=9" ng-show="false">
+	        	<em class="fa fa-plus"></em>
+	        </span>
+        </div>
+    </div>
+    <div class="dialog-body-md-fast-build-order dialog-body-cost-input qc-scroll" style="height:500px;">
+        <div class="left">
+            <div order-reg-base-info="" base-info="currentOrder.baseInfo"></div>
+            <div order-reg-reservation="" reservations="currentOrder.reservations" save-model="currentOrder.saveModel"></div>
+        </div>
+        <div class="right">
+
+            <div order-reg-fee="" fee="currentOrder.fee" order-uuid="currentOrder.baseInfo.orderUuid"></div>
+
+            <div order-reg-flight flights="currentOrder.flights"></div>
+
+            <div>
+                <div class="subheading">
+                    <span>上传附件</span>
+                    <em class="fa" ng-class="{'fa-chevron-right':foldUploader,'fa-angle-double-down':!foldUploader}"
+                        ng-click="foldUploader=!foldUploader;"></em>
+                </div>
+
+                <div class="second-step-info" ng-if="!foldUploader">
+                    <div order-reg-upload="" attachment="currentOrder.attachment"
+                         edit-Model="currentOrder.editModel"></div>
+                </div>
+            </div>
+            <div order-reg-traveler="" travelers="currentOrder.travelers"></div>
+
+            <div order-reg-memo="" memo="currentOrder.memo"></div>
+
+
+        </div>
+
+    </div>
+    <div class="qc-dialog-footer" ng-cloak="">
+        <div class="text-center">
+            <button class="butn butn-primary" ng-click="initOrder()"
+                    ng-if="canClear() && currentOrder.editModel=='edit'">清空
+            </button>
+            <button class="butn butn-default" ng-click="saveOrderForConfirm()" ng-show="currentOrder.companyRoleCode=='0'"
+                    ng-if="currentOrder.saveModel!='commit' &&  currentOrder.editModel=='edit'">待确认
+            </button>
+            <button class="butn butn-default" ng-click="saveOrder()"
+                    ng-if="currentOrder.saveModel=='commit' &&  currentOrder.editModel=='edit'">保存
+            </button>
+            <button class="butn butn-default" ng-click="commitOrder()"
+                    ng-if="currentOrder.saveModel!='commit' && currentOrder.editModel=='edit'">生成订单
+            </button>
+            <button class="butn butn-default" ng-click="commitAndReceiveOrder()"
+                    ng-if="currentOrder.saveModel!='commit' && currentOrder.editModel=='edit'">生成并收款
+            </button>
+            <button class="butn butn-primary" ng-click="closeThisDialog()">关闭</button>
+        </div>
+    </div>
+    <div class="collapse" ng-click="toggleAll()">{{foldAll?'展开':'收起'}}全部</div>
+</div>

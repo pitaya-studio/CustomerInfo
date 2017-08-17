@@ -1,0 +1,91 @@
+/*S弹窗样式*/
+@keyframes qc-dialog-theme-cover-scaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.3, 0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+@keyframes qc-dialog-theme-cover-scaleDown {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3, 0.3);
+  }
+}
+.qc-dialog.qc-dialog-theme-cover {
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+.qc-dialog.qc-dialog-theme-cover .qc-dialog-content {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  padding: 0px;
+  animation: qc-dialog-theme-cover-scaleUp 0.6571s;
+  background: #ffffff;
+  border-radius: 5px;
+  color: #333333;
+}
+.qc-dialog.qc-dialog-theme-cover .qc-dialog-header {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: #e1e1e1;
+  cursor: pointer;
+  border-bottom: 1px solid #dddddd;
+}
+.qc-dialog.qc-dialog-theme-cover .qc-dialog-header .qc-dialog-title {
+  line-height: 36px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.qc-dialog.qc-dialog-theme-cover .qc-dialog-body {
+  padding: 10px;
+  overflow: auto;
+}
+.qc-dialog.qc-dialog-theme-cover .qc-dialog-footer {
+  /*height: 40px;*/
+  padding: 10px;
+  border-top: solid 1px #dddddd;
+  /*background-color: #ff0000;*/
+}
+.qc-dialog.qc-dialog-theme-cover .qc-dialog-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.qc-dialog.qc-dialog-theme-cover .qc-dialog-close:before {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border-radius: 3px;
+  color: #333333;
+  content: '\00D7';
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+}
+.qc-dialog.qc-dialog-theme-cover .qc-dialog-close:hover:before,
+.qc-dialog.qc-dialog-theme-cover .qc-dialog-close:active:before {
+  color: #333333;
+}
+.qc-dialog.qc-dialog-theme-cover.qc-dialog-closing .qc-dialog-content {
+  animation: qc-dialog-theme-cover-scaleDown 0.6571s;
+}
+/*E弹窗蒙版样式*/

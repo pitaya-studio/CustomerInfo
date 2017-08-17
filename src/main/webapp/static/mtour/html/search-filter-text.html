@@ -1,0 +1,7 @@
+<li>
+    <label>{{labelText}}：</label>
+    <span ng-repeat="item in items track by $index">
+        {{item}}
+        <em class="fa fa-close" ng-click="remove(item)"></em>
+    </span>
+</li>

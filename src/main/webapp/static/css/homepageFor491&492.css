@@ -1,0 +1,189 @@
+/*BEGIN*/
+div#tab{
+    width: 100%;
+    height: 30px;
+    border-bottom:1px solid #ddd;
+}
+#tab span{
+    line-height: 30px;
+    cursor: pointer;
+    display: inline-block;
+    width: 70px;
+    float:left;
+    margin-right: 20px
+}
+#tab span.activeList{
+    color:#ff8d12;
+    border-bottom: 2px solid #ff8d12;
+}
+#tab span i{
+    margin-right: 5px;
+    margin-top: -3px;
+}
+
+#tab span.activeList i{
+    color: #ff8d12;
+}
+#tab input[type="button"]{
+    float: right;
+    height: 20px;
+    background: #fff;
+    color: #369;
+    border: 1px solid #369;
+    width: 118px;
+    border-radius: 2px !important;
+    margin-top: 5px;
+    cursor: pointer;
+}
+#tab input[type="button"]:hover{
+    background: #369;
+    color: #fff;
+}
+
+#productList{
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+#productList tbody tr:nth-child(even) {
+    background: #fff;
+}
+#productList thead th{
+    box-sizing: border-box;
+}
+
+#productList tbody td{
+    height: 140px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+#productList tbody td.first_t{
+    border-left: 1px solid #ddd;
+    padding-left: 22px;
+    padding-right: 10px;
+}
+#productList tbody td.last_t{
+    border-right: 1px solid #ddd;
+}
+.buyNow{
+    height: 30px;
+    width:100px;
+    margin-top: 10px;
+    background: #ff8d12;
+    color:#fff;
+    border:none;
+    font-size:14px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+#productList tbody tr:hover td{
+    border-color: #ff8d12;
+    background: #fafafa
+}
+#productList tbody tr:hover .buyNow{
+
+    background: #ff6b09
+}
+#productList .productInfo{
+    padding-right: 60px;
+    padding-bottom: 14px;
+}
+#productList th.last_t, #productList td.last_t {
+    padding-right: 40px;
+}
+.productInfo a {
+    font-size:16px;
+}
+.productInfo p span{
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+    color: #666;
+}
+.productInfo p{
+    margin-top: 10px;
+    display: block !important;
+}
+.productInfo p:first-child{
+    margin-top: 12px;
+    margin-bottom: 13px;
+}
+.supplierInfo .pop_permission{
+    display: inline-block;
+    color: #336699;
+    font-size: 12px;
+    margin-top:2px;
+    padding-left: 0;
+}
+.unit_color{
+    color: #ff7800;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 2px;
+}
+.money_color{
+    margin-right: 2px;
+}
+#productList .systemPrice p:first-child{
+    font-weight: bold;
+    color: #999
+}
+.trade_price span del{
+    color:#999;
+}
+.pop-container {
+    position:relative;
+}
+.pop-container .pop_permission_show{
+    left: -5px;
+    top: 17px;
+}
+
+.productInfo .moreInfo{
+    font-size: 12px;
+    display: inline-block;
+    margin-left: 10px;
+    color: #ff8d12;
+}
+.productInfo .moreInfo i{
+    color: #ff8d12;
+    padding-bottom: 3px;
+}
+
+div.jbox .jbox-button-panel{
+    background-color: #fff;
+}
+
+.jbox-button-panel button[value="0"]{
+    color: #999;
+    border: 1px solid #999;
+    background-color: #fff;
+}
+.jbox-button-panel button{
+    font-family: 微软雅黑, Arial, 宋体;
+}
+
+label[for="porductRadio"]{
+    display:inline-block;
+    margin-right:50px;
+}
+
+input[name="setViewMode"]{
+    margin-right:5px;
+}
+
+#setViewMode{
+    width:182px;
+    margin:52px auto;
+}
+
+i.realTime{
+    width: 30px;
+    height: 16px;
+    border: 1px solid #ff5000;
+    background: #ff765b;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    line-height: 15px;
+    float: right;
+}

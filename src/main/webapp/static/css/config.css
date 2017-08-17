@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0; padding:0;}
+em,i{ font-style:normal;}
+table{ border-collapse:collapse; border-spacing:0;}
+fieldset,img{ border:0;}
+ol,ul{ list-style:none;}
+li{ list-style:none outside;}
+a,label,input{ outline-style:none;}
+h1, h2, h3, h4, h5, h6 { font-size:100%; font-weight:normal; }
+input, textarea, select{ color:#4c4d4f; border:none; font-size:12px;}
+
+.clear:after{ height:0; content:""; clear:both; display:block; visibility:hidden; overflow:hidden;}
+.clear{zoom:0; clear:both;}
+/**连接颜色**/
+a:link,a:visited{ color:#5095f2; text-decoration:none;}
+a:hover,a:active{color:#5095f2; text-decoration:underline;}
+a:visited{color:#fff}
+
+/****---------------------------------------------------
+                    整体框架  begin
+---------------------------------------------------****/
+body{ margin:0 auto; font-family:"宋体"; font-size:12px; color:#666}
+/****---------------------------------------------------
+                  常用button begin
+---------------------------------------------------****/
+/**默认 文字按钮**/
+.btn{
+	border-radius:2px;
+	-o-border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px; 
+	padding:0 10px;
+	width:auto;
+	height:30px;
+	line-height:30px;
+	color:#fff;
+	background-color:#5f7795;
+	cursor:pointer;
+	font-family:"宋体";
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+	vertical-align:middle;
+	text-align:center;
+	*border:0;
+}
+
+.btn:hover{
+	background-color:#8aa0b9;color:#fff
+}
+
+/**文字 按钮**/
+.text-btn{ background:none; color:#5095f2;}
+.text-btn:hover{ background:none; text-decoration:underline;color:#5095f2}
+/****---------------------------------------------------
+                  常用button end
+---------------------------------------------------****/
+
+
+/****---------------------------------------------------
+                  表单元素 begin
+---------------------------------------------------****/
+/*表单元素定义*/
+input,select,textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    border-radius: 2px;
+    color: #666;
+    display: inline-block;
+    vertical-align: middle;
+	border:1px solid #D0D0D0;
+	height:28px;	
+	padding-left:5px;
+	padding-right:5px;
+	line-height:30px\9;
+	font-size:12px;	
+	background-color: #FFFFFF;
+	*background-color:#fff;
+}
+
+textarea {
+    height: auto;
+}
+input:focus,textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+    outline: 0 none;
+}
+
+/****---------------------------------------------------
+                  表单元素 emd
+---------------------------------------------------****/
+/*配置页面*/
+.bottom{ margin-top:60px;text-align:center}
+.configmain{padding:50px;}
+.config-tit span{ display:inline-block;line-height:30px; background:#ffaa00; border-radius:2px; color:#fff;padding:0 20px; margin-bottom:10px;}

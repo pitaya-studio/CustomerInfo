@@ -1,0 +1,267 @@
+<div>
+    <div class="subheading">
+        <span>订单基本信息</span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="fold=!fold;"></em>
+    </div>
+    <div class="second-step-info" ng-if="!fold">
+        <ul ng-if="editModel=='edit'">
+            <li ng-if="saveModel=='commit'">
+                <label>
+                    <i class="require"></i>
+                    下单日期：
+                </label>
+                <div class="show-text-default">{{baseInfo.orderDateTime}}</div>
+            </li>
+            <li ng-if="companyRoleCode!='0'">
+                <label>
+                    <i class="require">*</i>
+                    产品名称：
+                </label>
+                <div class="show-text-default"
+                     ng-if="saveModel=='commit'">{{baseInfo.productName}}
+                </div>
+                <input type="text" class="text-input-huge-second"
+                       ng-if="saveModel!='commit'"
+                       ng-model="baseInfo.productName" qc-valid-required="" title="{{baseInfo.productName}}"/>
+            </li>
+            <li ng-if="companyRoleCode=='0'">
+                <label>
+                    <i class="require">*</i>
+                    产品名称：
+                </label>
+                <!--<div class="show-text-default"-->
+                <!--ng-if="saveModel=='commit'">{{baseInfo.productName}}-->
+                <!--</div>-->
+                <input type="text" class="text-input-huge-second"
+                       ng-model="baseInfo.productName" qc-valid-required="" title="{{baseInfo.productName}}"/>
+            </li>
+            <li ng-if="saveModel=='commit'">
+                <label>
+                    <i class="require">*</i>
+                    团号：
+                </label>
+                <div class="show-text-default">{{baseInfo.groupNo}}</div>
+
+            </li>
+            <li ng-if="companyRoleCode!='0'">
+                <label>
+                    <i class="require">*</i>
+                    出团日期：
+                </label>
+                <div class="show-text-default"
+                     ng-if="saveModel=='commit'">{{baseInfo.departureDate}}
+                </div>
+                <input class="text-input-huge-second date" type="text" qc-date=""
+                       ng-if="saveModel!='commit'" ng-model="baseInfo.departureDate"
+                       qc-valid-required=""
+                       qc-date-format="yy-mm-dd"/>
+            </li>
+            <li ng-if="companyRoleCode=='0'">
+                <label>
+                    <i class="require">*</i>
+                    出团日期：
+                </label>
+                <!--<div class="show-text-default"-->
+                <!--ng-if="saveModel=='commit'">{{baseInfo.departureDate}}-->
+                <!--</div>-->
+                <input class="text-input-huge-second date" type="text" qc-date=""
+                       ng-model="baseInfo.departureDate"
+                       qc-valid-required=""
+                       qc-date-format="yy-mm-dd"/>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    预定人数：
+                </label>
+                <div class="show-text-default"
+                     ng-if="saveModel=='commit'">{{baseInfo.reservationCount}}
+                </div>
+                <input type="text" class="text-input-huge-second" ng-if="saveModel!='commit'"
+                       ng-model="baseInfo.reservationCount" qc-valid-required="" qc-input-int="{zero:false}"/>
+            </li>
+            <li ng-if="companyRoleCode!='0'">
+                <label>
+                    <i class="require">*</i>
+                    线路国家：
+                </label>
+                <div class="show-text-default"
+                     ng-if="saveModel=='commit'">{{baseInfo.lineCountryName}}
+                </div>
+                <div line-country="" qc-valid-required="" line-type="1"
+                     ng-if="saveModel!='commit'"
+                     ng-model="baseInfo.lineCountry"></div>
+            </li>
+            <!-- modify for mtour 0580 by wlj at 20170322 -start-->
+            <li ng-if="companyRoleCode=='0'">
+                <span>
+                    <label>
+                        <i class="require">*</i>
+                        线路类型：
+                    </label>
+                </span>
+
+                <span ng-repeat="value in lineTypeList">
+                    <label style="text-align:left">
+                        <input name="lineType" type="radio"
+                               ng-value="value.lineTypeId"
+                               ng-model="baseInfo.lineType"/>
+                        {{value.lineTypeName}}
+                    </label>
+                </span>
+            </li>
+
+            <li ng-if="companyRoleCode=='0'">
+                <label>
+                    <i class="require">*</i>
+                    线路国家：
+                </label>
+                <!--<div class="show-text-default"-->
+                <!--ng-if="saveModel=='commit'">{{baseInfo.lineCountryName}}-->
+                <!--</div>-->
+                <div ng-if="baseInfo.lineType==1" line-country="" line-type="1"  qc-valid-required="" ng-model="baseInfo.lineCountry"></div>
+                <div ng-if="baseInfo.lineType==2" line-country="" line-type="2" qc-valid-required="" ng-model="baseInfo.lineCountry"></div>
+            </li>
+            <!-- modify for mtour 0580 by wlj at 20170322 -end-->
+            <li ng-if="companyRoleCode!='0'">
+                <label>
+                    <i class="require">*</i>
+                    行程：
+                </label>
+                <div class="show-text-default"
+                     ng-if="saveModel=='commit'">{{baseInfo.itinerary}}
+                </div>
+                <input type="text" class="text-input-huge-second"
+                       ng-if="saveModel!='commit'" ng-model="baseInfo.itinerary" qc-valid-required="" onkeyup="this.value=this.value.replace(/[\!\！\@\#\$\%\^\&\*\……\￥]/g,'')" />
+            </li>
+            <li ng-if="companyRoleCode=='0'">
+                <label>
+                    <i class="require">*</i>
+                    行程：
+                </label>
+                <!--<div class="show-text-default"-->
+                <!--ng-if="saveModel=='commit'&&companyRoleCode!='0'">{{baseInfo.itinerary}}-->
+                <!--</div>-->
+                <input type="text" class="text-input-huge-second" ng-model="baseInfo.itinerary" qc-valid-required="" onkeyup="this.value=this.value.replace(/[\!\！\@\#\$\%\^\&\*\……\￥]/g,'')"/>
+            </li>
+            <li ng-if="companyRoleCode!='0'">
+                <label>出发城市：</label>
+
+                <div city ng-model="baseInfo.departureCity"></div>
+            </li>
+            <li ng-if="companyRoleCode!='0'">
+                <label>到达城市：</label>
+                <div city ng-model="baseInfo.arrivalCity"></div>
+            </li>
+            <li ng-show="companyRoleCode!=0" class="height-auto">
+                <label>操作：</label>
+                <div user user-type="''" ng-model="baseInfo.ticket"></div>
+            </li>
+            <li ng-show="companyRoleCode==0" class="height-auto"  style="position:relative;">
+                <label>操作：</label>
+                <div userselectedcz  ng-model="baseInfo.ticketCZ"></div>
+                <div class="search-condition">
+                    <ul>
+                        <li>
+                            <div manyuser class="search-condition-item" ng-model="baseInfo.tickets"></div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="height-auto" ng-show="companyRoleCode!='0'">
+                <label>计调：</label>
+                <div user user-type="''" ng-model="baseInfo.operator"></div>
+            </li>
+
+            <li ng-show="companyRoleCode==0" class="height-auto"  style="position:relative;">
+                <label>销售：</label>
+                <div userselectedcz  ng-model="baseInfo.ticketXS"></div>
+                <div class="search-condition">
+                    <ul>
+                        <li>
+                            <div manyuser class="search-condition-item" ng-model="baseInfo.operators"></div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!--<li class="height-auto" ng-if="companyRoleCode=='0'">
+                <label>销售：</label>
+                <div user user-type="''" ng-model="baseInfo.operator"></div>
+            </li>-->
+            <li>
+                <label>出票人数：</label>
+                <div class="show-text-default" ng-bind="baseInfo.drawerCount">1人</div>
+            </li>
+            <li>
+                <label>下单人：</label>
+                <div class="show-text-default">{{baseInfo.orderer}}</div>
+            </li>
+        </ul>
+
+        <ul ng-if="editModel!='edit'">
+            <li>
+                <label>下单日期：</label>
+                <div class="show-text-default">{{baseInfo.orderDateTime}}</div>
+            </li>
+            <li>
+                <label>产品名称：</label>
+                <div class="show-text-default">{{baseInfo.productName}}</div>
+            </li>
+            <li>
+                <label>团号：</label>
+                <div class="show-text-default">{{baseInfo.groupNo}}</div>
+            </li>
+
+            <li>
+                <label>出团日期：</label>
+                <div class="show-text-default">{{baseInfo.departureDate}}</div>
+            </li>
+            <li>
+                <label>预定人数：</label>
+                <div class="show-text-default">{{baseInfo.reservationCount}}</div>
+            </li>
+
+            <li>
+                <label>线路国家：</label>
+                <div class="show-text-default">{{baseInfo.lineCountryName}}</div>
+            </li>
+            <li>
+                <label>行程：</label>
+                <div class="show-text-default">{{baseInfo.itinerary}}</div>
+            </li>
+            <li ng-if="companyRoleCode!=0">
+                <label>出发城市：</label>
+                <div class="show-text-default">{{baseInfo.departureCityName}}</div>
+            </li>
+            <li ng-if="companyRoleCode!=0">
+                <label>到达城市：</label>
+                <div class="show-text-default">{{baseInfo.arrivalCityName}}</div>
+            </li>
+            <li ng-if="companyRoleCode!=0">
+                <label>操作：</label>
+                <div class="show-text-default">{{baseInfo.ticketName}}</div>
+            </li>
+            <li ng-if="companyRoleCode==0">
+                <label>操作：</label>
+                <div  title="{{baseInfo.ticketNameInfo}}"  class="show-text-default">{{baseInfo.ticketNameInfo}}</div>
+            </li>
+            <li ng-if="companyRoleCode!=0">
+                <label>计调：</label>
+                <div class="show-text-default">{{baseInfo.operatorNameInfo}}</div>
+            </li>
+            <li ng-if="companyRoleCode==0">
+                <label>销售：</label>
+                <div title="{{baseInfo.operatorNameInfo}}" class="show-text-default">{{baseInfo.operatorNameInfo}}</div>
+            </li>
+            <li>
+                <label>出票人数：</label>
+                <div class="show-text-default" ng-bind="baseInfo.drawerCount">1人</div>
+            </li>
+            <li>
+                <label>下单人：</label>
+                <div class="show-text-default">{{baseInfo.orderOwnerName}}</div>
+            </li>
+        </ul>
+    </div>
+</div>

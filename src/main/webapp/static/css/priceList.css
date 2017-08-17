@@ -1,0 +1,186 @@
+#priceList{
+    margin:10px 30px;
+}
+#pl-productName span,#pl-productName span{
+    display: inline-block;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+#priceList .custom-combobox-input{
+    width:414px;
+    background: transparent;
+    z-index: 2;
+}
+.ellipsis{
+    width:468px;
+}
+
+#pl-search{
+    margin-top:3px;
+    margin-bottom:20px;
+    position:relative;
+}
+
+#pl-search span{
+    line-height:28px;
+}
+
+#pl-search input[type=button]{
+    margin-left:0;
+}
+#priceList table{
+    width:100%;
+}
+.table-lists-header {
+    border: 1px solid #ddd;
+    background-color: #f2f2f2;
+}
+.table-lists-header th{
+    height:40px;
+    text-align: left;
+    padding-left:15px;
+    padding-right:15px;
+}
+#pl-result{
+    max-height:190px;
+    border-bottom:1px solid #ddd;
+}
+#pl-result tbody tr{
+    border:1px solid #ddd;
+    border-top:none;
+}
+#pl-result tbody td{
+    height:50px;
+    padding:10px 15px;
+}
+
+#pl-result .pl-qdName{
+    width:60%;
+}
+
+#pl-no-results td{
+    text-align: center;
+}
+
+#pl-result span.price-title,span.price-title {
+    display: table-cell;
+    width: 39%;
+    text-align: left;
+}
+#pl-result span.price-content,span.price-content,.hotelAndHouse label,.hotelAndHouse span{
+    display: table-cell;
+    text-align:left;
+}
+
+.price-list,.hotelAndHouse p{
+    width: 90%;
+    margin-left: 10%;
+    display: table;
+
+}
+
+#pl-tips{
+    left: 44px;
+    top: 1px;
+}
+#pl-result .price-list{
+    margin-left:0;
+}
+
+/*更多操作 S*/
+.more-op-style{
+    margin-top: 0 !important;
+    /*height: auto !important;*/
+    height:27px !important; /*bug16446*/
+
+}
+
+.more-op-style dd{
+    top:27px !important;/*bug16446*/
+}
+
+.operate-td>a{
+    display: block;
+}
+
+.operate-td dl{
+    height:auto;
+    margin-top:0;
+}
+.more-op-style dt a{
+    font-weight: normal;
+}
+.more-op-style dd{
+    left:34px;
+}
+
+.more-op-style dd p{
+    width:100px;
+}
+
+.more-op-style dd span {
+    margin-left: 41px;
+}
+
+.more-op i{
+    font-size:12px;
+    margin-bottom:2px;
+}
+
+.more-op-style .last-dd{
+    top:inherit !important;
+    bottom:20px !important;
+}
+
+.more-op-style .last-dd span{
+    background:url(../images/handle_up.png) no-repeat;
+}
+
+/*更多操作 E*/
+
+.fa-info-circle:before {/* 特殊人群备注图标 */
+    font-size: 14px;
+    color: #de7172;
+    line-height: 19px;
+}
+
+.special-info{
+    display:inline-block;
+}
+
+.special-info dd {
+    left: -63px;
+
+}
+
+.special-info dd p{
+    width:200px;
+    padding:5px;
+    text-align: left;
+    font-weight: normal;
+
+}
+
+.special-info dd span{
+    margin-left: 90px;
+    margin-top: -15px;
+}
+
+.withdraw-relative span{
+    margin-top:0;
+}
+
+.ui-front {
+    z-index: 2100;
+}
+
+.select-text-ellipsis{
+    max-width:410px;
+}
+/*bug16400 S*/
+.hotelAndHouse label {
+    width: 28%;
+}
+/*bug16400 E*/
+

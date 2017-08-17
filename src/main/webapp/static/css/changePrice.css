@@ -1,0 +1,74 @@
+textarea{margin: 0}
+.red_c{color:#cc0000}
+.max_width_200{  margin:0 ; max-width: 258px;}
+.font_16{font-size: 16px;}
+.add_img_green{
+    background: url(../images/T1T2/t1_2.png) -12px -245px no-repeat;
+    width:14px;
+    height: 14px;
+    display: inline-block;
+}
+.add_img_green:hover{
+    background: url(../images/T1T2/t1_2.png) -36px -245px no-repeat;
+}
+.add_img_red{
+    background: url(../images/T1T2/t1_2.png) -60px -245px no-repeat;
+    width:14px;
+    height: 14px;
+    display: inline-block;
+}
+.add_img_red:hover{
+    background: url(../images/T1T2/t1_2.png) -85px -245px no-repeat;
+}
+.sale_off{
+    /*border: 1px solid #ddd;*/
+    background:#fff;
+    border-radius: 2px;
+    right:6px;
+    /*max-width: 200px;*/
+    word-break: break-all;
+    max-height: 300px;
+    display: none;
+    cursor: pointer;
+    z-index: 1;
+    /*padding: 10px 15px;*/
+    top:36px;
+    /*position:relative;*/
+}
+.arrow{
+    background: url("../images/T1T2/arrow.png") no-repeat;
+    position: absolute;
+    display: none;
+    width: 14px;
+    height: 10px;
+    right: 26px;
+    top: 28px;
+    z-index: 2;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.payfor-otherDiv{
+    padding:0;
+    width:auto;
+}
+.thead_border_bottom td {
+    height: 30px;
+    line-height: 30px;
+}
+.border_t tbody td {
+    height: 30px;
+}
+.border_t{
+    width: 480px;
+    border: 1px solid #ccc;
+}
+.border_t thead td{
+    background: #e3e3e3;
+}
+.activitylist_bodyer_table tr td .border_t td{
+    border-left:none;
+}

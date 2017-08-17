@@ -1,0 +1,134 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>其他收入-详情</span>
+    </div>
+</div>
+<div class="dialog-body-md-collect-other dialog-body-cost-input qc-scroll" style="height: 400px;">
+    <div class="first-step-info">
+        <ul>
+            <li>
+                <label>付款方式：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.paymentMethodName"></div>
+            </li>
+            <li>
+                <label>款项名称：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.fundsName"></div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    金额：
+                </label>
+
+                <div class="show-text-base"><span
+                        ng-bind="OtherRevenueDetail.amount| qcCurrency:selectedCurrency.currencyCode"></span>
+                </div>
+
+            </li>
+            <!--<li class="money">-->
+            <!--<span><label>货币换算：</label>-->
+            <!--<div class="qc-input-group-base-third qc-input-group-md-third">-->
+            <!--<div class="qc-dropdown" qc-dropdown ng-model="convertedSelectedCurrency"-->
+            <!--item-text="{{qcDropdownItem.currencyCode}}"-->
+            <!--dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}" items="currencies"-->
+            <!--list-width="100"></div>-->
+            <!--<label>汇率:</label><span ng-bind="convertedSelectedCurrency.convertLowest"></span>-->
+            <!--</div>-->
+            <!--</span> <label>总价：</label><span-->
+            <!--ng-bind="convertedSelectedCurrency.currencyCode+OtherRevenueDetail.convertedAmount"></span>-->
+            <!--</li>-->
+            <li class="money">
+                <span class="current"><label>货币换算：</label><em ng-bind="convertedSelectedCurrency.currencyCode"></em>汇率=<em
+                        ng-bind="OtherRevenueDetail.exchangeRate|number:3"></em></span>
+                <span><label>总价：</label><em
+                        ng-bind="OtherRevenueDetail.amount*OtherRevenueDetail.exchangeRate|qcCurrency:convertedSelectedCurrency.currencyCode"></em></span>
+            </li>
+        </ul>
+    </div>
+    <div class="second-step-info">
+        <ul>
+            <!--<li class="collect">--><!--<span><label><i class="require">*</i>类别选择：</label></span>-->
+
+            <!--<div class="show-text-base">地接社</div>--><!--</li>-->
+            <li ng-if="OtherRevenueDetail.tourOperatorChannelCategoryCode==1">
+                <label>地接社类型：</label>
+
+                <div class="show-text-base" ng-bind="selectedTourType.tourOperatorTypeName"></div>
+            </li>
+            <li ng-if="OtherRevenueDetail.tourOperatorChannelCategoryCode==1">
+                <label>地接社名称：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.tourOperatorOrChannelName"></div>
+            </li>
+            <li ng-if="OtherRevenueDetail.tourOperatorChannelCategoryCode==2">
+                <label>渠道类型：</label>
+
+                <div class="show-text-base" ng-bind="selectedChannelType.channelTypeName"></div>
+            </li>
+            <li ng-if="OtherRevenueDetail.tourOperatorChannelCategoryCode==2">
+                <label>渠道名称：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.tourOperatorOrChannelName"></div>
+            </li>
+            <li>
+                <label>付款单位：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.payer"></div>
+            </li>
+            <li ng-if="OtherRevenueDetail.paymentMethodCode==1">
+                <label>支票号：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.checkNo"></div>
+            </li>
+            <li ng-if="OtherRevenueDetail.paymentMethodCode==1">
+                <label>开票日期：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.checkIssueDate"></div>
+            </li>
+
+            <li ng-if="OtherRevenueDetail.paymentMethodCode==4">
+                <label>付款行名称：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.paymentBank"></div>
+            </li>
+            <li ng-if="OtherRevenueDetail.paymentMethodCode==4">
+                <label>付款账户：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.paymentAccount"></div>
+            </li>
+            <li ng-if="OtherRevenueDetail.paymentMethodCode==4">
+                <label>收款行名称：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.receiveBank"></div>
+            </li>
+            <li ng-if="OtherRevenueDetail.paymentMethodCode==4">
+                <label>收款账户：</label>
+
+                <div class="show-text-base" ng-bind="OtherRevenueDetail.receiveAccount"></div>
+            </li>
+            <li>
+                <label>收款凭证：</label>
+
+                <div class="show-text-base">
+                    <a class="text-link" ng-href="{{uploadFileUrl+item.attachmentUuid}}" target="_blank"
+                       ng-repeat="item in OtherRevenueDetail.attachments"
+                       ng-bind="item.fileName"></a>
+                </div>
+            </li>
+            <li>
+                <label>备注：</label>
+
+                <div class="show-text-paragraph" ng-bind="OtherRevenueDetail.memo"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <!--<button class="btn btn-primary " ng-click="ok(selectedPerson1)">保存并提交</button>-->
+        <!--<button class="btn btn-default " ng-click="closeThisDialog()">修改</button>-->
+        <button class="butn butn-primary " ng-click="closeThisDialog()">关闭</button>
+    </div>
+</div>

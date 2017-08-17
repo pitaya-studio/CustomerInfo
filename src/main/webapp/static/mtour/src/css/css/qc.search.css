@@ -1,0 +1,404 @@
+/*S高級搜索样式文件*/
+.breadcrumbclip {
+  position: relative;
+  float: left;
+  width: 350px;
+  height: 47px;
+  margin-left: 150px;
+  padding: 0;
+  background-color: #262930;
+  line-height: 47px;
+  color: #666666;
+}
+.breadcrumbclip span {
+  height: 47px;
+  line-height: 47px;
+  float: left;
+}
+.breadcrumbclip span a {
+  font-size: 12px;
+}
+.breadcrumbclip span a:link {
+  color: #999999;
+}
+.breadcrumbclip span a:hover {
+  color: #ffffff;
+}
+.breadcrumbclip i {
+  float: left;
+  width: 20px;
+  height: 47px;
+  line-height: 47px;
+  color: #666666;
+  text-align: center;
+}
+.main-filter-search-container {
+  position: relative;
+  height: 54px;
+  background-image: url(../../img/common/background/qc-search-bg4_05.png);
+  background-repeat: repeat;
+  background-position: left top;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #eeeeee;
+  z-index: 99;
+}
+.main-filter {
+  position: absolute;
+  left: 0;
+  width: 387px;
+  height: 54px;
+  background-image: url(../../img/common/background/qc-search-bg4_03.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+.main-filter .filter-tab {
+  width: 320px;
+  height: 27px;
+  margin: 13px 0 14px 20px;
+  border-radius: 14px;
+  background-color: #586e9d;
+}
+.main-filter .filter-tab ul li {
+  display: inline-block;
+  height: 19px;
+  padding: 0 10px;
+  margin: 4px 0 0 4px;
+  border-radius: 10px;
+  background-color: #586e9d;
+  font-size: 12px;
+  line-height: 19px;
+  color: #afd6f5 ;
+  cursor: pointer;
+}
+.main-filter .filter-tab ul li.active {
+  background-color: #ffffff;
+  color: #333333;
+}
+.main-search-container {
+  position: absolute;
+  left: 387px;
+  height: 54px;
+}
+.main-search-container ul li {
+  float: left;
+  padding: 0 10px;
+  line-height: 45px;
+  color: #eeeeee;
+  font-size: 12px;
+}
+.main-search-container ul li label {
+  float: left;
+}
+.main-search-container ul li label i {
+  padding: 0 5px;
+  color: #ff9900;
+  font-weight: normal;
+}
+.main-search-container ul li span {
+  position: relative;
+  float: left;
+  height: 20px;
+  padding: 0 8px;
+  margin-top: 13px;
+  line-height: 20px;
+}
+.main-search-container ul li span.active em {
+  padding: 0 8px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  color: #333333;
+}
+.main-search-container ul li span.tips {
+  text-decoration: underline;
+}
+.main-search-container ul li span.spacer {
+  float: left;
+  width: 1px;
+  height: 17px;
+  margin: 16px 10px 10px 15px;
+  padding: 0px;
+  background: #ffffff none repeat scroll 0% 0%;
+  overflow: hidden;
+}
+.main-search-container ul li span .ci-count {
+  position: relative;
+  top: -5px;
+  left: -3px;
+  padding: 1px 2px;
+  font-size: 12px;
+  line-height: 12px;
+  color: #ffffff;
+  background-color: #ff9900;
+  border-radius: 5px;
+  min-width: 12px;
+  text-align: center;
+}
+.main-search-container ul li .main-search {
+  width: 300px;
+  height: 27px;
+  line-height: 27px;
+  margin: 10px 0px 14px 0px;
+  border-radius: 14px;
+  background-color: #6b7fa8;
+  opacity: 1;
+  filter: alpha(opacity=80);
+  font-size: 12px;
+  color: #ffffff;
+}
+.main-search-container ul li .main-search .qc-dropdown {
+  width: 25px;
+  margin-left: 10px;
+  border: none;
+}
+.main-search-container ul li .main-search .qc-dropdown .qc-dropdown-text-container {
+  background-color: #6b7fa8;
+}
+.main-search-container ul li .main-search .qc-dropdown .qc-dropdown-text-container span.qc-dropdown-text {
+  width: 10px;
+}
+.main-search-container ul li .main-search .qc-dropdown .qc-dropdown-text-container span.qc-dropdown-anchor {
+  left: 0;
+}
+.main-search-container ul li .main-search .qc-dropdown .qc-dropdown-container {
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  box-shadow: #cccccc 1px 1px 3px;
+}
+.main-search-container ul li .main-search .qc-dropdown .qc-dropdown-container .qc-dropdown-list {
+  border: none;
+}
+.main-search-container ul li .main-search .qc-dropdown .qc-dropdown-container .qc-dropdown-list li {
+  width: 137px;
+  height: 20px;
+  line-height: 20px;
+}
+.main-search-container ul li .main-search .qc-dropdown .qc-dropdown-container .qc-dropdown-list li.qc-dropdown-item {
+  background-color: #ffffff;
+  border: none;
+  padding-left: 10px;
+  color: #333333;
+}
+.main-search-container ul li .main-search .qc-dropdown .qc-dropdown-container .qc-dropdown-list li.qc-dropdown-item:hover {
+  background-color: #eeeeee;
+  color: #333333;
+}
+.main-search-container ul li .main-search .qc-dropdown .qc-dropdown-container .qc-dropdown-list li.qc-dropdown-item.active {
+  background-color: #F90;
+  color: #ffffff;
+}
+.main-search-container ul li .main-search em {
+  float: left;
+  display: inline-block;
+  width: 30px;
+  height: 27px;
+  line-height: 22px;
+  text-align: center;
+}
+.main-search-container ul li .main-search em:hover {
+  color: #ffffff;
+  font-size: inherit;
+  cursor: pointer;
+}
+.main-search-container ul li .main-search .text-area {
+  float: left;
+  width: 200px;
+  border: none;
+  background-color: transparent;
+  line-height: 26px;
+  font-size: inherit;
+  color: #ffffff;
+}
+.main-search-container ul li .main-search span {
+  float: right;
+  width: 30px;
+  height: 27px;
+  line-height: 27px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.main-search-container ul li .main-search span.fa-search:hover {
+  color: #ffffff;
+}
+.search-container {
+  width: 100%;
+  height: auto;
+  padding: 5px 20px;
+  background-color: #ffffff;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #b8cae1;
+}
+.search-condition {
+  min-height: 25px;
+  line-height: 25px;
+}
+.search-condition .search-condition-icon {
+  float: left;
+  font-size: 18px;
+  line-height: 25px;
+}
+.search-condition .search-condition-icon.fa {
+  color: #ff9900;
+}
+.search-condition .search-condition-icon.fa:hover {
+  color: #ff9900;
+}
+.search-condition .search-condition-item {
+  float: left;
+  display: inline-block;
+  padding: 0 8px;
+  margin-right: 5px;
+}
+.search-condition .search-condition-item .qc-dropdown {
+  width: 100%;
+  border: none;
+  font-size: 12px;
+}
+.search-condition .search-condition-item .qc-dropdown .qc-dropdown-text {
+  text-align: center;
+  font-size: 12px;
+}
+.search-filter-list {
+  width: 100%;
+  min-height: 35px;
+  overflow: hidden;
+  padding: 5px 0 0 0;
+}
+.search-filter-list ul {
+  margin: 0px;
+}
+.search-filter-list ul li {
+  display: inline-block;
+  float: left;
+  line-height: 24px;
+  margin: 0 3px 0 0;
+  padding: 3px;
+  background-color: #f4f4f4;
+  border: 1px solid #eeeeee;
+  font-size: 12px;
+  color: #333333;
+}
+.search-filter-list ul li label {
+  float: left;
+  padding: 0px;
+  margin: 0px;
+  font-size: inherit;
+  font-weight: normal;
+}
+.search-filter-list ul li span {
+  height: 22px;
+  margin-left: 3px;
+  padding: 2px 5px;
+  border: 1px dashed #ff9900;
+  border-radius: 2px;
+  background-color: #ffffff;
+  line-height: 22px;
+  color: #ff9900;
+  cursor: pointer;
+}
+.search-filter-list ul li span:hover {
+  background-color: #FFFFE4;
+}
+.search-filter-list ul li span em {
+  color: inherit;
+}
+.search-filter-list ul li span em:hover {
+  cursor: pointer;
+  color: #FF8C0A;
+}
+.search-filter-list i {
+  float: left;
+  padding: 0 5px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #2581e3;
+  cursor: pointer;
+}
+.search-set-container .set-select {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  z-index: 99;
+  width: 310px;
+  height: 270px;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+}
+.search-set-container .set-select ul li {
+  float: left;
+  width: 77px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-right-color: #cccccc;
+  border-bottom-color: #cccccc;
+  font-size: 12px;
+  color: #666666;
+  cursor: pointer;
+}
+.search-set-container .set-select ul li.active {
+  border-bottom: none;
+}
+.search-set-container .set-select ul li:last-child {
+  border-right: none;
+}
+.search-set-container .set-select .set-select-list {
+  padding: 10px 0px 18px 10px;
+}
+.search-set-container .set-select .set-select-list .select-first,
+.search-set-container .set-select .set-select-list .select-sec,
+.search-set-container .set-select .set-select-list .select-third,
+.search-set-container .set-select .set-select-list .select-four {
+  padding: 10px;
+  height: 160px;
+  overflow: auto;
+}
+.search-set-container .set-select .set-select-list .select-first ul,
+.search-set-container .set-select .set-select-list .select-sec ul,
+.search-set-container .set-select .set-select-list .select-third ul,
+.search-set-container .set-select .set-select-list .select-four ul {
+  overflow: hidden;
+}
+.search-set-container .set-select .set-select-list .select-first ul li,
+.search-set-container .set-select .set-select-list .select-sec ul li,
+.search-set-container .set-select .set-select-list .select-third ul li,
+.search-set-container .set-select .set-select-list .select-four ul li {
+  float: left;
+  width: 115px;
+  margin-left: 10px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  border-bottom-color: #cccccc;
+  border-right: none;
+  text-align: left;
+}
+.search-set-container .set-select .corfirm {
+  display: block;
+  clear: both;
+  height: 55px;
+  line-height: 55px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+.search-set {
+  position: absolute;
+  top: 10px;
+  right: 309px;
+  width: 35px;
+  height: 27px;
+  background-color: #6b7fa8;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+}
+.search-set i.fa:hover {
+  color: #ffffff;
+}
+/*E高級搜索样式文件*/

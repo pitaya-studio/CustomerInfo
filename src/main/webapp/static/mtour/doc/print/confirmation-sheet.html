@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>确认单</title>
+    <link href="http://www.trekiz.com/favicon.ico" rel="shortcut icon"/>
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/trekiz_wholesaler_tts/static/mtour/static/css/common/qc.print.css">
+
+    <script type="text/javascript"
+            src="http://localhost:8080/trekiz_wholesaler_tts/static/mtour/static/js/common/jquery.js"></script>
+    <script type="text/javascript"
+            src="http://localhost:8080/trekiz_wholesaler_tts/static/mtour/static/js/common/angular.js"></script>
+
+    <script type="text/javascript">
+        var mtourApiUrl = 'http://localhost:8080/trekiz_wholesaler_tts/a/mtour/';
+        var mtourStaticUrl = 'http://localhost:8080/trekiz_wholesaler_tts/static/mtour/static/';
+        var mtourHtmlTemplateUrl = 'http://localhost:8080/trekiz_wholesaler_tts/static/mtour/html/';
+        var mtourLoginUrl = 'http://localhost:8080/trekiz_wholesaler_tts/a/login';
+        var mtourUploadFileUrl = 'http://localhost:8080//trekiz_wholesaler_tts/a/sys/docinfo/download/';
+    </script>
+    <script type="text/javascript"
+            src="http://localhost:8080/trekiz_wholesaler_tts/static/mtour/static/js/common/qc.js"></script>
+
+    <script type="text/javascript">
+        function printTure() {
+            printPage(document.getElementById("printDiv"));
+        }
+        var printModule = angular.module('printModule', ['qc']);
+        printModule.controller('PrintController', ['$scope', 'qcApi', function ($scope, qcApi) {
+            $scope.data = {
+                orderUuid: '订单Uuid',
+                companyName: '北京美途国际旅行社有限公司',
+                companyName_EN: '公司名称(英文)',
+                addressee: '公司地址',
+                addressee_en: '公司地址(英文)',
+                tel: '电话',
+                tax: '传真',
+                channelName: '收件人',
+                channelTel: '收件人电话',
+                orderer: '发件人',
+                ordererTel: '发件人电话',
+                orderDate: '订单日期',
+                groupNo: '团号',
+                routerInfo: '路线',
+                productName: '名12121称2121223 213 123112312321',
+                flights: [//明细
+                    {
+                        flightNo: '航班号',
+                        departureTime: '出发时间',//包含日期
+                        arrivalTime: '到达时间',
+                        departureAirport: '出发机场',
+                        arrivalAirport: '到达机场',
+                        memo: '备注'
+                    },
+                    {
+                        flightNo: '航班号2',
+                        departureTime: '出发时间2',//包含日期
+                        arrivalTime: '到达时间2',
+                        departureAirport: '出发机场2',
+                        arrivalAirport: '到达机场2',
+                        memo: '备注asdasd ad23 safsdf '
+                    }
+                ],
+                total:{
+                    salePrices:[//外报价
+                        {
+                            currencyUuid:'币种Uuid',
+                            exchangeRate:'汇率',
+                            peopleCount:'人数',
+                            costUnitPrice:'成本单价',
+                            totalCost:'成本总额',
+                            totalDeposit:'定金总额',
+                            totalBalance:'余款总额'
+                        }
+                    ],
+                    changedSalePrices:[//外报价修改
+                        {
+                            changeType:'添加或者减少',//+或者-
+                            currencyUuid:'币种Uuid',
+                            exchangeRate:'汇率',
+                            amount:'金额',
+                            memo:'备注'
+                        }
+                    ]
+                },
+                memo: '1.没有之一\n2.没有之2',
+                overseasAccount: {//境外账户
+                    accountName: '开户名',
+                    routing: 'Routing',
+                    account: '账号',
+                    swiftNumber: 'Swift number',
+                    accountBank: '开户行',
+                    accountBankAddress: '开户行地址',
+                    accountPhone: '开户手机号'
+                },
+                account: {//境内账户
+                    accountName: '公司名称',
+                    accountBank: '开户行',
+                    account: '账号'
+                },
+                wholesalerName: '销售方公司名称'
+            }
+        }]);
+
+    </script>
+
+</head>
+
+<body ng-app="printModule" ng-controller="PrintController">
+<div class="print-btn">
+    <button type="button" class="button-sm">打印</button>
+    <button type="button" class="button-sm">下载</button>
+</div>
+<div id="printDiv">
+    <table class="page-print title ">
+        <thead>
+        <tr>
+            <th width="135"></th>
+            <th width="250"></th>
+            <th width="136"></th>
+            <th width="250"></th>
+        </tr>
+        <tr>
+            <th class="fr f4 paddr" colspan="4"></th>
+        </tr>
+        <tr>
+            <th class="fr text_title" colspan="4">{{data.companyName}}</th>
+        </tr>
+        <tr>
+            <th class="fr address" colspan="4">{{data.companyName_EN}}</th>
+        </tr>
+        <tr>
+            <th class="fr address" colspan="4">{{data.addressee}} TEL:{{data.tel}} FAX:{{data.tax}}</th>
+        </tr>
+        <tr>
+            <th class="fr address" colspan="4">{{data.addressee_en}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="fc f2" width="135">收件人:</td>
+            <td class="fl paddl danhangnormal f3">{{data.channelName}}</td>
+            <td width="136" class="fc f2">发件人：</td>
+            <td colspan="4" class="fl danhangnormal f3">{{data.orderer}}</td>
+        </tr>
+        <tr>
+            <td class="fc f2">电话:</td>
+            <td class="fl f3 paddl">{{data.channelTel}}</td>
+            <td width="136" class="fc f2">电话：</td>
+            <td class="fl f3">{{data.ordererTel}}</td>
+        </tr>
+        <tr>
+            <td class="fc f2">页数:</td>
+            <td class="fl paddl  f3 ">&nbsp;</td>
+            <td width="136" class="fc f2">日期：</td>
+            <td class="fl f3">{{data.orderDate}}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="fc f2">收款通知书</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="fl paddl f2">你好！承蒙大力支持，团队具体费用通知如下：</td>
+        </tr>
+        <tr>
+            <td class="fc f2">团号：</td>
+            <td class="fl danhangnormal f3">{{data.groupNo}}</td>
+            <td class="fc f2">路线：</td>
+            <td class="fc danhangnormal f3">{{data.routerInfo}}</td>
+        </tr>
+        <tr>
+            <td class="fc f2">名称：</td>
+            <td colspan="3" class="fc f3">明细</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="fl text-vertical-middle duohangnormal f2">
+            {{data.productName}}
+            </td>
+            <td colspan="3" class="fl paddl f3">
+                烦请参考价格及航班见下：
+                <p ng-repeat="flight in  data.flights">
+                    {{flight.flightNo}} {{flight.departureAirport}} {{flight.arrivalAirport}} {{flight.departureTime}} {{flight.arrivalTime}}
+                    <br/>
+                    {{flight.memo}}
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="fl paddl f3">
+                备注:
+                <p class="memo">
+                    {{data.memo}}
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="fc f2">总计：</td>
+            <td colspan="2" class="fc f3">2410*24+315</td>
+            <td class="fc f3">CNY:57621</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="fl paddl f2">请将团款汇入以下账号或支票支付：</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="fl paddl f3">
+                <p>开户名：{{data.overseasAccount.accountName}}</p>
+
+                <p>Routeing：{{data.overseasAccount.routing}}</p>
+
+                <p>账号：{{data.overseasAccount.account}}</p>
+
+                <p>Swift Number：{{data.overseasAccount.swiftNumber}}</p>
+
+                <p>开户行：{{data.overseasAccount.accountBank}}</p>
+
+                <p>Bank address：{{data.overseasAccount.accountBankAddress}}</p>
+
+                <p>Phone number：{{data.overseasAccount.accountPhone}}</p>
+            </td>
+            <td colspan="2" class="fl paddl f3">
+                <p>公司名称：{{data.account.accountName}}</p>
+
+                <p>开户行：{{data.account.accountBank}}</p>
+
+                <p>账号：{{data.account.account}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="fc f2">销售方签章</td>
+            <td colspan="2" class="fc f2">客户方签章</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="fl paddl f3">
+                <p>公司名称：{{data.wholesalerName}}</p>
+
+                <p>签字：</p>
+
+                <p>盖章：</p>
+            </td>
+            <td colspan="2" class="fl paddl f3">
+                <p>公司名称：</p>
+
+                <p>签字：</p>
+
+                <p>盖章：</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="fc f2">年&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 月&nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 日
+            </td>
+            <td colspan="2" class="fc f3"><span class="fc f2">年&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 月&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 日</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>

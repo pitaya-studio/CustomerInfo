@@ -1,0 +1,1 @@
+[{fid:"1",fname:"订单",modules:[{id:"1",name:"单团订单"},{id:"2",name:"散拼订单"},{id:"3",name:"销售机票订单"} ,{id:"4",name:"计调机票订单"}]},{fid:"2",fname:"产品",modules:[{id:"1",name:"单团产品"},{id:"2",name:"产品"},{id:"3",name:"散拼产品"},{id:"4",name:"游学产品"},{id="5",name:"大客户产品"},{id:"6",name:"自由行产品"}]}]

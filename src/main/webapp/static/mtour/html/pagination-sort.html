@@ -1,0 +1,45 @@
+<div class="pagination-sort-container ">
+	<div class="pagination-sort ">
+	    <ul>
+			<!--modify by wlj at 2016.06.16-start   款项列表的时候不显示营收统计表-->
+			<li  ng-if="payTab=='3'&&companyRoleCode=='0'"  style="padding:0;">
+				<div search-Condition-Cost-Age class="search-condition-item"
+					 ng-model="filterParam.selectedExportTypes"  style="position:relative;"></div>
+			</li>
+			<!--modify by wlj at 2016.06.16-end-->
+			<!--订单列表批量下载-->
+			<li  ng-if="payTab=='4'&&companyRoleCode=='0'"  style="padding:0;" >
+				 <div search-Condition-Import-Batch class="search-condition-item"
+					 ng-model="filterParam.selectedExportTypes"  style="position:relative;"></div>
+			</li>
+	        <li>
+	            <span  ng-click="setSort(key,theSame)" ng-repeat="key in sortKeys">
+	                {{key.name}}
+					<!--<em class="fa fa-sort" ng-class="{'active':sortInfo.sortKey==key.code}"></em>-->
+<!--upAsc/downDesc-->
+					<em class="fa fa-sort-asc" ng-class="{'fa-active':(sortInfo.sortKey==key.code&&upAsc)}"></em>
+					<em class="fa fa-sort-desc" ng-class="{'fa-active':(sortInfo.sortKey==key.code&&downDesc)}"></em>
+<!--
+					<em class="fa fa-sort-asc " ng-class="{'active1':sortInfo.sortKey==key.code}"></em>
+					<em class="fa fa-sort-desc active::before" ng-class="{'active':sortInfo.sortKey==key.code}"></em>-->
+
+	            </span>
+	        </li>
+	        <li ng-if="canFoldAll">
+	            <span style="display: none" ng-click="spreadAll()">展开全部<em class="fa fa-table  active"></em></span>
+	            <i  ng-click="foldAll()">收起</i>
+	        </li>
+	        <li>
+	            <span>
+	                <em ng-click="pre()"
+	                    ng-class="{'disabled':pageInfo.currentIndex==1}"
+	                    class="fa fa-angle-left page-self"></em>
+	                {{pageInfo.currentIndex}}/{{calculatePageCount()}}
+	                <em ng-click="next()" ng-class="{'disabled':pageInfo.currentIndex==calculatePageCount()}"
+	                    class="fa fa-angle-right page-self"></em>
+	            </span>
+	        </li>
+	    </ul>
+	</div>	
+</div>
+

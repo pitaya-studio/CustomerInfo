@@ -1,0 +1,10 @@
+/*S滚动条样式*/
+.qc-scroll {
+  overflow: hidden;
+}
+.nicescroll-cursors {
+  background-color: #ff0000;
+  border: 1px solid #ff0000;
+  border-radius: 5px;
+}
+/*E滚动条样式*/

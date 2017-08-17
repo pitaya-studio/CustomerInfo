@@ -1,0 +1,100 @@
+/*S下拉框样式*/
+.qc-dropdown-md {
+  width: 300px;
+  height: 28px;
+  float: left;
+  line-height: 26px;
+}
+.qc-dropdown-md.qc-dropdown {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+}
+.qc-dropdown-xs {
+  width: 65px;
+  height: 20px;
+}
+.qc-dropdown-xs-second {
+  width: 65px;
+  height: 20px;
+}
+.qc-dropdown-sm {
+  width: 120px;
+  height: 28px;
+  float: left;
+  line-height: 26px;
+}
+.qc-dropdown-sm.qc-dropdown {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+}
+.qc-dropdown {
+  position: relative;
+  border: 1px solid #ffe0c1;
+  padding: 0px;
+  cursor: pointer;
+}
+.qc-dropdown .qc-dropdown-text-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-left: 3px;
+  padding-right: 15px;
+  background-color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.qc-dropdown .qc-dropdown-text-container .qc-dropdown-text {
+  display: inline-block;
+}
+.qc-dropdown .qc-dropdown-text-container .qc-dropdown-anchor {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  font-size: 9px;
+  color: #999999;
+}
+.qc-dropdown .qc-dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  margin-top: 2px;
+  padding: 0px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 100;
+}
+.qc-dropdown .qc-dropdown-container .qc-dropdown-filter {
+  border: 1px solid #dddddd;
+  border-bottom: none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  padding: 3px 5px;
+  width: 100%;
+}
+.qc-dropdown .qc-dropdown-container .qc-dropdown-list {
+  list-style: none;
+  border: 1px solid #dddddd;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 0px;
+  width: 100%;
+  background-color: #f9f9f9;
+}
+.qc-dropdown .qc-dropdown-container .qc-dropdown-list .qc-dropdown-item {
+  padding: 3px;
+  border-bottom: solid 1px #dddddd;
+}
+.qc-dropdown .qc-dropdown-container .qc-dropdown-list .qc-dropdown-item:last-child {
+  padding: 3px;
+  border-bottom: none;
+}
+.qc-dropdown .qc-dropdown-container .qc-dropdown-list .qc-dropdown-item:hover {
+  background-color: #deeeee;
+}
+.qc-dropdown .qc-dropdown-container .qc-dropdown-list .qc-dropdown-item.active {
+  background-color: #c0f98f;
+}
+/*E下拉框样式*/

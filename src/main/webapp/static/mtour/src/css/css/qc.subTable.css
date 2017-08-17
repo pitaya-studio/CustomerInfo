@@ -1,0 +1,15 @@
+/*S自表格所在父级表格的样式*/
+.table-list-lg .qc-sub-table-container {
+  background-color: #ffffff;
+  background-image: url(../../img/common/background/table-two-level-open-bg.png);
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+.table-list-lg .qc-sub-table-container:hover {
+  background-color: #fff5f5;
+}
+.table-list-lg .qc-sub-table-container > tr > td {
+  height: auto;
+  background-color: #fff5f5;
+}
+/*E自表格所在父级表格的样式*/

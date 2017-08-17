@@ -1,0 +1,43 @@
+/*S气泡提示样式文件*/
+.tips {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 245px;
+  height: 145px;
+  padding: 3px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  background-color: #ffffff;
+  font-size: 12px;
+}
+.tips .pop-header {
+  height: 20px;
+  background-color: #fff3d1;
+  line-height: 20px;
+  color: #ff9900;
+  text-align: right;
+}
+.tips .pop-header span {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.tips .pop-bodyer ol {
+  height: 200px;
+  overflow: auto;
+}
+.tips .pop-bodyer ol li {
+  list-style-type: decimal;
+  margin-left: 20px;
+  line-height: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+}
+.tips .pop-bodyer ol li em {
+  margin-left: 10px;
+  cursor: pointer;
+}
+/*E气泡提示样式文件*/

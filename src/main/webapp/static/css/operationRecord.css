@@ -1,0 +1,99 @@
+
+.title_name{
+	font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    height: 57px;
+    margin-top: -57px;
+    vertical-align: middle;
+    padding-left: 20px;
+}
+.activitylist_team_co3_text {
+    width: 43px!important;
+}
+.text_hint{
+    position: absolute;
+    left: 49px;
+    top: 4px;
+    white-space: nowrap;
+    color: #b2b2b2;
+    z-index: 2;
+}
+.title_bottom{
+    margin-top: 10px;
+    padding-left: 18px;
+}
+.title_bottom label{
+    vertical-align: top;
+    line-height: 28px;
+    height: 28px;
+    margin-bottom: 0;
+}
+.select_date {
+    position: relative;
+    display: inline-block;
+}
+.select_date input {
+    height: 26px;
+    border: 1px solid #d9d9d9;
+    padding: 0 5px;
+    background: url('../images/input_select.png') no-repeat 95% 50%;
+    cursor: pointer;
+    background-color: #fff;
+    margin-left: -4px;
+    margin-right: 8px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    line-height: 26px;
+    vertical-align: middle;
+    width: 72px;
+}
+.date_option {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    width: 84px;
+    margin-top: -10px;
+    margin-left: -4px;
+    line-height: 28px !important;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    z-index: 10;
+    border-radius: 4px;
+}
+
+.date_option li{
+    line-height: 28px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+.date_option li:hover{
+    background-color: #eeeeee;
+}
+.sec_select,.third_select{
+    display: none;
+}
+.third_select span{
+    vertical-align: top;
+    line-height: 28px;
+    height: 28px;
+}
+.title_bold{
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 18px;
+    margin-bottom: 3px;
+}
+.title_detail label{
+    padding-left: 18px;
+    margin-bottom: -10px;
+}
+.bold_text{
+    font-weight: bold;
+}
+#contentTable td[colspan="7"]{
+    text-align: center;
+}
+#contentTable td[colspan="5"]{
+    text-align: center;
+}

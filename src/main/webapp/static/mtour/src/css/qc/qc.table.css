@@ -1,0 +1,72 @@
+/*S表格样式文件*/
+.table-list-lg,
+.table-list-md,
+.table-list-sm {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.table-list-lg thead tr th,
+.table-list-md thead tr th,
+.table-list-sm thead tr th {
+  height: 40px;
+  background-color: #FFff00;
+  border: 1px solid #cccccc;
+  text-align: center;
+}
+.table-list-lg tbody tr td,
+.table-list-md tbody tr td,
+.table-list-sm tbody tr td {
+  height: 30px;
+  border: 1px solid #cccccc;
+  text-align: center;
+}
+.table-list-lg {
+  width: 100%;
+  padding: 0;
+}
+.table-list-lg tbody.fold:hover {
+  background: #cccccc;
+}
+.table-list-lg tbody.fold:hover tr td.empty {
+  background: #ffffff;
+}
+.table-list-lg tbody.spread:hover {
+  background: #ffffff;
+}
+.table-list-lg tbody.spread:hover tr td.empty {
+  background: #ffffff;
+}
+.table-th-default-width {
+  width: 100px;
+}
+.table-th-lg-width {
+  width: 300px;
+}
+.table-th-md-width {
+  width: 200px;
+}
+.table-th-sm-width {
+  width: 150px;
+}
+.operation {
+  position: absolute;
+  top: 0px;
+  width: 200px;
+  height: 400px;
+  background-color: #CCCCCC;
+}
+.operation a:link {
+  display: inline-block;
+  margin: 5px;
+  color: #333333;
+}
+.divider {
+  display: block;
+  width: 80%;
+  height: 1px;
+  margin: 0 auto;
+  border-top-color: #ffff00;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+/*E表表格样式文件*/

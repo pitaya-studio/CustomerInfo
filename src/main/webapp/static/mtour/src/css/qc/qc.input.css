@@ -1,0 +1,52 @@
+/*S输入框、文本框、下拉样式文件*/
+.text-input-lg {
+  width: 170px;
+  height: 20px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border: 1px solid #ffe0c1;
+}
+.text-input-md {
+  width: 130px;
+  height: 20px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+}
+.text-input-md-second {
+  width: 130px;
+  height: 28px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+}
+.text-input-sm {
+  width: 80px;
+  height: 28px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+}
+.text-input-xs {
+  width: 60px;
+  height: 20px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border: 1px solid #ffe0c1;
+}
+.text-input-xs-second {
+  width: 37px;
+  height: 28px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+}
+/*E输入框、文本框、下拉样式文件*/

@@ -1,0 +1,49 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>付款记录</span>
+    </div>
+</div>
+<div class="qc-scroll">
+    <div class="first-step-info">
+        <table class="table-list-md">
+            <thead>
+                <tr class="">
+                    <th class="table-th-default-width">序号</th>
+                    <th class="table-th-default-width">付款日期</th>
+                    <th class="table-th-default-width">付款方式</th>
+                    <th class="table-th-md-width text-right">付款总额</th>
+                    <th class="table-th-default-width text-right">转换后总额</th>
+                    <th class="table-th-default-width">付款状态</th>
+                    <th class="table-th-md-width">操作</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="record in recordList" class="normal odd-even-display-color">
+                <tr>
+                    <td>{{$index+1}}</td>
+                    <td>{{record.paymentDate}}</td>
+                    <td>{{record.paymentMethodName}}</td>
+                    <td class="text-right">{{record.paymentTotalAmount}}</td>
+                    <td class="text-right">{{record.convertedTotalAmount}}</td>
+                    <td>{{record.paymentStatusName}}</td>
+                    <td><span class="base-operator">
+                        <button batch-pay-record-detail order-uuid="record.orderUuid"
+                                payment-object-uuid="record.paymentObjectUuid"
+                                payobj-payment-uuid="record.paymentObj_paymentUuid">详情
+                        </button>
+                        <button ng-click="cancelBatchPay(record)" ng-disabled="record.paymentStatusCode=='1'">撤销
+                        </button>
+                        <button show-Attachment="record.attachments" ng-disabled="!record.attachments.length"
+                                class="ng-isolate-scope">付款凭证
+                        </button>
+                    </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="butn butn-default " ng-click="closeThisDialog()">关闭</button>
+    </div>
+</div>

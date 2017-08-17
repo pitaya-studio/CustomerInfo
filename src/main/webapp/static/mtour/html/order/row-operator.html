@@ -1,0 +1,139 @@
+<div>
+    <span class="divider">
+    <button
+            order-reg-button=""
+            order-Uuid="order.orderUuid" operator-Type="2"
+            ng-if="isRole('mtourOrder:orderList:detail')"
+            class="">订单详情
+    </button>
+
+    <button
+            order-reg-button=""
+            ng-disabled="order.orderStatusCode=='2' || !isRole('mtourOrder:orderList:edit') || (companyRoleCode=='0'&&order.lockStatus==1)"
+            order-Uuid="order.orderUuid" operator-Type="1" meitu-YN="meituYN"
+            class="">修改订单
+        <!--modify by wlj at 2016.06.16-start <!--ng-click="commitOrder({{order.orderUuid}})"-->
+    </button>
+        <button ng-show="companyRoleCode=='0'"
+                ng-disabled="order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:edit') || (companyRoleCode=='0'&&order.lockStatus==1)"
+                order-confirm=""  order-uuid="order.orderUuid">生成订单
+        </button>
+
+        <!--modify by wlj at 2016.06.16-end-->
+    <button
+            ng-disabled="order.orderStatusCode=='2' || !isRole('mtourOrder:orderList:cancel')"
+            order-cancel="" order-uuid="order.orderUuid">取消订单
+    </button>
+
+    </span>
+	
+	 <span class="divider">
+	 	
+    <button
+            ng-disabled="(order.orderStatusCode!='0'&&order.orderStatusCode!='4') || !isRole('mtourOrder:orderList:addPNR') || (companyRoleCode=='0'&&order.lockStatus==1)"
+            add-invoice-original-group-button="" order-uuid="order.orderUuid">
+        订单追散
+    </button>
+    <button
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:detailPNR')"
+            ng-class="{'active':spreadSubTableId=='pnrList'+order.orderUuid}"
+            ng-click="toggleSubTable('pnrList'+order.orderUuid,$event)">
+        展开PNR
+    </button>
+
+    <button ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:borrowing') || (companyRoleCode=='0'&&order.lockStatus==1)"
+            ng-class="{'active':spreadSubTableId=='loan'+order.orderUuid}"
+            ng-click="toggleSubTable('loan'+order.orderUuid,$event)" ng-if="companyRoleCode!='0'">
+        订单借款
+    </button>
+    <button ng-if="companyRoleCode!='0'"
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:showBorrowingList')"
+            ng-class="{'active':spreadSubTableId=='loanList'+order.orderUuid}"
+            ng-click="toggleSubTable('loanList'+order.orderUuid,$event)">
+        借款记录
+    </button>
+
+    <button
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:refund') || (companyRoleCode=='0'&&order.lockStatus==1)"
+            ng-class="{'active':spreadSubTableId=='refund'+order.orderUuid}"
+            ng-click="toggleSubTable('refund'+order.orderUuid,$event)">
+        订单退款
+    </button>
+    <button
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:showRefundList')"
+            ng-class="{'active':spreadSubTableId=='refundList'+order.orderUuid}"
+            ng-click="toggleSubTable('refundList'+order.orderUuid,$event)">
+        退款记录
+    </button>
+
+    <button
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:rebate') || (companyRoleCode=='0'&&order.lockStatus==1)"
+            ng-class="{'active':spreadSubTableId=='additionalCost'+order.orderUuid}"
+            ng-click="toggleSubTable('additionalCost'+order.orderUuid,$event)">追加成本
+    </button>
+    <button
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:showRebateList')"
+            ng-class="{'active':spreadSubTableId=='additionalCostList'+order.orderUuid}"
+            ng-click="toggleSubTable('additionalCostList'+order.orderUuid,$event)"> 追加记录
+    </button>
+
+   
+    </span>
+	
+	<span class="divider">	
+	
+    <button class=""
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4'|| !isRole('mtourOrder:orderList:costInput')"
+            order-cost-input-btn="" operator-Type="0"
+            order-uuid="order.orderUuid" settlement-lock-status="order.lockStatus">
+        成本录入
+    </button>
+    <button
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4'|| !isRole('mtourOrder:orderList:showCostList')"
+            ng-class="{'active':spreadSubTableId=='orderCostList'+order.orderUuid}"
+            ng-click="toggleSubTable('orderCostList'+order.orderUuid,$event)">
+        成本记录
+    </button>
+
+    <button
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4'|| !isRole('mtourOrder:orderList:receive') || (companyRoleCode=='0'&&order.lockStatus==1)"
+            order-receive-input-btn="" order-uuid="order.orderUuid">订单收款
+    </button>
+    <button
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:showReceiveList')"
+            ng-class="{'active':spreadSubTableId=='orderReceiveList'+order.orderUuid}"
+            ng-click="toggleSubTable('orderReceiveList'+order.orderUuid,$event)">
+        收款记录
+    </button>
+
+    <button class=""
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:otherReceive')"
+            other-revenue-input-btn="" operator-Type="0"
+            order-uuid="order.orderUuid" settlement-lock-status="order.lockStatus">
+        其他收入收款
+    </button>
+    <button
+            ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:showOtherReceiveList')"
+            ng-class="{'active':spreadSubTableId=='otherRevenueList'+order.orderUuid}"
+            ng-click="toggleSubTable('otherRevenueList'+order.orderUuid,$event)">
+        其他收入收款记录
+    </button>
+
+    </span>
+	<span class="divider">
+        <!--<button print-confirm-button="" order-Uuid="order.orderUuid" ng-disabled="order.orderStatusCode!='0'">确认单</button>-->
+        <button print-confirm-button="" order-Uuid="order.orderUuid"
+                ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:confirmation')">确认单
+        </button>
+        <button ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4' || !isRole('mtourOrder:orderList:statements')"
+                print-settlement-Button order-Uuid="order.orderUuid" class="">结算单
+        </button>
+        <button ng-disabled="order.orderStatusCode!='0'&&order.orderStatusCode!='4'"
+                expenditure-Button order-Uuid="order.orderUuid" class=""
+                ng-show="companyRoleCode=='0'&&isRole('mtourOrder:orderList:expenditure')">支出单
+        </button>
+        <button show-Attachment="order.attachment"
+                ng-disabled=" !order.attachment.length || !isRole('mtourOrder:orderList:file')">附件
+        </button>
+	</span>
+</div>

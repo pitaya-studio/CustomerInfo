@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+        <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+        <script type="text/javascript">
+            var commonModule = angular.module('commonModule', ['qc', 'docModule']);
+            commonModule.controller('NavController', ['$scope', 'docNavInfo', function ($scope, docNavInfo) {
+                $scope.navInfo = docNavInfo;
+                $scope.navInfo.current = 'api';
+                $scope.navInfo.sub = 'common';
+            }]);
+
+        </script>
+    </head>
+    <body class="fixed-top" ng-app="commonModule">
+        <doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+        <div class="container">
+            <div class="docs-header">
+                <h1>基础信息</h1>
+
+                <p>
+                    项目Api标准和基础信息Api </p>
+            </div>
+            <div class="breadcrumb">Quauq Doc > Api文档 > 基础信息</div>
+            <div class="page-header">
+                <h1>Api标准</h1>
+            </div>
+            <div>
+                <h3>Ajax</h3>
+
+                <div>
+                    <p>本次项目使用ajax进行数据的前后台交互,使用的 http method 为POST</p>
+
+                    <p>GET:本次项目部的ajax不使用GET请求</p>
+
+                    <p>POST:所有数据的请求统一使用该方法</p>
+                </div>
+                <h3>mtour 数据交互协议</h3>
+
+                <div>
+                    <p>request:</p>
+            <pre>
+    {
+        requestType:'请求类型',//前台识别请求类型用的
+        param:{请求参数对象}
+    }</pre>
+                    <p>response:</p>
+            <pre>
+    {
+         responseType:'返回类型',//前台识别请求类型用的,和requestType一样即可
+         responseCode:'相应状态码',//success:成功,fail:请求失败,error:发生异常,authentication:没有登录或者session过期
+         msg:{
+             code:'业务状态码',//fail时,返回的失败状态码,根据不同的api再定义（0001：传递参数异常；0002：系统处理异常；0003：菜单权限接口，发现有无法关联到父节点的menu时使用）
+             description:'返回信息'
+         },
+         data:{响应的数据}//对象或者数组
+    }</pre>
+                </div>
+            </div>
+            <div class="page-header">
+                <h1>数据字典</h1>
+
+                <p>开发对接人:hao.zhang</p>
+            </div>
+            <div>
+
+
+                <h3 class="bg-danger">性别</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:common/getDictListByType</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+
+            {
+                dictType:'person_sex',
+            }
+
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            sexCode:'性别代码',
+            sexName:'性别名称'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3 class="bg-danger">游客类型</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:common/getDictListByType</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+
+        {
+            dictType:'traveler_type'
+        }
+
+            </pre>
+
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            travelerTypeCode:'游客类型代码',
+            travelerTypeName:游客类型名称'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3 class="bg-danger">签证类型</h3>
+
+                <p class="mark">描述:个签/照会/邀请/照会+邀请/探亲/续签/旅游/个签+探亲+邀请/商务</p>
+
+                <p>接口路径:common/getDictListByType</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+
+        {
+            dictType:'new_visa_type'
+        }
+
+            </pre>
+
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            visaTypeCode:'签证类型代码',
+            visaTypeName:'签证类型名称'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3 class="bg-danger">证件类型</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:common/getDictListByType</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+        {
+            dictType:'papers_Type'
+        }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            credentialsTypeCode:'证件类型代码',
+            credentialsTypeName:'证件类型名称'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3 class="bg-danger">地接社类型</h3>
+
+                <p class="mark">描述:待确认</p>
+
+                <p>接口路径:common/getDictListByType</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+        {
+            dictType:'travel_agency_type'
+        }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            tourOperatorTypeCode:'地接社类型代码',
+            tourOperatorTypeName:'地接社类型名称'
+        }
+    ]
+            </pre>
+                </div>
+
+
+            </div>
+            <div class="page-header">
+                <h1>通用数据</h1>
+            </div>
+            <div>
+
+                <h3>机场</h3>
+
+                <div>
+                    <p class="mark">描述:基础信息维护模块-机场信息</p>
+
+                    <p>接口路径:common/getAirportVaguely</p>
+
+
+                    <p>输入(param)</p>
+            <pre>
+    {
+        airportKey:'机场名称或者快捷搜索码'',//模糊搜索
+        count:'返回个数'//-1表示返回全部,必填
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            airportUuid:'机场uuid',
+            airportName:'机场名称'
+            airportCode:'机场Code'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3>城市</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:common/getCity</p>
+
+
+                    <p>输入(param)</p>
+            <pre>
+    {
+        cityKey:'城市名称或者快捷搜索码'',//模糊搜索
+        count:'返回个数'//-1表示返回全部,必填
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            cityUuid:'城市uuid',
+            cityName:'城市名称'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3>国家</h3>
+
+                <p class="mark">描述:基础信息维护模块-目的地</p>
+
+                <p>接口路径:common/getCountryVaguely</p>
+
+                <div>
+                    <p>输入(param):</p>
+              <pre>
+    {
+        countryKey:'国家名称/快捷搜索码',//模糊搜索
+        count:'返回个数'//-1表示返回全部,必填
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            countryUuid:'国家uuid',
+            countryName:'国家名称'
+        }
+    ]
+            </pre>
+                </div>
+
+
+                <h3>线路国家</h3>
+
+                <p class="mark">描述:新的线路国家模块(对应美途的生成订单时候的线路国家)</p>
+
+                <p>接口路径:</p>
+
+                <div>
+                    <p>输入(param):</p>
+              <pre>
+    {
+        countryKey:'国家名称/快捷搜索码',//模糊搜索
+        count:'返回个数'//-1表示返回全部,必填
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            countryUuid:'国家uuid',
+            countryName:'国家名称'
+        }
+    ]
+            </pre>
+                </div>
+
+
+                <h3>航空公司</h3>
+
+                <p class="mark">描述:基础信息维护模块-航空公司</p>
+
+                <p>接口路径:common/getAirlineVaguely</p>
+
+                <div>
+                    <p>输入(param):</p>
+              <pre>
+    {
+        airlineCompanyKey:'航空公司名称/快捷搜索码',//模糊搜索
+        count:'返回个数'//-1表示返回全部,必填
+    }
+              </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            airlineCompanyUuid:'航空公司uuid',
+            airlineCompanyName:'航空公司名称'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3>币种</h3>
+
+                <p class="mark">描述:基础信息维护模块-币种信息</p>
+
+                <p>接口路径:common/getCurrency</p>
+
+                <div>
+                    <p>输入(param):无</p>
+
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            currencyUuid:'币种uuid',
+            currencyCode:'币种代码',
+            currencyName:'币种名称',
+            convertLowest:'最低汇率'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3>订单币种及汇率</h3>
+
+                <p class="mark">描述:根据订单id和类型获取币种及汇率</p>
+
+                <p>接口路径:order/getExistsCurrency</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>{
+    orderId:'订单uuid',
+    type:'类型'//1:其他收入,2:订单收款
+
+}</pre>
+
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            currencyUuid:'币种uuid',
+            currencyCode:'币种代码',
+            currencyName:'币种名称',
+            exchangeRate:'汇率'
+        }
+    ]
+            </pre>
+                </div>
+
+
+                <h3>用户</h3>
+
+                <p class="mark">描述:系统设置-账号管理</p>
+
+                <p>接口路径:common/getUserByRoleType</p>
+
+                <div>
+                    <p>输入(param):</p>
+              <pre>
+    {
+        roleType:'用户类型',//下单人,票务,计调,必填
+        userName:'用户姓名',//模糊搜索
+        count:'返回个数'//-1表示返回全部,必填
+    }
+              </pre>
+
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            userId:'用户Id',
+            userName:'用户姓名'
+        }
+    ]
+            </pre>
+                </div>
+
+
+                <h3>渠道</h3>
+
+                <p class="mark">描述:渠道模块-渠道商查询-签约渠道(根据渠道类型,输出该类型下的渠道)</p>
+
+                <p>接口路径:common/getAgentinfoByTypeCode</p>
+
+                <div>
+                    <p>输入(param)</p>
+            <pre>
+    {
+        channelTypeCode:'渠道类型代码',//必填   "1":签约渠道,"2":非签约渠道,"":返回所有
+        channelName:'渠道名称',//模糊搜索
+        count:'返回个数'//-1表示返回全部,必填
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            channelUuid:'渠道uuid',
+            channelName:'渠道名称',
+            contactName:'渠道联系人姓名',
+            contactPhone:'渠道联系人电话',
+            channelTel:'渠道固定电话',
+            channelZipCode:'渠道邮编',
+            channelAddress:'渠道地址',
+            channelTax:'渠道传真'
+        }
+    ]
+            </pre>
+                </div>
+
+
+                <h3>银行[账户]</h3>
+
+                <p class="mark">描述:银行和账户信息</p>
+
+                <p>接口路径:common/getBankInfo</p>
+
+                <div>
+                    <p>输入(param)</p>
+            <pre>
+    {
+         uuid:'uuid',//渠道Uuid(必填)或者地接社Uuid(选填)
+         type:'银行类型'//渠道或者地接社
+    }
+            </pre>
+
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            bankName:'银行名称',
+            accounts:[//账户
+                {
+                    accountNo:'账户号码'
+                }
+            ]
+        }
+    ]
+            </pre>
+                </div>
+
+
+                <h3>地接社</h3>
+
+                <p class="mark">描述:待确认</p>
+
+                <p>接口路径:common/getSupplierList</p>
+
+                <div>
+                    <p>输入(param)</p>
+            <pre>
+    {
+        tourOperatorTypeCode:'地接社类型uuid',//必填
+        tourOperatorName:'地接社名称',//模糊搜索
+        count:'返回个数'//-1表示返回全部,必填
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+            tourOperatorUuid:'地接社uuid',
+            tourOperatorName:'地接社名称'
+        }
+    ]
+            </pre>
+                </div>
+
+
+                <h3>文件上传</h3>
+
+                <p class="mark">描述:上传指定类型的附件</p>
+
+                <p>接口路径:common/upload</p>
+
+                <div>
+                    <p>输入(param)</p>
+        <pre>
+    {
+        attachmentType:'附件类型'//游客资料,收款凭证,支付凭证...,必填
+    }
+        </pre>
+
+                    <p>输出(data)</p>
+            <pre>
+    {
+        attachmentUuid:'文件Uuid',
+        attachmentUrl:'文件地址',
+        fileName:'文件名称'
+    }
+            </pre>
+                </div>
+
+                <h3>文件删除</h3>
+
+                <p class="mark">描述:删除指定Uuid的附件</p>
+
+                <p>接口路径:common/delFile</p>
+
+                <div>
+                    <p>输入(param)</p>
+        <pre>
+    {
+        attachmentUuid:'文件Uuid'//必填
+    }
+        </pre>
+
+                    <p>输出(data):无</p>
+                </div>
+            </div>
+            <div class="page-header">
+                <h1>其他</h1>
+            </div>
+            <div>
+
+                <h3>菜单权限</h3>
+
+                <div>
+                    <p class="mark">描述:输出登录者的权限菜单和操作权限</p>
+
+                    <p>接口路径:common/getMenuByUser</p>
+
+                    <p>输入(param):无</p>
+
+                    <p>输出(data):</p>
+            <pre>
+    [
+        {
+            menuName: '1级菜单名称',
+            menuCode: '1级菜单代码',
+            icon:'图标',
+            sort:'顺序'
+            subMenus: [
+                {
+                    subMenuName: '2级菜单名称',
+                    subMenuCode: '2级菜单代码',
+                    subMenuUrl: '2级菜单Url',
+                    icon:'图标',
+                    sort:'顺序'
+                    roles:[//各页面的权限
+                        {
+                            roleName:'权限名称',//按钮显示的内容
+                            roleCode:'权限代码',//按钮对应的前端行为
+                            level:'权限顺序'//按钮分块级别\(在操作中块的顺序)
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3>全站统计信息</h3>
+
+                <div>
+                    <p class="mark">描述:通过输入的条件输出全站各列表的统计数量(页面右上中中各类别的数量)</p>
+
+                    <p>接口路径:common/countAllInfo</p>
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        searchParam:{
+            searchType:'搜索类型',
+            searchKey:'搜索输入的文本'
+        }
+    }</pre>
+                    <p>输出(data):</p>
+            <pre>
+    [
+        {
+            listCategoryName:'列表类别',//全部:'0',订单:'1',付款:'2',收款:'3'
+            listCategoryCode:'列表code',
+            count:'满足条件的数量'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3>获取用户信息</h3>
+
+                <div>
+                    <p class="mark">描述:获取当前用户的个人信息</p>
+
+                    <p>接口路径:common/getCurrentUserInfo</p>
+
+                    <p>输入(param):无</p>
+
+                    <p>输出(data):</p>
+            <pre>
+    {
+        userId:'用户id',
+        userName:'用户名称',
+        currentDate:'当前日期',
+        lastLoginDateTime:'最后登录日期',
+        banks:[//批发商的银行信息
+            {
+                bankName:'银行名称',
+                accounts:[//账户
+                    {
+                        accountNo:'账户号码'
+                    }
+                ]
+            }
+        ],
+        companyRoleCode:'批发商角色' //0-美途，1-华尔远航
+    }
+            </pre>
+                </div>
+
+
+                <h3>获取订单统计信息</h3>
+
+                <div>
+                    <p class="mark">描述:获取当前用户权限内订单的统计信息</p>
+
+                    <p>接口路径:common/orderStatisticsInfo</p>
+
+                    <p>输入(param):无</p>
+
+                    <p>输出(data):</p>
+            <pre>
+    {
+        totalOrderCount:'订单总数',
+        totalReceiveAmount:'应收总金额',//换算成人民币后的金额
+        totalUnreceiveAmount:'未收总金额'//换算成人民币后的金额
+    }
+            </pre>
+                </div>
+            </div>
+        </div>
+        <doc-footer></doc-footer>
+    </body>
+</html>

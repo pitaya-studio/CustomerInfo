@@ -1,0 +1,122 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>订单收款-详情</span>
+    </div>
+</div>
+<div class="dialog-body-md-collect-other dialog-body-cost-input qc-scroll" style=" height: 400px;">
+    <div class="first-step-info">
+        <ul>
+            <li>
+                <label>收款类别：</label>
+
+                <div class="show-text-base" ng-bind="receiveType.receiveTypeName"></div>
+            </li>
+            <li>
+                <label>收款方式：</label>
+
+                <div class="show-text-base" ng-bind="paymentMethodType.paymentMethodName"></div>
+            </li>
+            <li>
+                <label>收款人数：</label>
+
+                <div class="show-text-base" ng-bind="OrderReceiveDetail.receivePeopleCount"></div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    收款金额：
+                </label>
+
+                <div class="show-text-base"><span
+                        ng-bind="OrderReceiveDetail.receiveAmount|qcCurrency:selectedCurrency.currencyCode"></span>
+                </div>
+
+            </li>
+            <!--<li class="money">-->
+            <!--<span><label>货币换算：</label>-->
+            <!--<div class="qc-input-group-base-third qc-input-group-md-third">-->
+            <!--<div class="qc-dropdown" qc-dropdown ng-model="convertedSelectedCurrency"-->
+            <!--item-text="{{qcDropdownItem.currencyCode}}"-->
+            <!--dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}" items="currencies"-->
+            <!--list-width="100"></div>-->
+            <!--<label>汇率:</label><span ng-bind="convertedSelectedCurrency.convertLowest"></span>-->
+            <!--</div>-->
+            <!--</span> <label>总价：</label><span-->
+            <!--ng-bind="convertedSelectedCurrency!=''?convertedSelectedCurrency.currencyCode+OrderReceiveDetail.receiveAmount*convertedSelectedCurrency.convertLowest:''"></span>-->
+            <!--</li>-->
+            <li class="money">
+                <!--<span class="current"><label>货币换算：</label><em ng-bind="convertedCurrency.currencyCode"></em>汇率=<em-->
+                <!--ng-bind="convertedExchangeRate()|number:3"></em></span>-->
+                <span class="current"><label>货币换算：</label><em ng-bind="convertedCurrency.currencyCode"></em>汇率=<em
+                        ng-bind="OrderReceiveDetail.exchangeRate|number:3"></em></span>
+                <span><label>转换后金额：</label><em
+                        ng-bind="convertedAmount()|qcCurrency:convertedCurrency.currencyCode"></em></span>
+            </li>
+        </ul>
+    </div>
+    <div class="second-step-info">
+        <ul>
+            <li ng-if="OrderReceiveDetail.paymentMethodCode==1">
+                <label>支票号：</label>
+
+                <div class="show-text-base" ng-bind="OrderReceiveDetail.checkNo"></div>
+            </li>
+            <li ng-if="OrderReceiveDetail.paymentMethodCode==1">
+                <label>支票日期：</label>
+
+                <div class="show-text-base" ng-bind="OrderReceiveDetail.checkIssueDate"></div>
+            </li>
+            <li>
+                <label>付款单位：</label>
+
+                <div class="show-text-base" ng-bind="OrderReceiveDetail.payer"></div>
+            </li>
+            <li ng-if="OrderReceiveDetail.paymentMethodCode==4">
+                <label>付款行名称：</label>
+
+                <div class="show-text-base" ng-bind="OrderReceiveDetail.paymentBank"></div>
+            </li>
+            <li ng-if="OrderReceiveDetail.paymentMethodCode==4">
+                <label>付款账户：</label>
+
+                <div class="show-text-base" ng-bind="OrderReceiveDetail.paymentAccount"></div>
+            </li>
+            <li ng-if="OrderReceiveDetail.paymentMethodCode==4">
+                <label>收款行名称：</label>
+
+                <div class="show-text-base" ng-bind="OrderReceiveDetail.receiveBank"></div>
+            </li>
+            <li ng-if="OrderReceiveDetail.paymentMethodCode==4">
+                <label>收款账户：</label>
+
+                <div class="show-text-base" ng-bind="OrderReceiveDetail.receiveAccount"></div>
+            </li>
+            <li>
+                <label>收款凭证：</label>
+                <div class="show-text-base-free" style=" float: left;">
+                    <ul>
+                        <li ng-repeat="item in OrderReceiveDetail.attachments">
+                            <i class="fa fa-paperclip"></i>
+                            <a  class="text-link" ng-href="{{uploadFileUrl+item.attachmentUuid}}" target="_blank">
+                                <span title="{{item.fileName}}">{{item.fileName|nameCut:false:'20':'...'}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <label>备注：</label>
+
+                <div class="show-text-paragraph" ng-bind="OrderReceiveDetail.memo">无</div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <!--<button class="btn btn-primary " ng-click="ok(selectedPerson1)">保存并提交</button>-->
+        <!--<button class="btn btn-default " ng-click="closeThisDialog()">修改</button>-->
+        <button class="butn butn-primary" ng-click="closeThisDialog()">关闭</button>
+    </div>
+</div>

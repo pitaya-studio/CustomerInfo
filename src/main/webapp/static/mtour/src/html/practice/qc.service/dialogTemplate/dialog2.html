@@ -1,0 +1,21 @@
+<div style="height: 500px; overflow: auto;  padding: 10px;">
+    <label for="ddlPerson1">name</label>
+    <div id="ddlPerson1" style="width: 200px;"
+         ng-model="selectedPerson1" qc-dropdown
+         item-text="{{qcDropdownItem.name}}"
+         filter-expression="name"
+         items="list">
+    </div>
+    <Hr>
+    <div style="height: 500px;">
+        adsa
+    </div>
+next
+</div>
+
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="btn btn-primary " ng-click="ok(selectedPerson1)">Ok</button>
+        <button class="btn btn-default " ng-click="closeThisDialog()">Close</button>
+    </div>
+</div>

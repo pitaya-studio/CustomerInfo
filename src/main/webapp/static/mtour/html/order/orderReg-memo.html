@@ -1,0 +1,15 @@
+<div>
+    <div class="subheading">
+        <span>备注</span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="fold=!fold;"></em>
+    </div>
+    <div class="remarks" ng-show="!fold">
+        <textarea class="multi-text-lg"
+                  ng-show="editModel == 'edit'"
+                  ng-model="memo"></textarea>
+
+    </div>
+    <div class="remarks" ng-show="!fold">
+        <p class="word-break-all" ng-if="editModel != 'edit'">{{memo}}</p>
+    </div>
+</div>

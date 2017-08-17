@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+        <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+        <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/static/css/common/src/jquery-ui.css"/>
+
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+        <script type="text/javascript">
+            var financeModule = angular.module('financeModule', ['qc', 'docModule']);
+            financeModule.controller('NavController', ['$scope', 'docNavInfo', function ($scope, docNavInfo) {
+                $scope.navInfo = docNavInfo;
+                $scope.navInfo.current = 'api';
+                $scope.navInfo.sub = 'finance';
+            }]);
+        </script>
+    </head>
+    <body class="fixed-top" ng-app="financeModule">
+        <doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+        <div class="container">
+            <div class="docs-header">
+                <h1>财务</h1>
+
+                <p>
+                    财务相关Api </p>
+            </div>
+            <div class="breadcrumb">Quauq Doc > Api文档 > 财务</div>
+            <div class="page-header">
+                <h1>付款</h1>
+            </div>
+            <div>
+
+                <h3>付款-列表</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:/mtour/mtourfinance/getPayList</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        searchParam:{
+            searchType:'搜索类型',
+            searchKey:'搜索输入的文本'
+        },
+        filterParam:{
+            fundsType:['款项类型Code'],//"A,B"
+            paymentStatusCode:['付款状态Code'],//"A,B"
+            tourOperatorOrChannel:[//地接社/渠道
+                {
+                    tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+
+                    tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid'
+                }
+            ],
+            applicantId:['申请人Id'],//"zhang3,li4"
+            pnrValue:['PNR值'],//abc,111,xyz
+            printStatusCode:['打印状态Code'],//"A,B"
+            approvalDate:['报批日期'],//"2015-01-01~2015-02-01,2015-02-03~2015-10-01,~2016-01-01,2016-02-01~"
+            departureDate:['出团日期'],//"2015-01-01~2015-02-01,2015-02-03~2015-10-01,~2016-01-01,2016-02-01~"
+            payableAmount:['应付金额'],//"100~200,300~350,600~"
+            payaAmount:['应付金额'],//[{"id":"108","minAmount":"1","maxAmount":"2"},{"id":"127","minAmount":"23","maxAmount":""},{"id":"128","minAmount":"","maxAmount":"2"}]}
+        },
+        sortInfo:{
+            sortKey: '排序项',//报批日期:approvalDate,更新时间:modifiedDateTime,出团日期:departureDate
+            dec: '是否倒序'
+        },
+        pageParam:{//分页搜索信息
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        results:[//表格的输出结果
+            {
+                orderUuid:'订单Uuid',
+                orderNum:'订单编号',
+                paymentUuid:'付款Uuid',
+                approvalDate:'报批日期',
+                productNo：'产品号',
+
+
+                //只有成本付款的需要pnr
+                invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                PNR:'PNR编号',//大编号为PNR的时候才有意义
+                tourOperatorUuid:'地接社Uuid',//大编号为地接社的时候才有意义
+                tourOperatorName:'地接社Name',//大编号为地接社的时候才有意义
+
+                groupNo:'团号',
+                productName:'产品名称',
+                fundsName:'款项名称',
+                fundsType:'款项类型',
+
+                tourOperatorOrChannelName：'地接社/渠道 名称',
+
+                applicant:'申请人姓名',
+                payAmount:[//成本价格'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额',
+                    }
+                ],
+                payableAmount:[//应付金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额',
+                    }
+                ],
+                paidAmount:[//已付金额
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                paymentStatus:'付款状态',
+                modifiedDateTime:'最后修改时间',
+                departureDate:'出团日期',
+                channelTypeCode:'渠道类型代码',//"1":签约渠道,"2":非签约渠道,"":
+            }
+        ],
+        page:{
+            totalRowCount:'总行数',
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+
+            </pre>
+                </div>
+
+                <h3>付款-提交-查询付款金额</h3>
+
+                <div>
+                    <p class="mark">描述:查询应付金额和未付金额,以便提交的窗口展示</p>
+
+                    <p>接口路径:/mtour/mtourfinance/getPayedMoneyInfoForPay</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        paymentUuid:'付款Uuid',
+        fundsType:'款项类型'
+    }
+            </pre>
+                    <p>输出(data)-无</p>
+            <pre>
+    {
+        payableAmount:[//应付金额
+            {
+                currencyUuid:'币种Uuid',
+                exchangeRate:'汇率',
+                amount:'金额',
+            }
+        ],
+         payingAmount:[//未付金额
+            {
+                currencyUuid:'币种Uuid',
+                exchangeRate:'汇率',
+                changeable:'汇率是否可修改',//值为true或者false
+                amount:'金额',
+            }
+        ],
+        receiveCompanyUuid:'付款对象Uuid'//付款对象为地接社或者渠道商
+        receiveCompany:'付款对象Name'//(即收款单位)付款对象为地接社或者渠道商
+        tourOperatorChannelCategoryCode:'付款对象类型'//区分地接社或渠道商
+        receiveBank:'收款行名称'
+        receiveAccount:'收款账户'
+    }
+
+            </pre>
+
+                </div>
+
+                <h3>付款-提交-确认付款</h3>
+
+                <div>
+                    <p class="mark">描述:提交付款</p>
+
+                    <p>接口路径:mtourfinance/saveRefundInfo</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        paymentUuid:'付款Uuid',
+        fundsType:'款项类型',
+        paymentMethodCode:'付款方式code'
+        currencyUuid:'币种Uuid',
+        exchangeRate:'汇率'
+
+        paymentAmount:'付款金额',
+        receiveCompany:'收款单位',
+        checkNo:'支票号',//只有付款方式是支票时才有效
+        checkIssueDate:'开票日期'//只有付款方式是支票时才有效
+        paymentBank:'付款行',//只有付款方式是汇款时才有效
+        paymentAccount:'付款账号'.//只有付款方式是汇款时才有效
+        receiveBank:'收款行',//只有付款方式是汇款时才有效
+        receiveAccount:'收款账户',//只有付款方式是汇款时才有效
+        attachments:[//付款附件
+            {
+                attachmentUuid:'付款附件uuid',
+                fileName:'付款附件名称',
+                attachmentUrl:'付款附件url'
+            }
+        ],
+        memo:'备注'
+    }
+            </pre>
+                    <p>输出(data)-无</p>
+
+                </div>
+
+                <h3>付款-款项明细-成本录入</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/getPaymentCost</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        paymentUuid:'付款Uuid'
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        fundsType:'款项类型',
+        fundsName:'款项名称'
+
+        invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+        PNR:'PNR编号',//大编号为PNR的时候才有意义
+        tourOperatorUuid:'地接社Uuid'//大编号为地接社的时候才有意义
+        tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+
+        peopleCount:'人数'
+        price:'单价'
+        currencyUuid:'币种Uuid'
+        exchangeRate:'汇率'
+        tourOperatorType:'地接社类型'
+        tourOperator：'地接社名称'
+        remitBank:'收款行名称'
+        remitAccount:'收款账户'
+        memo:'备注'
+    }
+            </pre>
+                </div>
+
+
+                <h3>付款-款项明细-借款</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/getLoanRefundInfo</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        paymentUuid:'付款Uuid'
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        fundsName:'款项',
+        currencyUuid:'借款币种Uuid'
+        amount:'借款金额',
+        totalAmounts:[//累计借款金额
+            {
+                currencyUuid:'借款币种Uuid'
+                amount:'借款金额',
+            }
+        ]
+        channelName:'渠道商Name'
+        applicant:'申请人'
+        memo:'备注'
+    }
+            </pre>
+                </div>
+
+                <h3>付款-款项明细-退款</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/getReturnRefundInfo</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        paymentUuid:'付款Uuid'
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        fundsName:'款项',
+        currencyUuid:'退款币种Uuid'
+        amount:'退款金额',
+        totalAmounts:[//累计退款金额
+            {
+                currencyUuid:'退款币种Uuid'
+                amount:'退款金额',
+            }
+        ]
+        channelName:'渠道商Name'
+        applicant:'申请人'
+        memo:'备注'
+    }
+            </pre>
+                </div>
+
+                <h3>付款-款项明细-追加成本</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/getAddCostRefundInfo</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        paymentUuid:'付款Uuid'
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        fundsName:'款项',
+        currencyUuid:'追加成本币种Uuid'
+        amount:'退款金额',
+        totalAmounts:[//累计追加成本金额
+            {
+                currencyUuid:'追加成本币种Uuid'
+                amount:'追加成本金额',
+            }
+        ]
+        channelName:'渠道商Name'
+        applicant:'申请人'
+        memo:'备注'
+    }
+            </pre>
+                </div>
+
+                <h3>付款-记录列表</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:/mtour/mtourfinance/getPayRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        paymentUuid:'付款Uuid',
+        fundsType:'款项类型'
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+                orderUuid:'订单Uuid',
+                paymentUuid:'付款Uuid',
+                paymentDetailUuid:'付款记录Uuid',
+                fundsType:'款项类型',
+                fundsName:'款项名称',
+                paymentMethodCode:'付款方式',
+                paymentAmount:'付款金额',
+                currencyUuid:'币种',
+                paymentDate:'付款日期',
+                modifiedDateTime:'最后修改时间',
+                departureDate:'出团日期'
+                financePaymentRecordStatusCode:'付款状态',
+                attachments:[//付款附件
+                    {
+                        attachmentUuid:'付款凭证Uuid',
+                        fileName:'付款凭证name',
+                        attachmentUrl:'付款凭证url',
+                        uploadUserName:'上传者'
+                    }
+                ],
+                memo:'备注'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3>付款-记录列表-详情</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/getRefundInfo</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        paymentUuid:'付款Uuid',
+        paymentDetailUuid:'付款记录Uuid',
+        fundsType:'款项类型'
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        paymentUuid:'付款Uuid',
+        paymentDetailUuid:'付款记录Uuid',
+        fundsType:'款项类型',
+        fundsName:'款项名称',
+        paymentMethodCode:'付款方式',
+
+        paymentAmount:'付款金额',
+        currencyUuid:'币种',
+        exchangeRate:'汇率'
+        checkNo:'支票号',//只有付款方式是支票时才有效
+        checkIssueDate:'开票日期'//只有付款方式是支票时才有效
+        paymentBank:'付款行',//只有付款方式是汇款时才有效
+        paymentAccount:'付款账号'.//只有付款方式是汇款时才有效
+        receiveBank:'收款行',//只有付款方式是汇款时才有效
+        receiveAccount:'收款账户',//只有付款方式是汇款时才有效
+        receiveCompany:'收款单位',
+
+        paymentDate:'付款日期',
+        paymentStatus:'付款状态',
+        attachments:[//付款附件
+            {
+                attachmentUuid:'付款凭证Uuid',
+                fileName:'付款凭证name',
+                attachmentUrl:'付款凭证url',
+            }
+        ],
+        memo:'备注'
+    }
+            </pre>
+                </div>
+
+
+                <h3>付款-记录列表-撤销</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/undoRefundPayInfo</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+     {
+         paymentUuid:'付款Uuid',
+         paymentDetailUuid:'付款记录Uuid',
+         fundsType:'款项类型',
+     }
+            </pre>
+                    <p>输出(data):无</p>
+
+                </div>
+
+            </div>
+            <div class="page-header">
+                <h1>订单收款</h1>
+            </div>
+            <div>
+                <h3>收款列表</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:</p>
+
+
+                    <p>输入(param):/mtour/mtourfinance/showOrderList</p>
+            <pre>
+    {
+        searchParam:{
+            searchType:'搜索类型',
+            searchKey:'搜索输入的文本'
+        },
+        filterParam:{
+            receiveTypeCode:['收款类别'],//"A,C"
+
+            tourOperatorOrChannel:[//地接社/渠道
+                {
+                    tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+                    tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid'
+                }
+            ],
+
+            receiveStatusCode:['收款状态'],//"A,B"
+            departureDate:['出团日期'],//"2015-01-01~2015-02-01,2015-02-03~2015-10-01"
+            receivedAmount:['已收金额'],//"100~200,300~350"
+            receiveDate:['收款日期'],//"2015-01-01~2015-02-01,2015-02-03~2015-10-01"
+            arrivalBankDate:['到账日期'],//"2015-01-01~2015-02-01,2015-02-03~2015-10-01"
+            printStatusCode:['打印状态Code'],
+            payer:['付款单位'],//"A,B"
+            receiver:['收款人id'] //"zhang3,li4"
+        },
+        sortInfo:{
+            sortKey: '排序项',//收款时间:receiveDate,更新时间:modifiedDateTime,出团日期:departureDate
+            dec: '是否倒序'
+        },
+        pageParam:{//分页搜索信息
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        results:[//表格的输出结果
+            {
+                orderUuid:'订单Uuid',
+                receiveUuid:'收款Uuid',
+                receiveDate:'收款日期'
+                arrivalBankDate:'银行到账日期'
+                orderUuid:'订单Uuid'
+                orderNum:'订单编号'
+                fundsName:'款项名称'
+                groupNo:'团号'
+                productName:'产品名称'
+                departureDate:'出团日期'
+                receiveTypeName:'收款类别Name'
+                receiveTypeCode:'收款类别Code',
+                receiveFundsType:'收款类别 订单/其他收入'
+                {
+                    receiveFundsTypeCode:'收款的类型Code',
+                    receiveFundsTypeName:'收款的类型Name',
+                }
+                tourOperatorOrChannelName：'地接社/渠道商名称'，
+                paymentCompany:'付款单位'
+                receiver:'收款人',
+                receiveStatusCode:'收款状态Code'
+                orderAmount:[//订单总额
+                    {
+                        currencyUuid:'币种Uuid',
+                        amount:'金额'
+                    }
+                ],
+                totalArrivedAmount:[//累计到账金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                receivedAmount:[//已收金额
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                arrivedAmount:['到账金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+
+            }
+        ],
+        page:{
+            totalRowCount:'总行数',
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+            </pre>
+                </div>
+                <h3>确认收款(详情)</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtourfinance/getReceivedOrderInfo</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        receiveUuid:'收款Uuid',
+        fundsType:'收款类型code'
+    }</pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+            orderUuid:'订单Uuid',
+            receiveUuid:'收款Uuid',
+            receiveMethodCode:'收款方式',
+            receiveAmount:'收款金额'
+            currencyUuid:'收款币种Uuid,
+            exchangeRate:'汇率',
+            checkNo:'支票号',
+            payer:'付款单位',
+            checkIssueDate:'开票日期',//收款方式为支票时有效
+            paymentBank:'付款银行', //收款方式为汇款时有效
+            paymentAccount:'付款账号'.//收款方式为汇款时有效
+            receiveBank:'收款银行',//收款方式为汇款时有效
+            receiveAccount:'收款账户',//收款方式为汇款时有效
+            arrivalBankDate:'银行到账日期',
+            tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+            tourOperatorOrChannelTypeCode:'地接社/渠道商的类型Code',
+            tourOperatorOrChannelName:'地接社/渠道商 的名称',
+            tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid',
+            attachments:[//收款凭证
+                {
+                    attachmentUuid:'付款附件uuid',
+                    fileName:'付款附件名称',
+                    attachmentUrl:'付款附件url'
+                }
+            ],
+            memo:'备注'
+    }
+            </pre>
+                </div>
+
+                <h3>确认收款(确认)</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:/mtour/mtourfinance/payedConfirm</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        receiveUuid:'收款Uuid',
+        payer:'付款单位',
+        arrivalBankDate:'银行到账日期',
+        exchange:'汇率',
+        totalPrice:'总价',
+        payer:'付款单位',
+        checkNo:'支票号',//收款方式为支票时有效
+        checkIssueDate:'开票日期',//收款方式为支票时有效
+        paymentBank:'付款银行',//收款方式为汇款时有效
+        paymentAccount:'付款账号'.//收款方式为汇款时有效
+        receiveBank:'收款银行',//收款方式为汇款时有效
+        receiveAccount:'收款账户',//收款方式为汇款时有效
+        attachments:[//收款凭证
+            {
+                attachmentUuid:'付款附件uuid',
+                fileName:'付款附件名称',
+                attachmentUrl:'付款附件url'
+            }
+        ]
+    }
+            </pre>
+                    <p>输出(data):无</p>
+                </div>
+
+                <h3>收款详情-订单收款</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:/mtour/mtourfinance/getPayedConfirmDetail</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        receiveUuid:'收款Uuid'
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+            orderUuid:'订单Uuid',
+            receiveUuid:'收款Uuid'
+            receiveType:'收款类别',
+            receiveMethod:'收款方式',
+            receiveAmount:'收款金额',
+            receivePeopleCount:'收款人数',
+            currencyUuid:'收款币种uuid',
+            exchangeRate:'汇率',
+            payer:'付款单位',
+
+            checkNo:'支票号',//只有付款方式是支票时才有效
+            checkIssueDate:'开票日期'//只有付款方式是支票时才有效
+            paymentBank:'付款行',//只有付款方式是汇款时才有效
+            paymentAccount:'付款账号'.//只有付款方式是汇款时才有效
+            receiveBank:'收款行',//只有付款方式是汇款时才有效
+            receiveAccount:'收款账户',//只有付款方式是汇款时才有效
+
+            attachments:[//收款凭证
+                {
+                    attachmentUuid:'付款附件uuid',
+                    fileName:'付款附件名称',
+                    attachmentUrl:'付款附件url'
+                }
+            ]
+            memo:'备注'
+    }
+            </pre>
+                </div>
+
+                <h3>收款详情-其他收入录入</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:/mtour/mtourfinance/getCostReceiptDetail</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        receiveUuid:'收款Uuid'
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        receiveUuid:'收款Uuid'
+        fundsName:'款项名称'
+        currencyUuid:'币种Uuid',
+        exchangeRate:'汇率',
+        amount:'单价',
+        convertedCurrencyUuid:'转换币种Uuid',
+        convertedAmount:转化后金额',
+        receiveTypeCode:'收款类别Code',
+        tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+        tourOperatorOrChannelTypeCode:'地接社/渠道商的类型Code',
+        tourOperatorOrChannelName:'地接社/渠道商 的名称',
+        tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid',
+
+        payer:'付款单位',
+        checkNo:'支票号',//收款方式为支票时有效
+        checkIssueDate:'开票日期',//收款方式为支票时有效
+        paymentBank:'付款行Uuid',//收款方式为汇款时有效
+        paymentAccount:'付款账号'.//收款方式为汇款时有效
+        receiveBank:'收款账户Uuid',//收款方式为汇款时有效
+        receiveAccount:'收款账户',//收款方式为汇款时有效
+        attachments:[//收款凭证
+            {
+                attachmentUuid:'收款凭证Uuid',
+                attachmentUrl:'收款凭证url',
+                fileName：'收款凭证',
+            }
+        ],
+        memo:'备注'
+    }
+            </pre>
+                </div>
+
+
+                <h3>收款驳回</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:/mtour/mtourfinance/confirmRejectOper</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        receiveUuid:'收款Uuid',
+        fundsType:'收款类型code'
+    }
+            </pre>
+                    <p>输出(data):无</p>
+                </div>
+
+                <h3>收款撤销</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtour/mtourfinance/cancelReceive</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        receiveUuid:'收款Uuid',
+        fundsType:'收款类型code'
+    }
+            </pre>
+                    <p>输出(data):无</p>
+                </div>
+            </div>
+            <div class="page-header">
+                <h1>渠道账龄列表</h1>
+            </div>
+            <div>
+                <h3>账龄列表</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtour/mtourfinance/getAccountAgeList</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+    {
+        searchParam:{
+            searchType:'搜索类型',
+            searchKey:'搜索输入的文本'
+        },
+        filterParam:{
+            accountReceivableAgeStatusCode:'账龄状态Code',(0：未结清，1：已结清)
+            channels：['渠道商uuid'],//"x0001,x00003"
+            sales:['销售Id'],//"zhang3,li4"
+            channelTypeCode:渠道的code，//“1,2”
+        },
+        sortInfo:{
+            sortKey: '排序项',//应收金额:receivableAmountRMB,已收金额:receivedAmountRMB,到账金额:arrivedAmountRMB,未收金额:unreceiveAmountRMB
+            dec: '是否倒序'
+        },
+        pageParam:{//分页搜索信息
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        results:[//表格的输出结果
+            {
+                channelUuid：'渠道商uuid',
+                saleId:'销售Id',
+                channelName:'渠道名称',
+                totalTravelerCount:'游客数',
+                salesName:'销售',
+                receivableAmount:[//应收金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                receivedAmount:[//已收金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                unreceiveAmount:[//未收金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                arrivedAmount:[//到账金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ]
+            }
+        ],
+        page:{
+            totalRowCount:'总行数',
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+            </pre>
+                </div>
+                <h3>订单明细</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtourfinance/getOrderDetail</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+    {
+        channelUuid：'渠道商uuid',
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+
+                orderUuid:'订单Uuid',
+                orderNum:'订单号'
+                groupNo:'团号'
+                productName:'产品名称'
+                salesName:'销售'
+                operator:'计调'
+                orderer:'下单人'
+                orderTime:'下单时间'
+                peopleCount:'人数'
+                departureDate:'出团日期'
+                orderAmount:[//订单总额
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                receivedAmount:[//已收金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                arrivedAmount:[//到账金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ]
+        }
+    ]
+            </pre>
+                </div>
+
+            </div>
+
+            <!--20160117--接口增加-->
+            <div class="page-header">
+                <h1>付款-订单列表</h1>
+            </div>
+            <div>
+                <h3>订单列表</h3>
+
+                <p class="mark">描述:所有款项按照团号和付款对象进行归类展示</p>
+
+                <p>接口路径:/mtourfinance/getRefundOrderPage</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+    {
+        searchParam:{
+            searchType:'搜索类型',
+            searchKey:'搜索输入的文本'
+        },
+        filterParam:{
+            orderDateTime:'下单日期',
+            departureDate:'出团日期'
+            ordererId:'下单人Id',
+            payment_orderPaymentStatusCode:'订单付款状态'//1-已付全款，0-未付全款
+
+        },
+        sortInfo:{
+            sortKey: '排序项',//下单时间:orderDateTime,出团日期:departureDate
+            dec: '是否倒序'
+        },
+        pageParam:{//分页搜索信息
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        results:[//表格的输出结果
+            {
+                orderUuid:'订单Uuid'
+                groupNo:'团号'
+                orderDateTime:'下单日期',
+                departureDate:'出团日期'
+                orderer:'下单人',
+                payableAmount:[//应付金额'
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                paidAmount:[//已付金额
+                    {
+                        currencyUuid:'币种Uuid',
+
+                        amount:'金额'
+                    }
+                ],
+                financePayOrderListPayStatusCode:'订单付款状态code',
+                financePayOrderListPayStatusName：'订单付款状态name'
+                lockStatus :'结算单锁定状态'
+            }
+        ],
+        page:{
+            totalRowCount:'总行数',
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+            </pre>
+                </div>
+                <h3>展开子列表：付款列表</h3>
+
+                <p class="mark">描述:按付款对象归类展示</p>
+
+                <p>接口路径:mtourfinance/getPayChildrenList</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid：'订单Uuid'
+                }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+
+        [//表格的输出结果
+            {
+                orderUuid:'订单Uuid'
+                paymentObjectUuid:'付款对象Uuid'//地接社或渠道商Uuid
+                paymentObjectName：'付款对象名称'//地接社或渠道商名称
+                <!--payableAmount:[//应付金额-该付款对象所涉及的所有付款数据的应付金额之和-->
+                    <!--{-->
+                        <!--currencyUuid:'币种Uuid',-->
+
+                        <!--amount:'金额'-->
+                    <!--}-->
+                <!--],-->
+                <!--paidAmount:[//已付金额&#45;&#45;该付款对象所涉及的所有付款数据的已付金额之和-->
+                    <!--{-->
+                        <!--currencyUuid:'币种Uuid',-->
+
+                        <!--amount:'金额'-->
+                    <!--}-->
+                <!--],-->
+                <!--fundsType:'款项类型'//借款:1,退款:2,追加成本:3,成本:4-->
+                payableAmount:'应付金额'
+                paidAmount:'已付金额'
+                paymentStatusCode:'付款确认：0-待付款；1-已付款',
+                paymentStatusName:'待付款',
+                tourOperatorChannelCategoryCode：'地接社/渠道商' 1-地接社 2-渠道商
+            }
+        ],
+
+            </pre>
+                </div>
+
+                <h3>订单列表-二级列表-付款-查询付款记录</h3>
+
+                <p class="mark">描述:按付款对象进行付款</p>
+
+                <p>接口路径:/mtourfinance/getBatchRefundInfo</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid：'订单Uuid'
+                    paymentObjectUuid：'付款对象Uuid'
+                    tourOperatorChannelCategoryCode：'地接社/渠道商' 1-地接社 2-渠道商
+                }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+                {
+                    groupNo:'团号'
+                    paymentObjectUuid：'付款对象Uuid'
+                    paymentObjectName：'付款对象Name'
+                    results:[{
+                        paymentUuid:'付款记录Uuid'
+                        approvalDate:'报批日期'
+                        fundsType:'款项类型//借款:1,退款:2,追加成本:3,成本:4
+                        applicant：'申请人'
+                        payableAmount://应付金额
+                            {
+                                currencyUuid:'币种Uuid',
+                                amount:'金额'
+                            }
+                        ,
+                        paidAmount://已付金额
+                            {
+                                currencyUuid:'币种Uuid',
+                                amount:'金额'
+                            }
+                        ,
+                        changeabled:'汇率是否可以修改'//值为true或者false
+                        exchangeRate:'汇率'
+                    ]
+                    paymentTotalAmount：'付款总额',
+                    receiveBank:'收款行',
+                    receiveAccount:'收款账户'
+                }
+            </pre>
+                </div>
+
+                <h3>订单列表-二级列表-付款-确认付款</h3>
+
+                <p class="mark">描述:按付款对象进行付款</p>
+
+                <p>接口路径:mtourfinance/batchSaveRefundInfo</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid：'订单Uuid'
+                    paymentObjectUuid：'付款对象Uuid'
+                    payments：[{
+                        paymentUuid：'付款Uuid',
+                        currencyUuid:'币种uuid',
+                        paymentAmount:'付款金额',
+                        exchangeRate:'汇率',
+                        fundsType:'款项类型//借款:1,退款:2,追加成本:3,成本:4
+                        tourOperatorChannelCategoryCode：'地接社/渠道商' 1-地接社 2-渠道商
+                    }]
+                            <!--{-->
+                                <!--currencyUuid:'币种Uuid',-->
+                                <!--amount:'金额'-->
+                            <!--}-->
+                    <!--]-->
+                    paymentMethodCode:'付款方式code',
+                    receiveCompany:'收款单位',
+                    checkNo:'支票号',//只有付款方式是支票时才有效
+                    checkIssueDate:'开票日期'//只有付款方式是支票时才有效
+                    paymentBank:'付款行',//只有付款方式是汇款时才有效
+                    paymentAccount:'付款账号'.//只有付款方式是汇款时才有效
+                    receiveBank:'收款行',//只有付款方式是汇款时才有效
+                    receiveAccount:'收款账户',//只有付款方式是汇款时才有效
+                    attachments:[//付款附件
+                        {
+                            attachmentUuid:'付款附件uuid',
+                            fileName:'付款附件名称',
+                            attachmentUrl:'付款附件url'
+                        }
+                    ],
+                    memo:'备注'
+                }
+            </pre>
+                    <p>输出(data)</p>
+                    <pre></pre>
+                </div>
+
+                <h3>订单列表-二级列表-付款记录</h3>
+
+                <p class="mark">描述:按付款对象进行付款的付款记录,一条记录是多个申请人付款的付款合并</p>
+
+                <p>接口路径:/mtourfinance/getRefundRecordsInfo</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid：'订单Uuid'
+                    paymentObjectUuid：'付款对象Uuid',
+                    tourOperatorChannelCategoryCode：'地接社/渠道商' 1-地接社 2-渠道商
+
+                }
+            </pre>
+                    <p>输出(data)</p>
+                    <pre>
+                    [{
+                        orderUuid：'订单Uuid'
+                        paymentObj_paymentUuid:'按付款对象付款的付款Uuid'
+                        paymentObjectUuid：'付款对象Uuid'
+                        paymentDate:'付款日期'
+                        paymentTotalAmount:'付款总额'
+                        convertedTotalAmount:'转换后金额',
+                        paymentMethodCode:'付款方式code',
+                        paymentMethodName:'付款方式Name'
+                        paymentStatusCode:'付款状态',//0-已付款 1-已撤销
+                        paymentStatusName:'付款状态',//0-已付款 1-已撤销
+                        tourOperatorChannelCategoryCode：'地接社/渠道商' 1-地接社 2-渠道商
+                        attachments:[//付款附件
+                        {
+                            attachmentUuid:'付款附件uuid',
+                            fileName:'付款附件名称',
+                            attachmentUrl:'付款附件url',
+                            uploadUserName:'上传者'
+                        }]
+                    }]
+                    </pre>
+                </div>
+                <h3>订单列表-二级列表-付款记录-详情</h3>
+
+                <p class="mark">描述:付款合并的详情</p>
+
+                <p>接口路径:mtourfinance/queryPayJDetail</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid：'订单Uuid'
+                    paymentObj_paymentUuid:'按付款对象付款的付款Uuid'
+                    paymentObjectUuid：'付款对象Uuid'
+                }
+            </pre>
+                    <p>输出(data)</p>
+                    <pre>
+            {
+                    paymentMethodCode:'付款方式code',
+                    paymentMethodName:'付款方式name',
+                    paymentDate:'付款日期',
+                    recordList：
+                    [{
+                        paymentUuid:'付款记录Uuid'
+                        approvalDate:'报批日期'
+                        fundsType:'款项类型Code//借款:1,退款:2,追加成本:3,成本:4
+                        fundsTypeName:'款项类型Name//借款:1,退款:2,追加成本:3,成本:4
+                        applicant:'申请人'
+                        <!--payableAmount:[//应付金额-->
+                            <!--{-->
+                                <!--currencyUuid:'币种Uuid',-->
+                                <!--amount:'金额'-->
+                            <!--}-->
+                        <!--],-->
+                        <!--paidAmount:[//已付金额-->
+                            <!--{-->
+                                <!--currencyUuid:'币种Uuid',-->
+                                <!--amount:'金额'-->
+                            <!--}-->
+                        <!--],-->
+                        exchangeRate:'汇率'
+                        <!--paymentAmount:[//本次付款金额-->
+                            <!--{-->
+                                <!--currencyUuid:'币种Uuid',-->
+                                <!--amount:'金额'-->
+                            <!--}-->
+                        <!--],-->
+                        payableAmount:'应付金额',
+                        paidAmount:'已付金额'
+                        paymentAmount:'本次付款金额'
+                        paymentStatusCode:'付款状态',//0-已付款 1-已撤销
+                        paymentStatusName:'付款状态',//0-已付款 1-已撤销
+                        }
+                    ],
+                    paymentTotalAmount:'付款总额',
+                    convertedTotalAmount:'转换后总额',
+                    receiveCompany:'收款单位',
+                    checkNo:'支票号',//只有付款方式是支票时才有效
+                    checkIssueDate:'开票日期'//只有付款方式是支票时才有效
+                    paymentBank:'付款行',//只有付款方式是汇款时才有效
+                    paymentAccount:'付款账号'.//只有付款方式是汇款时才有效
+                    receiveBank:'收款行',//只有付款方式是汇款时才有效
+                    receiveAccount:'收款账户',//只有付款方式是汇款时才有效
+                    attachments:[//付款附件
+                    {
+                        attachmentUuid:'付款附件uuid',
+                        fileName:'付款附件名称',
+                        attachmentUrl:'付款附件url'
+                    }]
+                    memo:'备注'
+            }
+                    </pre>
+                </div>
+
+                <h3>订单列表-二级列表-付款记录-撤销</h3>
+
+                <p class="mark">描述:付款合并的撤销</p>
+
+                <p>接口路径:/mtourfinance/batchUndoRefundPayInfo</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid：'订单Uuid'
+                    paymentObj_paymentUuid:'按付款对象付款的付款Uuid'
+                    paymentObjectUuid：'付款对象Uuid'
+                }
+            </pre>
+                    <p>输出(data)</p>
+                    <pre>
+
+                    </pre>
+                </div>
+
+                <h3>订单列表-二级列表-款项明细</h3>
+
+                <p class="mark">描述:付款对象的款项明细--按款项类型归类展示各笔款项的明细</p>
+
+                <p>接口路径:mtourfinance/getOrderPaymentInfo</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid：'订单Uuid'
+                    <!--paymentObj_paymentUuid:'按付款对象付款的付款Uuid'-->
+                    <!--fundsType:'款项类型',//借款:1,退款:2,追加成本:3,成本:4-->
+                    paymentObjectUuid：'付款对象Uuid'
+                    tourOperatorChannelCategoryCode：'地接社/渠道商' 1-地接社 2-渠道商
+                }
+            </pre>
+                    <p>输出(data)</p>
+                    <pre>
+                    {
+                        groupNo:'团号',
+                        paymentObjectUuid：'付款对象Uuid'
+                        paymentObjectName：'付款对象Name'
+                        <!--payableTotalAmount:[//应付金额-该付款对象所涉及的所有付款数据的应付金额之和-->
+                        <!--{-->
+                            <!--currencyUuid:'币种Uuid',-->
+                            <!--amount:'金额'-->
+                        <!--}],-->
+                        payableTotalAmount:'应付总额',
+                        paidTotalAmount:'已付总额',
+                        <!--paidTotalAmount:[//已付金额&#45;&#45;该付款对象所涉及的所有付款数据的已付金额之和-->
+                            <!--{-->
+                                <!--currencyUuid:'币种Uuid',-->
+                                <!--amount:'金额'-->
+                            <!--}],-->
+                        results:[{
+                            paymentUuid:'付款uuid'
+                            paymentStatusCode:'付款状态Code'// 0-已撤销 1-已提交未付款  2-已付款
+                            paymentStatusName:'付款状态Name'// 0-已撤销 1-已提交未付款  2-已付款
+                            fundsType:'款项类型Code'//借款:1,退款:2,追加成本:3,成本:4
+                            fundsTypeName:'款项类型name'
+                            approvalDateStr:'报批日期'
+                            approvalDateTime:'报批时间'
+                            applicant:'申请人姓名',
+                            strPayableAmount:'应付金额'
+                            strPayableAmount_amount:'应付金额的金额(不带币种符号)'
+                            strPaidAmount:'已付金额'
+                            <!--payableAmount:'应付金额'-->
+                            <!--paidAmount:'已付金额'-->
+                            <!--payableAmount:[//应付金额-->
+                            <!--{-->
+                                <!--currencyUuid:'币种Uuid',-->
+                                <!--amount:'金额'-->
+                            <!--}],-->
+                            <!--paidAmount:[//已付金额-->
+                            <!--{-->
+                                <!--currencyUuid:'币种Uuid',-->
+                                <!--amount:'金额'-->
+                            <!--}],-->
+                            currencyUuid:'币种uuid',
+                            fundsName:'款项名称',
+                            peopleCount:'人数',
+
+                            //款项-成本
+                            PNR:'PNR编号',//大编号为PNR的时候才有意义
+                            tourOperatorUuid:'地接社Uuid'//大编号为地接社的时候才有意义
+                            tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+                            costUnitPrice:'成本单价',
+                            exchangeRate:'汇率',
+                            convertedTotalAmount:'转换后总价'
+                            receiveBank:'收款行名称',//款项为成本时才有意义
+                            receiveAccountNo:'收款行账户'//款项为成本时才有意义
+
+                            //款项-追加成本
+                            totalAddAmount:[{累计追加金额
+                                currencyUuid:'币种'
+                                amount:'金额'
+                            }]
+                            currentAddAmount:'本次追加金额'
+
+                            //款项-退款
+                            totalRefundAmount:[{累计退款金额
+                                currencyUuid:'币种'
+                                amount:'金额'
+                            }]
+                            currentRefundAmount:'本次退款金额'
+
+                            //款项-借款
+                            totalBorrowAmount:[{累计借款金额
+                                currencyUuid:'币种'
+                                amount:'金额'
+                            }]
+                            currentBorrowAmount:'本次借款金额'
+                            memo：'备注'
+                        }]
+                    }
+                    </pre>
+                </div>
+
+                <h3>生成支出单</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtourfinance/mergePaymentDoc</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid:'订单uuid'
+                    paymentObjectUuid：'付款对象Uuid'
+                    fundsTypePayList:[{
+                        fundsType:'款项类型code'
+                        paymentUuid:'付款Uuid',
+                    }]
+                }
+            </pre>
+                    </p><p>输出(data)</p>
+            <pre>
+        {
+            <!--paymentUuid:'付款Uuid'-->
+            applicantDate:'日期',
+            printNo:'流水号',
+            groupNo:'团号',
+            //美途不展示pnr
+            //invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)'0':PNR，'1':地接社
+            //PNR:'PNR编号',//大编号为PNR的时候才有意义
+            //tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+            tourOperatorOrChannelName:'支付对象名称',
+            purpose:'用途',//多个款项类型
+            totalRMB:'计人民币',
+            totalRMB_CN:'计人民币(大写)',
+            totalOther:'外币',
+            totalOther_CN:'外币(大写)',
+            applicant:'申请人',
+            paymentPeople:'付款的人们'
+                <!--{-->
+                    <!--id:'付款人id',-->
+                    <!--name:'付款人姓名'-->
+                <!--}-->
+            <!--]-->
+        }
+            </pre>
+                </div>
+
+            </div>
+
+            <div class="page-header">
+                <h1>收款-订单列表</h1>
+            </div>
+            <div>
+                <h3>订单列表</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtourfinance/receiveOrderList</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+    {
+        searchParam:{
+            searchType:'搜索类型',
+            searchKey:'搜索输入的文本'
+        },
+        filterParam:{
+            orderDateTime:'下单日期',
+            departureDate:'出团日期'
+            ordererId:'下单人Id',
+            orderReceiveStatusCodeStatusCode:'订单收款状态'//0-待收款,1-部分定金，2-已收定金,3-已收全款
+
+        },
+        sortInfo:{
+            sortKey: '排序项',//下单时间:orderDateTime,出团日期:departureDate
+            dec: '是否倒序'
+        },
+        pageParam:{//分页搜索信息
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+        results:[//表格的输出结果
+            {
+                orderUuid:'订单Uuid'
+                groupNo:'团号'
+                orderDateTime:'下单日期',
+                departureDate:'出团日期'
+                <!--ordererId:'下单人Id',-->
+                orderer:'下单人姓名',
+                <!--totalArriveAmount:[//累计到账总额'-->
+                    <!--{-->
+                        <!--currencyUuid:'币种Uuid',-->
+                        <!--amount:'金额'-->
+                    <!--}-->
+                <!--],-->
+                <!--orderAmount:[//订单总额-->
+                    <!--{-->
+                        <!--currencyUuid:'币种Uuid',-->
+                        <!--amount:'金额'-->
+                    <!--}-->
+                <!--],-->
+                totalArriveAmount               : '累计到账金额',
+                orderAmount                     : '订单总额',
+                orderReceiveStatusCodeStatusCode:'订单收款状态',//0-待收款,1-部分定金，2-已收定金,3-已收全款
+            }
+        ],
+        page:{
+            totalRowCount:'总行数',
+            currentIndex:'当前页码',
+            rowCount:'每页总行数'
+        }
+    }
+            </pre>
+                </div>
+
+                <h3>收款-订单列表-二级子列表</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/getReceiveOrderSubList</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+    }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+    {
+            [{
+                receiveUuid:'收款Uuid',
+                receiveDate:'收款日期'
+                arrivalBankDate:'银行到账日期'
+                orderUuid:'订单Uuid'
+                <!--orderNum:'订单编号'-->
+                fundsName:'款项名称'
+                <!--groupNo:'团号'-->
+                <!--productName:'产品名称'-->
+                <!--departureDate:'出团日期'-->
+                receiveTypeName:'收款类别Name'
+                receiveTypeCode:'收款类别Code',
+                receiveFundsType:'收款类别 订单/其他收入'
+                {
+                    receiveFundsTypeCode:'收款的类型Code',
+                    receiveFundsTypeName:'收款的类型Name',
+                }
+                tourOperatorOrChannelName：'地接社/渠道商名称'，
+                paymentCompany:'付款单位'
+                receiver:'收款人',
+                receiveStatusCode:'收款状态Code'
+                receivedAmount://已收金额
+                {
+                        currencyUuid:'币种Uuid',
+                        amount:'金额'
+                }
+                arriveAmount://到账金额'
+                {
+                        currencyUuid:'币种Uuid',
+                        amount:'金额'
+                }
+                <!--receivedAmount:'已收金额'-->
+                <!--arrivedAmount:'到账金额'-->
+            }]
+    }
+            </pre>
+                </div>
+            </div>
+        </div>
+        <doc-footer></doc-footer>
+    </body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>支出申请单</title>
+<link href="http://www.trekiz.com/favicon.ico" rel="shortcut icon" />
+<link href="../../css/qc/qc.print.css" rel="stylesheet" type="text/css">
+</head>
+
+	<body>
+	<div class="print-btn">
+    	<button type="button" class="button-sm">打印</button>
+        <button type="button" class="button-sm">下载</button>
+    </div>">
+		<div id="printDiv">
+			<table class="page-print">
+				<thead>
+                	<tr>
+                    <th width="135"></th>
+                    <th width="80"></th>
+                    <th width="80"></th>
+                    <th width="81"></th>
+                    <th width="136"></th>
+                    <th width="80"></th>
+                    <th width="80"></th>
+                    <th width="88"></th>
+                    </tr>
+					<tr>
+						<th class="fr f4 paddr" colspan="8"></th>
+					</tr>
+					<tr>
+						<th class="f1" colspan="8">收入单</th>
+					</tr>
+					<tr>
+						<th class="fr paddr f3" colspan="4">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 日</th>
+						<th class="fr paddr f3">编号：</th>
+						<th colspan="3" class="fr paddr f3">&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="fc f2" width="135">团号:</td>
+						<td class="fl paddl f3" colspan="3"></td>
+						<td width="136" class="fc f2">PNR号:</td>
+						<td colspan="3" class="fl f3"></td>
+					</tr>
+					<tr>
+						<td class="fc f2">兹由:</td>
+						<td colspan="3" class="fl f3 paddl"></td>
+						<td width="136" class="fc f2">交来:</td>
+						<td colspan="3" class="fl f3 paddl">&nbsp;</td>
+					</tr>
+					<tr>
+					    <td class="fc f2">计人民币（大写）:</td>
+					    <td colspan="3" class="fl paddl  f3 ">&nbsp;</td>
+					    <td class="fl paddl  f3 "><span class="fc f2">（小写）:￥</span></td>
+					    <td colspan="3" class="fl f3">&nbsp;</td>
+				    </tr>
+					<tr>
+					    <td class="fc f2">外币（大写）:</td>
+					    <td colspan="3" class="fl paddl f3">&nbsp;</td>
+					    <td class="fl paddl f3"><span class="fc f2">（小写）:￥</span></td>
+					    <td colspan="3" class="fl f3">&nbsp;</td>
+				    </tr>
+					<tr>
+						<td class="fc f2">开具发票：</td>
+						<td class="fc f3" colspan="3">有&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 无</td>
+						<td class="fc f2">签收时间：</td>
+						<td colspan="3" class="fc f3">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="fc f2">开具日期：</td>
+						<td colspan="3" class="fc f3">&nbsp;</td>
+						<td class="fc f2">审核人：</td>
+						<td colspan="3" class="fc f3">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="fr f3 noborder paddr" colspan="8">&nbsp;</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript">
+			function printTure() {
+				printPage(document.getElementById("printDiv"));
+			}
+		</script>
+	</body>
+
+</html>

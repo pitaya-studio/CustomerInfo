@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+    <style>
+        .qc-table-container {
+            /*background-color: #aea1c3;*/
+            /*margin: 0px -20px;*/
+            padding: 0px -1px;
+        }
+        .tab-height {
+            height: 200px;
+        }
+
+        table thead th {
+            text-align: center;
+            font-weight: bold;
+            background-color: #f6f6f6;
+        }
+
+        .qc-table-operator {
+            height: 300px;
+            width: 150px;
+        }
+    </style>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+    <script type="text/javascript">
+        var tableModule = angular.module('tableModule', ['qc', 'docModule']);
+        tableModule.controller('NavController', ['$scope', 'docNavInfo', function ($scope, docNavInfo) {
+            $scope.navInfo = docNavInfo;
+            $scope.navInfo.current = 'qc';
+            $scope.navInfo.sub = 'table';
+        }]);
+        tableModule.controller('OperatorController', ['$scope', function ($scope) {
+            $scope.list = [];
+            $scope.list.push({
+                name: 'z1 zc z',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '查看', '修改', '删除', '新增', '打印']
+            });
+            $scope.list.push({
+                name: 'z2',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '查看', '修改', '删除', '新增']
+            });
+            $scope.list.push({
+                name: 'z3',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '查看', '修改', '新增']
+            });
+            $scope.list.push({
+                name: 'z4',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '查看', '删除', '新增', '打印']
+            });
+            $scope.list.push({
+                name: 'z5',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['查看', '修改', '删除', '新增', '打印']
+            });
+            $scope.list.push({
+                name: 'z6',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '打印']
+            });
+            $scope.list.push({
+                name: 'z7',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['打印']
+            });
+            $scope.list.push({
+                name: 'z8',
+                age: 12,
+                salary: 21212,
+                desc: '辛苦',
+                operator: ['详细', '删除', '打印']
+            });
+            for(var i =0;i<15;i++){
+                $scope.list.push({
+                    name: 'z8',
+                    age: 12,
+                    salary: 21212,
+                    desc: '辛苦',
+                    operator: ['详细', '删除', '打印']
+                });
+            }
+            $scope.companies=[
+                {
+                    name:'北京思锐创图有限责任公司1'
+                },{
+                    name:'北京思锐创图有限责任公司2'
+                },{
+                    name:'北京思锐创图有限责任公司3'
+                },{
+                    name:'北京思锐创图有限责任公司4'
+                },{
+                    name:'北京思锐创图有限责任公司5'
+                },{
+                    name:'北京思锐创图有限责任公司6'
+                },{
+                    name:'北京思锐创图有限责任公司7'
+                },{
+                    name:'北京思锐创图有限责任公司8'
+                }
+            ];
+        }]);
+    </script>
+</head>
+<body class="fixed-top" ng-app="tableModule">
+<doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+<div class="container">
+    <div class="docs-header">
+        <h1>项目UI交互</h1>
+
+        <p>
+            项目中实现页面交互,layout调整的组件
+        </p>
+    </div>
+    <div class="breadcrumb">Quauq Doc > 前端开发文档 > UI交互</div>
+
+    <div class="qc-table-container qc-scroll" qc-table-container-bottom-gap="50">
+        <div class="page-header">
+            <h1>子表格</h1>
+        </div>
+        <div>
+            <h3>准备工作</h3>
+
+            <p>依赖项:angular.js,qc.basic.js,qc.js</p>
+
+            <p>依赖模块:qc module</p>
+        <pre>    &lt;script type="text/javascript" src="/static/js/common/angular.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="/static/js/common/jquery.js"&gt;&lt;script&gt;
+    &lt;script type="text/javascript" src="/static/js/common/qc.basic.js"&gt;&lt;script&gt;
+    &lt;script type="text/javascript" src="/static/js/common/qc.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+          var subTableModule = angular.module('subTableModule', ['qc']);//加载qc模块
+    &lt;/script&gt;</pre>
+            <h3>子表格设置</h3>
+
+            <p>容器(qc-sub-table-container)定义需要进行子表格的区域,通常设置在table或者table的父级容器上</p>
+
+            <p>切换按钮(qc-sub-table-anchor),通过点击来切换子表格的显示与否</p>
+
+            <p>子表(qc-sub-table)子表格其实是在主表格的一个tr上合并所有的单元格,然后将子表格填充到该单元格</p>
+
+            <p>子表id(qc-sub-table-id),设置相同的qc-sub-table-id 使切换按钮和子表完成交互</p>
+        <pre>   &lt;table class="table table-bordered" qc-sub-table-container>
+        &lt;thead>
+        &lt;tr>
+            &lt;th width="20%">团号&lt;/th>
+            &lt;th width="20%">产品名称&lt;/th>
+            &lt;th width="20%">价格&lt;/th>
+            &lt;th width="20%">操作&lt;/th>
+        &lt;/tr>
+        &lt;/thead>
+        &lt;tbody>
+        &lt;tr>
+            &lt;td>OT01201&lt;/td>
+            &lt;td>新马泰7日无购物畅游&lt;/td>
+            &lt;td>¥131,420.00&lt;/td>
+            &lt;td>
+                &lt;button qc-sub-table-anchor qc-sub-table-id="order1">toggle order&lt;/button>
+                &lt;button qc-sub-table-anchor qc-sub-table-id="sale1">toggle sale&lt;/button>
+            &lt;/td>
+        &lt;/tr>
+        &lt;/tbody>
+        &lt;tbody>
+        &lt;tr class="qc-sub-table-tr">
+            &lt;td colspan="4">
+                &lt;div qc-sub-table qc-sub-table-id="order1">
+                    order1!!&lt;hr/>看来真2
+                &lt;/div>
+            &lt;/td>
+        &lt;/tr>
+        &lt;/tbody>
+        &lt;tbody>
+        &lt;tr class="qc-sub-table-tr" >
+            &lt;td colspan="4">
+                &lt;div qc-sub-table qc-sub-table-id="sale1">
+                    order1!!&lt;br/>看来真2&lt;br/>看来真2
+                &lt;/div>
+            &lt;/td>
+        &lt;/tr>
+        &lt;/tbody>
+    &lt;/table></pre>
+            <table class="table table-bordered" qc-sub-table-container>
+                <thead>
+                <tr>
+                    <th width="20%">团号</th>
+                    <th width="20%">产品名称</th>
+                    <th width="20%">价格</th>
+                    <th width="20%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>OT01201</td>
+                    <td>新马泰7日无购物畅游</td>
+                    <td>¥131,420.00</td>
+                    <td>
+                        <button qc-sub-table-anchor qc-sub-table-id="order1">toggle order</button>
+                        <button qc-sub-table-anchor qc-sub-table-id="sale1">toggle sale</button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <td colspan="4">
+                        <div qc-sub-table qc-sub-table-id="order1">
+                            order1!!
+                            <hr/>
+                            看来真2
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <td colspan="4">
+                        <div qc-sub-table qc-sub-table-id="sale1">
+                            order1!!
+                            <br/>
+                            看来真2
+                            <br/>
+                            看来真2
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="page-header">
+            <h1>调整列宽</h1>
+        </div>
+        <div>
+            <h3>准备工作</h3>
+
+            <div>
+                <p>依赖项:angular.js,qc.basic.js,qc.js</p>
+
+                <p>依赖模块:qc module</p>
+
+                <p>
+                    qc-table-resizecolumn:只需要给表格添加class(qc-table-resizecolumn)即可进行列宽调整
+                </p>
+            </div>
+
+            <h3>示例</h3>
+        <pre>    &lt;table class="table table-bordered qc-table-resizecolumn">
+       ...
+    &lt;/table>
+        </pre>
+            <table class="table table-bordered qc-table-resizecolumn">
+                <thead>
+                <tr>
+                    <th style="min-width: 100px">name</th>
+                    <th>age</th>
+                    <th>salary</th>
+                    <th style="min-width: 400px">description</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>张3</td>
+                    <td>21</td>
+                    <td>3500</td>
+                    <td>虽然才21岁,但是确干了5年了。老员工中的楷模</td>
+                    <td>
+                        <a href="#">详情</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="page-header">
+            <h1>表格操作项
+            </h1>
+        </div>
+        <div>
+            <h3>准备工作</h3>
+
+            <div>
+                <p>依赖项:angular.js,qc.basic.js,qc.js</p>
+
+                <p>依赖模块:qc module</p>
+
+                <p>
+                    qc-table-operator:只需要给表格总的操作项容器添加class(qc-table-operator)即可
+                </p>
+            </div>
+            <h3>示例</h3>
+        <pre>    &lt;td>
+        &lt;div class="qc-table-operator">
+            &lt;span ng-repeat-start="o in item.operator" ng-if="!$first"> |&lt;/span>
+            &lt;a class="" ng-repeat-end=""><span>{{</span>o}}&lt;/a>
+        &lt;/div>
+    &lt;/td></pre>
+        </div>
+        <div class="page-header">
+            <h1>表格固定列头
+            </h1>
+        </div>
+        <div>
+            <h3>准备工作</h3>
+
+            <div>
+                <p>依赖项:angular.js,qc.basic.js,qc.js</p>
+
+                <p>依赖模块:qc module</p>
+
+                <p>
+                    qc-table-fixed-header:表格添加属性qc-table-fixed-header即可
+                </p>
+            </div>
+            <h3>示例</h3>
+            <pre>    &lt;table qc-table-fixed-header>
+       &lt;thead>
+       ...
+       &lt;/thead>
+       ....
+    &lt;/table></pre>
+        </div>
+        <table id="contentTable" class="table" style="table-layout: fixed" ng-controller="OperatorController" qc-table-fixed-header>
+            <thead>
+            <tr>
+                <th style="width: 200px">name</th>
+                <th style="width: 200px">age</th>
+                <th style="width: 200px">salary</th>
+                <th style="width: 200px">company</th>
+                <th style="width: 1000px">desc</th>
+                <th style="width: 150px">操作</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="item in list">
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.salary}}</td>
+                <td>
+                    <div qc-dropdown
+                         items="companies"
+                         ng-model="item.company"
+                         filter-expression="name"
+                         dropdown-text="{{selectedItem?selectedItem.name:'请选择'}}"
+                         item-text="<span>{{qcDropdownItem.name}}</span>"
+                         list-width="300"
+                         list-max-height="120">
+                    </div>
+                </td>
+                <td>{{item.desc}}</td>
+                <td>
+                    <div class="qc-table-operator">
+                        <span ng-repeat-start="o in item.operator" ng-if="!$first"> |</span>
+                        <a class="" ng-repeat-end="">{{o}}</a>
+                    </div>
+                </td>
+                <td class="empty">
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<doc-footer></doc-footer>
+</body>
+</html>

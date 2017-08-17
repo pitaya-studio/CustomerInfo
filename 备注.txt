@@ -1,0 +1,23 @@
+2014/03/28
+产品的更新时间数据类型修改为datetime
+
+2014/04/01
+agentinfo表中增加非签约渠道、本社记录
+
+2014/04/01
+
+jquery.jBox-zh-CN.min.js修改jbox.info提示图标的位置top:40%-->top:55%
+
+2014/04/03
+jquery.ui.datepickerRefactorStock.js去掉1996行多余逗号
+
+2014/04/04
+alter table sysdefinedict
+UNIQUE KEY `companyId` USING BTREE (`companyId`,`type`,`value`);
+
+2014/04/28
+alter table agentinfo
+add column `agentSalerId` int(11) default NULL COMMENT '渠道跟进销售员Id' after agentEmail;
+
+2014/04/28
+alter table docinfo modify column docName varchar(255) ;

@@ -1,0 +1,9 @@
+/*S表单验证样式文件*/
+input.ng-invalid {
+  border: 1px solid #e2e2e2;
+  box-shadow: #cccccc 1px 1px 1px;
+}
+input.ng-valid {
+  /*border: 1px solid green;*/
+}
+/*E表单验证样式文件*/

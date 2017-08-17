@@ -1,0 +1,23 @@
+<div>
+    <div class="subheading">
+        <span>费用</span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="fold=!fold;"></em>
+    </div>
+    <div ng-show="!fold&&companyRoleCode!='0'">
+        <div add-order-reg-fee-invoice-original-group="" invoice-original-group="invoiceOriginalGroup"
+             edit-model="editModel" save-model="saveModel"
+             ng-repeat="invoiceOriginalGroup in fee.invoiceOriginalGroups"></div>
+        <div order-reg-fee-price-change="" price-change="fee.priceChange"></div>
+    </div>
+    <div ng-show="!fold&&companyRoleCode=='0'">
+        <div order-reg-fee-invoice-original-group="" invoice-original-group="invoiceOriginalGroup"
+             edit-model="editModel" save-model="saveModel"
+             ng-repeat="invoiceOriginalGroup in fee.invoiceOriginalGroups" order-uuid="orderUuid"></div>
+        <div order-reg-fee-price-change="" price-change="fee.priceChange"></div>
+    </div>
+    <!--ng-if="fold || editModel!='edit' || saveModel=='commit'" -->
+    <div order-reg-fee-total=""
+         fee="fee" save-model="saveModel"
+         invoice-Original-Groups="fee.invoiceOriginalGroups" price-Change="fee.priceChange"></div>
+
+</div>

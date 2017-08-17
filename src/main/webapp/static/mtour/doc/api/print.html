@@ -1,0 +1,578 @@
+﻿<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+        <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+        <script type="text/javascript">
+            var printModule = angular.module('printModule', ['qc', 'docModule']);
+            printModule.controller('NavController', ['$scope', 'docNavInfo', function ($scope, docNavInfo) {
+                $scope.navInfo = docNavInfo;
+                $scope.navInfo.current = 'api';
+                $scope.navInfo.sub = 'print';
+            }]);
+
+        </script>
+    </head>
+    <body class="fixed-top" ng-app="printModule">
+        <doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+        <div class="container">
+            <div class="docs-header">
+                <h1>打印</h1>
+
+                <p>
+                    项目打印页面调用的api </p>
+            </div>
+            <div class="breadcrumb">Quauq Doc > Api文档 > 打印</div>
+
+            <div class="page-header">
+                <h1>打印</h1>
+            </div>
+            <div>
+
+                <h3>支出单</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtourfinance/getMtourPaySheet</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    paymentUuid:'付款Uuid',
+                    fundsType:'款项类型'
+                }
+            </pre>
+                    </p><p>输出(data)</p>
+            <pre>
+        {
+                paymentUuid:'付款Uuid'
+            applicantDate:'日期',
+            printNo:'流水号',
+            groupNo:'团号',
+            //美途不展示pnr
+            //invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)'0':PNR，'1':地接社
+            //PNR:'PNR编号',//大编号为PNR的时候才有意义
+            //tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+            tourOperatorOrChannelName:'支付对象名称',
+            purpose:'用途',
+            totalRMB:'计人民币',
+            totalRMB_CN:'计人民币(大写)',
+            totalOther:'外币',
+            totalOther_CN:'外币(大写)',
+            applicant:'申请人',
+            paymentPeople:'付款的人们'
+                <!--{-->
+                    <!--id:'付款人id',-->
+                    <!--name:'付款人姓名'-->
+                <!--}-->
+            <!--]-->
+        }
+            </pre>
+                </div>
+                <h3>订单列表支出单--查询</h3>
+
+                <p class="mark">描述:同一订单所有付款的合计单</p>
+
+                <p>接口路径:order/queryPayOrder</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid:['订单Uuid1','订单Uuid2',...]
+                }
+            </pre>
+                    </p><p>输出(data)</p>
+            <pre>
+            [
+		        {
+		            payObj:'支付对象',
+		            approvalDate:'报批日期',
+		            groupNo:'团号',
+		            applicantId:'申请人ID',//当前登录用户
+		            applicant:'申请人name',//当前登录用户
+		            paymentObject:'支付对象'[//包括地接社和渠道商
+		                {
+		                    paymentObjectUuid:'支付对象Uuid',
+		                    paymentObjectName:'支付对象Name',
+		                    tourOperatorChannelCategoryCode:'地接社/渠道商' 1-地接社 2-渠道商
+		                }
+		            ]
+		            fundsType:'款项类型'，
+		        },
+		        {
+		            payObj:'支付对象',
+		            approvalDate:'报批日期',
+		            groupNo:'团号',
+		            applicantId:'申请人ID',//当前登录用户
+		            applicant:'申请人name',//当前登录用户
+		            paymentObject:'支付对象'[//包括地接社和渠道商
+		                {
+		                    paymentObjectUuid:'支付对象Uuid',
+		                    paymentObjectName:'支付对象Name',
+		                    tourOperatorChannelCategoryCode:'地接社/渠道商' 1-地接社 2-渠道商
+		                }
+		            ]
+		            fundsType:'款项类型'，
+		        }
+           ]
+            </pre>
+                </div>
+                <!--modify by wlj at 2016.07.05-->
+                <h3>订单列表收入单--查询</h3>
+
+                <p class="mark">所选订单的收入单---展示</p>
+
+                <p>接口路径:order/batchQueryReceiveOrder</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid:['订单Uuid1','订单Uuid2',...]
+                }
+            </pre>
+                    </p><p>输出(data)</p>
+            <pre>
+            {
+									applicantId：'申请人id',
+								    applicantName：'申请人Name',
+									expenditureList:[
+														{
+															id:'订单id'(回传),
+															groupNo:'123456789',
+															payObj:'收款对象',[收款对象1，收款对象2...]
+															paymentObject:'具体收款信息'
+																[{
+																	approvalDate:"20160412"
+																	paymentObjectUuid:'1',
+																	paymentObjectName:'美图民生达美信用卡',
+																	fundsType:'定金'，
+																	fundsName:'张三'，
+																	fundsMode:'现金'，
+																	fundsCost:'1500'，
+																	currencyId:"123"
+																	payObjectUuid:"123"
+																},
+																{
+																	approvalDate:"20160412"
+																	paymentObjectUuid:'2',
+																	paymentObjectName:'美图民生达美贵宾卡',
+																	fundsType:'成本'，
+																	fundsName:'李四'，
+																	fundsMode:'支票'，
+																	fundsCost:'1800'，
+																	currencyId:"123"
+																}]
+														},
+														{
+															id:'订单id'(回传),
+															groupNo:'团号',
+															payObj:''收款对象',[收款对象1，收款对象2...]
+															paymentObject:'具体收款信息'
+																[{
+                                                                    approvalDate:报批日期
+																	paymentObjectUuid:'收款对象Uuid',//回传
+																	paymentObjectName:'收款对象Name',
+																	fundsType:'收款类型'，//回传
+                                                                    payPriceType:"1234"
+																	fundsName:'款项人'，
+																	fundsMode:'收款方式'，
+																	fundsCost:'收款金额'，
+                                                                    currencyId:"币种id",
+
+																},
+																{
+                                                                    approvalDate:报批日期
+																	paymentObjectUuid:'收款对象Uuid',
+																	paymentObjectName:'收款对象Name',
+																	fundsType:'收款类型'，
+																	fundsName:'款项人'，
+																	fundsMode:'收款方式'，
+																	fundsCost:'收款金额'，
+                                                                    currencyId:"币种id"
+																}]
+														}
+													]
+								}
+            </pre>
+                </div>
+                <!--mdofiy by wlj at 2016.07.04-->
+                <h3>订单列表支出单--查询</h3>
+
+                <p class="mark">描述:所选订单的支出单---展示</p>
+
+                <p>接口路径:order/batchQueryPayOrder</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid:['订单Uuid1','订单Uuid2',...]
+                }
+            </pre>
+                    </p><p>输出(data)</p>
+            <pre>
+            {
+									applicantId：'申请人id',
+								    applicantName：'申请人Name',
+									expenditureList:[
+														{
+                                                            orderUuid(回传)
+															groupNo:'123456789',
+															payObj:'支付对象',[支付对象1，支付对象2...]
+															paymentObject:'支付对象'
+																[{
+                                                                    currencyId:"123",
+                                                                    paymentUuid:'1',（huihcuan）
+                                                                    fundsTypeCode:'类型ID'（回传）
+																	paymentObjectUuid:'1',
+																	approvalDate:"20160412"
+																	paymentObjectName:'美图民生达美信用卡',
+																	fundsType:'类型ID'（回传），
+                                                                    fundsTypeName:'类型名称'，
+																	fundsName:'美图民生达美'，
+																	fundsPNR:'13540'，
+																	fundsCost:'1500'，
+																},
+																{
+                                                                    currencyId:"123",
+																	paymentObjectUuid:'2',
+																	paymentObjectName:'美图民生达美贵宾卡',
+																	fundsType:'成本'，
+																	fundsName:'美图成本'，
+																	fundsPNR:'13541'，
+																	fundsCost:'1800'，
+																}]
+														},
+														{
+															groupNo:'团号',
+															payObj:'支付对象',[支付对象1，支付对象2...]
+															paymentObject:'支付对象'
+																[{
+																	paymentObjectUuid:'支付对象Uuid',
+																	paymentObjectName:'支付对象Name',
+																	fundsType:'款项类型'，
+																	fundsName:'款项名称'，
+																	fundsPNR:'PNR'，
+																	fundsCost:'应付金额'，
+																},
+																{
+																	paymentObjectUuid:'支付对象Uuid',
+																	paymentObjectName:'支付对象Name',
+																	fundsType:'款项类型'，
+																	fundsName:'款项名称'，
+																	fundsPNR:'PNR'，
+																	fundsCost:'应付金额'，
+																}]
+															fundsName:'款项名称'，
+															fundsPNR:'PNR'，
+														}
+													]
+								}
+            </pre>
+                </div>
+
+                <h3>订单列表支出单--付款记录</h3>
+
+                <p class="mark">描述:根据付款对象查询付款记录</p>
+
+                <p>接口路径:参考90需求的款项明细接口</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid:'订单Uuid',
+                    paymentObjectCode:'支付对象Code',
+                }
+            </pre>
+                    </p><p>输出(data)</p>
+            <pre>
+        [{
+            paymentUuid:'支付记录Uuid'
+            approvalDate:'报批日期'
+            PNR:'PNR编号',//没有pnr则为空
+            fundsTypeCode:'款项类型//退款:2,借款:3,追加成本:4
+            fundsTypeName:'款项类型name//退款:2,借款:3,追加成本:4
+            fundsName:'款项名称',
+            payableAmount://应付金额'
+                    {
+                        currencyUuid:'币种Uuid',
+                        amount:'金额',
+                    }
+        }]
+            </pre>
+                </div>
+
+                <h3>订单列表支出单--生成支出单</h3>
+
+                <p class="mark">描述:同一订单所有付款的合计单</p>
+
+                <p>接口路径:参考90需求的合并生成支出单接口</p>
+
+                <div>
+                    <p>输入(param):</p>
+            <pre>
+                {
+                    orderUuid:'订单Uuid',
+                    <!--groupNo:'团号',-->
+                    <!--applicantId:'申请人'-->
+                    paymentObjectCode:'付款对象',
+                    paymentUuids:[paymentUuid:'付款Uuid']
+                }
+            </pre>
+                    </p><p>输出(data)</p>
+            <pre>
+        {
+            applicantDate:'日期',
+            printNo:'流水号',
+            groupNo:'团号',
+            //美途不展示pnr
+            //invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)'0':PNR，'1':地接社
+            //PNR:'PNR编号',//大编号为PNR的时候才有意义
+            //tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+            tourOperatorOrChannelName:'支付对象名称',
+            purpose:'用途',
+            totalRMB:'计人民币',
+            totalRMB_CN:'计人民币(大写)',
+            totalOther:'外币',
+            totalOther_CN:'外币(大写)',
+            applicant:'申请人',
+            paymentPeople:'付款的人们'
+
+        }
+            </pre>
+                </div>
+
+                <h3>收入单</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/showIncomeInfo</p>
+
+
+                    <p>输入(param):<pre>
+    {
+        receiveUuid:'收款Uuid',
+        fundsType:'款项类型'
+    }
+        </pre>
+                    </p>
+
+                    <p>输出(data)</p>
+            <pre>
+        {
+            receiveUuid:'收款Uuid'
+            applicantDate:'日期',
+            printNo:'流水号',
+            groupNo:'团号',
+            //美途不展示pnr
+            //invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)'0':PNR，'1':地接社
+            //PNR:'PNR编号',//大编号为PNR的时候才有意义
+            //tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+            fromInfo:'兹由'
+            toInfo:'交来'
+            totalRMB:'计人民币',
+            totalRMB_CN:'计人民币(大写)'
+            totalOther:'外币',
+            totalOther_CN:'外币(大写)',
+            incomeAloner:'制单人',
+            approver:'审核人'
+        }
+            </pre>
+                </div>
+
+                <h3>结算单</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtour/mtourfinance/getSettlement</p>
+
+                <div>
+                    <p>输入(param):
+            <pre>
+    {
+        orderUuid:'订单Uuid'
+    }
+            </pre>
+                    </p>
+
+                    <p>输出(data)</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        groupNo:'团号',
+        peopleCount:'人数',
+        invoiceDate:'票日期',
+        itinerary:'行程',
+        travelPeriod:'行程时间段',出
+        airlineCompany:'航空公司',
+        supplierName:'供应商名称',
+        ticketName:'机票操作员',
+        orderer:'销售',
+        incomes:[//收入
+            {
+                receiveDate:'收款日期'
+                customer:'客户'
+                peopleCount:'人数'
+                deposit:'定金'
+                balancePayment:'尾款',
+                totalAmount:'总计',
+                currencyUuid:'币种Uuid',
+                exchangeRate:'汇率',
+                rmb:'折合rmb'
+            }
+        ],
+        costs:[//成本
+            {
+                fundsName:'项目',
+                invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                PNR:'PNR编号',//大编号为PNR的时候才有意义
+                tourOperatorName:'地接社Name',//大编号为地接社的时候才有意义
+                airlineCompany:'航空公司',
+                peopleCount:'人数',
+                //deposit:'定金',
+                price:'单价'
+                totalAmount:'总计',currencyUuid:'币种Uuid',
+                currencyUuid:'币种Uuid',
+                exchangeRate:'汇率',
+                rmb:'折合rmb'
+            }
+        ],
+        additionalCosts:[//追加成本
+            {
+                amount:'总计',currencyUuid:'币种Uuid',
+                currencyUuid:'币种Uuid',
+                exchangeRate:'汇率',
+                rmb:'折合rmb'
+            }
+        ],
+        refunds:[
+            {
+                amount:'总计',currencyUuid:'币种Uuid',
+                currencyUuid:'币种Uuid',
+                exchangeRate:'汇率',
+                rmb:'折合rmb'
+            }
+        ],
+        grossProfit:'毛利',
+        grossProfitRate:'毛利率'
+    }
+            </pre>
+                </div>
+                <h3>结算单-锁定</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtourfinance/lockSettlement</p>
+
+                <div>
+                    <p>输入(param):
+            <pre>
+    {
+        orderUuid:'订单Uuid'
+    }
+            </pre>
+                    </p>
+
+                    <p>输出(data)</p>
+            <pre>
+
+            </pre>
+                </div>
+                <h3>结算单-解锁</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtourfinance/unlockSettlement</p>
+
+                <div>
+                    <p>输入(param):
+            <pre>
+    {
+        orderUuid:'订单Uuid'
+    }
+            </pre>
+                    </p>
+
+                    <p>输出(data)</p>
+            <pre>
+
+            </pre>
+                </div>
+                <h3>确认单</h3>
+
+                <p class="mark">描述:</p>
+
+                <p>接口路径:mtourfinance/getConfirmSheetData</p>
+
+                <div>
+                    <p>输入(param):<pre>
+            {
+                orderUuid:'订单Uuid'
+                }</pre>
+                    </p><p>输出(data)</p>
+            <pre>
+    [
+        {
+            orderUuid:'订单Uuid'
+            companyName:'公司名称',
+            companyName_EN:'公司名称(英文)',
+            addressee:'公司地址',
+            addressee_EN:'公司地址(英文)',
+            tel:'电话',
+            tax:'传真',
+            channelName:'收件人',
+            channelTel:'收件人电话',
+            orderer:'发件人'
+            ordererTel:'发件人电话'
+            orderDate:'订单日期'
+            groupNo:'团号'
+            routerInfo:'路线',
+            productName:'名称',
+            flights:[//明细
+                {
+                    flightNo:'航班号',
+                    departureTime:'出发时间',//包含日期
+                    arrivalTime:'到达时间',
+                    departureAirport:'出发机场',
+                    arrivalAirport:'到达机场',
+                    memo:'备注'
+                }
+            ]
+            total:'外包总计的公式',
+            totalResult:'外报总计',
+
+            memo:'备注'
+            overseasAccount:{//境外账户
+                accountName:'开户名',
+                routing:'Routing',
+                account:'账号',
+                swiftNumber:'Swift number'
+                accountBank:'开户行',
+                accountBankAddress:'开户行地址',
+                accountPhone:'开户手机号'
+            },
+            account:{//境内账户
+                accountName:'公司名称',
+                accountBank:'开户行',
+                account:'账号'
+            },
+            wholesalerName:'销售方公司名称'
+            ElectronicChapterUrl:'电子章路径'
+        }
+    ]
+            </pre>
+                </div>
+            </div>
+        </div>
+        <doc-footer></doc-footer>
+    </body>
+</html>

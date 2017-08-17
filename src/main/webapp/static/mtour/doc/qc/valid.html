@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+    <style type="text/css">
+        table th{
+            text-align: center;
+        }
+    </style>
+
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/common/sortable.js"></script>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+    <script type="text/javascript">
+        var validModule = angular.module('validModule', ['qc', 'docModule']);
+        validModule.controller('NavController',['$scope','docNavInfo', function ($scope,docNavInfo) {
+            $scope.navInfo = docNavInfo;
+            $scope.navInfo.current = 'qc';
+            $scope.navInfo.sub = 'valid';
+        }]);
+        validModule.controller('ValidController', ['$scope', function ($scope) {
+            $scope.userName = 'xxx';
+            $scope.userHeight=2223.1;
+            $scope.placeholder={
+                name:"input name2"
+            };
+            $scope.commit = function () {
+                alert('终于可以提交了!!!');
+            };
+            $scope.checkError = function () {
+                alert(JSON.stringify($scope.form1.$error));
+            };
+            $scope.userList=[
+                {name:'张3'},{},{}
+            ];
+            $scope.newUser=function(){
+                $scope.userList.push({});
+            };
+            $scope.changePlaceholder= function () {
+                $scope.placeholder.name+=':1212';
+            }
+        }]);
+    </script>
+</head>
+<body class="fixed-top" ng-app="validModule">
+<doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+<div class="container" ng-controller="ValidController">
+    <div class="docs-header">
+        <h1>验证</h1>
+
+        <p>
+            项目中的form验证
+        </p>
+    </div>
+    <div class="breadcrumb">Quauq Doc > 前端开发文档 > 验证</div>
+    <div class="page-header">
+        <h1>基础</h1>
+    </div>
+    <div>
+        <h3>准备工作</h3>
+
+        <div>
+            <p>依赖项:jquery.js,angular.js,qc.basic.js,qc.js</p>
+
+            <p>依赖模块:qc module</p>
+        </div>
+        <h3>说明</h3>
+
+        <div>
+            <p>qc模块的验证是建立在angular验证的基础上的.在该基础上结合qc项目进行了扩展</p>
+
+            <p class="mark">为了统一的管理以及后期的扩展,请不要使用angular自带的验证.全部使用qc-valid-[验证指令]</p>
+
+            <p>form:验证的容器</p>
+
+            <p>ngModel:验证指令和form交互的桥梁</p>
+
+            <p>name:通过[form].[name]可以获取指定元素的验证信息,比如$invalid,$error等</p>
+
+            <p>novalidate:在form元素上添加该指令,阻止浏览器的默认验证行为</p>
+        </div>
+        <div>
+            <pre>    &lt;form name="form1" novalidate="">
+        &lt;div>
+            &lt;label >user name&lt;/label>
+            &lt;input type="text" qc-valid-required
+                   name="userName" ng-model="userName" class="form-control"/>
+            &lt;label >user email&lt;/label>
+            &lt;input type="text" qc-valid-email=""
+                   name="userEmail" ng-model="userEmail" class="form-control"/>
+            &lt;label>height&lt;/label>
+            &lt;input type="text" qc-valid-number="{intLength:3,decimalLength:1}"
+                   name="userHeight" ng-model="userHeight" class="form-control"/>
+            &lt;label>salary&lt;/label>
+            &lt;input type="text" qc-valid-number=""
+                   name="userSalary" ng-model="userSalary" class="form-control"/>
+        &lt;/div>
+        <span>{{</span>form1.$error}}
+        &lt;div class="alert alert-danger" ng-hide="form1.$valid">
+            &lt;div ng-hide="form1.userName.$valid">
+                userName 必须输入
+            &lt;/div>
+            &lt;div ng-hide="form1.userEmail.$valid">
+                邮箱格式输入错误
+            &lt;/div>
+        &lt;/div>
+        &lt;div class="text-center">
+            &lt;button class="btn btn-default" ng-disabled="form1.$invalid">Commit&lt;/button>
+        &lt;/div>
+    &lt;/form></pre>
+            <div ng-form="form1">
+                <div>
+                    <label>user name</label>
+                    <input type="text" qc-valid-required
+                           name="userName" ng-model="userName" class="form-control"/>
+                    <label>user email</label>
+                    <input type="text" qc-valid-email=""
+                           name="userEmail" ng-model="userEmail" class="form-control"/>
+                    <label>height</label>
+                    <input type="text" qc-valid-number="{intLength:3,decimalLength:1}"
+                           name="userHeight" ng-model="userHeight" class="form-control"/>
+                    <label>salary</label>
+                    <input type="text" qc-valid-number=""
+                           name="userSalary" ng-model="userSalary" class="form-control"/>
+                </div>
+                {{form1.$error| json}}
+                <div class="alert alert-danger" ng-hide="form1.$valid">
+                    <div ng-hide="form1.userName.$valid">
+                        userName 必须输入
+                    </div>
+                    <div ng-hide="form1.userEmail.$valid">
+                        邮箱格式输入错误
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-default" ng-click="commit()" ng-disabled="form1.$invalid">Commit</button>
+                    <button class="btn btn-primary" ng-click="checkError()">检查错误</button>
+                </div>
+            </div>
+            <br/>
+
+        </div>
+        <h3>表格中的验证</h3>
+        <div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>salary</th>
+                    <th>
+                        <button class="btn btn-default" ng-click="newUser()">new </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-form="user_form_{{$index}}" ng-repeat="user in userList">
+                    <td><input class="form-control"
+                               name="input_name_{{$index}}"
+                               ng-model="user.name"
+                               placeholder="{{placeholder.name}}"
+                               qc-valid-required="">
+                    </td>
+                    <td>
+                        <input class="form-control"
+                               name="input_email_{{$index}}"
+                               ng-model="user.email"
+                               qc-valid-email="">
+                    </td>
+                    <td><input class="form-control" name="input_salary_{{$index}}" ng-model="user.salary" qc-valid-number=""></td>
+                    <td class="text-center">
+                        <button class="btn btn-default" ng-disabled="user_form_{{$index}}.$invalid" >save</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-default" ng-click="changePlaceholder()">change placeholder</button>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>qc验证directive</h1>
+    </div>
+    <div>
+        <h3>qc-valid-required</h3>
+
+        <div>
+            <p>必须输入</p>
+        </div>
+        <h3>qc-valid-email</h3>
+
+        <div>
+            <p>邮件格式</p>
+        </div>
+        <h3>qc-valid-number</h3>
+
+        <div>
+            <p>数字格式,包含小数</p>
+        </div>
+        <h3>to be continued</h3>
+    </div>
+</div>
+<doc-footer></doc-footer>
+</body>
+</html>

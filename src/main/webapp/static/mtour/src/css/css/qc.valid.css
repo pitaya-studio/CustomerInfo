@@ -1,0 +1,17 @@
+/*S表单验证样式文件*/
+input.ng-invalid {
+  border: 1px solid #fb0009 !important;
+  box-shadow: #fb0009 0px 0px 0px !important;
+}
+.ng-invalid .qc-dropdown {
+  border: 1px solid #fb0009 !important;
+  box-shadow: #fb0009 0px 0px 0px !important;
+}
+.ng-invalid.qc-dropdown {
+  border: 1px solid #fb0009 !important;
+  box-shadow: #fb0009 0px 0px 0px !important;
+}
+input.ng-valid {
+  /*border: 1px solid green;*/
+}
+/*E表单验证样式文件*/

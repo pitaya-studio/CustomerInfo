@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+    <script type="text/javascript">
+        var prototypeTest = angular.module('prototypeTest',[]);
+        prototypeTest.controller('testController',function($scope){
+            $scope.name="  前面2个空格,后面3个空格   ";
+            $scope.trimedName = $scope.name.trim();
+            $scope.array1 = ["z3",'l4','wang5','ying6','sheng7','z3'];
+            $scope.item='z3';
+            $scope.$watch('item', function () {
+                $scope.index = $scope.array1.indexOf($scope.item);
+            })
+
+            $scope.array2= $scope.array1.filter(function(item){
+                var reg = /[g]/;
+                return reg.test(item);
+            });
+        });
+    </script>
+</head>
+<body ng-app="prototypeTest">
+        <div class="container" ng-controller="testController">
+            <div class="page-header">
+               <h3>qc.prototype实例</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    String.trim:
+                    <pre>trim前的值:"{{name}}"</pre>
+                    <pre>trim前的值:"{{trimedName}}"</pre>
+                </li>
+                <li class="list-group-item">
+                    Array.indexOf <input  type="text" ng-model="item"/>
+                    <pre>整个数组:{{array1}}</pre>
+                    <pre>第一个"{{item}}"的index是:{{index}}</pre>
+                </li>
+                <li class="list-group-item">
+                    Array.filter:
+                    <pre>整个数组:{{array1}}</pre>
+                    <pre>包含"g"的:{{array2}}</pre>
+                </li>
+            </ul>
+        </div>
+
+</body>
+</html>

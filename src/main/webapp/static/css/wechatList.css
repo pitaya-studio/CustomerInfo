@@ -1,0 +1,198 @@
+.cursor{
+    cursor: pointer;
+}
+.wechat_box{
+    width: 360px;
+    height: 190px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    background: #FFFFFF;
+    top: 40px;
+    right: -15px;
+    box-shadow: 0px 0px 10px #d9d9d9;
+    display: none;
+    z-index:1;
+}
+.wechat_2{
+    background: url("../images/wechat/wechat_3.png") no-repeat;
+    width: 22px;
+    height: 10px;
+    display: block;
+    top: -10px;
+    right: 13px;
+    position: absolute;
+}
+.wechat_hover{
+    width: 42px;
+    height: 30px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    padding-top: 10px;
+}
+.wechat_left{
+    width: 150px;
+    height: 150px;
+    margin: 20px;
+}
+.wechat_right{
+    margin: 50px 0;
+}
+.wechat_top{
+    margin-bottom: 15px;
+    color: #666666;
+    font-size: 14px;
+    font-weight: bold;
+}
+.wechat_hover:hover .wechat_box{
+    display: block;
+}
+/*微信二维码转发调整 ymx 2017/3/24 Start*/
+.margin_jbox{
+    /*margin: 30px 30px 30px 65px;*/
+    margin: 40px 40px 30px 35px;
+}
+.wechat_right_jbox{
+    text-align: center;
+    margin-top: 60px;
+}
+.wechat_top_jbox{
+    /*margin-bottom: 40px;*/
+    margin-bottom: 20px;
+    text-align: left;
+}
+.wechat_bottom div{
+    text-align: left;
+}
+.gray_text{
+    color: #999999;
+}
+/*微信二维码转发调整 ymx 2017/3/24 End*/
+.width_60{
+    width: 60px;
+}
+.relative{
+	position:relative;
+}
+.absolute{
+	position:absolute;
+}
+
+
+
+
+.we_chat_update{
+
+}
+.we_chat_update .hint_span{
+    line-height: 28px;
+    float: none!important;
+    margin-left: 3px;
+}
+.we_chat_update .preview_content{
+    height: 370px;
+    margin-top: 13px;
+    vertical-align: top;
+    padding-left: 88px;
+    min-width: 1200px;
+}
+.preview_con_left{
+    width: 470px;
+    height:inherit;
+    display: inline-block;
+}
+
+.preview_img{
+    margin-left: 46px;
+    vertical-align: top;
+    width: 212px;
+    display: inline-block;
+    height: inherit;
+}
+.list_previw{
+    background: url(../images/wechat/weChat_list.jpg) no-repeat;
+}
+.detail_previw{
+    background: url(../images/wechat/weChat_detail.jpg) no-repeat;
+}
+.list_previw ul{
+    margin-top: 107px;
+}
+.list_previw ul li{
+    margin-bottom: 18px;
+    margin-left: 14px;
+    height: 53px;
+    width: 58px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.list_previw ul li div{
+    height:inherit;
+    max-width: none;
+    margin-left: -20px;
+    width: 97px;
+}
+.detail_previw div{
+    margin-top: 37px;
+    margin-left: 1px;
+    width: 210px;
+    height: 115px;
+}
+
+.control_img .btn-group .btn-primary:before{
+    content: "|";
+    position: absolute;
+    left: -2px;
+    top: 10px;
+    color: #609dec;
+}
+
+.control_img .btn-group .btn-primary:first-child:before{
+    content: "";
+}
+
+.docs-tooltip{
+    margin-top: -4px;
+}
+
+.control_img{
+    width: 470px;
+    height: 38px;
+    text-align: center;
+}
+label.btn-upload{
+    height: 30px;
+}
+.btn-primary[data-method='getCroppedCanvas']{
+    background-color: transparent;
+}
+.disable_btn{
+    display: none;
+}
+.btn-primary[data-method='getCroppedCanvas']:hover,
+.btn-primary[data-method='getCroppedCanvas']:focus,
+.btn-primary[data-method='getCroppedCanvas']:active,
+.btn-primary[data-method='getCroppedCanvas']:active:focus,
+.btn-primary[data-method='getCroppedCanvas']:active:hover{
+    background-color: transparent;
+}
+
+#batchImgId, img[name=oneIdImgName]{
+	width: 140px;
+    height: 140px;
+    border: 10px solid #E1EEFE;
+}
+.team_top table tr input {
+    margin-left: 15px;
+}
+#contentTable .team_top td{
+	padding:0;
+}
+.withdraw-relative span{
+	margin-left:10px !important
+}
+.nav-tabs{
+	display:none;
+}

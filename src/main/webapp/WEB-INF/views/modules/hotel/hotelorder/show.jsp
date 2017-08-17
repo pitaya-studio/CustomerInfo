@@ -1,0 +1,311 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>HotelOrder信息</title>
+	<meta name="decorator" content="wholesaler"/>
+    <%--t2改版 去掉重复引用的样式 bootstrap huanqiu jh modified by Tlw--%>
+	<%@include file="/WEB-INF/views/include/treetable.jsp" %>
+	<link type="text/css" rel="stylesheet" href="${ctxStatic}/jquery-jbox/2.3/Skins/Bootstrap/jbox.css" />
+	<script src="${ctxStatic}/js/little_logo.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${ctxStatic}/js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="${ctxStatic}/js/jquery-migrate-1.js"></script>
+	<script type="text/javascript" src="${ctxStatic}/js/common.js"></script>
+	<!--基础信息维护模块的脚本-->
+	<script type="text/javascript" src="${ctxStatic}/js/tmp.basicInfo.js"></script>
+</head>
+<body>
+	<!--右侧内容部分开始-->
+	<div class="ydbz_tit pl20">HotelOrder信息</div>
+	<div class="maintain_add">
+		
+		<p>
+			<label>订单uuid：</label> 
+			<span>
+				${hotelOrder.uuid}
+			</span>
+		</p>
+		<p>
+			<label>酒店产品uuid：</label> 
+			<span>
+				${hotelOrder.activityHotelUuid}
+			</span>
+		</p>
+		<p>
+			<label>酒店产品团期uuid：</label> 
+			<span>
+				${hotelOrder.activityHotelGroupUuid}
+			</span>
+		</p>
+		<p>
+			<label>订单单号：</label> 
+			<span>
+				${hotelOrder.orderNum}
+			</span>
+		</p>
+		<p>
+			<label>订单状态：0 全部订单；1 待确认报名；2 已确认报名；3 已取消；：</label> 
+			<span>
+				${hotelOrder.orderStatus}
+			</span>
+		</p>
+		<p>
+			<label>预订单位-即渠道：</label> 
+			<span>
+				${hotelOrder.orderCompany}
+			</span>
+		</p>
+		<p>
+			<label>预订单位名称：</label> 
+			<span>
+				${hotelOrder.orderCompanyName}
+			</span>
+		</p>
+		<p>
+			<label>跟进销售员id：</label> 
+			<span>
+				${hotelOrder.orderSalerId}
+			</span>
+		</p>
+		<p>
+			<label>预订人名称：</label> 
+			<span>
+				${hotelOrder.orderPersonName}
+			</span>
+		</p>
+		<p>
+			<label>预订人联系电话：</label> 
+			<span>
+				${hotelOrder.orderPersonPhoneNum}
+			</span>
+		</p>
+		<p>
+			<label>预订日期：</label> 
+			<span>
+				<fmt:formatDate pattern="yyyy-MM-dd" value="${hotelOrder.orderTime}"/>
+			</span>
+		</p>
+		<p>
+			<label>预定人数：</label> 
+			<span>
+				${hotelOrder.orderPersonNum}
+			</span>
+		</p>
+		<p>
+			<label>订金金额UUID：</label> 
+			<span>
+				${hotelOrder.frontMoney}
+			</span>
+		</p>
+		<p>
+			<label>支付状态1-未支付全款 2-未支付订金 3-已占位 4-已支付订金 5-已支付全款 99-已取消：</label> 
+			<span>
+				${hotelOrder.payStatus}
+			</span>
+		</p>
+		<p>
+			<label>已付金额UUID：</label> 
+			<span>
+				${hotelOrder.payedMoney}
+			</span>
+		</p>
+		<p>
+			<label>支付方式1-支票 2-POS机付款 3-现金支付 4-汇款 5-快速支付：</label> 
+			<span>
+				${hotelOrder.payType}
+			</span>
+		</p>
+		<p>
+			<label>创建者：</label> 
+			<span>
+				${hotelOrder.createBy}
+			</span>
+		</p>
+		<p>
+			<label>创建日期：</label> 
+			<span>
+				<fmt:formatDate pattern="yyyy-MM-dd" value="${hotelOrder.createDate}"/>
+			</span>
+		</p>
+		<p>
+			<label>更新者：</label> 
+			<span>
+				${hotelOrder.updateBy}
+			</span>
+		</p>
+		<p>
+			<label>更新日期：</label> 
+			<span>
+				<fmt:formatDate pattern="yyyy-MM-dd" value="${hotelOrder.updateDate}"/>
+			</span>
+		</p>
+		<p>
+			<label>删除标记：</label> 
+			<span>
+				${hotelOrder.delFlag}
+			</span>
+		</p>
+		<p>
+			<label>当前退换记录Id：</label> 
+			<span>
+				${hotelOrder.changeGroupId}
+			</span>
+		</p>
+		<p>
+			<label>退换类型：</label> 
+			<span>
+				${hotelOrder.groupChangeType}
+			</span>
+		</p>
+		<p>
+			<label>订单成本金额：</label> 
+			<span>
+				${hotelOrder.costMoney}
+			</span>
+		</p>
+		<p>
+			<label>达账状态：</label> 
+			<span>
+				${hotelOrder.asAcountType}
+			</span>
+		</p>
+		<p>
+			<label>达账金额UUID：</label> 
+			<span>
+				${hotelOrder.accountedMoney}
+			</span>
+		</p>
+		<p>
+			<label>下订单时产品的预收定金：</label> 
+			<span>
+				${hotelOrder.payDeposit}
+			</span>
+		</p>
+		<p>
+			<label>占位类型    如果为0  或者为空  表示是占位  如果为1  表示是切位：</label> 
+			<span>
+				${hotelOrder.placeHolderType}
+			</span>
+		</p>
+		<p>
+			<label>下订单时的单房差：</label> 
+			<span>
+				${hotelOrder.singleDiff}
+			</span>
+		</p>
+		<p>
+			<label>取消原因：</label> 
+			<span>
+				${hotelOrder.cancelDescription}
+			</span>
+		</p>
+		<p>
+			<label>0 未付款 1 已付首款 2 已付尾款（全款）3 首款已达账 4 尾款（全款）已达账 5 开发票申请 6 已开发票：</label> 
+			<span>
+				${hotelOrder.isPayment}
+			</span>
+		</p>
+		<p>
+			<label>付款方式：</label> 
+			<span>
+				${hotelOrder.payMode}
+			</span>
+		</p>
+		<p>
+			<label>保留天数：</label> 
+			<span>
+				${hotelOrder.remainDays}
+			</span>
+		</p>
+		<p>
+			<label>激活时间：</label> 
+			<span>
+				<fmt:formatDate pattern="yyyy-MM-dd" value="${hotelOrder.activationDate}"/>
+			</span>
+		</p>
+		<p>
+			<label>订单锁定状态：0:正常  1：锁定(订单锁定状态不允许操作订单)：</label> 
+			<span>
+				${hotelOrder.lockStatus}
+			</span>
+		</p>
+		<p>
+			<label>特殊需求：</label> 
+			<span>
+				${hotelOrder.specialDemand}
+			</span>
+		</p>
+		<p>
+			<label>订单总价UUID：</label> 
+			<span>
+				${hotelOrder.totalMoney}
+			</span>
+		</p>
+		<p>
+			<label>文件ids：</label> 
+			<span>
+				${hotelOrder.fileIds}
+			</span>
+		</p>
+		<p>
+			<label>原始应收价 一次生成永不改变：</label> 
+			<span>
+				${hotelOrder.originalTotalMoney}
+			</span>
+		</p>
+		<p>
+			<label>是否是补单产品，0：否，1：是：</label> 
+			<span>
+				${hotelOrder.isAfterSupplement}
+			</span>
+		</p>
+		<p>
+			<label>原始订金金额（乘人数后金额）：</label> 
+			<span>
+				${hotelOrder.originalFrontMoney}
+			</span>
+		</p>
+		<p>
+			<label>结算方式：即时结算 1；按月结算 2；担保结算 3；后续费 4：</label> 
+			<span>
+				${hotelOrder.paymentType}
+			</span>
+		</p>
+		<p>
+			<label>预报名间数：</label> 
+			<span>
+				${hotelOrder.forecaseReportNum}
+			</span>
+		</p>
+		<p>
+			<label>酒店扣减控房间数：</label> 
+			<span>
+				${hotelOrder.subControlNum}
+			</span>
+		</p>
+		<p>
+			<label>酒店扣减非控房间数：</label> 
+			<span>
+				${hotelOrder.subUnControlNum}
+			</span>
+		</p>
+		<p>
+			<label>备注：</label> 
+			<span>
+				${hotelOrder.remark}
+			</span>
+		</p>
+		<p>
+			<label>报名状态（1、预报名；2、报名）：</label> 
+			<span>
+				${hotelOrder.bookingStatus}
+			</span>
+		</p>
+		<p class="maintain_btn">
+			<label>&nbsp;</label> <input type="button" value="关&nbsp;&nbsp;&nbsp;闭" class="btn btn-primary gray" onclick="window.close();" />
+		</p>
+	</div>
+	<!--右侧内容部分结束-->
+</body>
+</html>

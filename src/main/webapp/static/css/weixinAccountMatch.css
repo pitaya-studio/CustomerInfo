@@ -1,0 +1,104 @@
+.content-container {
+    height: 100%;
+    color: #666;
+}
+/*	.jbox_cbody {
+		width: 100%;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #d9d9d9;
+	}*/
+.jbox_ta_head {
+    background: #f7f7f7;
+    padding: 8px 10px;
+    border-bottom: 1px solid #d9d9d9;
+}
+.wx_info {
+    /*position: absolute;*/
+    /*overflow: hidden;*/
+    padding: 6px 10px;
+    width: 508px;
+}
+.wx_info ul.channel_name {
+    width: 285px;
+}
+.chk_box {
+    display: table-cell;
+}
+.jbox_ta_head .channel_name {
+    width: 54%;
+}
+.jbox_ta_head .channel_info {
+    width: 44%;
+}
+.jbox_ta_header {
+    padding-left: 10px;
+    word-break: break-all;
+    /*		width:70px;
+            text-align: right;*/
+}
+
+.jbox_ta_head ul {
+    /*padding-top: 4px;*/
+    display: table-cell;
+}
+/*	.channel_info li {
+		height: 16px;
+	}*/
+.channel_info li em {
+    width: 65px;
+    display: table-cell;
+    text-align: right;
+}
+.channel_info li span {
+    display: table-cell;
+    word-break: break-all;
+}
+.jbox_body {
+    height: 76%;
+}
+.cnl_account {
+    background-color: #fff;
+}
+.last_search{
+    height: 150px;
+}
+/*	.jbox_ctype {
+		padding: 10px 20px;
+	}*/
+.chk_box {
+    margin-right: 6px;
+}
+.chk_box input {
+    margin: 0 6px 0 0;
+}
+/*	div.jbox .jbox-button-focus {
+		background-color: #b7b7b7;
+	}*/
+/*	.ctype_desc {
+		display: inline-block;
+		width: 82%;
+		margin-left: 8px;
+		vertical-align: top;
+	}*/
+.searchActive{
+    background-color: #d9d9d9 !important;
+}
+#searchResu li {
+    padding-left: 4px;
+}
+#searchBox{
+    position: relative;
+}
+#searchBox #searchResu{
+    position: absolute;
+    cursor: pointer;
+    overflow-y: auto;
+}
+
+#searchInput::-webkit-search-cancel-button{
+    display: none;
+}
+
+#searchInput::-ms-clear{
+    display: none;
+}

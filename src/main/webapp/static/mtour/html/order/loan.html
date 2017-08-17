@@ -1,0 +1,107 @@
+<div style=" ">
+    <table width="600" class="table-list-md">
+        <thead>
+            <tr>
+                <th class="table-th-default-width">申请日期</th>
+                <th class="table-th-default-width">
+                    <i class="require">*</i>
+                    款项名称
+                </th>
+                <th class="table-th-md-width">
+                    <i class="require">*</i>
+                    本次借款金额
+                </th>
+                <th class="table-th-default-width">申请人</th>
+                <th class="table-th-default-width">状态</th>
+                <th class="table-th-md-width">备注</th>
+                <th class="table-th-sm-width">操作
+                    <div class="table-close fa fa-times " ng-click="toggleSubTable()"></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="active" ng-repeat="funds in orderLoan.newList" ng-init="initFunds(funds)">
+            <tr>
+                <td>{{userInfo.currentDate|dateString}}</td>
+                <td>
+                    <input class="text-input-xs" name=""
+                           qc-valid-required=""
+                           type="text" ng-model="funds.fundsName">
+                </td>
+                <td>
+                    <div class="qc-input-group-base qc-input-group-two-level f-l">
+                        <div class="qc-dropdown" qc-dropdown ng-model="funds.currency"
+                             item-text="{{qcDropdownItem.currencyCode}}"
+                             qc-valid-required=""
+                             dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                             items="currencies"></div>
+                        <span class="f-l">/</span>
+                        <input class="text-input f-l " type="text"
+                               qc-valid-required=""
+                               qc-input-amount="" readonly="readonly"
+                               ng-model="funds.exchangeRate" ng-show="companyRoleCode!='0'">
+                        <input class="text-input f-l " type="text"
+                               qc-valid-required=""
+                               qc-input-exchange-rate=""
+                               ng-model="funds.exchangeRate" ng-show="companyRoleCode=='0'">
+                    </div>
+                    <input class="text-input-xs f-l mar-l-default"
+                           qc-valid-required="" qc-input-amount=""
+                           type="text" ng-model="funds.amount">
+                </td>
+                <td>
+                    {{userInfo.userName}}
+                </td>
+                <td>----</td>
+                <td>
+                    <input class="text-input-lg" ng-model="funds.memo" type="text">
+                </td>
+                <td>
+                <span class="base-operator">
+                    <button href="javascript:void(0);" ng-click="clear(funds)">清空</button>
+                    <button href="javascript:void(0);" ng-click="commit(funds,this)">提交</button>
+                    <em class="fa fa-plus" ng-click="orderLoan.newList.push({})"></em>
+                    <em class="fa fa-times" ng-if="orderLoan.newList.length>1"
+                        ng-click="orderLoan.newList.remove(funds)"></em>
+                </span>
+                </td>
+            </tr>
+        </tbody>
+        <tbody class="table-bg-two-level" ng-if="orderLoan.newList.length>1">
+            <tr>
+                <td class="text-right" colspan="7">
+                    <button class="butn-second" ng-click="clearAll()">批量清空</button>
+                    <button class="butn-second" ng-click="commitAll()">批量提交</button>
+                </td>
+            </tr>
+        </tbody>
+        <tbody ng-repeat="funds in oldList" ng-class="{'odd':$odd,'even':$even}">
+            <tr>
+                <td>{{funds.applicationDate}}</td>
+                <td><p class="table-th-default-width ellipsis" title="{{funds.fundsName}}">{{funds.fundsName}}</p></td>
+                <td>
+                    {{funds.amount|currency:funds.currencyCode+' '}}
+                    <span exchange-rate-icon="" exchange-rate="funds.exchangeRate"></span>
+                </td>
+                <td><p class="table-th-default-width ellipsis" title="{{funds.applicant}}">{{funds.applicant}}</p></td>
+                <td>{{funds.state}}</td>
+                <td><p class="table-th-default-width ellipsis" title="{{funds.memo}}">{{funds.memo}}</p></td>
+                <td>
+                	<span class="base-operator">
+                    	<button ng-disabled="funds.stateCode!=1"
+                                ng-click="cancel(funds)">撤销
+                        </button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td class="text-right" colspan="7">
+                    累计借款金额:
+                    <span ng-repeat-start="amount in oldTotalAmount">{{amount.amount|currency:amount.currencyCode+' '}}</span>
+                    <span ng-hide="$last" ng-repeat-end=""> + </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

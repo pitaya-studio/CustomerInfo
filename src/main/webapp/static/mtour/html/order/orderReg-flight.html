@@ -1,0 +1,114 @@
+<div>
+    <div class="subheading">
+        <span>添加航班信息</span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="fold=!fold;"></em>
+    </div>
+    <div class="add-air-info" ng-if="!fold">
+        <table class="table-air-info" ng-if="editModel == 'edit'">
+            <thead>
+                <tr>
+                    <th class="table-th-default-width">航班号</th>
+                    <th class="table-th-sm-width">出发日期/时间</th>
+                    <th class="table-th-sm-width">到达日期/时间</th>
+                    <th class="table-th-default-width">出发机场</th>
+                    <th class="table-th-default-width">到达机场</th>
+                    <th class="table-th-default-width">备注</th>
+                    <th class="table-th-sm-fifty"></th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr ng-repeat="flight in flights"  ng-init="initFlight(flight)">
+                    <td>
+                        <input class="text-input-md-third" type="text"
+                               ng-model="flight.flightNo">
+                    </td>
+                    <td>
+                        <input class="text-input-sm date date-bg" type="text"
+                               qc-date
+                               ng-model="flight.departureDate"
+                               qc-date-format="yy-mm-dd">
+                        <div class="flight-time">
+                            <input class="text-input-xs " type="text"
+                                   qc-Input-Hour
+                                   ng-model="flight.departureHour">
+                            <input class="text-input-xs " type="text"
+                                   qc-Input-Minute
+                                   ng-model="flight.departureMinute">
+                        </div>
+                    </td>
+                    <td>
+                        <input class="text-input-sm date no-cover date-bg" type="text"
+                               qc-date
+                               ng-model="flight.arrivalDate"
+                               qc-date-format="yy-mm-dd">
+                        <div class="flight-time" ng-if="editModel == 'edit'">
+                            <input class="text-input-xs " type="text"
+                                   qc-Input-Hour
+                                   ng-model="flight.arrivalHour">
+                            <input class="text-input-xs " type="text"
+                                   qc-Input-Minute
+                                   ng-model="flight.arrivalMinute">
+                        </div>
+                    </td>
+                    <td>
+                        <div airport=""
+                             ng-model="flight.departureAirport"></div>
+                    </td>
+                    <td>
+                        <div airport=""
+                             ng-model="flight.arrivalAirport"></div>
+                    </td>
+
+                    <td>
+                        <input class="text-input-md-third" type="text"
+                               ng-model="flight.memo">
+                    </td>
+                    <td>
+                    <span class="base-operator">
+                        <em class="fa fa-times" ng-if="flights.length>1" ng-click="flights.remove(flight)"></em>
+                        <em class="fa fa-plus" ng-click="flights.push({})"></em>
+                    </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <table class="table-air-info"  ng-if="editModel != 'edit'">
+            <thead>
+                <tr>
+                    <th class="table-th-default-width">航班号</th>
+                    <th class="table-th-sm-width">出发日期/时间</th>
+                    <th class="table-th-sm-width">到达日期/时间</th>
+                    <th class="table-th-default-width">出发机场</th>
+                    <th class="table-th-default-width">到达机场</th>
+                    <th class="table-th-default-width">备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="flight in flights" >
+                    <td>
+                        <span>{{flight.flightNo}}</span>
+                    </td>
+                    <td>
+                        <span>{{formatDate(flight.departureDate,flight.departureHour,flight.departureMinute)}}</span>
+                    </td>
+                    <td>
+                        <span>{{formatDate(flight.arrivalDate,flight.arrivalHour,flight.arrivalMinute)}}</span>
+                    </td>
+                    <td>
+                        <span>{{flight.departureAirportCode}}</span>
+                    </td>
+                    <td>
+                        <span>{{flight.arrivalAirportCode}}</span>
+                    </td>
+
+                    <td>
+                        <span >{{flight.memo}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

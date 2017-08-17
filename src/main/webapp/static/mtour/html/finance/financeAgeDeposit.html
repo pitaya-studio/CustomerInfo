@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+    .table_border{
+        border: solid 1px #B4B4B4;
+        border-collapse: collapse;     --折叠样式
+    }
+    .table_border tr th{
+        /*background:url("../../images/gray/bg_table_th.gif") repeat;*/
+        padding-left:4px;
+        height:27px;
+        border: solid 1px #B4B4B4;
+    }
+    .table_border tr td{
+        height:25px;
+        padding:4px;
+        border: solid 1px #B4B4B4;
+        text-align:center;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../../../My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+<div>
+    <span class="groupHomeSearch_head">出团日期：</span>
+        <span >
+            <input id="groupOpenDate" class="inputTxt dateinput homeInput" name="groupOpenDateBegin" value="" onfocus="WdatePicker({onpicking:function(dp){var vvv=dp.cal.getNewDateStr();if($dp.$('groupCloseDate').value==''){$dp.$('groupCloseDate').value=vvv;}}})" > —
+            <input id="groupCloseDate" class="inputTxt dateinput homeInput" name="groupOpenDateEnd" value="" onclick="WdatePicker()" >
+            <input type="button" value="确定">
+        </span>
+    <input type="button" value="下载" onclick="ExportToExcel('financeCostIncome')">
+    <input type="button" value="打印" onclick="printDIV('myDiv')">
+    <input type="button" value="打印2" onclick="preview()">
+</div>
+<div id="myDiv">
+
+    <h2>美图国旅</h2><h2>2016年3月</h2><h2>营业收入统计表(当月已结账)</h2>
+    <p>单位：元</p>
+    <table id="financeCostIncome" class="table_border" style="background-color: lightcyan;">
+        <tr  style="border: mediumseagreen">
+            <td>销售</td>
+            <td>团号</td>
+            <td>营业收入</td>
+            <td>营业成本</td>
+            <td>毛利</td>
+            <td>应收账款</td>
+        </tr>
+        <tr>
+            <td rowspan="3">张三</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td rowspan="2">王五</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    $(function(){
+        g_context_url = "${ctx}";
+        //搜索条件筛选
+        launch();
+        //操作浮框
+        operateHandler();
+        //团号和产品切换
+        switchNumAndPro();
+
+        //产品销售和下单人切换
+        switchSalerAndPicker();
+
+        $("div.message_box div.message_box_li").hover(function(){
+            $("div.message_box_li_hover",this).show();
+        },function(){
+            $("div.message_box_li_hover",this).hide();
+        });
+
+    });
+    /*/mtour/mtourfinance/getOperatingRevenue 查询接口
+     /mtour/mtourfinance/downloadOperatingRevenue	下载Excel链接*/
+    /* /mtour/mtourfinance/frontMoneyStat   定金统计表
+     /mtour/mtourfinance/downloadFrontMoneyStatExcel   定金统计表下载*/
+        function printDIV(divId){
+            var obj=document.getElementById(divId);
+            var newWindow=window.open("打印窗口","_blank");//打印窗口要换成页面的url
+            var docStr = obj.innerHTML;
+            newWindow.document.write(docStr);
+            newWindow.document.close();
+            newWindow.print();
+            newWindow.close();
+            window.print();
+        }
+    $(document).ready(function(){
+        $.ajax({
+            type:'post',
+            url: '/mtour/mtourfinance/getOperatingRevenue',
+            data:{
+                startDate: $("#groupOpenDate").val(),
+                endDate : $("#groupCloseDate").val(),
+                 },
+            cache:false,
+            dataType:'json',
+            success:function(data) {
+               if(data.msg =="true" ){
+                    alert("修改成功！");
+                    window.location.reload();
+                    }else{
+                     view(data.msg);
+                     }
+                },
+            error : function() {
+            // view("异常！");
+            alert("异常！");
+             }
+    })
+    })
+</script>
+</html>

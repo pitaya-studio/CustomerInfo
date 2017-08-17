@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+        <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+        <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/static/css/common/jquery-ui.css"/>
+
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+        <script type="text/javascript">
+            var typeModule = angular.module('typeModule', ['qc', 'docModule']);
+            typeModule.controller('NavController', ['$scope', 'docNavInfo', function ($scope, docNavInfo) {
+                $scope.navInfo = docNavInfo;
+                $scope.navInfo.current = 'api';
+                $scope.navInfo.sub = 'type';
+            }]);
+            typeModule.controller('ValueController', ['$scope', function ($scope) {
+                $scope.searchTypes = [
+                    {searchType: '1', searchTypeName: '团号'},
+                    {searchType: '2', searchTypeName: '订单号'},
+                    {searchType: '3', searchTypeName: '产品名称'},
+                    {searchType: '4', searchTypeName: '渠道名称'},
+                    {searchType: '5', searchTypeName: '下单人'},
+                    {searchType: '6', searchTypeName: 'PNR'},
+                    {searchType: '7', searchTypeName: '航空公司'},
+                    {searchType: '8', searchTypeName: '航段名称'}
+                ];
+                $scope.tourOperatorChannelCategories = [
+                    {
+                        tourOperatorChannelCategoryCode: '1',
+                        tourOperatorChannelCategoryName: '地接社'
+                    },
+                    {
+                        tourOperatorChannelCategoryCode: '2',
+                        tourOperatorChannelCategoryName: '渠道商'
+                    }
+                ];
+                $scope.invoiceOriginalType = [
+                    {invoiceOriginalTypeCode: '0', invoiceOriginalTypeName: 'PNR'},
+                    {invoiceOriginalTypeCode: '1', invoiceOriginalTypeName: '地接社'}
+                ];
+                //0090需求 付款的订单列表的订单付款状态
+                $scope.payment_orderPaymentStatus = [
+                    {payment_orderPaymentStatusCode: '0', payment_orderPaymentStatusName: '未付全款'},
+                    {payment_orderPaymentStatusCode: '1', payment_orderPaymentStatusName: '已付全款'}
+                ];
+                //结算单锁定状态
+                $scope.lockStatus = [
+                    {lockStatusCode: '0', lockStatusName: '未锁'},
+                    {lockStatusCode: '1', lockStatusName: '已锁'}
+                ];
+                $scope.invoiceOriginalGroups = [
+                    {invoiceOriginalGroupTypeCode: '1', invoiceOriginalGroupTypeName: '订单'},
+                    {invoiceOriginalGroupTypeCode: '2', invoiceOriginalGroupTypeName: '追散'}
+                ];
+                $scope.channelType = [
+                    {channelTypeCode: '1', channelTypeName: '签约渠道'},
+                    {channelTypeCode: '2', channelTypeName: '非签约渠道'}
+                ];
+                $scope.orderStatus = [
+                    {orderStatusCode: '0', orderStatusName: '已生成'},
+                    {orderStatusCode: '2', orderStatusName: '取消'},
+                    {orderStatusCode: '3', orderStatusName: '草稿'}
+                ];
+                $scope.orderReceiveStatus = [
+                    {receiveStatusCode: '1', receiveStatusName: '待收款'},
+                    {receiveStatusCode: '2', receiveStatusName: '部分定金'},
+                    {receiveStatusCode: '3', receiveStatusName: '已收定金'},
+                    {receiveStatusCode: '4', receiveStatusName: '已收全款'}
+                ];
+                $scope.BTypeStatus = [
+                    {BTypeStatusCode: '2', BTypeStatusName: '待提交'},
+                    {BTypeStatusCode: '3', BTypeStatusName: '已提交'},
+                    {BTypeStatusCode: '1', BTypeStatusName: '已付款'}
+                ];
+                $scope.orderStatus = [
+                    {orderStatusCode: '0', orderStatusName: '已生成'},
+                    {orderStatusCode: '2', orderStatusName: '取消'},
+                    {orderStatusCode: '3', orderStatusName: '草稿'}
+                ];
+                $scope.orderReceiveStatus = [
+                    {receiveStatusCode: 101, receiveStatusName: '待收款'},
+                    {receiveStatusCode: 102, receiveStatusName: '部分定金'},
+                    {receiveStatusCode: 103, receiveStatusName: '已收定金'},
+                    {receiveStatusCode: 104, receiveStatusName: '已收全款'}
+                ];
+
+                $scope.financeReceiveStatus = [
+                    {receiveStatusCode: '99', receiveStatusName: '待确认'},
+                    {receiveStatusCode: '1', receiveStatusName: '已确认'},
+                    {receiveStatusCode: '2', receiveStatusName: '已驳回'},
+                    {receiveStatusCode: '0', receiveStatusName: '已撤销'}
+                ];
+                $scope.paymentApplyStatus = [
+                    {statusCode: '0', statusName: '已撤销'},
+                    {statusCode: '1', statusName: '已提交'},
+                    {statusCode: '2', statusName: '已付款'},
+                ];
+                $scope.receiveType = [
+                    {receiveTypeCode: '1', receiveTypeName: '定金'},
+                    {receiveTypeCode: '2', receiveTypeName: '尾款'},
+                    {receiveTypeCode: '3', receiveTypeName: '全款'},
+                    {receiveTypeCode: '4', receiveTypeName: '追散'},
+                    {receiveTypeCode: '5', receiveTypeName: '成本-其他收入'}
+                ];
+                $scope.orderReceiveType = [//订单收款类型
+                    {receiveTypeCode: '1', receiveTypeName: '定金'},
+                    {receiveTypeCode: '2', receiveTypeName: '尾款'},
+                    {receiveTypeCode: '3', receiveTypeName: '全款'},
+                    {receiveTypeCode: '4', receiveTypeName: '追散'}
+                ];
+                //财务付款的类型
+                $scope.fundsType = [
+                    {fundsType: '1', fundsTypeName: '借款'},
+                    {fundsType: '2', fundsTypeName: '退款'},
+                    {fundsType: '3', fundsTypeName: '追加成本'},
+                    {fundsType: '4', fundsTypeName: '成本'}
+                ];
+                //财务收款的类型
+                $scope.receiveFundsType = [
+                    {receiveFundsTypeCode: '1', receiveFundsTypeName: '订单收款'},
+                    {receiveFundsTypeCode: '2', receiveFundsTypeName: '其他收入收款'}
+                ];
+                $scope.paymentMethods = [
+                    {
+                        paymentMethodName: '支票',
+                        paymentMethodCode: '1'
+                    },
+                    {
+                        paymentMethodName: '现金',
+                        paymentMethodCode: '3'
+                    },
+                    {
+                        paymentMethodName: '汇款',
+                        paymentMethodCode: '4'
+                    },
+                ];
+                $scope.accountReceivableAgeStatus = [
+                    {
+                        accountReceivableAgeStatusName: '未结清',
+                        accountReceivableAgeStatusCode: '0'
+                    },
+                    {
+                        accountReceivableAgeStatusName: '已结清',
+                        accountReceivableAgeStatusCode: '1'
+                    }
+                ];
+                $scope.listCategorys = [
+                    {
+                        listCategoryName: '全部',
+                        listCategoryCode: '0'
+                    },
+                    {
+                        listCategoryName: '订单',
+                        listCategoryCode: '1'
+                    },
+                    {
+                        listCategoryName: '付款',
+                        listCategoryCode: '2'
+                    },
+                    {
+                        listCategoryName: '收款',
+                        listCategoryCode: '3'
+                    },
+
+
+                ];
+                $scope.bankType = [
+                    {
+                        bankTypeCode: 1,
+                        bankTypeName: '地接社'
+                    },
+                    {
+                        bankTypeCode: 2,
+                        bankTypeName: '渠道'
+                    }
+                ];
+                $scope.roleType = [//1-销售 2-销售主管 3-计调 4-计调主管
+                    {
+                        roleTypeCode: '',
+                        roleTypeName: '全部'
+                    },
+                    {
+                        roleTypeCode: '1',
+                        roleTypeName: '销售'
+                    },
+                    {
+                        roleTypeCode: '2',
+                        roleTypeName: '销售主管'
+                    },
+                    {
+                        roleTypeCode: '3',
+                        roleTypeName: '计调'
+                    },
+                    {
+                        roleTypeCode: '4',
+                        roleTypeName: '计调主管'
+                    }
+                ];
+                //订单收款记录列表的状态
+                $scope.accountCompleteStatus = [
+                    {
+                        accountCompleteStatusCode: 99,
+                        accountCompleteStatusName: '待确认'
+                    },
+                    {
+                        accountCompleteStatusCode: 0,
+                        accountCompleteStatusName: '已撤销'
+                    },
+                    {
+                        accountCompleteStatusCode: 1,
+                        accountCompleteStatusName: '已确认'
+                    },
+                    {
+                        accountCompleteStatusCode: 2,
+                        accountCompleteStatusName: '已驳回'
+                    }
+                ];
+                //付款列表的付款状态
+                $scope.financePaymentStatus = [
+                    {paymentStatusCode: '0', paymentStatusName: '待付款'},
+                    {paymentStatusCode: '1', paymentStatusName: '已付款'}
+                ];
+                //付款记录列表的付款状态
+                $scope.financePaymentRecordStatus = [
+                    {financePaymentRecordStatusCode: '0', financePaymentRecordStatusName: '已付款'},
+                    {financePaymentRecordStatusCode: '1', financePaymentRecordStatusName: '已撤销'}
+                ];
+
+                $scope.printStatus = [
+                    {printStatusCode: '1', printStatusName: '未打印'},
+                    {printStatusCode: '2', printStatusName: '已打印'}
+                ];
+                $scope.companyRole = [
+                    {companyRoleCode: '0', companyRoleName: '当前默认(美途国际)'},
+                    {companyRoleCode: '1', companyRoleName: '华尔远航'}
+                ];
+                //90-财务付款-订单列表-订单付款状态
+                $scope.financePayOrderListPayStatus = [
+                    {financePayOrderListPayStatusCode: '0', financePayOrderListPayStatusName: '未付全款'},
+                    {financePayOrderListPayStatusCode: '1', financePayOrderListPayStatusName: '已付全款'}
+                ];
+            }]);
+        </script>
+    </head>
+    <body class="fixed-top" ng-app="typeModule">
+        <doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+        <div class="container" ng-controller="ValueController">
+            <div class="docs-header">
+                <h1>固定值</h1>
+
+                <p>
+                    各种固定的状态或者类型 </p>
+            </div>
+            <div class="breadcrumb">Quauq Doc > Api文档 > 固定值</div>
+            <div class="page-header">
+                <h1>固定值</h1>
+            </div>
+            <div>
+
+                <h3>搜索类型</h3>
+
+                <p class="mark">描述:列表页面的搜索类型,根据该类型和对应的搜索文本进行搜索</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>搜索类型名称</th>
+                                <th>搜索类型代码</th>
+                            </tr>
+                            <tr>
+                                <th>searchTypeName</th>
+                                <th>searchType</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in searchTypes">
+                                <td>{{item.searchTypeName}}</td>
+                                <td>{{item.searchType}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>地接社/渠道商</h3>
+
+                <p class="mark">描述:区分地接社或者渠道商</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>地接社/渠道商名称</th>
+                                <th>地接社/渠道商代码</th>
+                            </tr>
+                            <tr>
+                                <th>tourOperatorChannelCategoryName</th>
+                                <th>tourOperatorChannelCategoryCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in tourOperatorChannelCategories">
+                                <td>{{item.tourOperatorChannelCategoryName}}</td>
+                                <td>{{item.tourOperatorChannelCategoryCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>大编号组</h3>
+
+                <p class="mark">描述:大编号组(生成订单和追散进行区分)</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>大编号组名称</th>
+                                <th>大编号组代码</th>
+                            </tr>
+                            <tr>
+                                <th>invoiceOriginalGroupTypeName</th>
+                                <th>invoiceOriginalGroupTypeCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in invoiceOriginalGroups">
+                                <td>{{item.invoiceOriginalGroupTypeName}}</td>
+                                <td>{{item.invoiceOriginalGroupTypeCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>大编号</h3>
+
+                <p class="mark">描述:区分地接社或者PNR</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>大编号名称</th>
+                                <th>大编号代码</th>
+                            </tr>
+                            <tr>
+                                <th>invoiceOriginalTypeName</th>
+                                <th>invoiceOriginalTypeCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in invoiceOriginalType">
+                                <td>{{item.invoiceOriginalTypeName}}</td>
+                                <td>{{item.invoiceOriginalTypeCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>渠道类型</h3>
+
+                <p class="mark">描述:签约渠道/非签约渠道</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>渠道类型名称</th>
+                                <th>渠道类型代码</th>
+                            </tr>
+                            <tr>
+                                <th>channelTypeName</th>
+                                <th>channelTypeCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in channelType">
+                                <td>{{item.channelTypeName}}</td>
+                                <td>{{item.channelTypeCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>订单状态</h3>
+
+                <p class="mark">描述:0正常.2取消状态.3草稿状态</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>订单状态名称</th>
+                                <th>订单状态代码</th>
+                            </tr>
+                            <tr>
+                                <th>orderStatusName</th>
+                                <th>orderStatusCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in orderStatus">
+                                <td>{{item.orderStatusName}}</td>
+                                <td>{{item.orderStatusCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>订单收款状态</h3>
+
+                <div>
+                    <p class="mark">描述:待收款/部分定金/已收定金/已收全款</p>
+
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>收款状态名称</th>
+                                <th>收款状态代码</th>
+                            </tr>
+                            <tr>
+                                <th>receiveStatusName</th>
+                                <th>receiveStatusCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in orderReceiveStatus">
+                                <td>{{item.receiveStatusName}}</td>
+                                <td>{{item.receiveStatusCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>财务收款状态</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>收款状态名称</th>
+                                <th>收款状态代码</th>
+                            </tr>
+                            <tr>
+                                <th>receiveStatusName</th>
+                                <th>receiveStatusCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in financeReceiveStatus">
+                                <td>{{item.receiveStatusName}}</td>
+                                <td>{{item.receiveStatusCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>付款申请状态</h3>
+
+                <p class="mark">描述:借款/退款/追加成本的 申请状态</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>付款申请状态名称</th>
+                                <th>付款申请状态代码</th>
+                            </tr>
+                            <tr>
+                                <th>statusName</th>
+                                <th>statusCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in paymentApplyStatus">
+                                <td>{{item.statusName}}</td>
+                                <td>{{item.statusCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>收款类别</h3>
+
+                <p class="mark">描述:定金/尾款/全款/追散/其他收入</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>收款类别名称</th>
+                                <th>收款类别代码</th>
+                            </tr>
+                            <tr>
+                                <th>receiveTypeName</th>
+                                <th>receiveTypeCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in receiveType">
+                                <td>{{item.receiveTypeName}}</td>
+                                <td>{{item.receiveTypeCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>订单收款收款类别</h3>
+
+                <p class="mark">描述:定金/尾款/全款/追散</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>收款类别名称</th>
+                                <th>收款类别代码</th>
+                            </tr>
+                            <tr>
+                                <th>receiveTypeName</th>
+                                <th>receiveTypeCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in orderReceiveType">
+                                <td>{{item.receiveTypeName}}</td>
+                                <td>{{item.receiveTypeCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>B类操作状态（成本记录、其他收入记录）</h3>
+
+                <p class="mark">描述:已提交/待提交/已付款</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>状态名称</th>
+                                <th>状态代码</th>
+                            </tr>
+                            <tr>
+                                <th>BTypeStatusName</th>
+                                <th>BTypeStatusCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in BTypeStatus">
+                                <td>{{item.BTypeStatusName}}</td>
+                                <td>{{item.BTypeStatusCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>款项类型(付款)</h3>
+
+                <p class="mark">描述:成本/退款/借款/追加成本</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>款项类型</th>
+                                <th>款项代码</th>
+                            </tr>
+                            <tr>
+                                <th>fundsName</th>
+                                <th>fundsType</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in fundsType">
+                                <td>{{item.fundsTypeName}}</td>
+                                <td>{{item.fundsType}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>款项类型(收款)</h3>
+
+                <p class="mark">描述:订单收款/其他收入收款</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>款项类型</th>
+                                <th>款项代码</th>
+                            </tr>
+                            <tr>
+                                <th>receiveFundsTypeName</th>
+                                <th>receiveFundsTypeCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in receiveFundsType">
+                                <td>{{item.receiveFundsTypeName}}</td>
+                                <td>{{item.receiveFundsTypeCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>付款方式</h3>
+
+                <p class="mark">描述:</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>付款方式名称</th>
+                                <th>付款方式代码</th>
+                            </tr>
+                            <tr>
+                                <th>paymentMethodName</th>
+                                <th>paymentMethodCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tbody>
+                            <tr ng-repeat="item in paymentMethods">
+                                <td>{{item.paymentMethodName}}</td>
+                                <td>{{item.paymentMethodCode}}</td>
+                            </tr>
+                        </tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>付款状态(付款列表中的付款状态)</h3>
+
+                <p class="mark">描述:</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>付款状态名称</th>
+                                <th>付款状态代码</th>
+                            </tr>
+                            <tr>
+                                <th>paymentStatusName</th>
+                                <th>paymentStatusCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tbody>
+                            <tr ng-repeat="item in financePaymentStatus">
+                                <td>{{item.paymentStatusName}}</td>
+                                <td>{{item.paymentStatusCode}}</td>
+                            </tr>
+                        </tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>达账状态(收款)</h3>
+
+                <p class="mark">描述:</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>达账状态名称</th>
+                                <th>达账状态代码</th>
+                            </tr>
+                            <tr>
+                                <th>accountCompleteStatusName</th>
+                                <th>accountCompleteStatusCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tbody>
+                            <tr ng-repeat="item in accountCompleteStatus">
+                                <td>{{item.accountCompleteStatusName}}</td>
+                                <td>{{item.accountCompleteStatusCode}}</td>
+                            </tr>
+                        </tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>账龄状态</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>账龄状态名称</th>
+                                <th>账龄状态代码</th>
+                            </tr>
+                            <tr>
+                                <th>accountReceivableAgeStatusName</th>
+                                <th>accountReceivableAgeStatusCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in accountReceivableAgeStatus">
+                                <td>{{item.accountReceivableAgeStatusName}}</td>
+                                <td>{{item.accountReceivableAgeStatusCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>列表分类</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>列表分类名称</th>
+                                <th>列表分类代码</th>
+                            </tr>
+                            <tr>
+                                <th>listCategoryName</th>
+                                <th>listCategoryCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in listCategorys">
+                                <td>{{item.listCategoryName}}</td>
+                                <td>{{item.listCategoryCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3>用户类型</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>用户类型名称</th>
+                                <th>>用户类型代码</th>
+                            </tr>
+                            <tr>
+                                <th>roleTypeName</th>
+                                <th>roleTypeCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in roleType">
+                                <td>{{item.roleTypeName}}</td>
+                                <td>{{item.roleTypeCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>系统登录批发商</h3>
+
+                <p class="mark">描述:区分是美途还是华尔远航</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>系统登录批发商名称</th>
+                                <th>系统登录批发商代码</th>
+                            </tr>
+                            <tr>
+                                <th>companyRoleName</th>
+                                <th>companyRoleCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in companyRole">
+                                <td>{{item.companyRoleName}}</td>
+                                <td>{{item.companyRoleCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>财务-付款-订单列表的订单付款状态</h3>
+
+                <p class="mark">描述:</p>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>订单付款状态名称</th>
+                                <th>订单付款状态代码</th>
+                            </tr>
+                            <tr>
+                                <th>financePayOrderListPayStatusName</th>
+                                <th>financePayOrderListPayStatusCode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in financePayOrderListPayStatus">
+                                <td>{{item.financePayOrderListPayStatusName}}</td>
+                                <td>{{item.financePayOrderListPayStatusCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <doc-footer></doc-footer>
+    </body>
+</html>

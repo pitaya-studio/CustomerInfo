@@ -1,0 +1,99 @@
+//输入、下拉组合样式
+@import "variables.less";
+@import "mixins.less";
+
+/*S*/
+.qc-input-group-md{
+    width: 90px;
+    height: 20px;
+} 
+.qc-input-group-two-level{
+    width: 70px;
+    height: 22px;
+    .text-input{
+        padding: 0 1px;
+        line-height: 22px;
+    }
+} 
+
+.qc-input-group-md-second{
+    width: 80px;
+    height: 26px;
+}
+.qc-input-group-md-third{
+    display: inline-block;
+    width: 120px;
+    height: 26px;
+}
+
+.qc-input-group-base-seond{
+    .qc-border-variant(1px;solid;#cccccc);
+    background-color: @background-color-white;
+    >.qc-dropdown{
+        float: left;
+        width: 35px;
+        height: 18px;
+        border: none;
+    }
+    
+    .text-input{
+        float: left;
+        width: 40px;
+        padding: 0 5px;
+        background-color: transparent;
+        border: none;
+        line-height: 27px;
+        
+    }
+} 
+
+//其他收入录入金额、文本框
+.qc-input-group-base-third{
+    .qc-border-variant(1px;solid;#cccccc);
+    background-color: @background-color-white;
+    >.qc-dropdown{
+        float: left;
+        width: 35px;
+        height: 26px;
+        border: none;
+        >.qc-dropdown-text-container{
+            height: 24px;
+            line-height: 26px;
+            >.qc-dropdown-text{
+                font-size:@font-size-small;
+            }
+        }
+    }
+    
+    .text-input{
+        float: left;
+        width: 75px;
+        padding: 0 5px;
+        background-color: transparent;
+        color:@text-color-lighter;
+        border: none;
+        line-height: 27px;
+        
+    }
+}
+
+//二级列表下拉文本框
+.qc-input-group-base{
+    border: 1px solid #ffe0c1;
+    background-color: @background-color-white;
+    >.qc-dropdown{
+        float: left;
+        width: 30px;
+        height: 18px;
+        border: none;
+    }
+    .text-input{
+        float: left;
+        width: 30px;
+        background-color: transparent;
+        border: none;
+        font-size:@font-size-number-en;
+        
+    }
+}
+/*E*/

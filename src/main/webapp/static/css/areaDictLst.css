@@ -1,0 +1,85 @@
+#base-info-manage-header {
+    text-align: right;
+    padding-right: 20px;
+    width: 97%;
+}
+
+.destination {
+    overflow: hidden;
+    border-right: 1px solid #ddd;
+    float: left;
+    width: 97%;
+}
+
+.destination form {
+    padding: 0px;
+}
+
+.destination_title {
+    background: #f5f9ff;
+    border-top: 1px solid #b8d1f2;
+    height: 44px;
+    color: #717171;
+    font-weight: bold;
+    border-left: none;
+    border-right: none;
+}
+
+.destination_title div {
+    padding: 6px 0px;
+    text-align: center;
+    vertical-align: middle;
+    border-left: 1px solid #b8d1f2;
+    border-bottom: none;
+    border-top: none;
+    color: #717171;
+    background: #f5f9ff;
+    height: 30px;
+    display: inline;
+    float: left;
+    width: 18%;
+}
+
+.destination_title .destination_f {
+    width: 9%;
+}
+
+.destination dl {
+    width: 100%;
+    float: left;
+    margin: 0px;
+    margin-top: -2px;
+    border-top: #ddd 1px solid;
+}
+
+.destination dl dt {
+    width: 100%;
+    background: #f7f8f9;
+    float: left;
+    border-bottom: 1px solid #ddd;
+    border-top: #ddd 1px solid;
+    margin-top: -1px;
+}
+
+.destination dl dt div, .destination dl dd div {
+    border-left: 1px solid #ddd;
+    padding-left: 2%;
+    height: 30px;
+    font-weight: normal;
+    line-height: 30px;
+    display: inline;
+    color: #403738;
+    float: left;
+}
+
+.destination_a,.destination_b,.destination_c,.destination_d,.destination_e {
+    width: 16%;
+}
+
+.destination dl dd {
+    width: 100%;
+    background: #fff;
+    float: left;
+    margin: 0px;
+    border-bottom: 1px dashed #b1b1b1;
+}

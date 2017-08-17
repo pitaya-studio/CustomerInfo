@@ -1,0 +1,16 @@
+
+<span>
+    <label>{{labelText}}</label>
+						<select ng-model="selectedAmountPrice.id" item-text="{{qcDropdownItem.currencyCode}}">
+						<option value="">币种</option>
+						<option ng-repeat="x in currencies" value="{{x.currencyCode+x.currencyUuid}}">{{x.currencyCode}}</option>
+						</select>
+
+                    <input type="text" ng-model="selectedAmountPrice.minAmount"  qc-input-negative-amount="" style="width: 66px" />
+   								 -
+   					 <input type="text" ng-model="selectedAmountPrice.maxAmount"  qc-input-negative-amount=""  style="width: 66px"   />
+                    <button ng-click="confirm()" ng-disabled="!selectedAmountPrice.id && !selectedAmountPrice.minAmount && !selectedAmountPrice.maxAmount">确定</button>
+
+</span>
+
+

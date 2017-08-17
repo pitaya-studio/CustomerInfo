@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta charset="UTF-8">
+    <title></title>
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dialog.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dialog-theme-default.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dialog-theme-cover.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dropdown.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.loadingBar.css">
+
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/src/components/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.dialog.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.loadingBar.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.message.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.httpCapturer.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.api.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.dropdownList.js"></script>
+
+    <script type="text/javascript">
+        var loadingBarModule = angular.module('loadingBarModule', ['qc']);
+        loadingBarModule.config(['$httpProvider', 'qcLoadingBarProvider', function ($httpProvider, qcLoadingBarProvider) {
+            qcLoadingBarProvider.includeBar = false;
+        }]);
+        loadingBarModule.controller('loadingBarController', ['$scope', 'qcDialog', '$http', 'qcLoadingBar', function ($scope, qcDialog, $http, qcLoadingBar) {
+            $scope.getCountry = function () {
+                $http.get('http://192.168.130.4:3000/mTour/country',
+                        {
+                            params: {},
+                            ignoreLoadingBar: false
+                        }
+                ).success(function (data) {
+                            $scope.countries = data;
+                        }
+                ).error(function (data, status, headers, config) {
+                            alert('请求失败:'+config.url);
+                        });
+            }
+        }]);
+    </script>
+</head>
+<body ng-app="loadingBarModule">
+<div class="container" ng-controller="loadingBarController">
+    <div class="page-header">
+        <h1>LoadingBar</h1>
+    </div>
+    <div>
+        <button ng-click="getCountry()">获取国家</button>
+    </div>
+
+    <div>
+        <div qc-dropdown style="width: 200px;"
+             items="countries"
+             ng-model="selectedCountry"
+             item-text="{{qcDropdownItem.countryName}}"></div>
+    </div>
+    <div class="list-group">
+        <div class="list-group-item" ng-class="{'list-group-item-success':(country==selectedCountry)}" ng-repeat="country in countries">{{country.countryName}}</div>
+    </div>
+</div>
+</body>
+</html>

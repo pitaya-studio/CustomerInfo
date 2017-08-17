@@ -1,0 +1,177 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>付款</span>
+    </div>
+</div>
+<div class="dialog-body-md-collect-money qc-scroll">
+
+
+    <div class="first-step-info">
+        <ul>
+            <li>
+                <label for="">团号：</label>
+                <div class="show-text-base" ng-bind="payList.groupNo"></div>
+            </li>
+            <li>
+                <label for="">支付对象：</label>
+                <div class="show-text-base" ng-bind="payList.paymentObjectName"></div>
+            </li>
+        </ul>
+        <table class="table-list-md">
+            <thead>
+                <tr class="">
+                    <th class="table-th-default-width">序号</th>
+                    <th class="table-th-default-width">报批日期</th>
+                    <th class="table-th-default-width">款项类型</th>
+                    <th class="table-th-md-width">申请人</th>
+                    <th class="table-th-default-width text-right"><p>应付金额</p>
+
+                        <p>已付金额</p></th>
+                    <th class="table-th-default-width">汇率</th>
+                    <th class="table-th-default-width text">
+                        <p>
+                            <i class="require">*</i>
+                            本次付款金额
+                        </p>
+
+                        <p class="text-center"><span class="base-operator">
+                            <!--<a ng-click="payAll(payList.results)">全部</a>-->
+                            <button ng-click="payAll(payList.results)">全部</button></span>
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="pay in payList.results" class="normal odd-even-display-color">
+                <tr>
+                    <td>{{$index+1}}</td>
+                    <td>{{pay.approvalDate}}</td>
+                    <td>{{pay.fundsTypeName}}</td>
+                    <td>
+                        <span class="table-th-lg-width ellipsis">{{pay.applicant}}</span>
+                    </td>
+                    <td class="text-right">
+                        <p>{{pay.payableAmount.amount|qcCurrency:pay.currency.currencyCode}}</p>
+
+                        <p>{{pay.paidAmount.amount|qcCurrency:pay.currency.currencyCode}}</p>
+                    </td>
+                    <td ng-show="companyRoleCode=='1'||(companyRoleCode=='0'&&pay.paidAmount!=undefined&&pay.paidAmount.length!=0)||(companyRoleCode=='0'&&pay.payableAmount.currencyUuid==defaultCurrency.currencyUuid)">
+                        {{pay.exchangeRate}}
+                    </td>
+                    <td ng-show="companyRoleCode=='0'&&(pay.paidAmount==undefined||pay.paidAmount.length==0)&&(companyRoleCode=='0'&&pay.payableAmount.currencyUuid!=defaultCurrency.currencyUuid)">
+                        <input type="text" qc-input-exchange-rate="" ng-model="pay.exchangeRate"
+                               ng-keyup="countPayTotalAmount()" style="width: 60px">
+                    </td>
+                    <td class="text-right">
+                        <em>{{pay.currency.currencyCode}}</em>
+                        <input type="text" ng-model="pay.paymentAmount" style="width: 60px" qc-input-negative-amount
+                               ng-keyup="countPayTotalAmount()">
+                        <div class="require"
+                             ng-if="pay.paymentAmount>pay.payableAmount.amount.floatSubtract(pay.paidAmount.amount)">
+                            超出付款金额
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="text-right">
+            <label>付款总额：</label>
+            <span>{{payList.payTotalAmount}}</span>
+        </p>
+        <p class="text-right">
+            <label>转换后总额：</label>
+            <span>¥{{payList.payTotalRMBAmount}}</span>
+        </p>
+    </div>
+
+    <div class="section-select">
+        <label ng-repeat="value in paymentMethod.payMethods">
+            <input name="payment" type="radio"
+                   ng-value="value.paymentMethodCode"
+                   ng-model="paymentMethod.paymentMethodCode"/>
+            {{value.paymentMethodName}}
+        </label>
+    </div>
+    <div class="second-step-info">
+        <ul>
+
+            <li ng-show="paymentMethod.paymentMethodCode=='1'">
+                <label>
+                    <i class="require">*</i>
+                    支票号：
+                </label>
+
+                <input class="text-input-huge" name="" type="text" ng-model="checkNo" qc-valid-required=""/>
+            </li>
+            <li ng-show="paymentMethod.paymentMethodCode=='1'">
+                <label>
+                    <i class="require">*</i>
+                    开票日期：
+                </label>
+                <input qc-date type="text" qc-valid-required=""
+                       class="text-input-md-third date"
+                       ng-model="checkIssueDate" qc-date-format="yy-mm-dd">
+            </li>
+            <li ng-show="paymentMethod.paymentMethodCode=='4'">
+                <label>
+                    <i class="require">*</i>
+                    付款行名称：
+                </label>
+
+                <div class="qc-dropdown-md" qc-dropdown ng-model="selectedBank" qc-valid-required=""
+                     item-text="{{qcDropdownItem.bankName}}" dropdown-text="{{selectedItem?selectedItem.bankName:''}}"
+                     items="userInfo.banks"></div>
+            </li>
+            <li ng-show="paymentMethod.paymentMethodCode=='4'">
+                <label>
+                    <i class="require">*</i>
+                    付款账户：
+                </label>
+
+                <div class="qc-dropdown-md" qc-dropdown ng-model="selectedAccount" qc-valid-required=""
+                     item-text="{{qcDropdownItem.accountNo}}" dropdown-text="{{selectedItem?selectedItem.accountNo:''}}"
+                     items="selectedBank.accounts"></div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    收款单位：
+                </label>
+
+                <input class="text-input-huge" name="" type="text" ng-model="receiveCompany" qc-valid-required=""/>
+            </li>
+            <li ng-show="paymentMethod.paymentMethodCode=='4'">
+                <label>收款行名称：</label>
+                <div class="qc-dropdown-md" qc-dropdown ng-model="selectedReceiveBank"
+                     item-text="{{qcDropdownItem.bankName}}"
+                     dropdown-text="{{selectedItem?selectedItem.bankName:''}}" items="receiveBanks"
+                     ng-show="channelType.channelTypeCode!='2'"></div>
+                <input class="text-input-huge" name="" type="text" ng-model="receiveBankName"
+                       ng-show="channelType.channelTypeCode=='2'"/>
+            </li>
+            <li ng-show="paymentMethod.paymentMethodCode=='4'">
+                <label>收款账户：</label>
+
+                <div class="qc-dropdown-md" qc-dropdown ng-model="selectedReceiveAccount"
+                     item-text="{{qcDropdownItem.accountNo}}" dropdown-text="{{selectedItem?selectedItem.accountNo:''}}"
+                     items="selectedReceiveBank.accounts" ng-show="channelType.channelTypeCode!='2'"></div>
+                <input class="text-input-huge" qc-input-amount="" name="" type="text" ng-model="receiveAccountNo"
+                       ng-show="channelType.channelTypeCode=='2'"/>
+            </li>
+            <li>
+                <label>付款凭证：</label>
+                <!--<button class="butn butn-primary" type="button" name="" id="">上传凭证</button>-->
+                <div dialog-upload="" attachment="attachments" class="f-l"></div>
+
+            </li>
+            <li>
+                <label>备注：</label>
+                <textarea class="multi-text-lg" name="" ng-model="memo"></textarea>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="butn butn-default " ng-click="payBatchConfirm()">确认支付</button>
+    </div>
+</div>

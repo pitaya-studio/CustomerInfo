@@ -1,0 +1,43 @@
+@import "variables.less";
+@import "mixins.less";
+
+
+/*S期间选择样式*/
+.qc-dateperiod{
+    position: @position-relative;
+    cursor: pointer;
+    .qc-dateperiod-container{
+        position: @position-absolute;
+        z-index:100 ;
+        left: 0px;
+        top:100%;
+        width: 430px;
+        background: @background-color-white;
+        padding: 15px;
+        border-radius:4px ;
+        border:1px solid #e5e5e5;
+        .qc-dateperiod-calendar{
+            display: inline-block;
+            .ui-datepicker{
+                height: 260px;
+            }
+        }
+        >div {
+            text-align: center;
+            .btn.btn-default{
+                width: 50px;
+                height: 20px;
+                margin-top: 10px;
+//              line-height: 18px;   
+                line-height: 18px;             
+                background: #4093fd;
+                border-radius:9px;
+                color: #ffffff;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+/*E期间选择样式*/

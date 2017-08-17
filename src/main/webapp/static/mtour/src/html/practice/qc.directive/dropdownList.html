@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta charset="UTF-8">
+    <title></title>
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dropdown.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.scroll.css">
+    <link rel="stylesheet" href="/src/css/qc/quauq.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.message.css">
+
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script src="/src/components/jquery-nicescroll/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.scroll.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.dropdownList.js"></script>
+    <script type="text/javascript" src="/src/js/qc/filter/qc.propsFilter.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.api.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.message.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.httpCapturer.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.loadingBar.js"></script>
+    <script type="text/javascript">
+        var mtourApiUrl='http://localhost:3000/';
+        var dropdownListModule = angular.module('dropdownListModule', ['qc']);
+        dropdownListModule.controller('itemController', ['$scope','qcApi', function ($scope,qcApi) {
+            $scope.list = [
+                {
+                    name: 'tom',
+                    desc: 'he is a picker!'
+                },
+                {
+                    name: 'jerry',
+                    desc: 'a big mouse'
+                }, {
+                    name: 'mike',
+                    desc: 'kind super man,and a cookie man'
+                }, {
+                    name: 'cate',
+                    desc: 123
+                }, {
+                    name: 'savein'
+                }
+            ];
+            $scope.selectedPerson1 = $scope.list[2];
+            $scope.show1 = function () {
+                if ($scope.selectedPerson1) {
+                    alert($scope.selectedPerson1.name);
+                } else {
+                    alert('还没选, 你点个毛啊!');
+                }
+            };
+            $scope.show2 = function () {
+                if ($scope.selectedPerson2) {
+                    alert('今晚' + $scope.selectedPerson1.name + '来__你!');
+                } else {
+                    alert('还没选, 你点个毛啊!');
+                }
+            };
+            $scope.selectedPerson3 = [];
+            $scope.remove = function (item) {
+                $scope.selectedPerson3.remove(item);
+            }
+
+            $scope.$on('selectedPerson4.search', function ($e,filterText) {
+                qcApi.post('mtour/countryAll',{countryName:filterText}).success(function (result) {
+                    $scope.listAsync=result.data;
+                });;
+            });
+            $scope.selectedCountries=[];
+        }]);
+    </script>
+</head>
+<body ng-app="dropdownListModule">
+<div class="container" ng-controller="itemController">
+    <div class="page-header">
+        <h1>下拉框</h1>
+    </div>
+    <h3>单选下拉框</h3>
+
+    <div>
+        <buton ng-click="show1()" class="btn btn-danger">选择的person</buton>
+        <br/>
+        <br/>
+
+        <div id="ddlPerson1"
+             qc-dropdown
+             ng-model="selectedPerson1"
+             item-text="{{qcDropdownItem.name}}"
+             items="list"
+             style="width: 100px">
+        </div>
+        <br/>
+        <label class="label label-primary">{{selectedPerson1.name}}</label>
+    </div>
+    <hr/>
+    <h3>单选可输入下拉框</h3>
+
+    <div>
+        <buton ng-click="show2()" class="btn btn-primary">选择的person</buton>
+        <br/>
+        <br/>
+
+        <div qc-dropdown
+             class="" style="width: 150px;" id="ddlPerson2"
+             ng-model="selectedPerson2"
+             filter-expression="name,desc"
+             list-max-height="80"
+             list-width="300"
+             dropdown-text="{{selectedItem?selectedItem.name:'选择人名'}}"
+             item-text="<span class='text-danger'>{{qcDropdownItem.name}}:{{qcDropdownItem.desc}}</span>"
+             items="list">
+        </div>
+
+    </div>
+    <h3>复选</h3>
+
+    <div>
+        <div qc-dropdown
+             class="" style="width: 150px;" id="ddlPerson3"
+             ng-model="selectedPerson3"
+             multiple="multiple"
+             filter-expression="name"
+             dropdown-text="{{selectedItem.length?'已选择'+selectedItem.length+'/'+items.length:'请选择'}}"
+             item-text="<span>{{qcDropdownItem.name}}</span>"
+             items="list">
+        </div>
+
+        <span class="btn btn-default" ng-repeat="item in selectedPerson3 | orderBy:'name'">{{item.name}} <span
+                ng-click="remove(item)">X</span> </span>
+    </div>
+    <div>
+        <span class="text-info" > qcPropsFilter:'name,desc':'i'</span>: <span
+            ng-repeat="item in list | qcPropsFilter:'name,desc':'i'">{{item.name}}||</span>
+    </div>
+    <div>
+        <span> qcPropsFilter:'desc':'i'</span>: <span
+            ng-repeat="item in list | qcPropsFilter:'desc':'i'">{{item.name}}||</span>
+    </div>
+
+    <hr/>
+    <h3>服务器数据(多选)</h3>
+
+    <div class="clearfix">
+        <span qc-dropdown-async=""
+             class="pull-left" style="width: 150px;"
+             ng-model="selectedCountries"
+             model-name="selectedPerson4"
+             multiple="multiple"
+             id-name="countryCode"
+             dropdown-text="国家"
+             item-text="<span>{{qcDropdownItem.countryName}}</span>"
+             items="listAsync">
+        </span>
+            <label ng-repeat="c in selectedCountries"> {{c.countryName}} |</label>
+    </div>
+
+    <h3>服务器数据(单选)</h3>
+    <div>
+        <span qc-dropdown-async=""
+              class="pull-left" style="width: 150px;"
+              ng-model="selectedCountry"
+              model-name="selectedPerson4"
+              id-name="countryCode"
+              dropdown-text="{{selectedItem.countryName}}"
+              item-text="<span>{{qcDropdownItem.countryName}}</span>"
+              items="listAsync">
+        </span>
+        <label> {{selectedCountry.countryName}} |</label>
+    </div>
+</div>
+</body>
+</html>

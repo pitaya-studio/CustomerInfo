@@ -1,0 +1,158 @@
+//下拉餐单样式
+@import "variables.less";
+@import "mixins.less";
+
+/*S下拉框样式*/
+.qc-dropdown-md{
+    .qc-input-variant(300px;26px);
+    float:@floatleft;
+    line-height: 26px;
+    &.qc-dropdown{
+        .qc-border-variant(1px;solid;#cccccc);
+    }
+} 
+.qc-dropdown-md-second{
+    .qc-input-variant(200px;26px);
+    float:@floatleft;
+    line-height: 26px;
+    &.qc-dropdown{
+        .qc-border-variant(1px;solid;#cccccc);
+    }
+} 
+.qc-dropdown-xs{
+    .qc-input-variant(65px;20px);
+} 
+
+.qc-dropdown-xs-channel{
+    .qc-input-variant(90px;26px);
+    &.qc-dropdown{
+        .qc-border-variant(1px;solid;#cccccc);
+    }
+    
+} 
+.qc-dropdown-xs-second{
+    .qc-input-variant(65px;20px);
+} 
+.qc-dropdown-sm{
+    .qc-input-variant(120px;26px);
+    float:@floatleft;
+    line-height: 26px;
+    &.qc-dropdown{
+        .qc-border-variant(1px;solid;#cccccc);
+    }
+    
+} 
+
+.qc-dropdown {
+//display: @display-in-line-block;
+  position: @position-relative;
+  border: 1px solid #ffe0c1;
+  .border-radius(@radius:2px;);
+  padding: @padding;
+  font-size:@font-size-small;
+  cursor: @cursor;
+  .qc-dropdown-text-container {
+//  display: @display-in-line-block;
+    position: @position-relative;
+    width: 100%;
+    height: 100%;
+    background-color:@background-color-white ;
+    white-space: nowrap;
+    overflow: @overflow-hidden;
+    .text-overflow();
+    .qc-dropdown-text{
+      display: block;
+      margin-left: 5px;
+      margin-right: 26px;
+      color:@text-color;
+    }
+    .qc-dropdown-anchor {
+      position: @position-absolute;
+      top: 0px;
+      right: 3px;
+      font-size: 7px;
+      color:@qc-dropdown-anchor-color;
+    }
+  }
+  .qc-dropdown-container {
+    position: @position-absolute;
+    top: 100%;
+    left: -1px;
+    margin-top: 2px;
+    padding: 0px;
+    width: 100%;
+    background-color:@background-color-white;
+    overflow: @overflow-hidden;
+    z-index: 100;
+    .qc-dropdown-filter-container{
+      margin-right: 20px;
+      .qc-dropdown-filter {
+        width: 100%;
+        padding: 3px 10px;
+        background-color: transparent;
+        border-style: none;
+      }
+    }
+    .qc-dropdown-list {
+      list-style: @liststylenone;
+      border: 1px solid #CCCCCC;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      padding: 0px;
+      background-color: #f9f9f9;
+      .qc-dropdown-list-search{
+          height: 25px;
+          margin: 5px; 
+          background-color: #e9e9e9;
+          border-radius: 10px;
+          em{
+              position: absolute;
+              top: 9px;
+              right: 8px;
+//            display: inline-block;
+//            float: right;
+              width: 16px;
+              height: 16px;
+              background-image: url(../../img/common/background/ico-search-bg.png); 
+              background-repeat: no-repeat; 
+          }         
+      }
+      .qc-dropdown-item {
+        //修改bug#11918&13045
+        padding: 3px 4px;
+//      height: 20px;
+        line-height: 20px;
+//      border-bottom: solid 1px #dddddd;
+        background-color:@background-color-white;
+        color:@text-color;
+        &:last-child {
+          //修改bug#11918&13045
+          //padding: 3px 4px;
+          //padding: 3px 10px;
+          border-bottom: none;
+
+        }
+
+
+        &:hover {
+          background-color: #eeeeee;
+          color:@text-color;
+        }
+        &.active {
+          background-color: #F90;
+          color:@text-color-white;
+        }
+        //&.dropdownNormal{
+        //  &:last-child{
+        //    padding: 3px 10px;
+        //  }
+        //}
+      }
+    }
+  }
+
+}
+.qc-dropdown+span{
+    color:#D4E1F0 ;
+}
+/*E下拉框样式*/

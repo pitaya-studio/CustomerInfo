@@ -1,0 +1,90 @@
+/*订单跟踪板设置*/
+#pop_order_track{
+    display: none;
+}
+.pop_order_content{
+    width: 330px;
+    height: 170px;
+    color: #2f2f2f;
+}
+.table_adjust_set{
+    width: 50% !important;
+}
+.table_adjust_set tbody td{
+    height: 40px;
+    text-align: center;
+}
+.pop_order_content{
+    padding: 15px 10px 10px 55px;
+}
+.pop_order_content label{
+    width: 80px;
+    text-align: right;
+}
+.pop_order_content label em{
+    font-size: 16px;
+    line-height: 30px;
+    top: 2px;
+    position: relative;
+}
+.pop_order_content span{
+    width: 40px;
+    display: inline-block;
+    text-align: center;
+}
+.dl-select{
+    position: relative;
+    display: inline-block;
+}
+.dl-select input{
+    height: 26px;
+    border: 1px solid #d9d9d9;
+    padding: 0 5px;
+    cursor: pointer;
+    background-image: url('../images/T1T2/input_select.png');
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: none;
+    margin-bottom: 5px;
+}
+.dl-select input:focus{
+    box-shadow: none;
+    border: 1px solid #d9d9d9;
+}
+.light_step{background-position:119% 4%}
+.input_box{width: 60px;box-shadow: none!important;border: 1px solid #d9d9d9!important;margin-top: 5px;}
+.light_other{width: 60px;background-position:330% 4%}
+.pop_title{width: 100px!important;font-size: 14px;}
+.dl-select ul{
+    display: none;
+    position: absolute;
+    z-index: 10;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 3px;
+    line-height: 28px !important;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    top: 29px;
+}
+.dl-select ul li{
+    padding-left:8px;
+    cursor: pointer;
+    text-align: left;
+    line-height: 28px !important;
+}
+.dl-select ul li:hover{
+    background-color: #f2f2f2;
+}
+.rever-checked{
+    cursor: pointer;
+}
+.rever-checked:hover{
+    color: #51AFF0;
+}
+.green-color{color: #7bff60;}
+.yellow-color{color: #fea660;}
+.red-color{color: #fd6060;}
+
+/*订单跟踪板结束*/

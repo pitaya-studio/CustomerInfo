@@ -1,0 +1,57 @@
+/*S表格操作列样式文件*/
+.qc-table-operator {
+  position: absolute;
+  z-index: 100;
+  display: none;
+  height: 400px;
+  width: 130px;
+  padding: 10px;
+  background-color: #fef5f3;
+  border: 1px solid #edd5d0;
+}
+.qc-table-operator a:link {
+  display: inline-block;
+  float: left;
+  max-width: 130px;
+  padding: 0 5px;
+  margin: 5px;
+  background-color: none;
+  white-space: nowrap;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  color: #666666;
+}
+.qc-table-operator a.active {
+  border-radius: 3px;
+  background-color: #db8a83 ;
+  color: #ffffff;
+}
+.qc-table-operator a.disable {
+  color: #777;
+  cursor: none;
+}
+.qc-table-operator:hover {
+  background-color: #fef5f3;
+}
+.base-operator a:link,
+.base-operator a:hover {
+  color: #2581e3;
+  margin-right: 5px;
+}
+.base-operator em {
+  margin: 0 10px;
+}
+.base-operator em.fa {
+  cursor: pointer;
+}
+.base-operator em.fa.fa-times {
+  color: #ffb55e;
+}
+.base-operator em.fa.fa-times:hover {
+  color: #ff8c0a;
+}
+.base-operator em.fa:hover {
+  color: #ff8c0a;
+  cursor: pointer;
+}
+/*E表格操作列样式文件*/

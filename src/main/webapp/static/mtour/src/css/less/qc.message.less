@@ -1,0 +1,208 @@
+@import "variables.less";
+
+
+/*S弹窗样式*/
+@keyframes qc-message-flyIn{
+     0%{
+        opacity: @opacity-ture;
+            transform: translateY(-150px);             
+    }
+     100%{
+        opacity: @opacity-base;
+        transform: translateY(0); 
+    }
+}
+
+@keyframes qc-message-overlay-flyIn {
+    0% {
+        opacity: @opacity-ture;
+    }
+    100% {
+        opacity: @opacity-lighter;
+    }
+}
+
+@keyframes qc-message-flyOut{
+    0%{
+        opacity: @opacity-base;
+        transform: translateY(0px);
+    }
+    100%{
+        opacity: @opacity-ture;
+        transform:  translateY(150px);
+    }
+}
+
+@keyframes qc-message-overlay-flyOut {
+    0% {
+        opacity: @opacity-lighter;
+    }
+    100% {
+        opacity: @opacity-ture;
+    }
+}
+
+
+.qc-message-overlay{
+    position: @position-fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    filter: alpha(opacity=80);
+    opacity: @opacity-lighter;
+    background-color:@background-color-message-base;
+    animation: qc-message-overlay-flyIn @time-message-overlay-flyIn;
+    z-index: -1;
+    .closing{
+        animation: qc-message-overlay-flyOut @time-message-overlay-flyOut;
+    }
+}
+
+.qc-message-container{
+    position: @position-fixed;
+    z-index: 100000;
+    &.warning{
+        top: 150px;
+        left:50%;
+        width: 450px;
+        margin-left: -225px;
+        .qc-message-header{
+            border-bottom: 1px solid #eea236;
+            background-color: #f0ad4e;
+        }
+    }
+    &.error{
+        top: 150px;
+        left:50%;
+        width: 450px;
+        margin-left: -225px;
+        .qc-message-header {
+            border-bottom: 1px solid #d43f3a;
+            background-color: #d9534f;
+        }
+    }
+    &.confirm{
+        top: 150px;
+        left:50%;
+        width: 450px;
+        margin-left: -225px;
+        .qc-message-header {
+            border-bottom: 1px solid #2e6da4;
+            background-color: #337ab7;
+        }
+    }
+    &.info {
+        width: 300px;
+        top: 150px;
+        left:50%;
+        margin-left: -150px;
+        .qc-message-content {
+            padding: 5px;
+            background-color: #ad9df1;
+            animation: qc-message-info-flyIn @time-message-overlay-flyIn;
+            &.closing {
+                animation: qc-message-info-flyOut @time-message-overlay-flyOut;
+            }
+        }
+    }
+    &.tip {
+        width: 300px;
+        top: 70px;
+        right: 10px;
+        padding: 5px;
+        .qc-message-content {
+            padding: 5px;
+            background-color: #8dbdf1;
+            animation: qc-message-tip-flyIn @time-message-overlay-flyIn;
+            &.closing {
+                animation: qc-message-tip-flyOut @time-message-overlay-flyOut;
+            }
+        }    
+    }
+    .qc-message-content {
+        margin: 3px;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        font-size: 14px;
+        line-height: 22px;
+        background-color: @background-color-white;
+        animation: qc-message-flyIn @time-message-overlay-flyIn;
+         &.closing{
+            animation: qc-message-flyOut @time-message-overlay-flyOut;
+        }
+        .qc-message-header {
+            padding: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            .qc-message-title {
+                line-height: 36px;
+                font-size: 20px;
+                font-weight: 400;
+                color:@text-color-white;
+            }
+        }
+        .qc-message-body{
+            min-height: 160px;
+            padding: 10px;
+        }
+        .qc-message-footer{
+            padding: 10px;
+            border-top: solid 1px #dddddd;
+            text-align:@text-center;
+        }
+    }
+}
+html.qc-message-open,
+body.qc-message-open {
+    overflow: @overflow-hidden;
+}
+
+//tip样式
+@keyframes qc-message-tip-flyIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px)
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes qc-message-tip-flyOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(300px);
+    }
+}
+
+//info样式
+@keyframes qc-message-info-flyIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes qc-message-info-flyOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 0;
+        transform:  translateY(-150px);
+    }
+}
+
+
+
+/*E弹窗样式*/

@@ -1,0 +1,25 @@
+/*S表格列宽调整样式文件*/
+table.qc-table-resizecolumn {
+  /*table-layout: fixed;*/
+}
+table.qc-table-resizecolumn > thead > tr > th {
+  min-width: 40px;
+  /*text-wrap: normal;*/
+  /*vertical-align: middle;*/
+}
+.qc-table-resizecolumn-container {
+  /*position: @position-relative;*/
+}
+.qc-table-resizecolumn-container .qc-table-resizecolumn-handle {
+  position: absolute;
+  width: 12px;
+  cursor: ew-resize;
+  *cursor: pointer;
+  margin-left: -6px;
+}
+.qc-table-resizecolumn-container .qc-table-resizecolumn-handle:hover {
+  /*background: #dddddd;*/
+  /*opacity: 0.2;*/
+  /*box-shadow: #c1e5ef 0px 4px 2px;*/
+}
+/*E表格列宽调整样式文件*/

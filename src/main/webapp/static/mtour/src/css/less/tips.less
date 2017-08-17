@@ -1,0 +1,48 @@
+//1{}菜单样式文件
+@import "variables.less";
+@import "mixins.less";
+
+/*S气泡提示样式文件*/
+.tips{
+    position: @position-absolute;
+    top: 0;
+    left: 0;
+    .qc-width-variant(245px;145px);
+    .padding-base(3px);
+    .border-radius(5px);
+    .qc-border-variant(1px;solid;#cccccc);
+    background-color:@background-color-white;
+    font-size:@font-size-xs;
+    .pop-header{
+        height: 20px;
+        background-color:#fff3d1;
+        line-height: 20px;
+        color:@color-orange;
+        text-align: @text-right;
+        span{
+            margin-right: 10px;
+            cursor: @cursor;
+        }
+    }
+    .pop-bodyer{
+        ol{
+            height: 200px;
+            overflow: auto;   
+            li{
+                list-style-type: decimal;
+                margin-left: 20px;
+                line-height: 24px;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-bottom-color: #cccccc;
+                
+                em{
+                    margin-left: 10px;
+                    cursor: @cursor; 
+                }
+            }
+        }
+    }
+}
+
+/*E气泡提示样式文件*/

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+     <link rel="stylesheet" href="/src/css/qc/qc.scroll.css">
+    <link href="../../../css/qc/quauq.css" rel="stylesheet" type="text/css">
+    <link href="../../../components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/src/components/jquery-ui/jquery-ui.js"></script>
+    <script src="/src/components/jquery-nicescroll/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.dialog.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.dropdownList.js"></script>
+    <script type="text/javascript" src="/src/js/qc/filter/qc.propsFilter.js"></script>
+ 	<script type="text/javascript" src="/src/js/qc/directive/qc.scroll.js"></script>
+    <script type="text/javascript">
+        var dialogModule = angular.module('dialogModule', ['qc']);
+        dialogModule.controller('dialogController', ['$scope', 'qcDialog', function ($scope, qcDialog) {
+            $scope.person = {
+                name: 'z3',
+                id: 1
+            };
+			$scope.currencies=[
+					{code:'¥',name:'测试数据'},
+					{code:'C$',name:'测试数据$'}
+			];	
+            $scope.show1 = function () {
+                var dialog = qcDialog.open({
+                    template: '<p><input ng-model="person.name">' +
+                    '<button ng-click="confirm(this)">confirm</button>' +
+                    '<button ng-click="closeThisDialog(this)">closeThisDialog</button>' +
+                    '</p>',
+                    controller: ['$scope', 'person', 'doc', function (scope, person, doc) {
+                        scope.person = person;
+                        scope.confirm = function () {
+                            console.log('confirm');
+                            console.log('scope.person.name:' + scope.person.name);
+                            console.log('=======');
+                            console.log('');
+                            scope.closeThisDialog();
+                        };
+                    }],
+                    resolve: {
+                        person: function () {
+                            return $scope.person;
+                        },
+                        doc: '$document'
+                    },
+                    preCloseCallback: function (triggerElement) {
+                        console.log('preCloseCallback');
+                        console.log('triggerElement:' + (triggerElement));
+                        console.log('=======');
+                        console.log('');
+                        return true;
+                    },
+                    title: 'title1',
+                    closeByDocument: true,
+                    closeByEscape: true,
+                    plain: true
+                });
+                dialog.closePromise.then(function (qcDialog) {
+                    console.log('closePromise');
+                    console.log('qcDialog.id==dialog.id:' + (qcDialog.id == dialog.id));
+                    console.log('dialog is closed!');
+                    console.log('=======');
+                    console.log('');
+                });
+            };
+            $scope.show2 = function () {
+                $scope.list = [
+                    {
+                        name: 'tom',
+                        desc: 'he is a picker!'
+                    },
+                    {
+                        name: 'jerry',
+                        desc: 'a big mouse'
+                    }, {
+                        name: 'mike',
+                        desc: 'kind super man,and a cookie man'
+                    }, {
+                        name: 'cate',
+                        desc: 'beautiful girl'
+                    }
+                ];
+                $scope.selectedPerson1 = $scope.list[2];
+                $scope.ok=function(selectedPerson){
+                    console.log( $scope.selectedPerson1);
+                    console.log( this.selectedPerson1);
+                    console.log(selectedPerson);
+                    this.closeThisDialog();//dialog.close();
+                }
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog2.html?date='+Date(),
+                    cache:false,
+                    scope: $scope,
+                    resolve: {},
+                    preCloseCallback: function (triggerElement) {
+
+                    },
+                    title: '追散| 追散人数',
+                    width: 770,
+                    plain: false
+                });
+            };
+			
+			$scope.show3 = function () {
+				
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog3.html?date='+Date(),
+					scope:$scope,
+                    width: 770,
+                    plain: false
+                });
+            };
+			$scope.show4 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog4.html?date='+Date(),
+					scope:$scope,
+                    width: 500,
+                    plain: false
+                });
+            };
+			$scope.show5 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog5.html?date='+Date(),
+					scope:$scope,
+                    width: 500,
+                    plain: false
+                });
+            };
+			$scope.show6 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog6.html?date='+Date(),
+					scope:$scope,
+                    width: 500,
+                    plain: false
+                });
+            };
+			$scope.show7 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog7.html?date='+Date(),
+					scope:$scope,
+                    width: 500,
+                    plain: false
+                });
+            };
+			$scope.show8 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog8.html?date='+Date(),
+					scope:$scope,
+                    width: 500,
+                    plain: false
+                });
+            };
+			$scope.show9 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog9.html?date='+Date(),
+					scope:$scope,
+                    width: 500,
+                    plain: false
+                });
+            };
+			$scope.show10 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog10.html?date='+Date(),
+					scope:$scope,
+                    width: 500,
+					showClose:false,
+                    plain: false
+                });
+            };
+			$scope.show11 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog11.html?date='+Date(),
+					scope:$scope,
+                    width: 500,
+                    plain: false
+                });
+            };
+			
+			$scope.show12 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog12.html?date='+Date(),
+					className:'qc-dialog-theme-page',
+					scope:$scope,
+                    width: 1170,
+                    plain: false
+                });
+            };
+			$scope.show13 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog13.html?date='+Date(),
+					className:'qc-dialog-theme-page',
+					scope:$scope,
+                    width: 1170,
+                    plain: false
+                });
+            };
+			$scope.show14 = function () {
+                var dialog = qcDialog.open({
+                    templateUrl: 'dialogTemplate/dialog14.html?date='+Date(),
+					className:'qc-dialog-theme-page',
+					scope:$scope,
+                    width: 1170,
+                    plain: false
+                });
+            };
+			
+            $scope.showCover = function () {
+                var dialog = qcDialog.openCover({
+                    template: '<p> cover dialog </p>' +
+                    '<div><button ng-click="show4()">再弹一层</button></div>',
+                    controller:['$scope',function($scope){
+                        $scope.show4=function(){
+                            qcDialog.open({
+                                title:'title4',
+                                closeByDocument: true,
+                                closeByEscape: true,
+                                template: '<p> cover dialog ` dialog </p>' +
+                                '<p>this is 2nd dialog</p>',
+                                plain: true
+                            });
+                        }
+                    }],
+                    plain: true
+                });
+            };
+            $scope.showCover01 = function () {
+                var dialog = qcDialog.openCover({
+                    templateUrl: 'dialogTemplate/dialog12.html?date='+Date(),
+                    controller:['$scope',function($scope){
+                    }],
+                    plain: false
+                });
+            };
+
+        }]);
+    </script>
+</head>
+<body ng-app="dialogModule">
+<div class="container" ng-controller="dialogController">
+    <div class="page-header">
+        <h1>弹出框</h1>
+    </div>
+    <div>
+        {{name}}
+
+        <button ng-click="show1()">show1</button>
+        <button ng-click="show2()">show2</button>
+        <button ng-click="show3()">追散</button>
+        <button ng-click="show4()">收款</button>
+        <button ng-click="show5()">其他收入录入</button>
+        <button ng-click="show6()">付款</button>
+        <button ng-click="show7()">成本录入</button>
+        <button ng-click="show8()">成本录入-详情</button>
+        <button ng-click="show9()">成本录入-修改</button>
+        <button ng-click="show10()">删除提示</button>
+        <button ng-click="show11()">付款记录详情</button>
+        <button ng-click="show12()">快速生成订单</button>
+        <button ng-click="show13()">订单-修改</button>
+        <button ng-click="show14()">订单-详情</button>
+        <button ng-click="showCover()">showCover</button>
+    </div>
+
+</div>
+
+</body>
+</html>

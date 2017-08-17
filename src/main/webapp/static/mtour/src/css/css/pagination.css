@@ -1,0 +1,149 @@
+/*S分页样式*/
+.page {
+  width: 100%;
+  height: 50px;
+  background-color: #f1f7ff;
+}
+.pagination {
+  margin: 10px 10px 0px;
+  float: right;
+}
+.pagination span {
+  color: #000000;
+  font-size: 12px;
+  cursor: pointer;
+}
+.pagination ul {
+  display: inline-block;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  border-radius: 4px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+.pagination ul > li {
+  display: inline;
+}
+.pagination ul > li:first-child > span {
+  border-left-width: 1px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  font-size: 12px;
+}
+.pagination ul > li:last-child > span {
+  padding: 2.5px;
+  border-right-width: 1px;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  font-size: 12px;
+}
+.pagination ul > li .disabled > span {
+  background: #FFF none repeat scroll 0% 0%;
+  color: #000000;
+  cursor: default;
+  background-color: transparent;
+  font-size: 12px;
+}
+.pagination ul > li > span {
+  float: left;
+  padding: 4px 12px;
+  background-color: #ffffff;
+  border-width: 1px 1px 1px 0px;
+  border-style: solid;
+  border-color: #DDD;
+  border-image: none;
+  line-height: 20px;
+  text-decoration: none;
+  font-size: 12px;
+}
+.pagination ul > .active > span {
+  background-color: #F5F5F5;
+}
+.pagination input,
+.pagination input[type="text"] {
+  height: 18px;
+  line-height: 18px;
+  /*padding: 4px 6px;*/
+  font-size: 12px;
+}
+.pagination input {
+  width: 20px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid #e9eff4;
+  margin-bottom: 0px;
+  vertical-align: middle;
+  line-height: 10px;
+}
+.pagination button {
+  width: 40px;
+  height: 22px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  border: 1px solid #e9eff4;
+  color: #333333;
+  line-height: 1;
+  /*padding: 4px 6px;*/
+  font-size: 12px;
+}
+.pagination select {
+  width: 40px;
+  height: 22px;
+  border-radius: 2px;
+  border: 1px solid #e9eff4;
+  line-height: 18px;
+  /*padding: 4px 6px;*/
+  font-size: 12px;
+}
+.pagination .li .controls {
+  padding: 2.5px;
+}
+.pagination .li .controls span {
+  border-radius: 0px 4px 4px 0px;
+}
+.pagination-sort-container {
+  padding-top: 4px;
+  background-color: #d4e1f0;
+}
+.pagination-sort {
+  width: 100%;
+  height: 31px;
+  border: 1px solid #b8cae1;
+  background-color: #f1f7ff;
+  font-size: 12px;
+  color: #666666;
+  text-align: right;
+}
+.pagination-sort ul {
+  float: right;
+}
+.pagination-sort ul li {
+  float: left;
+  padding: 0 10px;
+  margin: 4px;
+  border: 1px solid #e9eff4;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: inherit;
+  line-height: 20px;
+}
+.pagination-sort ul li span {
+  font-size: 12px;
+}
+.pagination-sort ul li span em {
+  margin: 0px 5px;
+}
+.pagination-sort ul li span em.active {
+  color: #ffad4c;
+}
+.pagination-sort ul li span:hover {
+  cursor: pointer;
+}
+.pagination-sort ul li i {
+  padding-left: 10px;
+  margin-left: 10px;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: #e9eff4;
+  cursor: pointer;
+}
+/*E分页样式*/

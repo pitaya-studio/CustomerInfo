@@ -1,0 +1,76 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>支出单</span>
+    </div>
+</div>
+<div class="qc-scroll">
+
+
+    <div class="first-step-info">
+        <div class="blank-container"></div>
+        <table table class="margin-auto filtrate " style="width: 800px">
+            <tbody>
+            <tr>
+                <td class="table-th-default-width  text-right">团号：</td>
+                <td class="table-th-md-width ">{{reslut.groupNo}}</td>
+                <td class="table-th-default-width text-right">申请人：</td>
+                <td class="table-th-md-width">{{applicant}}</td>
+            </tr>
+            <tr>
+                <td class="blank" colspan="4"></td>
+            </tr>
+            <tr>
+                <td class="table-th-default-width  text-right">支付对象：</td>
+                <td class="table-th-default-width">
+                    <div class="qc-dropdown-md-second mar-r-default" qc-dropdown
+                         ng-model="selectedPaymentObject"
+                         item-text="{{qcDropdownItem.paymentObjectName}}"
+                         dropdown-text="{{selectedItem.paymentObjectName}}"
+                         items="reslut.paymentObject"></div>
+                </td>
+                <td class="table-th-default-width"></td>
+                <td class="table-th-default-width"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="blank-container"></div>
+        <table class="table-list-md margin-auto" style="width: 800px">
+            <thead>
+                <tr class="">
+                    <th class="table-th-sm-fifty">
+                        <input type="checkbox" id="chkAll" ng-click="chkAll($event)">
+                    </th>
+                    <th class="table-th-md-width">报批日期</th>
+                    <th class="table-th-default-width">款项类型</th>
+                    <th class="table-th-md-width">款项名称</th>
+                    <th class="table-th-default-width">PNR</th>
+                    <th class="table-th-default-width">应付金额</th>
+                </tr>
+            </thead>
+            <tbody ng-show="expenditrueListIsShow!=0"  ng-repeat="pay in payList.results"  class="normal odd-even-display-color ">
+                <tr>
+                    <td>
+                        <input type="checkbox" ng-model="pay.batchChecked" ng-checked="pay.batchChecked">
+                    </td>
+                    <td>{{pay.approvalDateStr}}</td>
+                    <td>{{pay.fundsTypeName}}</td>
+                    <td>{{pay.fundsName}}</td>
+                    <td class="table-th-default-width ellipsis" title="{{pay.PNR}}">{{pay.PNR}}</td>
+                    <td>{{pay.strPayableAmount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="blank-container"></div>
+    <div class="width-eight text-right" ng-show="expenditrueListIsShow!=0">
+        <label class="table-th-default-width">应付总额：</label>
+        <span class="table-th-lg-width orange-font" ng-bind="payableTotalAmount()"></span>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="butn butn-default " ng-click="createExpenditruePage()" ng-disabled="!penditureBtnEnabled()">
+            生成支出单
+        </button>
+    </div>
+</div>

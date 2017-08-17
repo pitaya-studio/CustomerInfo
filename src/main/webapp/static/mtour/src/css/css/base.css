@@ -1,0 +1,207 @@
+body {
+  color: #333333;
+  background: #eff3f5;
+  font-family: "Microsoft Yahei", "Tahoma", "SimSun";
+  font-size: 12px;
+  line-height: 150%;
+}
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+img {
+  border: 0;
+  display: block;
+}
+i,
+em {
+  font-style: normal;
+}
+label {
+  font-size: 12px;
+  font-weight: normal;
+}
+input {
+  font-size: 12px;
+}
+.margin-left-twenty {
+  margin-left: 20px;
+}
+ul,
+ol,
+dl,
+dt,
+dd {
+  list-style: none;
+}
+li {
+  list-style: outside none none;
+}
+a,
+a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+h2,
+h3,
+h4,
+h5 {
+  margin: 0px;
+  padding: 0px;
+}
+h2 {
+  font-size: 14px;
+}
+.font-weight-normal {
+  font-weight: normal;
+}
+.text-right {
+  text-align: right;
+}
+.vertical-align-top {
+  vertical-align: top;
+}
+.width-eight {
+  width: 800px;
+  height: 30px;
+  margin: 0 auto;
+}
+.orange-font {
+  color: #ff9900;
+}
+.border-none {
+  border: none !important;
+}
+.f-l {
+  float: left !important;
+}
+.f-r {
+  float: right !important;
+}
+.cls {
+  clear: both;
+  *zoom: 1;
+}
+.margin-auto {
+  margin: 0 auto;
+}
+.margin-auto.filtrate td {
+  height: 26px;
+}
+.margin-auto.filtrate td.blank {
+  height: 10px;
+}
+.mar-l-default {
+  margin-left: 3px;
+}
+.mar-r-default {
+  margin-right: 3px;
+}
+.mar-l-primary {
+  margin-left: 8px;
+}
+.mar-r-primary {
+  margin-right: 8px;
+}
+.mar-top-primary {
+  margin-top: 8px;
+}
+.blank-container {
+  height: 10px;
+  overflow: hidden;
+  clear: both;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+a.text-link:link {
+  color: #999999;
+}
+a.text-link:hover,
+a.text-link:visited,
+a.text-link:active {
+  color: #2581e3;
+}
+a.text-link-blue:link {
+  color: #2581e3;
+}
+a.text-link-blue:hover,
+a.text-link-blue:visited,
+a.text-link-blue:active {
+  color: #2581e3;
+}
+.line-dash {
+  margin-bottom: 5px;
+  height: 5px;
+  border-top-width: 1px;
+  border-top-style: dashed;
+  border-top-color: #cccccc;
+}
+.line-solid {
+  clear: both;
+  margin-bottom: 5px;
+  height: 5px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+}
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+.header {
+  position: relative;
+  z-index: 99;
+  margin: 0 auto;
+  background-color: #262930;
+  height: 47px;
+}
+.band-logo {
+  width: 150px;
+  height: 50px;
+  background-image: url(../../img/common/background/quauq_logo.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+i.fa {
+  color: #ff8a00;
+}
+i.fa:hover {
+  color: #ff9900;
+}
+.word-break-all {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.cl-both {
+  clear: both;
+}
+.main {
+  padding-top: 0px;
+}
+.main-left {
+  float: left;
+  width: 150px;
+  background-color: #262930;
+  overflow: auto;
+}
+.main-right {
+  position: relative;
+  z-index: 0;
+  margin-left: 150px;
+  margin-right: 0;
+  font-family: "Microsoft Yahei", "Tahoma", "SimSun";
+}
+.borderBottom {
+  border-bottom: 1px solid #cccccc;
+}
+.paddingleft {
+  padding: 15px 20px;
+}

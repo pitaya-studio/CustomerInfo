@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/src/components/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.cookie.js"></script>
+    <script type="text/javascript">
+        var cookieModule = angular.module('cookieModule', ['qc']);
+        cookieModule.controller('CookieController', ['$scope', 'qcCookie', function ($scope, qcCookie) {
+            $scope.user=qcCookie.get('user');
+            $scope.save= function () {
+                qcCookie.set('user',$scope.user,{});
+            }
+        }]);
+        cookieModule.factory('qcUserInfo',['$cacheFactory', function ($cacheFactory) {
+            return $cacheFactory('qcUserInfo');
+        }]);
+        cookieModule.controller('CacheController',['qcUserInfo','$scope', function (qcUserInfo,$scope) {
+            $scope.user = qcUserInfo.get('user');
+            $scope.save= function () {
+                qcUserInfo.put('user',$scope.user);
+            };
+            $scope.get= function () {
+                var a = qcUserInfo.get('user');
+            }
+        }]);
+    </script>
+</head>
+<body ng-app="cookieModule">
+    <div class="container" ng-controller="CookieController">
+        <div class="page-header">
+            <h1>cookies</h1>
+        </div>
+        <div>
+            <label>userId</label>
+            <input class="form-control" type="text" ng-model="user.userId"/>
+            <button class="btn btn-default" ng-click="save()">save cookie</button>
+        </div>
+    </div>
+    <div class="container" ng-controller="CacheController">
+        <div class="page-header">
+            <h1>Cache</h1>
+        </div>
+        <div>
+            <label>userId</label>
+            <input class="form-control" type="text" ng-model="user.userId"/>
+            <button class="btn btn-default" ng-click="save()">save Cache</button>
+            <button class="btn btn-default" ng-click="get()">get Cache</button>
+        </div>
+    </div>
+</body>
+</html>

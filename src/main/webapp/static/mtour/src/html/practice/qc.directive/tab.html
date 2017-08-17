@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <style type="text/css">
+        .active{
+            /*color: #ff0000;*/
+        }
+        .tab-height{
+            height: 200px;;
+        }
+    </style>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.tab.js"></script>
+
+    <script type="text/javascript">
+        var tabTest = angular.module('tabTest',['qc']);
+        tabTest.controller('tabController',['$scope',function($scope){
+            $scope.name='test';
+            $scope.show= function (txt) {
+                alert(txt);
+            };
+            $scope.change=function(tabName,oldName){
+                alert('tab 由:'+oldName+' 变更为:'+tabName);
+            };
+        }]);
+    </script>
+</head>
+<body ng-app="tabTest">
+        <div class="container"  ng-controller="tabController" >
+            <div class="page-header">
+               <h3>qc.Tab 默认tab2</h3>
+            </div>
+            <div qc-tab active-tab="tab2" qc-tab-changed="change">
+                <div>
+                    <div qc-tab-header qc-tab-name="tab1" class="btn ">
+                        tab1
+                    </div>
+                    <div qc-tab-header qc-tab-name="tab2" class="btn ">tab2</div>
+                </div>
+                <div qc-tab-body qc-tab-name="tab1" class="bg-danger tab-height">
+                    tab1的内容
+                </div>
+                <div qc-tab-body  qc-tab-name="tab2" class="bg-info tab-height">
+                    tab2的内容
+                </div>
+            </div>
+            <div class="page-header">
+                <h3>qc.Tab 默认tab1</h3>
+            </div>
+            <div qc-tab active-tab="tab1">
+                <div  >
+                    <div class="pull-right">
+                        <div qc-tab-header qc-tab-name="tab1" class="btn btn-info ">
+                            tab1
+                        </div>
+                        <div qc-tab-header qc-tab-name="tab2" class="btn btn-info ">tab2</div>
+                    </div>
+                    <button class="btn btn-default" ng-click="show('真听话')">点我一下</button>
+                </div>
+                <div class="clearfix">
+                    <div  class="bg-success col-md-6 tab-height">
+                      固定的内容
+                    </div>
+                    <div qc-tab-body qc-tab-name="tab1" class="bg-danger col-md-6 tab-height">
+                        1:tab1的内容
+                    </div>
+
+                    <div qc-tab-body qc-tab-name="tab2"class="bg-info col-md-6 tab-height">
+                        tab2的内容{{qcTabName!=activeTab}}支持{{activeTab}}
+                    </div>
+                </div>
+
+            <div>
+            <div class="page-header">
+                <h3>qc.Tab 2个tab,各占一半</h3>
+            </div>
+            <div>
+                <div qc-tab active-tab="tab2" class="col-md-6">
+                    <div >
+                        <button class="btn btn-default" ng-click="show('真听话')">点我一下</button>
+                    </div>
+                    <div>
+                        <div qc-tab-body qc-tab-name="tab1" class="bg-danger tab-height">
+                            1:tab1的内容
+                        </div>
+
+                        <div qc-tab-body qc-tab-name="tab2" class="bg-info  tab-height">
+                            tab2的内容
+                        </div>
+                    </div>
+                    <div>
+                        <div qc-tab-header qc-tab-name="tab1" class="btn btn-info ">
+                            tab1
+                        </div>
+                        <div qc-tab-header qc-tab-name="tab2" class="btn btn-info">tab2</div>
+
+                    </div>
+                </div >
+                <div qc-tab active-tab="tab3" class="col-md-6">
+                    <div class="clearfix">
+                        <button class="btn btn-default pull-right" ng-click="show('真听话')">点我一下</button>
+                    </div>
+                    <div>
+                        <div qc-tab-body qc-tab-name="tab3" class="bg-danger tab-height">
+                            tab3的内容
+                        </div>
+
+                        <div qc-tab-body qc-tab-name="tab4" class="bg-info  tab-height">
+                            tab4的内容
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <div class=" pull-right">
+                            <div qc-tab-header qc-tab-name="tab3" class="btn btn-info ">
+                                tab3
+                            </div>
+                            <div qc-tab-header qc-tab-name="tab4" class="btn btn-info">tab4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

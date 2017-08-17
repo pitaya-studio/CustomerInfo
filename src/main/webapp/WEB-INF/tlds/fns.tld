@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+  version="2.0">
+    
+  <description>JSTL 1.1 functions library</description>
+  <display-name>JSTL functions sys</display-name>
+  <tlib-version>1.1</tlib-version>
+  <short-name>fns</short-name>
+  <uri>http://java.sun.com/jsp/jstl/functionss</uri>
+
+  <function>
+    <description>获取管理路径</description>
+    <name>getAdminPath</name>
+    <function-class>com.trekiz.admin.common.config.Global</function-class>
+    <function-signature>java.lang.String getAdminPath()</function-signature>
+    <example>${fns:getAdminPath()}</example>
+  </function>
+  <function>
+    <description>获取网站路径</description>
+    <name>getFrontPath</name>
+    <function-class>com.trekiz.admin.common.config.Global</function-class>
+    <function-signature>java.lang.String getFrontPath()</function-signature>
+    <example>${fns:getFrontPath()}</example>
+  </function>
+  <function>
+    <description>获取网站URL后缀</description>
+    <name>getUrlSuffix</name>
+    <function-class>com.trekiz.admin.common.config.Global</function-class>
+    <function-signature>java.lang.String getUrlSuffix()</function-signature>
+    <example>${fns:getUrlSuffix()}</example>
+  </function>
+  <function>
+    <description>获取配置</description>
+    <name>getConfig</name>
+    <function-class>com.trekiz.admin.common.config.Global</function-class>
+    <function-signature>java.lang.String getConfig(java.lang.String)</function-signature>
+    <example>${fns:getConfig(key)}</example>
+  </function>
+   <function>
+    <description>根据币种I的获取币种符号或币种名称</description>
+    <name>getCurrencyNameOrFlag</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CurrencyUtils</function-class>
+    <function-signature>java.lang.String getCurrencyNameOrFlag(java.lang.Long, java.lang.String)</function-signature>
+    <example>${fns:getCurrencyNameOrFlag(currencyId,flag)}</example>  
+  </function>
+  <function>
+    <description>获取币种名称列表</description>
+    <name>findCurrencyList</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CurrencyUtils</function-class>
+    <function-signature>java.util.List findCurrencyList()</function-signature>
+    <example>${fns:findCurrencyList()}
+    </example>  
+  </function>
+  <!-- AreaUtil -->
+  <function>
+    <description>获取到达城市名称</description>
+    <name>findAreaNameById</name>
+    <function-class>com.trekiz.admin.common.utils.AreaUtil</function-class>
+    <function-signature>java.lang.Long findAreaNameById(java.lang.Long)</function-signature>
+    <example>${fns:findAreaNameById(areaId)}
+    </example>  
+  </function>
+  <!-- Activity -->
+  <function>
+    <description>获取到达城市名称列表</description>
+    <name>findTargetAreaById</name>
+    <function-class>com.trekiz.admin.common.utils.AreaUtil</function-class>
+    <function-signature>java.util.List findTargetAreaById(java.lang.Long)</function-signature>
+    <example>${fns:findTargetAreaById(srcActivityId)}
+    </example>  
+  </function>
+  
+  
+	<!-- AgentInfoUtils start -->
+	<function>
+		<description>获取渠道商对象列表</description>
+		<name>getAgentList</name>
+		<function-class>com.trekiz.admin.modules.agent.utils.AgentInfoUtils</function-class>
+		<function-signature>java.util.List getAgentList()</function-signature>
+		<example>${fns:getAgentList()}</example>  
+	</function>
+  
+	<function>
+		<description>获取渠道商列表按照渠道名称首字母排序</description>
+		<name>getAgentListOrderByFirstLetter</name>
+		<function-class>com.trekiz.admin.modules.agent.utils.AgentInfoUtils</function-class>
+		<function-signature>java.util.List getAgentListOrderByFirstLetter()</function-signature>
+		<example>${fns:getAgentListOrderByFirstLetter()}</example>  
+	</function>
+	
+	<function>
+		<description>获取渠道商列表按照渠道名称首字母排序</description>
+		<name>getAgentListAddSort</name>
+		<function-class>com.trekiz.admin.modules.agent.utils.AgentInfoUtils</function-class>
+		<function-signature>java.util.List getAgentListAddSort()</function-signature>
+		<example>${fns:getAgentListAddSort()}</example>  
+	</function>
+	
+	<function>
+		<description>获取渠道商名称</description>
+		<name>getAgentName</name>
+		<function-class>com.trekiz.admin.modules.agent.utils.AgentInfoUtils</function-class>
+		<function-signature>java.lang.String getAgentName(java.lang.Long)</function-signature>
+		<example>${fns:getAgentName(userId)}</example>  
+	</function>
+	
+	<function>
+		<description>获取渠道商</description>
+		<name>getAgent</name>
+		<function-class>com.trekiz.admin.modules.agent.utils.AgentInfoUtils</function-class>
+		<function-signature>java.lang.String getAgent(java.lang.String)</function-signature>
+		<example>${fns:getAgent(userId)}</example>  
+	</function>
+	
+	<function>
+		<description>根据渠道id查询渠道</description>
+		<name>getAgentById</name>
+		<function-class>com.trekiz.admin.modules.agent.utils.AgentInfoUtils</function-class>
+		<function-signature>com.trekiz.admin.modules.agent.entity.Agentinfo getAgentById(java.lang.Long)</function-signature>
+		<example>${fns:getAgentById(agentId)}</example>
+	</function>
+	
+	<function>
+		<description>根据渠道名称排序</description>
+		<name>orderByAgentName</name>
+		<function-class>com.trekiz.admin.modules.agent.utils.AgentInfoUtils</function-class>
+		<function-signature>java.util.List orderByAgentName(java.lang.String,java.util.List)</function-signature>
+		<example>${fns:orderByAgentName(brandName,list)}</example>
+	</function>
+	<!-- AgentInfoUtils end -->
+  
+  <!-- UserUtils -->
+  <function>
+    <description>获取当前用户对象</description>
+    <name>getUser</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>com.trekiz.admin.modules.sys.entity.User getUser()</function-signature>
+    <example>${fns:getUser()}</example>  
+  </function>
+  
+  <function>
+    <description>获取指定用户对象</description>
+    <name>getUserById</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>com.trekiz.admin.modules.sys.entity.User getUser(java.lang.String)</function-signature>
+    <example>${fns:getUserById(userId)}</example>  
+  </function>
+
+  <function>
+    <description>是否担保变更审批中</description>
+    <name>isReviewing</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.String isReviewing(java.lang.Long,java.lang.String))</function-signature>
+    <example>${fns:isReviewing(travelerId,orderId)}</example>
+  </function>
+  
+  <function>
+    <description>获取当前用户的菜单对象列表</description>
+    <name>getMenuList</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getMenuList()</function-signature>
+    <example>${fns:getMenuList()}</example>  
+  </function>
+  
+  <function>
+    <description>获取当前用户的区域对象列表</description>
+    <name>getAreaList</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getAreaList()</function-signature>
+    <example>${fns:getAreaList()}</example>  
+  </function>
+  
+  <function>
+    <description>获取接待社对象列表</description>
+    <name>getOfficeList</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getOfficeList(java.lang.Boolean, java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:getOfficeList(orderName, filterName)}</example>  
+  </function>
+  
+    <function>
+    <description>获取接待社对象/批发商名称</description>
+    <name>getOfficeById</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.String getOfficeById(java.lang.Long)</function-signature>
+    <example>${fns:getOfficeById(id)}</example>  
+  </function>
+  
+  <function>
+    <description>获取销售列表</description>
+    <name>getSaleUserList</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getSaleUserList(java.lang.String)</function-signature>
+    <example>${fns:getSaleUserList(userType)}</example>  
+  </function>
+  
+  <function>
+    <description>获取签证销售/计调列表(仅签证可用)</description>
+    <name>getVisaSaleUserList</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getVisaSaleUserList(java.lang.String)</function-signature>
+    <example>${fns:getVisaSaleUserList(userType)}</example>  
+  </function>
+  
+  <function>
+    <description>获取当前用户缓存</description>
+    <name>getCache</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.Object getCache(java.lang.String, java.lang.Object)</function-signature>
+    <example>${fns:getCache(cacheName, defaultValue)}</example>  
+  </function>
+  
+  
+  <function>
+    <description>获取渠道商对象列表</description>
+    <name>getUserNameById</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.String getUserNameById(java.lang.Long)</function-signature>
+    <example>${fns:getUserNameById(userId)}</example>  
+  </function>
+  
+  
+  <function>
+    <description>根据用户ID获取loginname</description>
+    <name>getUserNameByIds</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.String getUserNameByIds(java.lang.String)</function-signature>
+    <example>${fns:getUserNameByIds(userId)}</example>  
+  </function>
+  
+  <function>
+    <description>判断当前用户是否是美图公司用户</description>
+    <name>isMtourUser</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.boolean isMtourUser()</function-signature>
+    <example>${fns:isMtourUser()}</example>  
+  </function>
+  
+   <function>
+    <description>判断当前用户是否是华尔公司用户</description>
+    <name>isHuaerUser</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.boolean isHuaerUser()</function-signature>
+    <example>${fns:isHuaerUser()}</example>  
+  </function>
+  
+	
+  <!-- DictUtils -->
+  <function>
+    <description>获取字典标签</description>
+    <name>getDictLabel</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getDictLabel(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:getDictLabel(value, type, defaultValue)}</example>  
+  </function>
+
+  <function>
+    <description>获取字典标签</description>
+    <name>getDictLabel2</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getDictLabel2(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:getDictLabel2(value, type, defaultValue)}</example>
+  </function>
+    
+   <function>
+    <description>获取出发城市</description>
+    <name>getDepatCity</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getDepatCity(java.lang.String)</function-signature>
+    <example>${fns:getDepatCity(value)}</example>  
+  </function>
+
+  <function>
+    <description>根据type查询dict对象</description>
+    <name>getDictByType</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.util.List getDictByType(java.lang.String)</function-signature>
+    <example>${fns:getDictByType(type)}</example>
+  </function>
+
+  <function>
+    <description>获取字典标签名</description>
+    <name>getDictLabelName</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getLabelById(java.lang.Long, java.lang.String)</function-signature>
+    <example>${fns:getDictLabelName(value, type)}</example>  
+  </function>
+
+  <function>
+    <description>获取字典描述</description>
+    <name>getDictDescription</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getDictDescription(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:getDictDescription(value, type, defaultValue)}</example>  
+  </function>
+
+  <function>
+    <description>获取字典值</description>
+    <name>getDictValue</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getDictValue(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:getDictValue(label, type, defaultValue)}</example>  
+  </function>
+  
+  <function>
+    <description>获取字典对象列表</description>
+    <name>getDictList</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.util.List getDictList(java.lang.String)</function-signature>
+    <example>${fns:getDictList(type)}</example>  
+  </function>
+  
+  <function>
+    <description>去掉字符串中的字符</description>
+    <name>getReplace</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getReplace(java.lang.String, java.lang.String,java.lang.String,java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getReplace(str, arg1, arg2,arg3,arg4)}</example>  
+  </function>
+  
+  <!-- add by jyang -->
+  <function>
+    <description>获取字典视图对象列表</description>
+    <name>getSysCompanyDictViewList</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.util.List getSysCompanyDictViewList(java.lang.String)</function-signature>
+    <example>${fns:getSysCompanyDictViewList(type)}</example>  
+  </function>
+  
+  <function>
+    <description>获取字典视图对象列表</description>
+    <name>getSysCompanyDictViewListByCmpId</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.util.List getSysCompanyDictViewListByCmpId(java.lang.String, java.lang.Long)</function-signature>
+    <example>${fns:getSysCompanyDictViewListByCmpId(type, companyId)}</example>  
+  </function>
+  
+  <function>
+  	<description>获取用户字典编号</description>
+  	<name>getSysdefinedictValueList</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+  	<function-signature>java.lang.StringBuffer getSysdefinedictValueList(java.lang.String)</function-signature>
+  	<example>${fns:getSysdefinedictValueList(type)}</example>
+  </function>
+  
+  <!-- TravelerUtils -->
+    <function>
+  	<description>获取游客姓名</description>
+  	<name>getTravelerNameById</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.TravelerUtils</function-class>
+  	<function-signature>java.lang.String getTravelerNameById(java.lang.Long)</function-signature>
+  	<example>${fns:getTravelerNameById(travelerId)}</example>
+  </function>
+  <function>
+  	<description>获取价格策略变动数</description>
+  	<name>getChangedCount</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.TravelerUtils</function-class>
+  	<function-signature>java.lang.Boolean getChangedCount()</function-signature>
+  	<example>${fns:getChangedCount()}</example>
+  </function>
+  <function>
+  	<description>获取价格策略变动数</description>
+  	<name>hasChanged</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.TravelerUtils</function-class>
+  	<function-signature>java.lang.Integer hasChanged(java.lang.String,java.lang.String)</function-signature>
+  	<example>${fns:hasChanged(groupId,srcId)}</example>
+  </function>
+  <function>
+  	<description>通过订单团号获取已付款游客姓名</description>
+  	<name>getPayedTravelerName</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.lang.String getPayedTravelerName(java.lang.String,java.lang.String)</function-signature>
+  	<example>${fns:getPayedTravelerName(orderNum,orderType)}</example>
+  </function>
+  <!-- Encodes -->
+  <function>
+    <description>URL编码</description>
+    <name>urlEncode</name>
+    <function-class>com.trekiz.admin.common.utils.Encodes</function-class>
+    <function-signature>java.lang.String urlEncode(java.lang.String)</function-signature>
+    <example>${fns:urlEncode(part)}</example>  
+  </function>
+  <function>
+    <description>URL解码</description>
+    <name>urlDecode</name>
+    <function-class>com.trekiz.admin.common.utils.Encodes</function-class>
+    <function-signature>java.lang.String urlDecode(java.lang.String)</function-signature>
+    <example>${fns:urlDecode(part)}</example>  
+  </function>
+  <function>
+    <description>HTML编码</description>
+    <name>escapeHtml</name>
+    <function-class>com.trekiz.admin.common.utils.Encodes</function-class>
+    <function-signature>java.lang.String escapeHtml(java.lang.String)</function-signature>
+    <example>${fns:escapeHtml(html)}</example>  
+  </function>
+  <function>
+    <description>HTML解码</description>
+    <name>unescapeHtml</name>
+    <function-class>com.trekiz.admin.common.utils.Encodes</function-class>
+    <function-signature>java.lang.String unescapeHtml(java.lang.String)</function-signature>
+    <example>${fns:unescapeHtml(html)}</example>  
+  </function>
+  
+  <!-- StringUtils -->
+  <function>
+    <description>从后边开始截取字符串</description>
+    <name>substringAfterLast</name>
+    <function-class>org.apache.commons.lang3.StringUtils</function-class>
+    <function-signature>java.lang.String substringAfterLast(java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:substringAfterLast(str,separator)}</example>  
+  </function>
+  <function>
+    <description>判断字符串是否以某某开头</description>
+    <name>startsWith</name>
+    <function-class>org.apache.commons.lang3.StringUtils</function-class>
+    <function-signature>boolean startsWith(java.lang.CharSequence, java.lang.CharSequence)</function-signature>
+    <example>${fns:startsWith(str,prefix)}</example> 
+  </function>
+  <function>
+    <description>判断字符串是否以某某结尾</description>
+    <name>endsWith</name>
+    <function-class>org.apache.commons.lang3.StringUtils</function-class>
+    <function-signature>boolean endsWith(java.lang.CharSequence, java.lang.CharSequence)</function-signature>
+    <example>${fns:endsWith(str,suffix)}</example> 
+  </function>
+  <function>
+    <description>缩写字符串，超过最大宽度用“...”表示</description>
+    <name>abbr</name>
+    <function-class>com.trekiz.admin.common.utils.StringUtils</function-class>
+    <function-signature>java.lang.String abbr(java.lang.String, int)</function-signature>
+    <example>${fns:abbr(str,length)}</example>  
+  </function>
+  <function>
+    <description>替换掉HTML标签</description>
+    <name>replaceHtml</name>
+    <function-class>com.trekiz.admin.common.utils.StringUtils</function-class>
+    <function-signature>java.lang.String replaceHtml(java.lang.String)</function-signature>
+    <example>${fns:replaceHtml(html)}</example>  
+  </function>
+  
+  <!-- DateUtils -->
+  <function>
+    <description>获取当前日期</description>
+    <name>getDate</name>
+    <function-class>com.trekiz.admin.common.utils.DateUtils</function-class>
+    <function-signature>java.lang.String getDate(java.lang.String)</function-signature>
+    <example>${fns:getDate(pattern)}</example>  
+  </function>
+  <function>
+    <description>获取过去的天数</description>
+    <name>pastDays</name>
+    <function-class>com.trekiz.admin.common.utils.DateUtils</function-class>
+    <function-signature>long pastDays(java.util.Date)</function-signature>
+    <example>${fns:pastDays(date)}</example>  
+  </function>
+  
+  <function>
+    <description>时间转换</description>
+    <name>formatCustomDate</name>
+    <function-class>com.trekiz.admin.common.utils.DateUtils</function-class>
+    <function-signature>java.lang.String formatCustomDate(java.util.Date, java.lang.String)</function-signature>
+    <example>${fns:formatDate(date, "YYYY-MM-DD HH:mm:ss")}</example>  
+  </function>
+  
+  <function>
+    <description>获取国籍</description>
+    <name>getCountryName</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CountryUtils</function-class>
+    <function-signature>String getCountryName(java.lang.Long)</function-signature>
+    <example>${fns:getCountryName(countryId)}</example>  
+  </function>
+  
+    <function>
+    <description>获取币种符号</description>
+    <name>getCurrencyInfo</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CurrencyUtils</function-class>
+    <function-signature>String getCurrencyInfo(java.lang.String, java.lang.Integer, java.lang.String)</function-signature>
+    <example>${fns:getCurrencyInfo(currencyType, index, infoType)}</example>  
+  </function>
+  
+  <function>
+    <description>多币种 金额 转换成人民币</description>
+    <name>currencyConverter4RMB</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CurrencyUtils</function-class>
+    <function-signature>Double currencyConverter4RMB(java.lang.String, java.lang.Integer, java.lang.String)</function-signature>
+    <example>${fns:currencyConverter(currencyType, index, amounts)}</example>  
+  </function>
+  
+  <function>
+    <description>获取机场名称</description>
+    <name>getAirportName</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.AirPortUtils</function-class>
+    <function-signature>String getAirportName(java.lang.Long)</function-signature>
+    <example>${fns:getAirportName(airportId)}</example>  
+  </function>
+  
+  <function>
+    <description>由二字码获取机场公司名称</description>
+    <name>getAirlineNameByAirlineCode</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.AirlineUtils</function-class>
+    <function-signature>java.lang.String getAirlineNameByAirlineCode(java.lang.String)</function-signature>
+    <example>${fns:getAirlineNameByAirlineCode(airlineCode)}</example>  
+  </function>
+
+  <function>
+    <description>有机票产品ID查询航班所属航空公司名称</description>
+    <name>getAirLineName</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.AirlineUtils</function-class>
+    <function-signature>java.lang.String getAirLineName(java.lang.Long)</function-signature>
+    <example>${fns:getAirLineName(airticketId)}</example>
+  </function>
+
+  <function>
+    <description>有机票产品ID查询航班起飞时间</description>
+    <name>getFlightInfoStartTime</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.AirlineUtils</function-class>
+    <function-signature>java.lang.String getFlightInfoStartTime(java.lang.Long)</function-signature>
+    <example>${fns:getFlightInfoStartTime(airticketId)}</example>
+  </function>
+
+  <function>
+    <description>有机票产品ID查询航班到达时间</description>
+    <name>getFlightInfoArrivalTime</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.AirlineUtils</function-class>
+    <function-signature>java.lang.String getFlightInfoArrivalTime(java.lang.Long)</function-signature>
+    <example>${fns:getFlightInfoArrivalTime(airticketId)}</example>
+  </function>
+
+  <function>
+    <description>有机票产品ID查询航班出发机场</description>
+    <name>getFlightLeaveAirPort</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.AirlineUtils</function-class>
+    <function-signature>java.lang.String getFlightLeaveAirPort(java.lang.Long)</function-signature>
+    <example>${fns:getFlightLeaveAirPort(airticketId)}</example>
+  </function>
+
+  <function>
+    <description>有机票产品ID查询航班到达机场</description>
+    <name>getFlightArrivalAirPort</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.AirlineUtils</function-class>
+    <function-signature>java.lang.String getFlightArrivalAirPort(java.lang.Long)</function-signature>
+    <example>${fns:getFlightArrivalAirPort(airticketId)}</example>
+  </function>
+
+  <function>
+    <description>有机票产品ID查询航班舱位信息</description>
+    <name>getFlightAirspace</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.AirlineUtils</function-class>
+    <function-signature>java.lang.String getFlightAirspace(java.lang.Long)</function-signature>
+    <example>${fns:getFlightAirspace(airticketId)}</example>
+  </function>
+  
+  <!-- intermodalStrategyUtils -->
+  <function>
+  	<description>获取产品的所有联运信息</description>
+  	<name>getIntermodalStrategyList</name>
+  	<function-class>com.trekiz.admin.modules.airticketorder.utils.IntermodalStrategyUtils</function-class>
+  	<function-signature>java.util.List getIntermodalStrategyList(java.lang.String)</function-signature>
+  	<example>${fns:getIntermodalStrategyList(airticketId)}</example>
+  </function>
+
+  <function>
+    <description>获取联运币种信息通过联运信息表id</description>
+    <name>getCurrencyByIntermodalId</name>
+    <function-class>com.trekiz.admin.modules.airticketorder.utils.IntermodalStrategyUtils</function-class>
+    <function-signature>com.trekiz.admin.modules.sys.entity.Currency getCurrencyByIntermodalId(java.lang.String)</function-signature>
+    <example>${fns:getCurrencyByIntermodalId(intermodalId)}</example>
+  </function>
+
+  <function>
+    <description>获取联运费数量通过联运信息表id</description>
+    <name>getCurrencyAmountByIntermodalId</name>
+    <function-class>com.trekiz.admin.modules.airticketorder.utils.IntermodalStrategyUtils</function-class>
+    <function-signature>java.lang.String getCurrencyAmountByIntermodalId(java.lang.String)</function-signature>
+    <example>${fns:getCurrencyAmountByIntermodalId(intermodalId)}</example>
+  </function>
+
+  <function>
+  	<description>查询单个产品相关文件的id串，用于打包下载</description>
+  	<name>findFileIds</name>
+  	<function-class>com.trekiz.admin.modules.visa.utils.VisaProductFileUtils</function-class>
+  	<function-signature>java.lang.String findFileIds(java.lang.Long)</function-signature>
+  	<example>${fns:findFileIds(visaProdectsId)}</example>
+  </function>
+  <function>
+  	<description>根据流水号获取费用总额字符串 例：index1 美元100+人民币200 2$100+￥200</description>
+  	<name>getMoneyAmountBySerialNum</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getMoneyAmountBySerialNum(java.lang.String, java.lang.Integer)</function-signature>
+  	<example>${fns:getMoneyAmountBySerialNum(serialNum,index)}</example>
+  </function>
+  <function>
+  	<description>根据订单类型和订单id获取指定金额</description>
+  	<name>getOrderMoney</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getOrderMoney(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getOrderMoney(orderType, orderId, moneyType)}</example>
+  </function>
+
+  <function>
+    <description>根据文件id查询对应的文件信息（id:1,2,3）</description>
+    <name>getDocInfosByIds</name>
+    <function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+    <function-signature>java.util.List getDocInfosByIds(java.lang.String)</function-signature>
+    <example>${fns:getDocInfosByIds(ids)}</example>
+  </function>
+
+  <function>
+  	<description>根据流水号获取费用总额字符串 例：index1 美元100+人民币200 2$100+￥200</description>
+  	<name>getMoneyBySerialNumAndOrderType</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.lang.String getMoneyBySerialNumAndOrderType(java.lang.String, java.lang.Integer, java.lang.Integer)</function-signature>
+  	<example>${fns:getMoneyBySerialNumAndOrderType(serialNum,index,orderType)}</example>
+  </function>
+  <function>
+  	<description>根据订单类型和订单id获取退款金额</description>
+  	<name>getOrderRefundMoney</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getOrderRefundMoney(java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getOrderRefundMoney(orderId,orderType)}</example>
+  </function>
+  <function>
+  	<description>根据订单类型和订单id获取退款金额</description>
+  	<name>getOrderReceiptMoney</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getOrderReceiptMoney(java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getOrderReceiptMoney(orderType,orderId)}</example>
+  </function>
+  <function>
+  	<description>根据订单类型和订单id获取已开发票金额</description>
+  	<name>getOrderInvoiceMoney</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getOrderInvoiceMoney(java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getOrderInvoiceMoney(orderType,orderId)}</example>
+  </function>
+  <function>
+  	<description>根据流水号获取费用总额字符串 例：index1 美元100+人民币200 2$100+￥200</description>
+  	<name>getMoneyAmountByUUIDOrderType</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getMoneyAmountByUUIDOrderType(java.lang.String, java.lang.Integer, java.lang.Integer, java.lang.Integer)</function-signature>
+  	<example>${fns:getMoneyAmountByUUIDOrderType(serialNum,orderType,moneyType,index)}</example>
+  </function>
+  <function>
+     <description>合计金额</description>
+     <name>getSum</name>
+     <function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+     <function-signature>java.math.BigDecimal getSum(java.util.List,java.lang.String)</function-signature>
+     <example>${fns:getSum(list,colName)}</example>
+  </function>
+  <function>
+     <description>两个UUID金额相减</description>
+     <name>getDecrease</name>
+     <function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+     <function-signature>java.util.String getDecrease(java.lang.String, java.lang.String)</function-signature>
+     <example>${fns:getDecrease(serialNum1,serialNum2)}</example>
+  </function>
+  <function>
+  	<description>根据流水号获取费用总额字符串 带有html网页标签的</description>
+  	<name>getHtmlMoneyAmountBySerialNum</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getHtmlMoneyAmountBySerialNum(java.lang.String)</function-signature>
+  	<example>${getHtmlMoneyAmountBySerialNum(serialNum)}</example>
+  </function>
+  <function>
+     <description>获取付款已付金额</description>
+     <name>getRefundPayMoney</name>
+     <function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+     <function-signature>java.util.String getRefundPayMoney(java.lang.String,java.lang.String)</function-signature>
+     <example>${getRefundPayMoney(refundId,'1')}</example>
+  </function>
+  
+  <function>
+     <description>应付账款列表获取已付金额并转换成人民币</description>
+     <name>getPayedTotalMoney</name>
+     <function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+     <function-signature>java.util.String getPayedTotalMoney(java.lang.String,java.lang.Integer,java.lang.Integer)</function-signature>
+     <example>${getPayedTotalMoney(refundId,1,6)}</example>
+  </function>
+    <function>
+     <description>获取付款已付金额2</description>
+     <name>getRefundPayedMoney</name>
+     <function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+     <function-signature>java.util.String getRefundPayMoney(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+     <example>${getRefundPayedMoney(refundId,'1','11')}</example>
+  </function>
+  <function>
+  	<description>根据原返佣金额流水号获取原返佣金额字符串 带有html网页标签的</description>
+  	<name>getOldRebatesMoneyAmountBySerialNum</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getOldRebatesMoneyAmountBySerialNum(java.lang.String)</function-signature>
+  	<example>${getOldRebatesMoneyAmountBySerialNum(serialNum)}</example>
+  </function>
+  <function>
+  	<description>根据订单类型获取订单类型字符串</description>
+  	<name>getStringOrderStatus</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getChineseOrderType(java.lang.String)</function-signature>
+  	<example>${fns:getChineseOrderType(orderType)}</example>
+  </function>
+  <function>
+  	<description>查询产品名称</description>
+  	<name>getProductName</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.lang.String getProductName(java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getProductName(productId, productType)}</example>
+  </function>
+  <function>
+  	<description>查询审核值</description>
+  	<name>getReviewValue</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.lang.String getReviewValue(java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getReviewValue(reviewId, key)}</example>
+  </function>
+  <function>
+    <description>获取签证公告列表</description>
+    <name>findVisaPublicBulletins</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.VisaPublicBulletinUtil</function-class>
+    <function-signature>java.util.List findVisaPublicBulletins()</function-signature>
+    <example>${fns:findVisaPublicBulletins()}</example>  
+  </function>
+  <function>
+  	<description>根据reviewId获取借款金额</description>
+  	<name>getMoneyByReviewId</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.lang.String getMoneyByReviewId(java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getMoneyByReviewId(reviewId,type)}</example>
+  </function>
+   <function>
+  	<description>用于团期切位的币种标志查询</description>
+  	<name>getCurFlagByIndexAndCurArray</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.lang.String getCurFlagByIndexAndCurArray(java.lang.String, java.lang.Integer, java.lang.Integer)</function-signature>
+  	<example>${fns:getCurFlagByIndexAndCurArray(curArray,index,cType)}</example>
+  </function>
+  <!-- 根据新审批uuid查询金额数据信息 -->
+  <function>
+  	<description>根据reviewUuid获取借款金额</description>
+  	<name>getMoneyByReviewUuid</name>
+  	<function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+  	<function-signature>java.lang.String getMoneyByReviewUuid(java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getMoneyByReviewUuid(reviewUuid, type)}</example>
+  </function>
+  
+  <!-- 获取某流程某产品的审核数量 -->
+  <function>
+  	<description>获取某流程某产品的审核数量</description>
+  	<name>getReviewNum</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+  	<function-signature>java.lang.String getReviewNum(java.lang.Integer, java.lang.Integer)</function-signature>
+  	<example>${fns:getReviewNum(flowType,prdType)}</example>
+  </function>
+  <!-- 退款（或审核）详情信息 -->
+  <function>
+  	<description>获取退款（或审核）详情</description>
+  	<name>getReviewRefundInfo</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+  	<function-signature>java.util.Map getReviewRefundInfo(java.lang.String)</function-signature>
+  	<example>${fns:getReviewRefundInfo(ridStr)}</example>
+  </function>
+  
+  <!-- 流程审核动态 -->
+  <function>
+  	<description>根据审核流程唯一标识获取审核动态</description>
+  	<name>getReviewLog</name>
+  	<function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+  	<function-signature>java.util.Map getReviewLog(java.lang.Long)</function-signature>
+  	<example>${fns:getReviewLog(rid)}</example>
+  </function>
+  
+  <!-- 流程审核实例 -->
+  <function>
+  	<description>获取流程实例</description>
+  	<name>getReviewInfo</name>
+  	<function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+  	<function-signature>java.util.Map getReviewInfo(java.lang.Long)</function-signature>
+  	<example>${fns:getReviewInfo(rid)}</example>
+  </function>
+
+  <!--新审批模块方法 begin added by zhenxing.yan -->
+  <function>
+    <description>根据审批记录id获取审批日志列表</description>
+    <name>obtainReviewLogs</name>
+    <function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+    <function-signature>java.util.List obtainReviewLogs(java.lang.String)</function-signature>
+    <example>${fns:obtainReviewLogs(rid)}</example>
+  </function>
+  <!--新审批模块方法 end -->
+
+  <function>
+    <description>获取存在审批备注的审批日志，不存在备注则返回null</description>
+    <name>getHavingRemarkReviewLogs</name>
+    <function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+    <function-signature>java.util.List getHavingRemarkReviewLogs(java.lang.String)</function-signature>
+    <example>${fns:getHavingRemarkReviewLogs(rid)}</example>
+  </function>
+
+  <function>
+  	<description>将小写金额转换为大写</description>
+  	<name>changeAmount</name>
+  	<function-class>com.trekiz.admin.common.utils.StringNumFormat</function-class>
+  	<function-signature>java.lang.String changeAmount(java.lang.String)</function-signature>
+  	<example>${fns:changeAmount(amount)}</example>
+  </function>
+  
+    <function>
+  	<description>获取当前用户的部门列表</description>
+  	<name>getDepartmentByJob</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+  	<function-signature>java.util.Set getDepartmentByJob()</function-signature>
+  	<example>${fns:getDepartmentByJob()}</example>
+  </function>
+  
+    <function>
+  	<description>获取青岛凯撒出境产品事业部部门列表</description>
+  	<name>getCrtsdeptCodeSet</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+  	<function-signature>java.util.Set getCrtsdeptCodeSet()</function-signature>
+  	<example>${fns:getCrtsdeptCodeSet()}</example>
+  </function>
+  
+  <function>
+  	<description>根据审核类型获取当前用户所需审核条数(多个审核类型请以逗号分隔形式进行传值，例如：1,2)</description>
+  	<name>getReviewCountByTypes</name>
+  	<function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+  	<function-signature>java.lang.Integer getReviewCountByTypes(java.lang.String)</function-signature>
+  	<example>${fns:getReviewCountByTypes(reviewTypes)}</example>
+  </function>
+<!--  <function>
+  	<description>根据审核类型获取当前用户所有待审核信息(Map类型    审核流程类型  对应 待审核条数)</description>
+  	<name>getAllReviewCount</name>
+  	<function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+  	<function-signature>java.util.Map getAllReviewCount()</function-signature>
+  	<example>${fns:getAllReviewCount()}</example>
+  </function>-->
+  <!-- 新版待审批记录数字-->
+  <function>
+  	<description>根据审核类型获取当前用户所有待审核信息(Map类型    审核流程类型  对应 待审核条数)</description>
+  	<name>getAllReviewCount</name>
+  	<function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+  	<function-signature>java.util.Map getAllReviewCount()</function-signature>
+  	<example>${fns:getAllReviewCount()}</example>
+  </function>
+    <function>
+    <description>缩写字符串，超过最大宽度用“...”表示(审核部分标签展示使用)</description>
+    <name>abbrs</name>
+    <function-class>com.trekiz.admin.common.utils.StringUtils</function-class>
+    <function-signature>java.lang.String abbrs(java.lang.String,java.lang.String, int)</function-signature>
+    <example>${fns:abbrs(str,str,length)}</example>  
+  </function>
+  <function>
+    <description>获取字符串长度(审核部分标签展示使用)</description>
+    <name>getStringLength</name>
+    <function-class>com.trekiz.admin.common.utils.StringUtils</function-class>
+    <function-signature>java.lang.String getStringLength(java.lang.String,java.lang.String,)</function-signature>
+    <example>${fns:getStringLength(str,str)}</example>  
+  </function>
+  <function>
+    <description>获取下一个审核人信息</description>
+    <name>getNextReview</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getNextReview(java.lang.Long)</function-signature>
+    <example>${fns:getNextReview(reviewId)}</example>  
+  </function>
+  <function>
+    <description>获取下一个审核人信息(新的审核流程)</description>
+    <name>getNextReviewNew</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getNextReviewNew(java.lang.String)</function-signature>
+    <example>${fns:getNextReview(reviewId)}</example>  
+  </function>
+ <function>
+    <description>获取下一个成本审核 审核人信息</description>
+    <name>getNextCostReview</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getNextCostReview(java.lang.Long)</function-signature>
+    <example>${fns:getNextCostReview(reviewId)}</example>  
+  </function>
+ <function>
+    <description>获取下一个酒店成本审核 审核人信息</description>
+    <name>getNextCostHotelReview</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getNextCostHotelReview(java.lang.Long)</function-signature>
+    <example>${fns:getNextCostHotelReview(reviewId)}</example>  
+  </function>
+ <function>
+    <description>获取下一个酒店付款审核 审核人信息</description>
+    <name>getNextPayHotelReview</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getNextPayHotelReview(java.lang.Long)</function-signature>
+    <example>${fns:getNextPayHotelReview(reviewId)}</example>  
+  </function>
+ <function>
+    <description>获取下一个海岛成本审核 审核人信息</description>
+    <name>getNextCostIslandReview</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getNextCostIslandReview(java.lang.Long)</function-signature>
+    <example>${fns:getNextCostIslandReview(reviewId)}</example>  
+  </function>
+ <function>
+    <description>获取下一个海岛付款审核 审核人信息</description>
+    <name>getNextPayIslandReview</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getNextPayIslandReview(java.lang.Long)</function-signature>
+    <example>${fns:getNextPayIslandReview(reviewId)}</example>  
+  </function>
+ <function>
+    <description>获取下一个付款审核 审核人信息</description>
+    <name>getNextPayReview</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getNextPayReview(java.lang.Long)</function-signature>
+    <example>${fns:getNextPayReview(reviewId)}</example>  
+  </function>
+
+   <function>
+    <description>将数据库中的币种加价格的json数据转换成供前台显示的展示字符数据</description>
+    <name>jsonDataPrice2ShwoPrice</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CurrencyUtils</function-class>
+    <function-signature>java.lang.String jsonDataPrice2ShwoPrice(java.lang.String)</function-signature>
+    <example>${fns:jsonDataPrice2ShwoPrice(dataString)}</example>  
+  </function>
+
+  <function>
+    <description>通过hotel的star获取hotel_start的value</description>
+    <name>getValueByStar</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+    <function-signature>java.lang.String getValueByStar(java.lang.String)</function-signature>
+    <example>${fns:getValueByStar(star)}</example>  
+  </function>
+ <function>
+    <description>通过海岛团期UUID 获得航班信息</description>
+    <name>getAirlineByGroupUuid</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+    <function-signature>java.lang.String getAirlineByGroupUuid(java.lang.String)</function-signature>
+    <example>${fns:getAirlineByGroupUuid(uuid)}</example>  
+  </function> 
+ <function>
+    <description>获得海岛团期的 房型*晚数 </description>
+    <name>getIslandRoom</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+    <function-signature>java.lang.String getIslandRoom(java.lang.String)</function-signature>
+    <example>${fns:getIslandRoom(uuid)}</example>  
+  </function> 
+   <function>
+    <description>获得酒店团期的 房型*晚数 </description>
+    <name>getHotelRoom</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+    <function-signature>java.lang.String getHotelRoom(java.lang.String)</function-signature>
+    <example>${fns:getHotelRoom(uuid)}</example>  
+  </function> 
+   <function>
+    <description>海岛团期的机票余位</description>
+    <name>getAirRemNumber</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+    <function-signature>java.lang.String getAirRemNumber(java.lang.String)</function-signature>
+    <example>${fns:getAirRemNumber(uuid)}</example>  
+  </function> 
+    <function>
+  	<description>根据流水号获取费用总额字符串(海岛游) 例：index1 美元100+人民币200 2$100+￥200</description>
+  	<name>getIslandMoneyAmountBySerialNum</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getIslandMoneyAmountBySerialNum(java.lang.String, java.lang.Integer)</function-signature>
+  	<example>${fns:getIslandMoneyAmountBySerialNum(serialNum,index)}</example>
+  </function>
+  <function>
+     <description>获取订单未收款确认的条数</description>
+     <name>getCountForOrderListDZ</name>
+     <function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+     <function-signature>java.lang.Integer getCountForOrderListDZ(java.lang.Integer)</function-signature>
+     <example>${fns:getCountForOrderListDZ(type)}</example>
+  </function>
+    <function>
+  	<description>根据原返佣金额流水号获取原返佣金额字符串 带有html网页标签的</description>
+  	<name>getIslandOldRebatesMoneyAmountBySerialNum</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getIslandOldRebatesMoneyAmountBySerialNum(java.lang.String)</function-signature>
+  	<example>${fns:getIslandOldRebatesMoneyAmountBySerialNum(serialNum)}</example>
+  </function>
+  <function>
+  	<description>根据流水号获取费用总额字符串(酒店) 例：index1 美元100+人民币200 2$100+￥200</description>
+  	<name>getHotelMoneyAmountBySerialNum</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getHotelMoneyAmountBySerialNum(java.lang.String, java.lang.Integer)</function-signature>
+  	<example>${fns:getHotelMoneyAmountBySerialNum(serialNum,index)}</example>
+  </function>
+  
+  <function>
+  	<description>根据流水号获取费用总额字符串(酒店) 例：index1 美元100+人民币200 2$100+￥200</description>
+  	<name>getMoneyAmount</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getMoneyAmount(java.lang.Integer,java.lang.String, java.lang.Integer, java.lang.String, java.lang.Integer)</function-signature>
+  	<example>${fns:getMoneyAmount(orderType,serialNum,index,payType,orderId)}</example>
+  </function>
+  <function>
+  	<description>根据流水号获取费用总额字符串(酒店) 例：index1 美元100+人民币200 2$100+￥200</description>
+  	<name>getMoneyAmountForDZ</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getMoneyAmountForDZ(java.lang.Integer,java.lang.String, java.lang.Integer)</function-signature>
+  	<example>${fns:getMoneyAmountForDZ(orderType,serialNum,index)}</example>
+  </function>
+  <function>
+  	<description>获取未付金额</description>
+  	<name>getNotPayMoney</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getNotPayMoney(java.lang.String,java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getNotPayMoney(orderType,total,serialNum)}</example>
+  </function>
+  
+    <function>
+  	<description>根据原返佣金额流水号获取原返佣金额字符串 带有html网页标签的</description>
+  	<name>getHotelOldRebatesMoneyAmountBySerialNum</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getHotelOldRebatesMoneyAmountBySerialNum(java.lang.String)</function-signature>
+  	<example>${fns:getHotelOldRebatesMoneyAmountBySerialNum(serialNum)}</example>
+  </function>
+ <function>
+  	<description>根据订单、游客uuid，订单类型获取对应的游客退款总金额字符串</description>
+  	<name>getRefundPayMoneyTravelByOrderType</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getRefundPayMoneyTravelByOrderType(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+  	<example>${fns:getRefundPayMoneyTravelByOrderType(orderUuid,travelerUuid,orderType)}</example>
+  </function>
+ <function>
+  	<description>根据订单、游客uuid，订单类型获取对应的游客借款总金额字符串</description>
+  	<name>getBorrowPayMoneyTravelByOrderType</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getBorrowPayMoneyTravelByOrderType(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+  	<example>${fns:getBorrowPayMoneyTravelByOrderType(orderUuid,travelerUuid,orderType)}</example>
+  </function>
+
+ <function>
+    <description>获取三级(顶部)菜单审核记录总数</description>
+    <name>getReviewTotal</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getReviewTotal(java.lang.Integer,java.lang.Integer)</function-signature>
+    <example>${fns:getReviewTotal(reviewFlow,orderType)}</example>  
+  </function>
+ <function>
+    <description>获得已付款金额</description>
+    <name>getPayCost</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getPayCost(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getPayCost(costId,orderType,moneyType)}</example>  
+  </function>
+ <function>
+    <description>获得退款应付金额</description>
+    <name>getRefundTotal</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getRefundTotal(java.lang.String)</function-signature>
+    <example>${fns:getRefundTotal(reviewId)}</example>  
+  </function>
+ <function>
+    <description>获得订单总额</description>
+    <name>getOrderTotal</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.String getOrderTotal(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getOrderTotal(orderId,prdType)}</example>  
+  </function>
+    <function>
+  	<description>获取游客姓名</description>
+  	<name>getSysTravelerNameById</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.TravelerUtils</function-class>
+  	<function-signature>java.lang.String getSysTravelerNameById(java.lang.Long,java.lang.String)</function-signature>
+  	<example>${fns:getSysTravelerNameById(travelerId,orderType)}</example>
+  </function>
+   <function>
+  	<description>根据游客uuid,订单类型获取对应的游客返佣总金额字符串</description>
+  	<name>getTravelRebatesByOrderType</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getTravelRebatesByOrderType(java.lang.String,java.lang.String)</function-signature>
+  	<example>${fns:getTravelRebatesByOrderType(travelerUuid,orderType)}</example>
+  </function>
+  <function>
+  	<description>根据uuid，获取海岛游游客分类名称 TravelerType </description>
+  	<name>getTravelerTypeCn</name>
+  	<function-class>com.trekiz.admin.modules.traveler.utils.TravelTypeUtils</function-class>
+  	<function-signature>com.trekiz.admin.modules.traveler.entity.TravelerType getTravelerTypeCn(java.lang.String)</function-signature>
+  	<example>${fns:getTravelerTypeCn(uuid)}</example>
+  </function>
+  <function>
+  	<description>根据uuid，获取字典表标签值</description>
+  	<name>getSysDictLabelByUuid</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.DictUtils</function-class>
+  	<function-signature>java.lang.String getDictLabelByUuid(java.lang.String)</function-signature>
+  	<example>${fns:getSysDictLabelByUuid(uuid)}</example>
+  </function>
+  <function>
+  	<description>根据uuid，获取HotelControlDetail 实体</description>
+  	<name>getHotelControlDetailByUuid</name>
+  	<function-class>com.trekiz.admin.modules.island.util.IslandCommonUtil</function-class>
+  	<function-signature>com.trekiz.admin.modules.hotel.entity.HotelControlDetail getHotelControlDetailByUuid(java.lang.String)</function-signature>
+  	<example>${fns:getHotelControlDetailByUuid(uuid)}</example>
+  </function>
+  <function>
+  	<description>根据uuid，获取HotelControl 实体</description>
+  	<name>getHotelControlByUuid</name>
+  	<function-class>com.trekiz.admin.modules.island.util.IslandCommonUtil</function-class>
+  	<function-signature>com.trekiz.admin.modules.hotel.entity.HotelControl getHotelControlByUuid(java.lang.String)</function-signature>
+  	<example>${fns:getHotelControlByUuid(uuid)}</example>
+  </function>
+
+  <function>
+  	<description>查询环球行签证借款已付金额</description>
+  	<name>getTTSQZPayedMoney</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.lang.String getTTSQZPayedMoney(java.lang.String,java.lang.String)</function-signature>
+  	<example>${fns:getTTSQZPayedMoney(batchId,orderType)}</example>
+  </function>
+  <function>
+  	<description>根据uuid，获取MoneyAmount 实体</description>
+  	<name>getMoneyAmountByUUID</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.MoneyAmountUtils</function-class>
+  	<function-signature>com.trekiz.admin.modules.money.entity.MoneyAmount getMoneyAmountByUUID(java.lang.String)</function-signature>
+  	<example>${fns:getMoneyAmountByUUID(uuid)}</example>
+  </function>
+
+  <function>
+    <description>获取新增成本付款总数</description>
+    <name>getOrderPayCount</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getOrderPayCount()</function-signature>
+    <example>${fns:getOrderPayCount()}</example>  
+  </function>
+  <function>
+    <description>获取新增退款付款总数</description>
+    <name>getRefundCount</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getRefundCount()</function-signature>
+    <example>${fns:getRefundCount()}</example>  
+  </function>
+  <function>
+    <description>获取新增返佣付款总数</description>
+    <name>getRebateCount</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getRebateCount()</function-signature>
+    <example>${fns:getRebateCount()}</example>  
+  </function>
+  <function>
+    <description>获取新增代收服务费付款总数</description>
+    <name>getServiceChargeCount</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getServiceChargeCount()</function-signature>
+    <example>${fns:getServiceChargeCount()}</example>
+  </function>
+  <function>
+    <description>获取待处理的收据总数</description>
+    <name>getAllReceiptNum</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getAllReceiptNum()</function-signature>
+    <example>${fns:getAllReceiptNum()}</example>  
+  </function>
+    <function>
+    <description>获取待审核的收据总数</description>
+    <name>getToBeReviewedReceiptNum</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getToBeReviewedReceiptNum()</function-signature>
+    <example>${fns:getToBeReviewedReceiptNum()}</example>  
+  </function>
+    <function>
+    <description>获取待开票的收据总数</description>
+    <name>getReviewedReceiptNum</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getReviewedReceiptNum()</function-signature>
+    <example>${fns:getReviewedReceiptNum()}</example>  
+  </function>
+    <function>
+    <description>获取待处理的发票总数</description>
+    <name>getAllInvoiceNum</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getAllInvoiceNum()</function-signature>
+    <example>${fns:getAllInvoiceNum()}</example>  
+  </function>
+      <function>
+    <description>获取待审核的发票总数</description>
+    <name>getToBeReviewedInvoiceNum</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getToBeReviewedInvoiceNum()</function-signature>
+    <example>${fns:getToBeReviewedInvoiceNum()}</example>  
+  </function>
+    <function>
+    <description>获取待开票的发票总数</description>
+    <name>getReviewedInvoiceNum</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Integer getReviewedInvoiceNum()</function-signature>
+    <example>${fns:getReviewedInvoiceNum()}</example>  
+  </function>
+    <!-- 查询其他收入收款的未达账金额的总数 -->
+  <function>
+  	<description>查询其他收入收款的未达账金额的总数</description>
+  	<name>getNotAccountedCountOtherIncome</name>
+  	<function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+  	<function-signature>java.lang.Long getNotAccountedCountOtherIncome()</function-signature>
+  	<example>${fns:getNotAccountedCountOtherIncome()}</example>
+  </function>
+  <function>
+  	<description>查询借款付款的未付款金额的总数</description>
+  	<name>getBorrowMoneyNotPayedCount</name>
+  	<function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+  	<function-signature>java.lang.Long getBorrowMoneyNotPayedCount()</function-signature>
+  	<example>${fns:getBorrowMoneyNotPayedCount()}</example>
+  </function>
+
+  <function>
+    <description>查询签证批量借款付款的未付款金额的总数</description>
+    <name>getBatchBorrowMoneyNotPayedCount</name>
+    <function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+    <function-signature>java.lang.Long getBatchBorrowMoneyNotPayedCount()</function-signature>
+    <example>${fns:getBatchBorrowMoneyNotPayedCount()}</example>
+  </function>
+
+  <!-- 获取游客预订返佣值 -->
+  <function>
+  	<description>获取游客预订返佣值</description>
+  	<name>getScheduleByUUID</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.MoneyAmountUtils</function-class>
+  	<function-signature>com.trekiz.admin.modules.money.entity.MoneyAmount getScheduleByUUID(java.lang.String)</function-signature>
+  	<example>${fns:getScheduleByUUID(uuid)}</example>
+  </function>
+  <!-- 根据流水号获取预订游客返佣值币种ID,和前端选择币种ID进行判断是否相等 -->
+  <function>
+  	<description>根据流水号获取预订游客返佣值币种ID,和前端选择币种ID进行判断是否相等</description>
+  	<name>getScheduleCurrencyID</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.MoneyAmountUtils</function-class>
+  	<function-signature>java.lang.String getScheduleCurrencyID(java.lang.String,java.lang.String)</function-signature>
+  	<example>${fns:getScheduleCurrencyID(uuid,currencyId)}</example>
+  </function>
+  <!-- 根据流水号获取预订游客返佣值币种ID -->
+  <function>
+    <description>根据流水号获取预订游客返佣值币种ID,和前端选择币种ID进行判断是否相等</description>
+    <name>getCurrencyIdBySerialNum</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.MoneyAmountUtils</function-class>
+    <function-signature>java.lang.Integer getCurrencyIdBySerialNum(java.lang.String)</function-signature>
+    <example>${fns:getScheduleCurrencyID(uuid)}</example>
+  </function>
+  <!-- 根据流水号获取MoneyAmont 金额数值 -->
+  <function>
+  	<description>根据流水号获取MoneyAmont 金额数值</description>
+  	<name>getMoneyAmountNUM</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.MoneyAmountUtils</function-class>
+  	<function-signature>java.lang.String getMoneyAmountNUM(java.lang.String)</function-signature>
+  	<example>${fns:getMoneyAmountNUM(uuid)}</example>
+  </function>
+
+
+  <!-- 根据流水号获取MoneyAmont 金额币种名称，只适合于单币种 -->
+  <function>
+    <description>根据流水号获取MoneyAmont 金额币种名称</description>
+    <name>getCurrencyNameBySerialNum</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.MoneyAmountUtils</function-class>
+    <function-signature>java.lang.String getCurrencyNameBySerialNum(java.lang.String)</function-signature>
+    <example>${fns:getCurrencyNameBySerialNum(uuid)}</example>
+  </function>
+  
+  <!-- 根据流水号获取MoneyAmonts -->
+  <function>
+    <description>根据流水号获取MoneyAmonts</description>
+    <name>getMoneyAmountsBySerialNum</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.MoneyAmountUtils</function-class>
+    <function-signature>java.lang.String getMoneyAmountsBySerialNum(java.lang.String)</function-signature>
+    <example>${fns:getMoneyAmountsBySerialNum(uuid)}</example>
+  </function>
+
+  <function>
+  	<description>获取订单发票、收据的展示状态</description>
+  	<name>getOrderInvoiceReceiptStatus</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getOrderInvoiceReceiptStatus(java.lang.Integer,java.lang.Integer,java.lang.Long)</function-signature>
+  	<example>${fns:getOrderInvoiceReceiptStatus(type,orderType,orderId)}</example>
+  </function>
+  
+  <function>
+  	<description>根据发票和收据状态判断是否可以取消、删除</description>
+  	<name>canCancel</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String canCancel(java.lang.Integer,java.lang.Long)</function-signature>
+  	<example>${fns:canCancel(orderType,orderId)}</example>
+  </function>
+  
+  <function>
+  	<description>判断数组中是否包含子元素</description>
+  	<name>contains</name>
+  	<function-class>com.trekiz.admin.common.utils.Collections3</function-class>
+  	<function-signature>boolean contains(java.lang.String[],java.lang.String)</function-signature>
+  	<example>${fns:contains(arr,item)}</example>
+  </function>
+  <!-- 获取订单预计返佣总金额 add by jiangyang  -->
+  <function>
+  	<description>获取订单预计返佣总金额</description>
+  	<name>getAllRebatesMoney</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getAllRebatesMoney(java.lang.Long, java.lang.Integer)</function-signature>
+  	<example>${fns:getAllRebatesMoney(orderId, orderType)}</example>
+  </function>
+  <function>
+  	<description>获取订单预计返佣游客或团队金额</description>
+  	<name>getRebatesMoney</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getRebatesMoney(java.lang.Long, java.lang.Integer, java.lang.String)</function-signature>
+  	<example>${fns:getRebatesMoney(orderId, orderType, travelerId)}</example>
+  </function>
+  
+  <function>
+  	<description>根据recordId获取refund标的款单位</description>
+  	<name>getPayee</name>
+  	<function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+  	<function-signature>java.util.String getPayee(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getPayee(recordId, orderType, moneyType)}</example>
+  </function>
+  
+  
+  <function>
+  	<description>根据review ID, 获取对应机票的预计返佣总额（包括个人和团队，仅限申请了的）</description>
+  	<name>getPreRebatesApplied</name>
+  	<function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+  	<function-signature>java.util.String getPreRebatesApplied(java.lang.Long)</function-signature>
+  	<example>${fns:getPreRebatesApplied(rid)}</example>
+  </function>
+  
+  <function>
+  	<description>根据review ID, 获取对应机票的预计返佣总额（包括个人和团队，仅限申请了的）</description>
+  	<name>getPreRebatesAppliedNew</name>
+  	<function-class>com.trekiz.admin.modules.order.util.ReviewCommonUtil</function-class>
+  	<function-signature>java.util.String getPreRebatesAppliedNew(java.lang.String)</function-signature>
+  	<example>${fns:getPreRebatesAppliedNew(rid)}</example>
+  </function>
+  
+  <function>
+    <description>获取部门名称</description>
+    <name>getDeptNameById</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+    <function-signature>java.lang.String getDeptNameById(java.lang.Long)</function-signature>
+    <example>${fns:getDeptNameById(id)}</example>  
+  </function>
+  <function>
+  	<description>根据审核状态标识，返回其对应中文描述，参数1：审批状态标识，参数2：待审核人ID，对个时以英文","分隔，也可以为空</description>
+  	<name>getChineseReviewStatus</name>
+  	<function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+  	<function-signature>java.lang.String getChineseReviewStatus(java.lang.Integer, java.lang.String)</function-signature>
+  	<example>${fns:getChineseReviewStatus(reviewStatus,userIds)}</example>
+  </function>
+  <!-- add by shijun.liu 根据新审批的uuid字段查询相应的审批状态，只适用于新审批 -->
+  <function>
+  	<description>根据新审批uuid查询其对应的审批状态</description>
+  	<name>getChineseReviewStatusByUuid</name>
+  	<function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+  	<function-signature>java.lang.String getChineseReviewStatusByUuid(java.lang.String)</function-signature>
+  	<example>${fns:getChineseReviewStatusByUuid(reviewUuid)}</example>
+  </function>
+  
+  <function>
+  	<description>根据review_new表的uuid判断是否需要当前用户审批</description>
+  	<name>isCurrentReviewer</name>
+  	<function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+  	<function-signature>java.lang.Boolean isCurrentReviewer(java.lang.String)</function-signature>
+  	<example>${fns:isCurrentReviewer(reviewId)}</example>
+  </function>
+  <!-- 获取订单预计返佣总金额 add by jiangyang  -->
+  <function>
+  	<description>根据流水号获取新审核moneyAmount字符串 例：showType:name 美元100+人民币200 showType:mark $100+￥200</description>
+  	<name>getReviewMoneyStrByUUID</name>
+  	<function-class>com.trekiz.admin.review.utils.ReviewMoneyAmountUtils</function-class>
+  	<function-signature>java.lang.String getReviewMoneyStrByUUID(java.lang.String, java.lang.String)</function-signature>
+  	<example>${fns:getReviewMoneyStrByUUID(uuid, showType)}</example>
+  </function>
+  
+  <function>
+  	<description>根据uuid查询新审批对象，参数1：review_new表的uuid</description>
+  	<name>getReviewNewByUuid</name>
+  	<function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+  	<function-signature>com.quauq.review.core.engine.entity.ReviewNew getReviewNewByUuid(java.lang.String)</function-signature>
+  	<example>${fns:getReviewNewByUuid(reviewId)}</example>
+  </function>
+
+  <!--根据id获取职务名称-->
+  <function>
+    <description>根据id获取职务名称</description>
+    <name>getJobName</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.JobUtil</function-class>
+    <function-signature>java.lang.String getJobName(java.lang.String)</function-signature>
+    <example>${fns:getJobName(jobId)}</example>
+  </function>
+  
+  <!-- 新审批是否显示撤销按钮 -->
+  <function>
+    <description>根据id获取职务名称</description>
+    <name>isBackReview</name>
+    <function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+    <function-signature>java.lang.Boolean isBackReview(java.lang.String)</function-signature>
+    <example>${fns:isBackReview(reviewUuid)}</example>
+  </function>
+  <!-- 新审批是否显示取消按钮 -->
+  <function>
+    <description>新审批是否显示取消按钮</description>
+    <name>isShowCancel</name>
+    <function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+    <function-signature>java.lang.Boolean isShowCancel(java.lang.String)</function-signature>
+    <example>${fns:isShowCancel(reviewUuid)}</example>
+  </function>
+    <!-- 查询 当前用户是否有审批权限 -->
+  <function>
+    <description>查询 当前用户是否有审批权限</description>
+    <name>isCurReviewer</name>
+    <function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+    <function-signature>java.lang.Boolean isCurReviewer(java.lang.Object)</function-signature>
+    <example>${fns:isCurReviewer(reviewUuid)}</example>
+  </function>
+  <!-- 查询 当前用户是否有审批权限 -->
+  <function>
+    <description>返佣付款获取已付金额</description>
+    <name>getPayedMoney</name>
+    <function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+    <function-signature>java.util.List getPayedMoney(java.lang.String)</function-signature>
+    <example>${fns:getPayedMoney(rid)}</example>
+  </function>
+  <function>
+    <description>返佣付款获取已付金额</description>
+    <name>getCurrencyId</name>
+    <function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+    <function-signature>java.lang.String getCurrencyId(java.lang.String)</function-signature>
+    <example>${fns:getCurrencyId(rid)}</example>
+  </function>
+  <function>
+    <description>返佣付款获取已付金额</description>
+    <name>getMoney</name>
+    <function-class>com.trekiz.admin.review.common.utils.ReviewUtils</function-class>
+    <function-signature>java.lang.String getMoney(java.lang.String)</function-signature>
+    <example>${fns:getMoney(rid)}</example>
+  </function>
+
+  <!-- 查询游客的自备签信息列表 -->
+  <function>
+    <description>查询游客的自备签信息列表</description>
+    <name>obtainTravelerProvidedVisaList</name>
+    <function-class>com.trekiz.admin.modules.traveler.utils.TravelerVisaUtil</function-class>
+    <function-signature>java.util.List obtainTravelerProvidedVisaList(java.lang.Long)</function-signature>
+    <example>${fns:obtainTravelerProvidedVisaList(travelerId)}</example>
+  </function>
+
+  <!-- 查询游客的申请签信息列表 -->
+  <function>
+    <description>查询游客的申请签证信息列表</description>
+    <name>obtainTravelerAppliedVisaList</name>
+    <function-class>com.trekiz.admin.modules.traveler.utils.TravelerVisaUtil</function-class>
+    <function-signature>java.util.List obtainTravelerAppliedVisaList(java.lang.Integer,java.lang.Integer)</function-signature>
+    <example>${fns:obtainTravelerAppliedVisaList(orderId,travelerId)}</example>
+  </function>
+
+  <!-- 查询游客的所有签证（包括自备和申请）信息列表 -->
+  <function>
+    <description>查询游客的所有签证（包括自备和申请）信息列表</description>
+    <name>obtainTravelerAllVisaList</name>
+    <function-class>com.trekiz.admin.modules.traveler.utils.TravelerVisaUtil</function-class>
+    <function-signature>java.util.List obtainTravelerAllVisaList(java.lang.Integer,java.lang.Integer)</function-signature>
+    <example>${fns:obtainTravelerAllVisaList(orderId,travelerId)}</example>
+  </function>
+
+  <!-- 查询游客的所有签证（包括自备和申请）信息列表 -->
+  <function>
+    <description>查询当前批发商的uuid</description>
+    <name>getCompanyUuid</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.String getCompanyUuid()</function-signature>
+    <example>${fns:getCompanyUuid()}</example>
+  </function>
+
+  <!-- 查询一个订单中是否有正在审批中的散拼优惠审批 -->
+  <function>
+    <description>查询一个订单中是否有正在审批中的散拼优惠审批</description>
+    <name>hasPrivilegeProcessingReviews</name>
+    <function-class>com.trekiz.admin.review.privilege.PrivilegeReviewUtil</function-class>
+    <function-signature>java.lang.Boolean hasPrivilegeProcessingReviews(java.lang.Long)</function-signature>
+    <example>${fns:hasPrivilegeProcessingReviews(orderId)}</example>
+  </function>
+  <function>
+    <description>根据团期id查询已确认占位的人数</description>
+    <name>getConfirmedNums</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+    <function-signature>java.lang.Integer getConfirmedNums(java.lang.Long)</function-signature>
+    <example>${fns:getConfirmedNums(activityGroupId)}</example>
+  </function>
+  <function>
+    <description>根据机票产品id查询已确认占位的人数</description>
+    <name>getAirticketConfirmedNums</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+    <function-signature>java.lang.Integer getAirticketConfirmedNums(java.lang.Long)</function-signature>
+    <example>${fns:getAirticketConfirmedNums(activityAirticketId)}</example>
+  </function>
+  <function>
+  	<description>获取当前登录用户所在批发商</description>
+  	<name>getCurrentOffice</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>com.trekiz.admin.modules.sys.entity.Office getCurrentOffice()</function-signature>
+    <example>${fns:getCurrentOffice()}</example>
+  </function>
+  <function>
+  	<description>获取销售依据渠道销售Id字符串</description>
+  	<name>getSalersFromIdStr</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.Map getSalersFromIdStr(java.lang.String)</function-signature>
+    <example>${fns:getSalersFromIdStr(salerIds)}</example>
+  </function>
+  <function>
+  	<description>获取quauq订单的总结算价和服务费</description>
+  	<name>getQuauqClearChargeStr</name>
+  	<function-class>com.trekiz.admin.modules.sys.utils.MoneyAmountUtils</function-class>
+    <function-signature>java.lang.String getQuauqClearChargeStr(java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:getQuauqClearChargeStr(totalSerial, chargeSerial)}</example>
+  </function>
+	<function>
+  		<description>获取渠道结算方式</description>
+	  	<name>findAllPaymentType</name>
+	  	<function-class>com.trekiz.admin.modules.sys.utils.CommonUtils</function-class>
+	    <function-signature>java.util.List findAllPaymentType()</function-signature>
+	    <example>${fns:findAllPaymentType()}</example>
+ 	 </function>
+  <function>
+    <description>改价差额</description>
+    <name>getCosts</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.TravelerUtils</function-class>
+    <function-signature>java.util.List getCosts(java.lang.Long, java.lang.Integer)</function-signature>
+    <example>${fns:getCosts()}</example>
+  </function>
+  <function>
+    <description>审批改价差额</description>
+    <name>getCosts4Review</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.TravelerUtils</function-class>
+    <function-signature>java.util.List getCosts4Review(java.lang.String)</function-signature>
+    <example>${fns:getCosts4Review(reviewUuid)}</example>
+  </function>
+  <function>
+    <description>改价审批通过后的当前应收价</description>
+    <name>getMoneyAfterCP</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.TravelerUtils</function-class>
+    <function-signature>java.util.List getMoneyAfterCP(java.lang.Long)</function-signature>
+    <example>${fns:getMoneyAfterCP(travelerId)}</example>
+  </function>
+  <function>
+    <description>改前金额</description>
+    <name>getMoneyBeforeCP</name>
+    <function-class>com.trekiz.admin.modules.sys.utils.TravelerUtils</function-class>
+    <function-signature>java.util.List getMoneyBeforeCP(java.lang.Long, java.lang.Long, java.lang.String)</function-signature>
+    <example>${fns:getMoneyBeforeCP(travelerId, orderId, createDate)}</example>
+  </function>
+    <function>
+        <description>零售价</description>
+        <name>getRetailPrice</name>
+        <function-class>com.trekiz.admin.modules.order.util.OrderCommonUtil</function-class>
+        <function-signature>java.math.BigDecimal getRetailPrice(java.lang.Long,java.lang.Integer,java.math.BigDecimal,java.math.BigDecimal,java.lang.Long)</function-signature>
+        <example>${fns:getRetailPrice(groupId, activityKind, price, quauqPrice, currencyId)}</example>
+    </function>
+    <function>
+   		<description>获取所属区域名称</description>
+   		<name>getAreaNamesByIds</name>
+   		<function-class>com.trekiz.admin.agentToOffice.line.utils.TouristLineUtils</function-class>
+   		<function-signature>java.lang.String getAreaNamesByIds(java.lang.String)</function-signature>
+   		<example>${fns:getAreaNamesByIds(areaIds)}</example>
+   	</function>
+</taglib>

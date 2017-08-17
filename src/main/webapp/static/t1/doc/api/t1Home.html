@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/static/css/common/src/jquery-ui.css"/>
+
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+    <script type="text/javascript">
+        var financeModule = angular.module('financeModule', ['qc', 'docModule']);
+        financeModule.controller('NavController', ['$scope', 'docNavInfo', function ($scope, docNavInfo) {
+            $scope.navInfo = docNavInfo;
+            $scope.navInfo.current = 'api';
+            $scope.navInfo.sub = 'finance';
+        }]);
+    </script>
+</head>
+<body  class="fixed-top" ng-app="financeModule">
+<doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+<div class="container">
+    <div class="docs-header">
+        <h1>T1</h1>
+
+        <p>
+            T1首页相关Api </p>
+    </div>
+    <div class="breadcrumb">Quauq Doc > Api文档 > T1首页and前奏</div>
+    <div class="page-header">
+        <h1>首页</h1>
+    </div>
+    <div>
+
+        <h3>首页-供应商logo读取</h3>
+        <div>
+            <p class="mark">描述:</p>
+
+            <p>接口路径:/t1/getT1LogoList</p>
+
+
+            <p>输入(param):</p>
+            <pre>
+                {
+                    tourOutIn:100000(200000)//标签页切换以及初始化，出境游或者国内游,
+                    tourDistrictId:001      //区域id
+                }
+            </pre>
+            <p>输出(data)</p>
+
+            <pre>
+        {
+            "results":{
+               tourOutIn:100000(200000),
+                tourOutInList:[{id:'100000',name:'出境游'},{id:'200000',name:'国内游'}],
+               tourDistrict:[
+                    {
+                        tourDistrictName:"东南亚",
+                        tourDistrictId:"001",
+                        travelAgency:
+                            [
+                                {"id":"1234",title:"天马旅游"，logoUrl:"12345/abces/asd/tianma.jpg",text:""},
+                                {"id":"1234",title:"理想假期"，logoUrl:"",text:"没有logo的旅行社"},
+                            ]
+                    },
+                    {
+                        tourDistrictName:"北美",
+                        tourDistrictId:"002",
+                        travelAgency:
+                            [
+                                {"id":"1234",title:"沃途旅游"，logoUrl:"12345/abces/asd/tianma.jpg",text:""},
+                                {"id":"1234",title:"NATURE"，logoUrl:"",text:"NATURE"},
+                            ]
+                    },
+                    {
+                        tourDistrictName:"北美",
+                        tourDistrictId:"002",
+                        travelAgency:
+                            [
+                                {"id":"1234",title:"沃途旅游"，logoUrl:"12345/abces/asd/tianma.jpg",text:""},
+                                {"id":"1234",title:"NATURE"，logoUrl:"",text:"NATURE"},
+                            ]
+                    }
+                ]
+            }
+        }
+
+            </pre>
+        </div>
+
+        <h3>首页跳转至产品列表页（原首页）</h3>
+        <div>
+            <p class="mark">描述:</p>
+
+            <p>接口路径:/t1/jumpParam</p>
+
+
+            <p>输入(param):</p>
+            <pre>
+                {
+                "jumpType":1,//跳转类型(当类型为2和3的时候只返回选择的供应商)
+                "travelSelected":{travelArea:[],//区域id（东南亚等）
+                                  travelInOut:[],//国内和出境id
+                                  travelId:[]//供应商id}//选择的供应商或者区域，没有选择传空
+                                  },
+                "tabText":""//搜索内容
+                }
+            </pre>
+            <p>输出(data)</p>
+
+            <pre>
+          {
+            "results":{
+                travelSelected:[
+                    {
+                        travelAreaId:"",
+                        travelAreaName:""//当传入的id为空时返回空
+                     },
+                     {
+                        travelInOutId:"",
+                        travelInOutName:""//当传入的id为空时返回空
+                     },
+                     {
+                        travelId:"",
+                        travelName:""//当传入的id为空时返回空
+                     }
+                ],
+                jumpType:""，
+                "tabText":""//搜索内容
+             }
+        }
+            </pre>
+        </div>
+
+        <h3>产品列表页-筛选条件接口（获取所有的筛选条件）</h3>
+        <div>
+            <p class="mark">描述:</p>
+
+            <p>接口路径:/t1/getFilterCondition</p>
+
+
+            <p>输入(param):</p>
+            <pre>
+                {
+                "keywordQ":"",//搜索关键字
+                "tourOutInQ":"100000"(200000),//标签页切换以及初始化，出境游或者国内游,
+                "startCityParaQ":[],//出发城市
+                "endCityParaQ":[],//目的地
+                 "targetCity":[],//抵达城市
+                "linePlay":[],//线路玩法
+                "supplierParaQ":[],//供应商
+                "groupDateParaQ":[],//出团日期开始日期
+                "dayParaQ":[],//行程天数开始天数
+                "priceParaQ":[],//价格
+                "freeParaQ":[],//开始余位
+                 "pageNo":"",//当前页码（点击的页码）
+                 "pageSize":"",//每页显示记录数
+                 "orderBy":"defaultSort ASC"("activityDuration"(行程天数)|"groupOpenDate"(出团日期)|"quauqPrice"(计算价) DESC   )//排序
+                }
+            </pre>
+            <p>输出(data)</p>
+
+            <pre>
+        {
+            results:{
+                 "supplierInfos": [//供应商
+                    {
+                        "id": 427,
+                        "name": "尊宝假期",
+                        "logoUrl":"12345/abces/asd/tianma.jpg"
+                    },
+                    {
+                        "id": 426,
+                        "name": "领先旅游",
+                         "logoUrl":"12345/abces/asd/tianma.jpg"
+                    },
+                ],
+                fromAreaList: [     //出发城市
+                    {
+                        "id": 159,    //待定
+                        "name": "北京"//出发城市对应的名字
+                    },
+                    {
+                        "id": 1832,
+                        "name": "昆明"
+                    },
+                ],
+
+                "targetCountry":[//目的地（国家）
+                    {
+                    "id":"55"
+                    "name":"香港"
+                    },
+                    {
+                    "id":"17"
+                    "name":"日本"
+                    },
+                ],
+                "targetCity":[],//抵达城市
+                    {
+                    "id":"55"
+                    "name":"天津"
+                    },
+                    {
+                    "id":"17"
+                    "name":"富土康"
+                    },
+                ],
+                "linePlay":[//线路玩法
+                    {
+                        "id":"001",
+                        "name":"推荐线路1"
+                    },
+                    {
+                        "id":"002",
+                        "name":"推荐线路2"
+                    },
+                    {
+                        "id":"003",
+                        "name":"推荐线路3"
+                    },
+                    {
+                        "id":"004",
+                        "name":"推荐线路4"
+                    },
+                    {
+                        "id":"005",
+                        "name":"推荐线路5"
+                    }
+                ],
+                "travelDays":[//行程天数
+                     {
+                        id : 1
+                        name : "1天"
+                     }，
+                    {
+                        id : 2
+                        name : "2天"
+                     }
+                ],
+                "priceRange":[//价格区间
+                    {
+                        id : 1
+                        name : "300元-600元"
+                     }，
+                    {
+                        id : 2
+                        name : "300元-600元"
+                     }
+                ],
+                "startDate":[//出团日期
+                    {
+                        id : "",
+                        name : ""
+                     }，
+                 ],
+                "remainingSeat":[//余位
+                     {
+                        id : 1
+                        name : "10-19"
+                     }，
+                    {
+                        id : 2
+                        name : "20-29"
+                     }
+                ]
+             }
+        }
+
+            </pre>
+        </div>
+
+        <h3>首页-产品路线信息列表查询</h3>
+
+        <div>
+            <p class="mark">描述:</p>
+
+            <p>接口路径:/t1/homePageList</p>
+
+
+            <p>输入(param):</p>
+            <pre>
+              var searchCondition={
+                                    "keyword":"",//搜索关键字
+                                    "tourOutIn":"100000"(200000)
+                                    "startCityPara":[],//出发城市
+                                    "endCityPara":[],//目的地（国家级别）
+                                    "targetCity":[],//抵达城市（城市级别）
+                                    "linePlay":[],//线路玩法
+                                    "supplierPara":[],//供应商
+                                    "groupDatePara":[],//出团日期
+                                    "dayPara":[],//行程天数
+                                    "pricePara":[],//价格
+                                    "freePara":[],//开始余位
+                                    "pageNo":"",//当前页码（点击的页码）
+                                    "pageSize":"",//每页显示记录数
+                                    "orderBy":"defaultSort ASC"("activityDuration"(行程天数)|"groupOpenDate"(出团日期)|"quauqPrice"(计算价) DESC   )//排序
+                                };
+            </pre>
+            <p>输出(data)</p>
+
+            <pre>
+                      {
+                    "page": {
+                        "pageNo": 1,            //页码
+                        "pageSize": 10,         //每页显示条数
+                        "count": 1263,          //共计多少条数据
+                        "first": 1,             //第一页
+                        "last": 127,            //最后一页
+                        "firstPage": true,      //是否是首页
+                        "lastPage": false,      //是否是尾页
+                        "list": [
+                            {
+                                "supplierName": "迈途国旅（世达旅游）",       //供应商名字
+                                "currencyids": "£",                          //结算价（quauq价）币种符号
+                                "freePosition": 6,                           //余位
+                                "groupCode": "KOR-20161007CZ",              //团号
+                                "activitygroup_id": 15381,                  //团期ID
+                                "suggestAdultPrice": "£2080",                  //建议直客价
+                                "travelactivity_id": 6222,                  //产品ID
+                                "targetArea": "200337,200340",              //目的地id
+                                "activityDuration": 6,                      //行程天数
+                                "fromArea": 1,                              //出发城市名称
+                                "settlementAdultPrice": "£1680",               //同行价
+                                "activityName": "别漾韩国·首尔超值6日游",     //产品信息名字
+                                "groupOpenDate": "2016-10-07",              //开团日期
+                                "quauqPrice": "989"                           //quauq价格
+                            },
+                                {
+                                "supplierName": "迈途国旅（世达旅游）",
+                                "currencyids": "$",
+                                "groupCode": "KOR-20161009CZ",
+                                "activitygroup_id": 15383,
+                                "suggestAdultPrice": 2080,
+                                "travelactivity_id": 6222,
+                                "targetArea": "200337,200340",
+                                "activityDuration": 6,
+                                "fromArea": 1,
+                                "settlementAdultPrice": 1680,
+                                "activityName": "别漾韩国·首尔超值6日游",
+                                "groupOpenDate": "2016-10-09",
+                                "quauqPrice": 1187
+                            },
+                            {
+                                "supplierName": "迈途国旅（世达旅游）",
+                                "currencyids": "￥",
+                                "defaultSort": 0.706548,
+                                "groupCode": "KOR-20161023CZ",
+                                "activitygroup_id": 15387,
+                                "suggestAdultPrice": 2080,
+                                "travelactivity_id": 6222,
+                                "targetArea": "200337,200340",
+                                "activityDuration": 6,
+                                "fromArea": 1,
+                                "settlementAdultPrice": 1680,
+                                "activityName": "别漾韩国·首尔超值6日游",
+                                "groupOpenDate": "2016-10-23",
+                                "quauqPrice": 1187
+                            }
+                                ],
+
+                                    "sort": [//不能为空，没有排序返回默认
+                                        {
+                                            "direction": "ASC",//升序 |( DESC,降续)
+                                            "property": "defaultSort",//默认    ("activityDuration"(行程天数)/"groupOpenDate"(出团日期)/"quauqPrice"(计算价))
+                                        }
+                                    ]
+
+                        }
+                    }
+                }
+            </pre>
+        </div>
+
+        <h3>首页-询团记录查询</h3>
+
+        <div>
+            <p class="mark">描述:</p>
+
+            <p>接口路径:/t1/mtourfinance/getPayList</p>
+
+
+            <p>输入(param):</p>
+            <pre>
+
+            </pre>
+            <p>输出(data)</p>
+
+            <pre>
+                {
+                   adviceRecordList:[
+                        {
+                            "adviceId":"001",
+                            "advicePeople":"李四",
+                            "adviceDate":"2016.09.13",
+                            "adviceTel":"18078978978",
+                            "adviceQQ":"564897987",
+                            "adviceText":"池塘边的榕树上
+                                        知了在声声叫着夏天
+                                        操场边的秋千上
+                                        只有蝴蝶停在上面
+                                        黑板上老师地粉笔
+                                        还在拼命唧唧喳喳写个不停
+                                        等待着下课
+                                        等待着放学
+                                        等待游戏的童年"
+                        },
+                        {
+                            "adviceId":"002",
+                            "advicePeople":"张三",
+                            "adviceDate":"2016.09.13",
+                            "adviceTel":"18078978978",
+                            "adviceQQ":"564897987",
+                            "adviceText":"福利社里面什么都有
+                                        就是口袋里没有半毛钱
+                                        诸葛四郎和魔鬼党
+                                        到底谁抢到那只宝剑
+                                        隔壁班的那个女孩
+                                        怎么还没经过我的窗前
+                                        嘴里的零食
+                                        手里的漫画
+                                        心里初恋的童年 "
+                        },
+                        {
+                            "adviceId":"001",
+                            "advicePeople":"费四",
+                            "adviceDate":"2016.09.13",
+                            "adviceTel":"18078978978",
+                            "adviceQQ":"564897987",
+                            "adviceText":"总是要等到睡觉前
+                                        才知道功课只做了一点点
+                                        总是要等到考试后
+                                        才知道该念的书都没有念
+                                        一寸光阴一寸金
+                                        老师说过寸金难买寸光阴
+                                        一天又一天一年又一年
+                                        迷迷糊糊地童年
+                                        music...
+                                        没有人知道为什么
+                                        太阳总下到山的那一边
+                                        没有人能够告诉我
+                                        山里面有没有住着神仙
+                                        多少的日子里总是
+                                        一个人面对着天空发呆
+                                        就这么好奇
+                                        就这么幻想
+                                        这么孤单的童年"
+                        }
+                    ]
+                }
+            </pre>
+        </div>
+    </div>
+</div>
+<doc-footer></doc-footer>
+</body>
+</html>

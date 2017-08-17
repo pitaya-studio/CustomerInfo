@@ -1,0 +1,203 @@
+/*2016/08/09*/
+.search-content{
+    height: 36px;
+    line-height: 36px;
+    margin-bottom : 15px;
+    min-width: 480px;
+}
+.search-btn{
+    width: 50px;
+  /*   height: 34.8px;
+    line-height: 34px; */
+    display: inline-block;
+    background-color: #6E8BB2;
+    color: #ffffff;
+    padding: 0px 5px;
+    cursor: pointer;
+}
+.search-btn:hover{
+    background-color: #607EA6;
+}
+.search-btn .fa-search{
+    font-size: 12px;
+    margin-left: 5px;
+	vertical-align: baseline;
+}
+.clear-all{
+    margin-left: 20px;
+    font-size: 12px;
+    color: #5F7797;
+    cursor: pointer;
+}
+.clear-all:hover{
+    color: #425A7D;
+}
+/*2016/08/09*/
+ul.tab-switch{
+    height: 31px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #d9d9d9;
+}
+ul.tab-switch li{
+    float: left;
+    width: 56px;
+    height: 31px;
+    text-align: center;
+    cursor:pointer;
+    background-color: #f2f2f2;
+    line-height: 31px;
+    border-radius: 5px 5px 0px 0px;
+    margin-right: 4px;
+}
+ul.tab-switch li a{
+    text-decoration: none;
+    color: #666666;
+}
+.select-tab{
+    border: 1px solid #d9d9d9;
+    background-color: #ffffff!important;
+    border-bottom: 1px solid #ffffff;
+    width: 54px!important;
+}
+/*出发地目的地等多选搜索*/
+.search-container{
+    position: relative;
+    border:1px solid #d9d9d9; 
+}
+.search-container .search-item{
+   line-height: 50px;
+   display: flex; 
+   flex-wrap: nowrap;
+}
+.search-container .search-item dt{
+    width: 90px;
+    text-align: left;
+    background-color: #fafafa;
+    text-indent: 15px;
+    font-weight: bold;
+    line-height: inherit;/*覆盖boostrap*/
+    float: left\9;
+}
+.search-container .search-item dd{
+    margin: 0 15px;
+    height: 50px;
+    overflow: hidden;
+    border-bottom: 1px dashed #ddd;
+    width: 100%;
+    margin-left: 105px\9;
+    width: auto\9;
+}
+.search-container .search-item dd .items-container{
+     position: relative;
+     display: flex;
+     flex-wrap: wrap;
+     line-height: 24px;
+     padding-top: 13px;
+     padding-right: 100px;
+}
+.search-container .search-item dd .items-container span{
+    padding: 0px 8px;
+    margin-right: 5px;
+    cursor: pointer;
+    margin-bottom: 13px;
+    display: inline-block\9;
+}
+
+.search-container .search-item dd .items-container span.selected,.search-container .search-item dd .items-container span.selected:hover{
+    background-color: #51AFF0;
+    color: #fff;
+}
+
+.search-container .search-item dd .items-container span:hover{
+    color: #51AFF0;
+}
+.search-container .search-item dd .items-container em.more-item{
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    top:13px;
+}
+.search-container .search-item dd .items-container em.more-item .fa,.oper-condition .fa{
+    color: #ddd;
+    margin-left:2px;
+}
+.oper-condition{
+    position: absolute;
+    right: -1px;
+    border-right: 1px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    bottom: -27px;
+    height: 16px;
+    padding: 5px 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.search-container .search-item dd .items-container span.date-text:hover{
+    color:#666;
+}
+.search-container dl.search-item  dd.last-item{
+    border-bottom: none;
+}
+/*表头筛选*/
+.table-sort{
+    margin-top: 40px;
+    height: 44px;
+    background-color: #fafafa;
+    border: 1px solid #f0f0f0;
+    line-height: 44px;
+    text-align: right;
+    padding-left:15px;
+}
+.table-sort span{
+    display: inline-block;
+    margin-right: 15px;
+}
+.table-sort span .fa{
+    display: inline-block;
+    margin: 0 6px;
+}
+.table-sort span .fa.i-weight{
+    font-weight: bolder;
+    color: #000;
+}
+.dl-select{
+    position: relative;
+    display: inline-block;
+}
+.dl-select input{
+    height: 26px;
+    border: 1px solid #d9d9d9;
+    padding: 0 5px;
+    background: url('../images/input_select.png') no-repeat 95% 50%!important;
+    cursor: pointer;
+    background-color: #fff;
+}
+.dl-select ul{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    line-height: 28px !important;
+    border: 1px solid #d9d9d9;
+    border-top: 0;
+    box-sizing: border-box;
+    z-index: 10;
+    top:0px!important;
+}
+.dl-select ul li{
+   padding-left:8px;
+   cursor: pointer;
+   text-align: left;
+   line-height: 28px !important;
+}
+.dl-select ul li:hover{
+   background-color: #f2f2f2;
+}
+.rever-checked{
+    cursor: pointer;
+}
+.rever-checked:hover{
+    color: #51AFF0;
+}
+

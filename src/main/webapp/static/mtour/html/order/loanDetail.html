@@ -1,0 +1,62 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>借款-详情</span>
+    </div>
+</div>
+<div class="dialog-body-md-collect-other dialog-body-cost-input qc-scroll" style="height: 400px;">
+    <div class="first-step-info">
+        <ul>
+            <li>
+                <label>款项名称：</label>
+
+                <div class="show-text-base" ng-bind="payFundsDetail.fundsName">巨款</div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    累计借款金额:
+                </label>
+				<div class="show-text-base">
+                <span  ng-repeat="totalAmount in payFundsDetail.totalAmounts"
+                      ng-bind="(totalAmount.amount|qcCurrency:totalAmount.currencyCode)+($last?'':'+')"></span>
+                </div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    本次借款金额:
+                </label>
+				<div class="show-text-base">
+                <span 
+                      ng-bind="payFundsDetail.amount | qcCurrency:currency.currencyCode"></span>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="second-step-info">
+        <ul>
+
+            <li>
+                <label>渠道商名称：</label>
+
+                <div class="show-text-base" ng-bind="payFundsDetail.channelName"></div>
+            </li>
+            <li>
+                <label>申请人：</label>
+
+                <div class="show-text-base" ng-bind="payFundsDetail.applicant"></div>
+            </li>
+            <li>
+                <label>备注：</label>
+
+                <div class="show-text-paragraph" ng-bind="payFundsDetail.memo"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="butn butn-default" ng-click="closeThisDialog()">关闭</button>
+    </div>
+</div>

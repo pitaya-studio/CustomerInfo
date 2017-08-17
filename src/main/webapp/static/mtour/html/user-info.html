@@ -1,0 +1,17 @@
+<ul class="user-info">
+<!--    <li class="spacer"></li>-->
+    <li>
+        <i class="fa fa-clock-o" title="上次登录时间"></i>
+       {{userInfo.lastLoginDateTime|date}}
+    </li>
+    <li class="spacer"   ng-if="canCreateOrder() && showCreateOrder"></li>
+    <li class="fa fa-plus"
+        ng-if="canCreateOrder() && showCreateOrder"
+        order-reg-button operator-type="0" order-uuid="" title="快速生成订单"></li>
+    <li class="spacer"></li>
+    <li class="fa fa-user" title="{{userInfo.userName}}"></li>
+    <li class="spacer"></li>
+    <li>
+        <a class="fa fa-sign-out" href="{{logoutUrl}}" title="退出系统"></a>
+    </li>
+</ul>

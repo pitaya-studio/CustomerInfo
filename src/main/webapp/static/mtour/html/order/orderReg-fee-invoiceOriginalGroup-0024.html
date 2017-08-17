@@ -1,0 +1,1474 @@
+<div ng-if="companyRoleCode=='0'">
+    <!--编辑模式-->
+    <div ng-if="editModel=='edit' && saveModel!='commit'" class="wrap-number-container"
+         ng-class="{'spread':!fold,'fold':fold}"
+         ng-repeat="invoiceOriginal in invoiceOriginalGroup.invoiceOriginals"
+         ng-init="initInvoiceOriginal(invoiceOriginal,this)">
+        <div class="number">
+            <span class="fa fa-plus-square" ng-click="addInvoiceOriginal()"></span>
+            <span>
+                <label class="f-l">
+                    <i class="require">*</i>
+                    大编号：
+                </label>
+                <div class="qc-dropdown-sm" qc-dropdown style="width: 60px"
+                     ng-model="invoiceOriginal.invoiceOriginalType"
+                     item-text="{{qcDropdownItem.invoiceOriginalTypeName}}"
+                     dropdown-text="{{selectedItem?selectedItem.invoiceOriginalTypeName:''}}"
+                     items="invoiceOriginalTypes">
+                </div>
+                <div class="qc-dropdown-sm" qc-dropdown style="width: 80px"
+                     ng-model="invoiceOriginal.costTourOperatorType"
+                     item-text="{{qcDropdownItem.tourOperatorTypeName}}"
+                     qc-valid-required=""
+                     dropdown-text="{{selectedItem?selectedItem.tourOperatorTypeName:''}}"
+                     items="tourOperatorTypes">
+                </div>
+                <div tour-operator=""
+                     style="display: inline-block"
+                     ng-style="{'width':invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'?'110px':'260px'}"
+                     tour-Operator-Type-Code="invoiceOriginal.costTourOperatorType.tourOperatorTypeCode"
+                     qc-valid-required=""
+                     ng-model="invoiceOriginal.tourOperator"></div>
+
+           	    <textarea type="text" class="text-input-lg-second f-l mar-l-default"
+                          style="resize: none; word-wrap:normal; word-break: normal; white-space: nowrap;overflow: hidden; line-height:26px;"
+                          onkeyup="this.value=this.value.replace(/[\r\n]/g,' ')"
+                          onafterpaste="this.value=this.value.replace(/[\r\n]/g,' ')"
+                          qc-valid-required=""
+                          ng-model="invoiceOriginal.PNR"
+                          ng-if=" invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'" maxlength="100"/>
+
+                <label class="pull-left">
+                    <i class="require">*</i>
+                    航空公司：
+                </label>
+                <div airline-company
+                     qc-valid-required=""
+                     ng-model="invoiceOriginal.airlineCompany"></div>
+            </span>
+            <span class="fa fa-chevron-down f-r" ng-click="fold=!fold">
+
+            </span>
+            <em class="fa fa-times  f-r mar-ten"
+                ng-if="invoiceOriginalGroup.invoiceOriginals.length>1"
+                ng-click="invoiceOriginalGroup.invoiceOriginals.remove(invoiceOriginal)"></em>
+        </div>
+        <div style="margin: 10px 10px 10px 33px;height:26px;" ng-show="!fold">
+            <label class="f-l">收款行名称：</label>
+            <div class="qc-dropdown-md-second" qc-dropdown ng-model="invoiceOriginal.selectedCostBank"
+                 item-text="{{qcDropdownItem.bankName}}"
+                 dropdown-text="{{selectedItem?selectedItem.bankName:''}}"
+                 items="invoiceOriginal.costBanks"></div>
+            <label class="f-l" style="margin-left: 20px">收款账户：</label>
+            <div class="qc-dropdown-md-second" qc-dropdown ng-model="invoiceOriginal.selectedCostAccount"
+                 item-text="{{qcDropdownItem.accountNo}}"
+                 dropdown-text="{{selectedItem?selectedItem.accountNo:''}}"
+                 items="invoiceOriginal.selectedCostBank.accounts"></div>
+        </div>
+        <div ng-if="!fold">
+            <div class="air-line" ng-repeat="airline in invoiceOriginal.airlines">
+                <table class="text-right">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <i class="require">*</i>
+                                航段名称
+                            </th>
+                            <th></th>
+                            <th>
+                                <i class="require">*</i>
+                                币种/汇率
+                            </th>
+                            <th>
+                                <i class="require">*</i>
+                                人数
+                            </th>
+                            <th>
+                                <i class="require">*</i>
+                                成本单价
+                            </th>
+                            <th>总额</th>
+                            <th>
+                                <i class="require">*</i>
+                                定金总额
+                            </th>
+                            <th>余款总额
+	                        <span class="base-operator f-r">
+	                            <em class="fa fa-times"
+                                    ng-click="invoiceOriginal.airlines.remove(airline)"
+                                    ng-if=" invoiceOriginal.airlines.length>1"></em>
+	                            <em class="fa fa-plus"
+                                    ng-click="invoiceOriginal.airlines.push({costs:[{}],salePrices:[{}]})"></em>
+	                        </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" cost in airline.costs" ng-init="initCost(cost)">
+                            <td></td>
+                            <td style="text-align: left;" class="text-center"
+                                rowspan="{{airline.costs.length+airline.salePrices.length+1}}" ng-if="!$index">
+                                <input type="text" class="text-input-md-second"
+                                       qc-valid-required=""
+                                       placeholder="请输入航段名称" ng-model="airline.airlineName"/>
+                            </td>
+                            <td class="vertical-align-top" rowspan="{{airline.costs.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13.png'}}" width="25" height="38"/>
+                            </td>
+                            <td>
+                                <div class="qc-input-group-base-seond qc-input-group-md-second">
+                                    <div class="qc-dropdown"
+                                         fee-watch=""
+                                         qc-dropdown="qc-dropdown"
+                                         ng-model="cost.currency"
+                                         item-text="{{qcDropdownItem.currencyCode}}"
+                                         dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                                         items="currencies"></div>
+                                    <span class="f-l">/</span>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           qc-input-exchange-rate=""
+                                           fee-watch=""
+                                           ng-model="cost.exchangeRate"
+                                           ng-show="companyRoleCode=='0'&&cost.currency.currencyUuid!=defaultCurrency.currencyUuid"/>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           readonly="readonly"
+                                           qc-input-exchange-rate=""
+                                           ng-model="cost.exchangeRate"
+                                           ng-show="companyRoleCode!='0'||(companyRoleCode=='0'&&cost.currency.currencyUuid==defaultCurrency.currencyUuid)"/>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="text-input-xs-second"
+                                       qc-valid-required=""
+                                       qc-input-int=""
+                                       fee-watch=""
+                                       ng-model="cost.peopleCount" type="text"/>
+                                <span>X</span>
+                            </td>
+                            <td>
+                                <input class="text-input-sm"
+                                       style="width: 60px"
+                                       qc-valid-required=""
+                                       qc-input-negative-amount=""
+                                       fee-watch=""
+                                       ng-model="cost.costUnitPrice" type="text"/>
+                            </td>
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{cost.peopleCount*cost.costUnitPrice | number:2}}" readonly="readonly"/>
+                            </td>
+                            <td>
+                                <input class="text-input-sm"
+                                       qc-valid-required=""
+                                       qc-input-amount=""
+                                       fee-watch=""
+                                       ng-model="cost.totalDeposit" type="text"/>
+                            </td>
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{(cost.peopleCount*cost.costUnitPrice-cost.totalDeposit) | number:2}}"
+                                       readonly="readonly"/>
+                            <span class="base-operator">
+                                <em class="fa fa-times" ng-click="removeCost(cost,airline.costs)"
+                                    ng-if="airline.costs.length>1"></em>
+                                <em class="fa fa-plus" ng-click="airline.costs.push({})"></em>
+                            </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="7" class="line-dash-base">
+                        </tr>
+
+                        <tr ng-repeat=" salePrice in airline.salePrices" ng-init=" initSalePrice(salePrice)">
+                            <td></td>
+
+                            <td class="vertical-align-top" rowspan="{{airline.salePrices.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13-2.png'}}" width="25" height="38">
+                            </td>
+                            <td>
+                                <div class="qc-input-group-base-seond qc-input-group-md-second">
+                                    <div class="qc-dropdown"
+                                         qc-dropdown="qc-dropdown"
+                                         fee-watch=""
+                                         ng-model="salePrice.currency"
+                                         item-text="{{qcDropdownItem.currencyCode}}"
+                                         dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                                         items="currencies"></div>
+                                    <span class="f-l">/</span>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           qc-input-exchange-rate=""
+                                           ng-model="salePrice.exchangeRate"
+                                           fee-watch=""
+                                           ng-show="companyRoleCode=='0'&&salePrice.currency.currencyUuid!=defaultCurrency.currencyUuid"/>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           readonly="readonly"
+                                           qc-input-exchange-rate=""
+                                           ng-model="salePrice.exchangeRate"
+                                           ng-show="companyRoleCode!='0'||(companyRoleCode=='0'&&salePrice.currency.currencyUuid==defaultCurrency.currencyUuid)"/>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="text-input-xs-second"
+                                       qc-valid-required=""
+                                       qc-input-int=""
+                                       fee-watch=""
+                                       ng-model="salePrice.peopleCount" type="text"/>
+                                <span>X</span>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm"
+                                       style="width: 60px"
+                                       qc-valid-required=""
+                                       qc-input-amount=""
+                                       fee-watch=""
+                                       ng-model="salePrice.costUnitPrice" type="text"/>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{salePrice.peopleCount*salePrice.costUnitPrice | number:2}}"
+                                       readonly="readonly"/>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm"
+                                       qc-valid-required=""
+                                       qc-input-amount=""
+                                       fee-watch=""
+                                       ng-model="salePrice.totalDeposit" type="text"/>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{(salePrice.peopleCount*salePrice.costUnitPrice-salePrice.totalDeposit) | number:2}}"
+                                       readonly="readonly"/>
+                            <span class="base-operator">
+                                <em class="fa fa-times" ng-click="removeSalePrice(salePrice,airline.salePrices)"
+                                    ng-if="editModel=='edit' && airline.salePrices.length>1"></em>
+                                <em class="fa fa-plus" ng-if="editModel=='edit'"
+                                    ng-click="airline.salePrices.push({})"></em>
+                            </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="time-limit">
+                <table class="table-list-md">
+                    <thead>
+                        <tr>
+                            <th>出票期限</th>
+                            <th>定金期限</th>
+                            <th>名单期限</th>
+                            <th>改名期限</th>
+                            <th>取消期限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.ticketDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.depositDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.listDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.renameDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.cancelDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!--查看模式-->
+    <div class="wrap-number-container" ng-class="{'spread':!fold,'fold':fold}" ng-if="editModel!='edit'"
+         ng-repeat="invoiceOriginal in invoiceOriginalGroup.invoiceOriginals"
+         ng-init="initInvoiceOriginal(invoiceOriginal,this)">
+        <div class="number">
+            <span>
+                <label class="f-l">大编号：</label>
+                <span class="show-text-default" style="width: 460px;color: #999999">
+                    <span>
+                    {{invoiceOriginal.invoiceOriginalTypeName}} >> {{invoiceOriginal.costTourOperatorTypeName}} >>
+                        <span ng-style="{color:invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'?'#999999':'#000000'}"
+                              title="{{invoiceOriginal.tourOperatorName}}">{{invoiceOriginal.tourOperatorName}}</span>
+                    </span>
+                    <!--<span ng-if="invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'">
+                        >>
+                        <span style="color: #999999">{{invoiceOriginal.PNR}} </span>
+                    </span>-->
+                </span>
+                
+	                <span class="f-l mar-l-default"
+                          ng-if="invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'">
+	                        <span style="color: #999999">{{invoiceOriginal.PNR}} </span>
+	                </span>
+                
+                <label class="pull-left">航空公司：</label>
+                <span class="show-text-default" style="width: 30px">
+                      {{invoiceOriginal.airlineCompanyUuid}}
+                </span>
+            </span>
+            <span class="fa fa-chevron-down f-r" ng-click="fold=!fold"></span>
+            <div ng-show="invoiceOriginalGroup.groupMark>0" class="groupMark">
+                <span>{{invoiceOriginalGroup.groupMark}}</span>
+            </div>
+        </div>
+        <div class="cost-bank-name-container">
+            <label>收款行名称:</label>
+            <span>{{invoiceOriginal.costBankName}}</span>
+            <label>收款账户:</label>
+            <span>{{invoiceOriginal.costAccountNo}}</span>
+        </div>
+
+        <!--<div style="margin: 10px 10px 10px 33px;height:26px;">-->
+        <!--<label class="f-l">收款行名称：</label>-->
+        <!--<span class="show-text-default">{{invoiceOriginal.costBankName}}</span>-->
+        <!--<label class="f-l" style="margin-left: 20px">收款账户：</label>-->
+        <!--<span class="show-text-default">{{invoiceOriginal.costAccountNo}}</span>-->
+        <!--</div>-->
+
+        <div ng-if="!fold">
+            <div class="air-line" ng-repeat="airline in invoiceOriginal.airlines">
+                <table class="text-right">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>航段名称</th>
+                            <th></th>
+                            <th>币种/汇率</th>
+                            <th>人数</th>
+                            <th>单价</th>
+                            <th>总额</th>
+                            <th>定金总额</th>
+                            <th>余款总额
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" cost in airline.costs" ng-init="initCost(cost)">
+                            <td></td>
+                            <td style="text-align: left;" rowspan="{{airline.costs.length+airline.salePrices.length+1}}"
+                                ng-if="!$index">
+                                <span>{{airline.airlineName}}</span>
+                            </td>
+                            <td rowspan="{{airline.costs.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13.png'}}" width="25" height="38"/>
+                            </td>
+                            <td c>
+                                <span> {{cost.currencyCode}}/{{cost.exchangeRate}}</span>
+                            </td>
+                            <td>
+                                <span>{{cost.peopleCount}}</span>
+                                <span>X</span>
+                            </td>
+                            <td>
+                                <span>{{cost.costUnitPrice|number:2}}</span>
+                            </td>
+                            <td>
+                                <span>{{cost.peopleCount*cost.costUnitPrice|number:2}}</span>
+                            </td>
+                            <td>
+                                <span>{{cost.totalDeposit|number:2}}</span>
+                            </td>
+                            <td>
+                        <span class="base-operator">
+                            <span ng-if="editModel!='edit'">{{(cost.peopleCount*cost.costUnitPrice-cost.totalDeposit) |number:2}}</span>
+                        </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="7" class="line-dash-base">
+                        </tr>
+
+                        <tr ng-repeat=" salePrice in airline.salePrices" ng-init=" initSalePrice(salePrice)">
+                            <td></td>
+
+                            <td rowspan="{{airline.salePrices.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13-2.png'}}" width="25" height="38">
+                            </td>
+                            <td>
+                                <span>{{salePrice.currencyCode}}/{{salePrice.exchangeRate}}</span>
+                            </td>
+                            <td>
+                                <span>{{salePrice.peopleCount}}</span>
+                                <span>X</span>
+                            </td>
+
+                            <td>
+                                <span>{{salePrice.costUnitPrice|number:2}}</span>
+                            </td>
+
+                            <td>
+                                <span>{{salePrice.peopleCount*salePrice.costUnitPrice|number:2}}</span>
+                            </td>
+
+                            <td>
+                                <span>{{salePrice.totalDeposit|number:2}}</span>
+                            </td>
+
+                            <td>
+
+                        <span class="base-operator">
+                            <span>{{(salePrice.peopleCount*salePrice.costUnitPrice-salePrice.totalDeposit) |number:2}}</span>
+                        </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="time-limit">
+                <table class="table-list-md">
+                    <thead>
+                        <tr>
+                            <th>出票期限</th>
+                            <th>定金期限</th>
+                            <th>名单期限</th>
+                            <th>改名期限</th>
+                            <th>取消期限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.ticketDeadline}}</span>
+                            </td>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.depositDeadline}}</span>
+                            </td>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.listDeadline}}</span>
+                            </td>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.renameDeadline}}</span>
+                            </td>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.cancelDeadline}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!--提交后的编辑模式-->
+    <div ng-if="editModel=='edit' && saveModel=='commit'" class="wrap-number-container"
+         ng-class="{'spread':!fold,'fold':fold}"
+         ng-repeat="invoiceOriginal in invoiceOriginalGroup.invoiceOriginals"
+         ng-init="initInvoiceOriginal(invoiceOriginal,this)">
+        <div class="number">
+            <!--<div class="">
+                <ul>
+                    <li>
+                        大编号：
+                    </li>
+                    <li>
+                        {{invoiceOriginal.invoiceOriginalTypeName}} >>
+
+                    </li>
+                    <li>
+                        {{invoiceOriginal.costTourOperatorTypeName}} >>
+                    </li>
+                    <li>
+                        <span ng-style="{color:invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'?'#999999':'#000000'}">{{invoiceOriginal.tourOperatorName}}</span>
+                    </li>
+                    <li>
+                        <span ng-if="invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'">
+                        >>
+                        <span style="color: #000000">{{invoiceOriginal.PNR}} </span>
+                    </span>
+                    </li>
+                    <li>航空公司：</li>
+                    <li> {{invoiceOriginal.airlineCompanyUuid}}</li>
+                </ul>
+            </div>-->
+            <span>
+               <label class="f-l">大编号：</label>
+                <!--<span class="show-text-default" style="width: 530px;color: #999999">-->
+                    <!--<span>-->
+                    <!--{{invoiceOriginal.invoiceOriginalTypeName}} >> {{invoiceOriginal.costTourOperatorTypeName}} >>-->
+                        <!--<span ng-style="{color:invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'?'#999999':'#000000'}">{{invoiceOriginal.tourOperatorName}}</span>-->
+                    <!--</span>-->
+                    <!--<span ng-if="invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'">-->
+
+                        <!--<span style="color: #000000">{{invoiceOriginal.PNR}} </span>-->
+                    <!--</span>-->
+                <!--</span>-->
+                <div class="qc-dropdown-sm" qc-dropdown style="width: 60px"
+                     ng-model="invoiceOriginal.invoiceOriginalType"
+                     item-text="{{qcDropdownItem.invoiceOriginalTypeName}}"
+                     dropdown-text="{{selectedItem?selectedItem.invoiceOriginalTypeName:''}}"
+                     items="invoiceOriginalTypes">
+                </div>
+                <div class="qc-dropdown-sm" qc-dropdown style="width: 80px"
+                     ng-model="invoiceOriginal.costTourOperatorType"
+                     item-text="{{qcDropdownItem.tourOperatorTypeName}}"
+                     qc-valid-required=""
+                     dropdown-text="{{selectedItem?selectedItem.tourOperatorTypeName:''}}"
+                     items="tourOperatorTypes">
+                </div>
+                <div tour-operator=""
+                     style="display: inline-block"
+                     ng-style="{'width':invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'?'110px':'260px'}"
+                     tour-Operator-Type-Code="invoiceOriginal.costTourOperatorType.tourOperatorTypeCode"
+                     qc-valid-required=""
+                     ng-model="invoiceOriginal.tourOperator"></div>
+
+           	    <textarea type="text" class="text-input-lg-second f-l mar-l-default"
+                          style="resize: none; word-wrap:normal; word-break: normal; white-space: nowrap;overflow: hidden; line-height:26px;"
+                          qc-valid-required=""
+                          ng-model="invoiceOriginal.PNR"
+                          ng-if=" invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'" maxlength="100"/>
+
+                <label class="pull-left">航空公司：</label>
+                <div airline-company
+                     qc-valid-required=""
+                     ng-model="invoiceOriginal.airlineCompany"></div>
+            </span>
+
+
+            <span class="fa fa-chevron-down f-r" ng-click="fold=!fold"></span>
+            <div ng-show="invoiceOriginalGroup.groupMark>0" class="groupMark">
+                <span>{{invoiceOriginalGroup.groupMark}}</span>
+            </div>
+        </div>
+        <div style="margin: 10px 10px 10px 33px;height:26px;" ng-show="!fold">
+            <label class="f-l">收款行名称：</label>
+            <div class="qc-dropdown-md-second" qc-dropdown ng-model="invoiceOriginal.selectedCostBank"
+                 item-text="{{qcDropdownItem.bankName}}"
+                 dropdown-text="{{selectedItem?selectedItem.bankName:''}}"
+                 items="invoiceOriginal.costBanks"></div>
+            <label class="f-l" style="margin-left: 20px">收款账户：</label>
+            <div class="qc-dropdown-md-second" qc-dropdown ng-model="invoiceOriginal.selectedCostAccount"
+                 item-text="{{qcDropdownItem.accountNo}}"
+                 dropdown-text="{{selectedItem?selectedItem.accountNo:''}}"
+                 items="invoiceOriginal.selectedCostBank.accounts"></div>
+        </div>
+        <!--<div style="margin: 10px 10px 10px 33px;height:26px;">-->
+        <!--<label class="f-l">收款行名称：</label>-->
+        <!--<span class="show-text-default">{{invoiceOriginal.costBankName}}</span>-->
+        <!--<label class="f-l" style="margin-left: 20px">收款账户：</label>-->
+        <!--<span class="show-text-default">{{invoiceOriginal.costAccountNo}}</span>-->
+        <!--</div>-->
+        <div ng-if="!fold">
+            <div class="air-line" ng-repeat="airline in invoiceOriginal.airlines">
+                <table class="text-right">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>航段名称</th>
+                            <th></th>
+                            <th>币种/汇率</th>
+                            <th>人数</th>
+                            <th>成本单价</th>
+                            <th>总额</th>
+                            <th>定金总额</th>
+                            <th>余款总额
+                                <span class="base-operator f-r">
+	                            <em class="fa fa-times"
+                                    ng-click="deleteAirline(invoiceOriginal,airline)"
+                                    ng-if=" invoiceOriginal.airlines.length>1"></em>
+	                            <em class="fa fa-plus"
+                                    ng-click="invoiceOriginal.airlines.push({costs:[{orderCostStateCode:2}],salePrices:[{}]})"></em>
+	                        </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" cost in airline.costs" ng-init="initCost(cost)">
+                            <td></td>
+                            <td style="text-align: left;" class="text-center"
+                                rowspan="{{airline.costs.length+airline.salePrices.length+1}}" ng-if="!$index">
+                                <input type="text" class="text-input-md-second"
+                                       qc-valid-required=""
+                                       placeholder="请输入航段名称" ng-model="airline.airlineName"/>
+                            </td>
+                            <td class="vertical-align-top" rowspan="{{airline.costs.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13.png'}}" width="25" height="38"/>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode=='2'">
+                                <div class="qc-input-group-base-seond qc-input-group-md-second">
+                                    <div class="qc-dropdown"
+                                         fee-watch=""
+                                         qc-dropdown="qc-dropdown"
+                                         ng-model="cost.currency"
+                                         item-text="{{qcDropdownItem.currencyCode}}"
+                                         dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                                         items="currencies"></div>
+                                    <span class="f-l">/</span>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           qc-input-exchange-rate=""
+                                           fee-watch=""
+                                           ng-model="cost.exchangeRate"
+                                           ng-show="companyRoleCode=='0'&&cost.currency.currencyUuid!=defaultCurrency.currencyUuid"/>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           readonly="readonly"
+                                           qc-input-exchange-rate=""
+                                           ng-model="cost.exchangeRate"
+                                           ng-show="companyRoleCode!='0'||(companyRoleCode=='0'&&cost.currency.currencyUuid==defaultCurrency.currencyUuid)"/>
+                                </div>
+                            </td>
+                            <td c ng-if="cost.orderCostStateCode!='2'" ng-style="{'background-color':'#f2f2f2'}">
+                                <span> {{cost.currencyCode}}/{{cost.exchangeRate}}</span>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode=='2'">
+                                <input class="text-input-xs-second"
+                                       qc-valid-required=""
+                                       qc-input-int=""
+                                       fee-watch=""
+                                       ng-model="cost.peopleCount" type="text"/>
+                                <span>X</span>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode!='2'" ng-style="{'background-color':'#f2f2f2'}">
+                                <span>{{cost.peopleCount}}</span>
+                                <span>X</span>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode=='2'">
+                                <input class="text-input-sm"
+                                       style="width: 60px"
+                                       qc-valid-required=""
+                                       qc-input-negative-amount=""
+                                       fee-watch=""
+                                       ng-model="cost.costUnitPrice" type="text"/>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode!='2'" ng-style="{'background-color':'#f2f2f2'}">
+                                <span>{{cost.costUnitPrice|number:2}}</span>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode=='2'">
+                                <input class="text-input-sm" type="text"
+                                       value="{{cost.peopleCount*cost.costUnitPrice | number:2}}" readonly="readonly"/>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode!='2'" ng-style="{'background-color':'#f2f2f2'}">
+                                <span>{{cost.peopleCount*cost.costUnitPrice|number:2}}</span>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode=='2'">
+                                <input class="text-input-sm"
+                                       qc-valid-required=""
+                                       qc-input-amount=""
+                                       fee-watch=""
+                                       ng-model="cost.totalDeposit" type="text"/>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode!='2'" ng-style="{'background-color':'#f2f2f2'}">
+                                <span>{{cost.totalDeposit|number:2}}</span>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode=='2'">
+                                <input class="text-input-sm" type="text"
+                                       value="{{(cost.peopleCount*cost.costUnitPrice-cost.totalDeposit) | number:2}}"
+                                       readonly="readonly"/>
+                            <span class="base-operator">
+                                <em class="fa fa-times" ng-click="removeCost(cost,airline.costs)"
+                                    ng-if="airline.costs.length>1"></em>
+                                <em class="fa fa-plus" ng-click="airline.costs.push({orderCostStateCode:2})"></em>
+
+                            </span>
+                            </td>
+                            <td ng-if="cost.orderCostStateCode!='2'" ng-style="{'background-color':'#f2f2f2'}">
+                        	<span class="base-operator">
+                            <span>{{(cost.peopleCount*cost.costUnitPrice-cost.totalDeposit) |number:2}}</span>
+                             	<em ng-if="cost.orderCostStateCode=='3'" ng-click="cancelCost(cost)"
+                                    class="fa fa-reply"></em>
+                            	<em ng-if="cost.orderCostStateCode=='1'">--</em>
+                             	<em class="fa fa-plus" ng-click="airline.costs.push({orderCostStateCode:2})"></em>
+                        	</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="7" class="line-dash-base">
+                        </tr>
+
+                        <tr ng-repeat=" salePrice in airline.salePrices" ng-init=" initSalePrice(salePrice)">
+                            <td></td>
+
+                            <td class="vertical-align-top" rowspan="{{airline.salePrices.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13-2.png'}}" width="25" height="38">
+                            </td>
+                            <td>
+                                <div class="qc-input-group-base-seond qc-input-group-md-second">
+                                    <div class="qc-dropdown"
+                                         qc-dropdown="qc-dropdown"
+                                         fee-watch=""
+                                         ng-model="salePrice.currency"
+                                         item-text="{{qcDropdownItem.currencyCode}}"
+                                         dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                                         items="currencies"></div>
+                                    <span class="f-l">/</span>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           fee-watch=""
+                                           qc-input-exchange-rate=""
+                                           ng-model="salePrice.exchangeRate"
+                                           ng-show="companyRoleCode=='0'&&salePrice.currency.currencyUuid!=defaultCurrency.currencyUuid"/>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           readonly="readonly"
+                                           qc-input-exchange-rate=""
+                                           ng-model="salePrice.exchangeRate"
+                                           ng-show="companyRoleCode!='0'||(companyRoleCode=='0'&&salePrice.currency.currencyUuid==defaultCurrency.currencyUuid)"/>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="text-input-xs-second"
+                                       qc-valid-required=""
+                                       qc-input-int=""
+                                       fee-watch=""
+                                       ng-model="salePrice.peopleCount" type="text"/>
+                                <span>X</span>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm"
+                                       style="width: 60px"
+                                       qc-valid-required=""
+                                       qc-input-amount=""
+                                       fee-watch=""
+                                       ng-model="salePrice.costUnitPrice" type="text"/>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{salePrice.peopleCount*salePrice.costUnitPrice | number:2}}"
+                                       readonly="readonly"/>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm"
+                                       qc-valid-required=""
+                                       qc-input-amount=""
+                                       fee-watch=""
+                                       ng-model="salePrice.totalDeposit" type="text"/>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{(salePrice.peopleCount*salePrice.costUnitPrice-salePrice.totalDeposit) | number:2}}"
+                                       readonly="readonly"/>
+                            <span class="base-operator">
+                                <em class="fa fa-times" ng-click="removeSalePrice(salePrice,airline.salePrices)"
+                                    ng-if="editModel=='edit' && airline.salePrices.length>1"></em>
+                                <em class="fa fa-plus" ng-if="editModel=='edit'"
+                                    ng-click="airline.salePrices.push({})"></em>
+                            </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="time-limit">
+                <table class="table-list-md">
+                    <thead>
+                        <tr>
+                            <th>出票期限</th>
+                            <th>定金期限</th>
+                            <th>名单期限</th>
+                            <th>改名期限</th>
+                            <th>取消期限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.ticketDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.depositDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.listDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.renameDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.cancelDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="companyRoleCode!='0'">
+    <!--编辑模式-->
+    <div ng-if="editModel=='edit' && saveModel!='commit'" class="wrap-number-container"
+         ng-class="{'spread':!fold,'fold':fold}"
+         ng-repeat="invoiceOriginal in invoiceOriginalGroup.invoiceOriginals"
+         ng-init="initInvoiceOriginal(invoiceOriginal,this)">
+        <div class="number">
+            <span class="fa fa-plus-square" ng-click="addInvoiceOriginal()"></span>
+            <span>
+                <label class="f-l">
+                    <i class="require">*</i>
+                    大编号：
+                </label>
+                <div class="qc-dropdown-sm" qc-dropdown style="width: 60px"
+                     ng-model="invoiceOriginal.invoiceOriginalType"
+                     item-text="{{qcDropdownItem.invoiceOriginalTypeName}}"
+                     dropdown-text="{{selectedItem?selectedItem.invoiceOriginalTypeName:''}}"
+                     items="invoiceOriginalTypes">
+                </div>
+                <div class="qc-dropdown-sm" qc-dropdown style="width: 80px"
+                     ng-model="invoiceOriginal.costTourOperatorType"
+                     item-text="{{qcDropdownItem.tourOperatorTypeName}}"
+                     qc-valid-required=""
+                     dropdown-text="{{selectedItem?selectedItem.tourOperatorTypeName:''}}"
+                     items="tourOperatorTypes">
+                </div>
+                <div tour-operator=""
+                     style="display: inline-block"
+                     ng-style="{'width':invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'?'110px':'260px'}"
+                     tour-Operator-Type-Code="invoiceOriginal.costTourOperatorType.tourOperatorTypeCode"
+                     qc-valid-required=""
+                     ng-model="invoiceOriginal.tourOperator"></div>
+
+           	    <textarea type="text" class="text-input-lg-second f-l mar-l-default"
+                          style="resize: none; word-wrap:normal; word-break: normal; white-space: nowrap;overflow: hidden; line-height:26px;"
+                          qc-valid-required=""
+                          ng-model="invoiceOriginal.PNR"
+                          ng-if=" invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'" maxlength="100"/>
+
+                <label class="pull-left">
+                    <i class="require">*</i>
+                    航空公司：
+                </label>
+                <div airline-company
+                     qc-valid-required=""
+                     ng-model="invoiceOriginal.airlineCompany"></div>
+            </span>
+            <span class="fa fa-chevron-down f-r" ng-click="fold=!fold">
+
+            </span>
+            <em class="fa fa-times  f-r mar-ten"
+                ng-if="invoiceOriginalGroup.invoiceOriginals.length>1"
+                ng-click="invoiceOriginalGroup.invoiceOriginals.remove(invoiceOriginal)"></em>
+        </div>
+        <div style="margin: 10px 10px 10px 33px;height:26px;" ng-show="!fold">
+            <label class="f-l">收款行名称：</label>
+            <div class="qc-dropdown-md-second" qc-dropdown ng-model="invoiceOriginal.selectedCostBank"
+                 item-text="{{qcDropdownItem.bankName}}"
+                 dropdown-text="{{selectedItem?selectedItem.bankName:''}}"
+                 items="invoiceOriginal.costBanks"></div>
+            <label class="f-l" style="margin-left: 20px">收款账户：</label>
+            <div class="qc-dropdown-md-second" qc-dropdown ng-model="invoiceOriginal.selectedCostAccount"
+                 item-text="{{qcDropdownItem.accountNo}}"
+                 dropdown-text="{{selectedItem?selectedItem.accountNo:''}}"
+                 items="invoiceOriginal.selectedCostBank.accounts"></div>
+        </div>
+        <div ng-if="!fold">
+            <div class="air-line" ng-repeat="airline in invoiceOriginal.airlines">
+                <table class="text-right">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <i class="require">*</i>
+                                航段名称
+                            </th>
+                            <th></th>
+                            <th>
+                                <i class="require">*</i>
+                                币种/汇率
+                            </th>
+                            <th>
+                                <i class="require">*</i>
+                                人数
+                            </th>
+                            <th>
+                                <i class="require">*</i>
+                                成本单价
+                            </th>
+                            <th>总额</th>
+                            <th>
+                                <i class="require">*</i>
+                                定金总额
+                            </th>
+                            <th>余款总额
+	                        <span class="base-operator f-r">
+	                            <em class="fa fa-times"
+                                    ng-click="invoiceOriginal.airlines.remove(airline)"
+                                    ng-if=" invoiceOriginal.airlines.length>1"></em>
+	                            <em class="fa fa-plus"
+                                    ng-click="invoiceOriginal.airlines.push({costs:[{}],salePrices:[{}]})"></em>
+	                        </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" cost in airline.costs" ng-init="initCost(cost)">
+                            <td></td>
+                            <td style="text-align: left;" class="text-center"
+                                rowspan="{{airline.costs.length+airline.salePrices.length+1}}" ng-if="!$index">
+                                <input type="text" class="text-input-md-second"
+                                       qc-valid-required=""
+                                       placeholder="请输入航段名称" ng-model="airline.airlineName"/>
+                            </td>
+                            <td class="vertical-align-top" rowspan="{{airline.costs.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13.png'}}" width="25" height="38"/>
+                            </td>
+                            <td>
+                                <div class="qc-input-group-base-seond qc-input-group-md-second">
+                                    <div class="qc-dropdown"
+                                         fee-watch=""
+                                         qc-dropdown="qc-dropdown"
+                                         ng-model="cost.currency"
+                                         item-text="{{qcDropdownItem.currencyCode}}"
+                                         dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                                         items="currencies"></div>
+                                    <span class="f-l">/</span>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           qc-input-amount=""
+                                           readonly="readonly"
+                                           ng-model="cost.exchangeRate"/>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="text-input-xs-second"
+                                       qc-valid-required=""
+                                       qc-input-int=""
+                                       fee-watch=""
+                                       ng-model="cost.peopleCount" type="text"/>
+                                <span>X</span>
+                            </td>
+                            <td>
+                                <input class="text-input-sm"
+                                       style="width: 60px"
+                                       qc-valid-required=""
+                                       qc-input-negative-amount=""
+                                       fee-watch=""
+                                       ng-model="cost.costUnitPrice" type="text"/>
+                            </td>
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{cost.peopleCount*cost.costUnitPrice | number:2}}" readonly="readonly"/>
+                            </td>
+                            <td>
+                                <input class="text-input-sm"
+                                       qc-valid-required=""
+                                       qc-input-amount=""
+                                       fee-watch=""
+                                       ng-model="cost.totalDeposit" type="text"/>
+                            </td>
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{(cost.peopleCount*cost.costUnitPrice-cost.totalDeposit) | number:2}}"
+                                       readonly="readonly"/>
+                            <span class="base-operator">
+                                <em class="fa fa-times" ng-click="removeCost(cost,airline.costs)"
+                                    ng-if="airline.costs.length>1"></em>
+                                <em class="fa fa-plus" ng-click="airline.costs.push({})"></em>
+                            </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="7" class="line-dash-base">
+                        </tr>
+
+                        <tr ng-repeat=" salePrice in airline.salePrices" ng-init=" initSalePrice(salePrice)">
+                            <td></td>
+
+                            <td class="vertical-align-top" rowspan="{{airline.salePrices.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13-2.png'}}" width="25" height="38">
+                            </td>
+                            <td>
+                                <div class="qc-input-group-base-seond qc-input-group-md-second">
+                                    <div class="qc-dropdown"
+                                         qc-dropdown="qc-dropdown"
+                                         fee-watch=""
+                                         ng-model="salePrice.currency"
+                                         item-text="{{qcDropdownItem.currencyCode}}"
+                                         dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                                         items="currencies"></div>
+                                    <span class="f-l">/</span>
+                                    <input class="text-input" type="text"
+                                           qc-valid-required=""
+                                           qc-input-amount=""
+                                           readonly="readonly"
+                                           ng-model="salePrice.exchangeRate"/>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="text-input-xs-second"
+                                       qc-valid-required=""
+                                       qc-input-int=""
+                                       fee-watch=""
+                                       ng-model="salePrice.peopleCount" type="text"/>
+                                <span>X</span>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm"
+                                       style="width: 60px"
+                                       qc-valid-required=""
+                                       qc-input-amount=""
+                                       fee-watch=""
+                                       ng-model="salePrice.costUnitPrice" type="text"/>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{salePrice.peopleCount*salePrice.costUnitPrice | number:2}}"
+                                       readonly="readonly"/>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm"
+                                       qc-valid-required=""
+                                       qc-input-amount=""
+                                       fee-watch=""
+                                       ng-model="salePrice.totalDeposit" type="text"/>
+                            </td>
+
+                            <td>
+                                <input class="text-input-sm" type="text"
+                                       value="{{(salePrice.peopleCount*salePrice.costUnitPrice-salePrice.totalDeposit) | number:2}}"
+                                       readonly="readonly"/>
+                            <span class="base-operator">
+                                <em class="fa fa-times" ng-click="removeSalePrice(salePrice,airline.salePrices)"
+                                    ng-if="editModel=='edit' && airline.salePrices.length>1"></em>
+                                <em class="fa fa-plus" ng-if="editModel=='edit'"
+                                    ng-click="airline.salePrices.push({})"></em>
+                            </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="time-limit">
+                <table class="table-list-md">
+                    <thead>
+                        <tr>
+                            <th>出票期限</th>
+                            <th>定金期限</th>
+                            <th>名单期限</th>
+                            <th>改名期限</th>
+                            <th>取消期限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.ticketDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.depositDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.listDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.renameDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.cancelDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!--查看模式-->
+    <div class="wrap-number-container" ng-class="{'spread':!fold,'fold':fold}" ng-if="editModel!='edit'"
+         ng-repeat="invoiceOriginal in invoiceOriginalGroup.invoiceOriginals"
+         ng-init="initInvoiceOriginal(invoiceOriginal,this)">
+        <div class="number">
+            <span>
+                <label class="f-l">大编号：</label>
+                <span class="show-text-default" style="width: 460px;color: #999999">
+                    <span>
+                    {{invoiceOriginal.invoiceOriginalTypeName}} >> {{invoiceOriginal.costTourOperatorTypeName}} >>
+                        <span ng-style="{color:invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'?'#999999':'#000000'}"
+                              title="{{invoiceOriginal.tourOperatorName}}">{{invoiceOriginal.tourOperatorName}}</span>
+                    </span>
+                    <!--<span ng-if="invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'">
+                        >>
+                        <span style="color: #999999">{{invoiceOriginal.PNR}} </span>
+                    </span>-->
+                </span>
+
+	                <span class="f-l mar-l-default"
+                          ng-if="invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'">
+	                        <span style="color: #999999">{{invoiceOriginal.PNR}} </span>
+	                </span>
+
+                <label class="pull-left">航空公司：</label>
+                <span class="show-text-default" style="width: 30px">
+                      {{invoiceOriginal.airlineCompanyUuid}}
+                </span>
+            </span>
+            <span class="fa fa-chevron-down f-r" ng-click="fold=!fold"></span>
+            <div ng-show="invoiceOriginalGroup.groupMark>0" class="groupMark">
+                <span>{{invoiceOriginalGroup.groupMark}}</span>
+            </div>
+        </div>
+
+        <!--<div style="margin: 10px 10px 10px 33px;height:26px;">-->
+        <!--<label class="f-l">收款行名称：</label>-->
+        <!--<span class="show-text-default">{{invoiceOriginal.costBankName}}</span>-->
+        <!--<label class="f-l" style="margin-left: 20px">收款账户：</label>-->
+        <!--<span class="show-text-default">{{invoiceOriginal.costAccountNo}}</span>-->
+        <!--</div>-->
+
+        <div ng-if="!fold">
+            <div class="air-line" ng-repeat="airline in invoiceOriginal.airlines">
+                <table class="text-right">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>航段名称</th>
+                            <th></th>
+                            <th>币种/汇率</th>
+                            <th>人数</th>
+                            <th>单价</th>
+                            <th>总额</th>
+                            <th>定金总额</th>
+                            <th>余款总额
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" cost in airline.costs" ng-init="initCost(cost)">
+                            <td></td>
+                            <td style="text-align: left;" rowspan="{{airline.costs.length+airline.salePrices.length+1}}"
+                                ng-if="!$index">
+                                <span>{{airline.airlineName}}</span>
+                            </td>
+                            <td rowspan="{{airline.costs.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13.png'}}" width="25" height="38"/>
+                            </td>
+                            <td c>
+                                <span> {{cost.currencyCode}}/{{cost.exchangeRate}}</span>
+                            </td>
+                            <td>
+                                <span>{{cost.peopleCount}}</span>
+                                <span>X</span>
+                            </td>
+                            <td>
+                                <span>{{cost.costUnitPrice|number:2}}</span>
+                            </td>
+                            <td>
+                                <span>{{cost.peopleCount*cost.costUnitPrice|number:2}}</span>
+                            </td>
+                            <td>
+                                <span>{{cost.totalDeposit|number:2}}</span>
+                            </td>
+                            <td>
+                        <span class="base-operator">
+                            <span ng-if="editModel!='edit'">{{(cost.peopleCount*cost.costUnitPrice-cost.totalDeposit) |number:2}}</span>
+                        </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="7" class="line-dash-base">
+                        </tr>
+
+                        <tr ng-repeat=" salePrice in airline.salePrices" ng-init=" initSalePrice(salePrice)">
+                            <td></td>
+
+                            <td rowspan="{{airline.salePrices.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13-2.png'}}" width="25" height="38">
+                            </td>
+                            <td>
+                                <span>{{salePrice.currencyCode}}/{{salePrice.exchangeRate}}</span>
+                            </td>
+                            <td>
+                                <span>{{salePrice.peopleCount}}</span>
+                                <span>X</span>
+                            </td>
+
+                            <td>
+                                <span>{{salePrice.costUnitPrice|number:2}}</span>
+                            </td>
+
+                            <td>
+                                <span>{{salePrice.peopleCount*salePrice.costUnitPrice|number:2}}</span>
+                            </td>
+
+                            <td>
+                                <span>{{salePrice.totalDeposit|number:2}}</span>
+                            </td>
+
+                            <td>
+
+                        <span class="base-operator">
+                            <span>{{(salePrice.peopleCount*salePrice.costUnitPrice-salePrice.totalDeposit) |number:2}}</span>
+                        </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="time-limit">
+                <table class="table-list-md">
+                    <thead>
+                        <tr>
+                            <th>出票期限</th>
+                            <th>定金期限</th>
+                            <th>名单期限</th>
+                            <th>改名期限</th>
+                            <th>取消期限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.ticketDeadline}}</span>
+                            </td>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.depositDeadline}}</span>
+                            </td>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.listDeadline}}</span>
+                            </td>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.renameDeadline}}</span>
+                            </td>
+                            <td>
+                                <span>{{invoiceOriginal.deadline.cancelDeadline}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!--提交后的编辑模式-->
+    <div ng-if="editModel=='edit' && saveModel=='commit'" class="wrap-number-container"
+         ng-class="{'spread':!fold,'fold':fold}"
+         ng-repeat="invoiceOriginal in invoiceOriginalGroup.invoiceOriginals"
+         ng-init="initInvoiceOriginal(invoiceOriginal,this)">
+        <div class="number">
+            <div class="">
+                <ul>
+                    <li>
+                        大编号：
+                    </li>
+                    <li>
+                        {{invoiceOriginal.invoiceOriginalTypeName}} >>
+
+                    </li>
+                    <li>
+                        {{invoiceOriginal.costTourOperatorTypeName}} >>
+                    </li>
+                    <li>
+                        <span ng-style="{color:invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'?'#999999':'#000000'}">{{invoiceOriginal.tourOperatorName}}</span>
+                    </li>
+                    <li>
+                        <span ng-if="invoiceOriginal.invoiceOriginalType.invoiceOriginalTypeCode=='0'">
+                        >>
+                        <span style="color: #000000">{{invoiceOriginal.PNR}} </span>
+                    </span>
+                    </li>
+                    <li>航空公司：</li>
+                    <li> {{invoiceOriginal.airlineCompanyUuid}}</li>
+                </ul>
+            </div>
+
+
+            <span class="fa fa-chevron-down f-r" ng-click="fold=!fold"></span>
+            <div ng-show="invoiceOriginalGroup.groupMark>0" class="groupMark">
+                <span>{{invoiceOriginalGroup.groupMark}}</span>
+            </div>
+        </div>
+
+        <!--<div style="margin: 10px 10px 10px 33px;height:26px;">-->
+        <!--<label class="f-l">收款行名称：</label>-->
+        <!--<span class="show-text-default">{{invoiceOriginal.costBankName}}</span>-->
+        <!--<label class="f-l" style="margin-left: 20px">收款账户：</label>-->
+        <!--<span class="show-text-default">{{invoiceOriginal.costAccountNo}}</span>-->
+        <!--</div>-->
+        <div ng-if="!fold">
+            <div class="air-line" ng-repeat="airline in invoiceOriginal.airlines">
+                <table class="text-right">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>航段名称</th>
+                            <th></th>
+                            <th>币种/汇率</th>
+                            <th>人数</th>
+                            <th>成本单价</th>
+                            <th>总额</th>
+                            <th>定金总额</th>
+                            <th>余款总额
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" cost in airline.costs" ng-init="initCost(cost)">
+                            <td></td>
+                            <td style="text-align: left;" rowspan="{{airline.costs.length+airline.salePrices.length+1}}"
+                                ng-if="!$index">
+                                <span>{{airline.airlineName}}</span>
+                            </td>
+                            <td rowspan="{{airline.costs.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13.png'}}" width="25" height="38"/>
+                            </td>
+                            <td>
+                                <span> {{cost.currencyCode}}/{{cost.exchangeRate}}</span>
+                            </td>
+                            <td>
+                                <span>{{cost.peopleCount}}</span>
+                                <span>X</span>
+                            </td>
+                            <td>
+                                <span>{{cost.costUnitPrice|number:2}}</span>
+                            </td>
+                            <td>
+                                <span>{{cost.peopleCount*cost.costUnitPrice|number:2}}</span>
+                            </td>
+                            <td>
+                                <span>{{cost.totalDeposit|number:2}}</span>
+                            </td>
+                            <td>
+                        <span class="base-operator">
+                            <span>{{(cost.peopleCount*cost.costUnitPrice-cost.totalDeposit) |number:2}}</span>
+                        </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="7" class="line-dash-base">
+                        </tr>
+
+                        <tr ng-repeat=" salePrice in airline.salePrices" ng-init=" initSalePrice(salePrice)">
+                            <td></td>
+
+                            <td rowspan="{{airline.salePrices.length}}" ng-if="!$index">
+                                <img ng-src="{{imgUrl+'common/background/qc-zs-4_13-2.png'}}" width="25" height="38">
+                            </td>
+                            <td>
+                                <span>{{salePrice.currencyCode}}/{{salePrice.exchangeRate}}</span>
+                            </td>
+                            <td>
+                                <span>{{salePrice.peopleCount}}</span>
+                                <span>X</span>
+                            </td>
+
+                            <td>
+                                <span>{{salePrice.costUnitPrice|number:2}}</span>
+                            </td>
+
+                            <td>
+                                <span>{{salePrice.peopleCount*salePrice.costUnitPrice|number:2}}</span>
+                            </td>
+
+                            <td>
+                                <span>{{salePrice.totalDeposit|number:2}}</span>
+                            </td>
+
+                            <td>
+
+                        <span class="base-operator">
+                            <span>{{(salePrice.peopleCount*salePrice.costUnitPrice-salePrice.totalDeposit) |number:2}}</span>
+                        </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="time-limit">
+                <table class="table-list-md">
+                    <thead>
+                        <tr>
+                            <th>出票期限</th>
+                            <th>定金期限</th>
+                            <th>名单期限</th>
+                            <th>改名期限</th>
+                            <th>取消期限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.ticketDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.depositDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.listDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.renameDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                            <td>
+                                <input qc-date type="text"
+                                       class="text-input-md-third date"
+                                       ng-model="invoiceOriginal.deadline.cancelDeadline" qc-date-format="yy-mm-dd">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

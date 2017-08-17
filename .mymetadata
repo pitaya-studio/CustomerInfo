@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="trekiz_wholesaler_tts_0912"
+  id="myeclipse.1388646395583"
+  context-root="/trekiz_wholesaler_tts"
+  j2ee-spec="1.7"
+  archive="trekiz_wholesaler_tts_0912.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

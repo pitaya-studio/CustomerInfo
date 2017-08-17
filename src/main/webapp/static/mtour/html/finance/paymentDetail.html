@@ -1,0 +1,100 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>付款记录-详情</span>
+    </div>
+</div>
+<div class="dialog-body-md-collect-other dialog-body-cost-input qc-scroll" style="height: 400px;">
+    <div class="first-step-info">
+        <ul>
+            <li>
+                <label>付款日期：</label>
+
+                <div class="show-text-base" ng-bind="paymentDetail.paymentDate"></div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    付款方式：
+                </label>
+
+                <div class="show-text-base"
+                     ng-bind="paymentMethod.paymentMethodName"></div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    付款金额：
+                </label>
+                <div class="show-text-base" ng-bind="paymentDetail.paymentAmount| qcCurrency:currency.currencyCode"></div>
+            </li>
+            <li class="money">
+                <span class="current"><label>货币换算：</label><em ng-bind="convertedCurrency.currencyCode"></em>汇率=<em
+                        ng-bind="paymentDetail.exchangeRate"></em></span>
+                <span><label>转换后金额：</label><em
+                        ng-bind="paymentDetail.paymentAmount*paymentDetail.exchangeRate|qcCurrency:convertedCurrency.currencyCode"></em></span>
+            </li>
+        </ul>
+    </div>
+    <div class="second-step-info">
+        <ul>
+            <li ng-if="paymentDetail.paymentMethodCode==1">
+                <label>支票号：</label>
+
+                <div class="show-text-base" ng-bind="paymentDetail.checkNo"></div>
+            </li>
+            <li ng-if="paymentDetail.paymentMethodCode==1">
+                <label>支票日期：</label>
+
+                <div class="show-text-base" ng-bind="paymentDetail.checkIssueDate"></div>
+            </li>
+
+            <li ng-if="paymentDetail.paymentMethodCode==4">
+                <label>付款行名称：</label>
+
+                <div class="show-text-base" ng-bind="paymentDetail.paymentBank"></div>
+            </li>
+            <li ng-if="paymentDetail.paymentMethodCode==4">
+                <label>付款账户：</label>
+
+                <div class="show-text-base" ng-bind="paymentDetail.paymentAccount"></div>
+            </li>
+            <li>
+                <label>收款单位：</label>
+
+                <div class="show-text-base" ng-bind="paymentDetail.receiveCompany"></div>
+            </li>
+            <li ng-if="paymentDetail.paymentMethodCode==4">
+                <label>收款行名称：</label>
+
+                <div class="show-text-base" ng-bind="paymentDetail.receiveBank"></div>
+            </li>
+            <li ng-if="paymentDetail.paymentMethodCode==4">
+                <label>收款账户：</label>
+
+                <div class="show-text-base" ng-bind="paymentDetail.receiveAccount"></div>
+            </li>
+            <li>
+                <label>收款凭证：</label>
+
+                <div class="show-text-base">
+                    <a class="text-link" ng-href="{{uploadFileUrl+item.attachmentUuid}}"
+                       ng-repeat="item in paymentDetail.attachments"
+                       ng-bind="item.fileName"></a>
+                </div>
+            </li>
+            <li>
+                <label>备注：</label>
+
+                <div class="show-text-paragraph" ng-bind="paymentDetail.memo"></div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="butn butn-default" ng-click="closeThisDialog()">关闭</button>
+        <!--<button class="butn butn-primary" ng-click="cancelPayment(paymentDetail)">撤销
+        </button>-->
+    </div>
+</div>

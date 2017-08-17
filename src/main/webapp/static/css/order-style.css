@@ -1,0 +1,73 @@
+@charset "utf-8";
+.bj-info .font_16 {
+	font-size: 16px;
+}
+
+.float_right {
+	float: right !important;
+}
+
+.margin_tb {
+	margin: 4px 0 5px 0;
+}
+
+label {
+	margin-bottom: 0
+}
+
+.table_fixed {
+	table-layout: fixed
+}
+
+.thead_border_bottom {
+	border: #cccccc;
+	background: #e3e3e3;
+	border-bottom: 1px solid #cccccc
+}
+
+.thead_border_bottom td {
+	height: 30px;
+	line-height: 30px;
+}
+
+.border_t {
+	border: 1px solid #cccccc
+}
+.border_t tbody td{
+	height:30px;
+}
+.border_t td div{
+	line-height:18px;
+}
+.add_money{
+	display: inline-block;
+	width:15px;
+	height:17px;
+	background: url("../images/20160809.png") no-repeat;
+	margin: 0 2px 6px 0;
+}
+.tourist-right a.btn-addBlue{
+	color:#fff;
+	border:medium none;
+	background:#5f7795;
+	box-shadow: none;
+	text-shadow: none;
+	font-size:12px;
+	border-radius:4px;
+	height:28px;
+	line-height:28px;
+	float: right;
+	margin: 20px 0 5px 0;
+}
+.payfor-otherDiv{
+	padding-top:0;
+}
+.btn-addBlue{
+	padding:0 15px;
+}
+.border_t tr{
+    border-bottom: 1px solid #cccccc;
+}
+.btn_add{
+	width:90px;
+}

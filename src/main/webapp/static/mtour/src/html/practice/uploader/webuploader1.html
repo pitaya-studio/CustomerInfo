@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/components/webuploader/webuploader.css"/>
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/src/components/webuploader/webuploader.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var thumbnailWidth =100;
+            var thumbnailHeight  =100;
+            var uploader = WebUploader.create({
+                // swf文件路径
+                swf: '/src/components/webuploader/Uploader.swf',
+                // 文件接收服务端。
+                server: 'http://192.168.130.4:3000/files/uploading',
+                // 选择文件的按钮。可选。
+                // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                pick: $('#picker'),
+
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/*'
+                },
+
+                // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+                resize: false
+            });
+            var $list = $('#uploadingList');
+            uploader.on( 'fileQueued', function( file ) {
+                var $li = $( '<div id="' + file.id + '" class="list-group-item">' +
+                '<img>' +
+                '<h4 class="info">' + file.name + '</h4>' +
+                '<p class="state">等待上传...</p>' +
+                '</div>' );
+                $list.append($li);
+                var $img = $li.find('img');
+                uploader.makeThumb( file, function( error, src ) {
+                    if ( error ) {
+                        $img.replaceWith('<span>不能预览</span>');
+                        return;
+                    }
+
+                    $img.attr( 'src', src );
+                }, thumbnailWidth, thumbnailHeight );
+            });
+            uploader.on('uploadSuccess', function (file,response) {
+                alert(response);
+            });
+            uploader.on('uploadError', function () {
+                alert('error!!!');
+            });
+            uploader.on('uploadComplete', function () {
+                alert('uploadComplete!!!');
+            });
+            $('#ctlBtn').click(function () {
+                uploader.upload();
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="uploader" class="wu-example">
+    <!--用来存放文件信息-->
+    <div id="thelist" class="uploader-list"></div>
+    <div class="">
+        <div id="picker">选择文件</div>
+        <button id="ctlBtn" class="btn btn-default">开始上传</button>
+    </div>
+    <div id="uploadingList" class="list-group well">
+    </div>
+
+    <tr style="height: auto;">
+        <td style=" width: 80px;">1212 </td>
+        <td style=" width: 171px;">121212</td>
+        <td style=" width: 100px;">121212</td>
+        <td style=" width: 150px;">121212</td>
+        <td style=" width: 210px;">121212</td>
+        <td style=" width: 263px;">121212</td>
+    </tr>
+</div>
+</body>
+</html>

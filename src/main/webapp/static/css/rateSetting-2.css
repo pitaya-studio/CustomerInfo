@@ -1,0 +1,132 @@
+dt, dd {
+    line-height: inherit;
+}
+.nav-tabs{
+	overflow: hidden;
+}
+.small{
+    margin-left: 50px !important;
+}
+.bottom-it.small ul{
+   height: 48px;
+   line-height: 48px;
+   font-weight: normal;
+}
+.bottom-it.small ul li{
+    height: 48px;
+    line-height: 48px;
+    float: left;
+    margin-right: 15px;
+    margin-top: 0px;
+    color:#cbd6e4; 
+}
+.bottom-it,.bottom-first{
+    display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    color: #5e5e5e;
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.bottom-first{
+    min-width: 100px;
+    max-width: 400px;
+    width: 40%;
+    /*bug*/
+    line-height: 40px;
+    height: 40px;
+    color:#5e5e5e;
+}
+.table-sort{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.table-sort span{
+    color: #666;
+    cursor: pointer;
+}
+.table-sort > span:hover{
+    color:  #51AFF0;
+}
+.batch-setting {
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    height: 32px;
+    margin: 5px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+.batch-setting:hover{
+    border-color:  #51AFF0;
+}
+.batch-setting a{
+    text-align: center;
+    display: inline-block;
+    height: 34px;
+    width: 94px;
+    text-decoration: none;
+    color: #666;
+}
+.batch-setting a:hover{color: #08C;}
+.no-select{
+    cursor: default !important;
+    color: #666 !important;
+}
+.no-select:hover{
+    color: #666 !important;
+}
+.align-right{
+    float: right;
+}
+.v-align{
+    margin-top: -2px!important\9;
+    padding: 0px;
+}
+
+.table_external{
+    min-width: 700px;
+}
+.group-num{
+    color: #999999;
+    width: 100%!important;
+}
+
+.table_third td span{
+    width: 40%;
+    display: inline-block;
+}
+.opera-text{
+    width: 100%!important;
+    color: #08C;
+    cursor: pointer;
+}
+.opera-text:hover{
+    color: #254F9C;
+    text-decoration: none;
+}
+.table_checkbox{
+    padding: 0px;
+    top: -1px;
+}
+
+/*鍗囧簭銆侀檷搴忛儴鍒嗘牱寮�START*/
+.up_and_down{
+    -moz-user-select: none;
+    -webkit-user-select:none;/* and add the CSS class here instead */
+    -ms-user-select:none;
+    user-select:none;/**绂佹閫変腑鏂囧瓧*/
+}
+.up_and_down span{
+    margin-right: 0px!important;
+}
+.up_and_down span i{
+    display: block!important;
+    height: 1px;
+    color: #999999;
+}
+.order_selected{color:  #51AFF0!important;}
+/*鍗囧簭銆侀檷搴忛儴鍒嗘牱寮�OVER*/

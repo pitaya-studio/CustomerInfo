@@ -1,0 +1,74 @@
+*{
+            font-family: "microsoft yahei";
+            font-size: 12px;
+            color: #666666;
+        }
+        .wrap{
+            display: inline-block;
+            width: auto;
+           /*  border: 1px solid #999;
+            border-bottom: 1px solid #5f7795; */
+        }
+        .title{
+            height: 24px;
+            line-height: 24px;
+            padding: 8px 15px;
+            background-color: #5f7795;
+        }
+        .title-text{
+            display: inline-block;
+            color: white;
+            font-family: microsoft yahei;
+            padding-left: 5px;
+        }
+        .title-close{
+            background: url(images/T1T2/jbox-close.gif) no-repeat scroll 0px 0px transparent;
+            color: white;
+            float: right;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .title-close:hover{
+            background-position: -16px 0px;
+        }
+        .op-table{
+            padding: 20px;
+            /* height: 310px;
+            overflow-y: auto; */
+        }
+        .op-table th,td{
+            padding-left: 20px;
+        }
+        .op-table thead tr{
+            height: 40px;
+            color: #666666;
+        }
+        .op-table tbody tr{
+            height: 76px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        .op-table tbody label{
+            width: 100px;
+            margin-bottom: 0px;
+        }
+        .op-table tbody tr:hover{
+            background-color: #f2fbff;
+            border-color: #D4e6ff;
+        }
+        .op-table::-webkit-scrollbar{
+            width: 6px;
+        }
+        .op-table::-webkit-scrollbar-thumb {
+            background-color: rgb(204, 204, 204);
+            -webkit-border-radius: 10px;
+        } /* »¬¿éÑÕÉ« */
+        .op-table::-webkit-scrollbar-thumb:hover{
+            background-color: rgb(153,153,153);
+        }
+        label,span,div{
+            cursor: context-menu;
+        }

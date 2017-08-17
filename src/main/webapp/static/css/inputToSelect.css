@@ -1,0 +1,44 @@
+.toSelect{
+	position: absolute;
+	height: 254px;
+	border: 1px #dedede solid;
+	border-radius: 4px;
+	overflow-y:auto;
+	background: #fff;
+	z-index:5000;
+}
+
+.toSelect ul{
+	font-size: 14px;
+    	list-style: none;
+    	padding: 10px 0 10px 0 ;
+  	margin: 0;
+  	background: #fff;
+    	border-radius: 4px;
+}
+
+.toSelect ul li{
+	box-sizing: border-box;
+	cursor: default;
+    	padding: 3px 10px 3px 10px;
+	overflow: hidden;
+    	width: 100%;
+    	display: block;
+    	height: 24px;
+    	text-overflow: ellipsis;
+    	white-space: nowrap;
+}
+.toSelect ul li.activeLi{
+	background: #f3f3f3;
+}
+
+.toSelect ul .noResult{
+	color: #ccc;
+	text-align: center;
+	cursor:no-drop;
+   	padding-top: 0;
+}
+
+.toSelect ul .noResult:hover{
+	background: #fff;
+}

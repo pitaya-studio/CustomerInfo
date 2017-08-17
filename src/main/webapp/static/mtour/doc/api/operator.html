@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+        <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+        <link rel="stylesheet" href="/static/css/common/bootstrap.css"/>
+
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+        <script type="text/javascript">
+            var operatorModule = angular.module('operatorModule', ['qc', 'docModule']);
+            operatorModule.controller('NavController', ['$scope', 'docNavInfo', function ($scope, docNavInfo) {
+                $scope.navInfo = docNavInfo;
+                $scope.navInfo.current = 'api';
+                $scope.navInfo.sub = 'operator';
+            }]);
+        </script>
+    </head>
+    <body class="fixed-top" ng-app="operatorModule">
+        <doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+        <div class="container">
+            <div class="docs-header">
+                <h1>计调销售</h1>
+
+                <p>
+                    计调销售操作相关Api </p>
+            </div>
+            <div class="breadcrumb">Quauq Doc > Api文档 > 计调销售</div>
+            <div class="page-header">
+                <h1>计调销售操作</h1>
+            </div>
+            <div>
+
+
+                <h3>借款/退款/追加成本-记录列表</h3>
+
+                <div>
+                    <p class="mark">描述:查询指定订单下所有的借款/退款/追加成本记录。</p>
+
+                    <p>接口路径:order/getAirticketOrderMoneyAmountList</p>
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        fundsType:'款项类型//退款:2,借款:3,追加成本:4
+    }
+            </pre>
+                    <p>输出(data):</p>
+            <pre>
+        [
+                {
+                    orderUuid:'订单Uuid',
+                    fundsType:'款项类型//退款:2,借款:3,追加成本:4
+                    fundsName:'款项名称',
+                    uuid:'uuid',
+                    applicationDate:'申请日期'
+                    currencyUuid:'借款币种Uuid'
+                    exchangeRate:'汇率',
+                    amount:'借款金额'
+                    applicant:'申请人'
+                    state:'状态',//状态名称
+                    stateCode:'状态Code',
+                    memo:'备注'
+                }
+        ]
+            </pre>
+                </div>
+
+                <h3>借款/退款/追加成本-提交</h3>
+
+                <div>
+                    <p class="mark">描述:保存指定订单的借款/退款/追加成本记录。</p>
+
+                    <p>接口路径:order/saveAirticketOrderMoneyAmount</p>
+
+                    <p>输入(param):</p>
+            <pre>
+        [
+            {
+                orderUuid:'订单Uuid'
+                fundsType:'款项类型//成本:1,退款:2,借款:3,追加成本:4
+                fundsName:'款项名称',
+                currencyUuid:'借款币种Uuid',
+                exchangeRate:'汇率',
+                amount:'借款金额',
+                memo:'备注'
+            }
+        ]
+            </pre>
+                    <p>输出(data):无</p>
+                </div>
+
+                <h3>借款/退款/追加成本-撤销</h3>
+
+                <div>
+                    <p class="mark">描述:撤消指定订单下的指定借款/退款/追加成本记录。</p>
+
+                    <p>接口路径:order/cancelAirticketOrderMoneyAmount</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    {
+        orderUuid:'订单Uuid',
+        fundsType:'款项类型//成本:1,退款:2,借款:3,追加成本:4
+        uuid:'uuid',
+    }
+            </pre>
+                    <p>输出(data):无</p>
+                </div>
+
+
+                <h3>PNR(列表)-展开</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:order/showAirticketOrderPNRList</p>
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+               orderUuid:'订单Uuid'
+            }
+            </pre>
+                    <p>输出(data)</p>
+            <pre>
+
+        [
+           {
+                orderUuid:'订单Uuid',
+                invoiceOriginalGroupUuid:'大编号组Uuid',
+                drawerCount:'出票人数',
+                reserveCount:'预定人数',
+                invoiceOriginals:[
+                    {
+                        invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                        PNR:'PNR编号',//大编号为PNR的时候才有意义
+                        tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+                        airlineCompanyName:'航空公司名称',
+                        airlines:[
+                            {
+                                airlineName:'航段名称'
+                            }
+                        ],
+                        deadline:{//期限
+                                    ticketDeadline:'出票时限',
+                                    depositDeadline:'定金时限',
+                                    listDeadline:'名单时限',
+                                    renameDeadline:'改名时限',
+                                    cancelDeadline:'取消时限'
+                         }
+                    }
+                ]
+           }
+        ]
+            </pre>
+
+
+                </div>
+
+                <h3>PNR(列表)-展开-查看记录</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:order/showPNRRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                orderUuid:'订单Uuid',
+                invoiceOriginalGroupUuid:'大编号组Uuid'
+            }</pre>
+                    <p>输出(data)</p>
+            <pre>
+        [
+            {
+                modifyDate:'修改时间',
+                modifier:'修改人',
+                modifyContent:'修改内容'
+            }
+        ]
+            </pre>
+
+                </div>
+
+                <h3>PNR(列表)-展开-修改人数</h3>
+
+                <div>
+                    <p class="mark">描述:修改人数时同步增加修改记录</p>
+
+                    <p>接口路径:order/modifyPNRGroupAddRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                orderUuid:'订单Uuid',
+                invoiceOriginalGroupUuid:'大编号组Uuid',
+                drawerCount:'出票人数',
+                reserveCount:'预定人数'
+            }</pre>
+                    <p>输出(data):无</p>
+
+                </div>
+
+
+                <h3>追散-提交</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:order/addToAirticketOrder</p>
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                orderUuid:'订单Uuid',
+                addFITCount:'追散人数',
+                totalSalePrice:'追散外报总额',//追散的时候没有成本修改
+                invoiceOriginals:[
+                    {
+                        invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                        PNR:'PNR编号',//大编号为PNR的时候才有意义
+                        tourOperatorUuid:'地接社Uuid'//大编号为地接社的时候才有意义
+                        airlineCompanyUuid:'航空公司uuid',
+                        costTourOperatorUuid:'成本地接社Uuid',
+                        costTourOperatorTypeCode:'成本地接社类型Code',
+                        costTourOperatorTypeName:'成本地接社类型Name',
+                        costBankName:'成本银行名称',
+                        costAccountNo:'成本银行账号',
+                        airlines:[//航段
+                            {
+                                airlineName:'航段名称',
+                                costs:[//成本价
+                                    {
+                                        currencyUuid:'币种Uuid',
+                                        exchangeRate:'汇率',
+                                        peopleCount:'人数',
+                                        costUnitPrice:'成本单价',
+                                        totalCost:'成本总额',
+                                        totalDeposit:'定金总额',
+                                        totalBalance:'余款总额'
+                                    }
+                                ],
+                                salePrices:[//外部价
+                                    {
+                                        currencyUuid:'币种Uuid',
+                                        exchangeRate:'汇率',
+                                        peopleCount:'人数',
+                                        costUnitPrice:'成本单价',
+                                        totalCost:'成本总额',
+                                        totalDeposit:'定金总额',
+                                        totalBalance:'余款总额'
+                                    }
+                                ]
+                            }
+                        ],
+                        deadline:{//期限
+                            ticketDeadline:'出票时限',
+                            depositDeadline:'定金时限',
+                            listDeadline:'名单时限',
+                            renameDeadline:'改名时限',
+                            cancelDeadline:'取消时限'
+                        }
+
+                    }
+                ]
+
+            }</pre>
+                    <p>输出(data):无</p>
+                </div>
+
+
+                <h3>收款-记录列表</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:order/getOrderReceiptList</p>
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+               orderUuid:'订单Uuid'
+
+            }</pre>
+                    <p>输出(data)</p>
+            <pre>
+
+        [
+            {
+                orderUuid:'订单Uuid'
+                receiveUuid:'收款Uuid'
+                receiveMethodCode:'收款方式Code',
+                receiveType:'收款类别'
+                currencyUuid:'币种Uuid',
+                exchangeRate:'汇率',
+                receivePeopleCount:'收款人数',
+                receiveAmount:'收款金额',
+                receiveDate:'收款日期',
+                completeCheck:'是否已确认达帐'
+                attachments:[//付款凭证
+                    {
+                        attachmentUuid:'付款凭证uuid',
+                        fileName:'付款凭证名称',
+                        attachmentUrl:'付款凭证url',
+                        uploadUserName:'上传者'
+                    }
+                ],
+                receiver:'收款人'
+                memo:'备注'
+            }
+        ]
+
+            </pre>
+
+
+                </div>
+
+
+                <h3>收款-详情</h3>
+
+                <div>
+                    <p class="mark">描述:查看单次收款记录详细信息</p>
+
+                    <p>接口路径:order/getOrderReceiptDetail</p>
+
+
+                    <p>输入(param):</p>
+                <pre>
+    {
+        orderUuid:'订单Uuid',
+        receiveUuid:'收款Uuid'
+    }
+                </pre>
+                    <p>输出(data):</p>
+                <pre>
+    {
+        orderUuid:'订单Uuid',
+        receiveUuid:'收款Uuid'
+        receiveTypeCode:'收款类别',
+        receiveAmount:'收款金额',
+        exchangeRate:'汇率',
+        currencyUuid:'￥',
+        convertedCurrencyUuid:'$',
+        receivePeopleCount:'收款人数',
+        convertedAmount: '转化后金额',
+        paymentMethodCode:'付款方式code',
+        paymentMethodName: '支票',
+        payer:'付款单位',
+        checkNo:'支票号',//收款方式为支票时有效
+        checkIssueDate:'开票日期',//收款方式为支票时有效
+        paymentBank:'付款行Uuid',//收款方式为汇款时有效
+        paymentAccount:'付款账号'.//收款方式为汇款时有效
+        receiveBank:'收款账户Uuid',//收款方式为汇款时有效
+        receiveAccount:'收款账户',//收款方式为汇款时有效
+        attachments:[//收款附件
+            {
+                attachmentUuid:'收款附件uuid',
+                fileName:'收款附件名称',
+                attachmentUrl:'收款附件url'
+            }
+        ],
+        memo:'备注'
+    }
+                </pre>
+                </div>
+
+
+                <h3>收款-保存(查询)</h3>
+
+                <div>
+                    <p class="mark">描述:查询订单的未收金额和外保总额</p>
+
+                    <p>接口路径:order/getOrderPriceDetail</p>
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+               orderUuid:'订单Uuid'
+
+            }</pre>
+                    <p>输出(data)</p>
+            <pre>
+        {
+                orderUuid:'订单Uuid',
+                reservationCount:订单总人数
+                groupNo:'团号'//0092需求
+                channelUuid:'渠道Uuid',
+                unreceiveAmount:{//未收金额
+                    currencyUuid:'币种Uuid',
+                    amount:'金额'
+                },
+                totalSalePrice:{//外报总额'
+                    currencyUuid:'币种Uuid',
+                    amount:'金额'
+                }
+        }
+
+            </pre>
+                </div>
+
+                <h3>收款-保存(确认)</h3>
+
+                <div>
+                    <p class="mark">描述:提交订单收款</p>
+
+                    <p>接口路径:order/saveOrderpayInfo</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                orderUuid:'订单Uuid',
+                speedyClearance:'即时结算',//'0':否,'1':是
+                receiveType:'收款类别',
+                receiveAmount:'收款金额',
+                exchangeRate:'汇率',
+                currencyUuid:'币种',
+                receivePeopleCount:'收款人数',
+                paymentMethodCode:'付款方式code',
+                payer:'付款单位',
+                checkNo:'支票号',//收款方式为支票时有效
+                checkIssueDate:'开票日期',//收款方式为支票时有效
+                paymentBank:'付款行Uuid',//收款方式为汇款时有效
+                paymentAccount:'付款账号'.//收款方式为汇款时有效
+                receiveBank:'收款账户Uuid',//收款方式为汇款时有效
+                receiveAccount:'收款账户',//收款方式为汇款时有效
+                attachments:[//收款附件
+                    {
+                        attachmentUuid:'收款附件uuid',
+                        fileName:'收款附件名称',
+                        attachmentUrl:'收款附件url'
+                    }
+                ],
+                memo:'备注'
+
+            }</pre>
+                    <p>输出(data):无</p>
+                </div>
+
+                <h3>收款-撤销</h3>
+
+                <div>
+                    <p class="mark">描述:撤销收款</p>
+
+                    <p>接口路径:order/orderReceiptCancel</p>
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                orderUuid:'订单Uuid',
+                receiveUuid:'收款Uuid'
+            }
+            </pre>
+                    <p>输出(data):无</p>
+                </div>
+
+
+                <h3>成本记录-列表</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/getCostRecords</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+        {
+                orderUuid:'订单Uuid'
+        }
+            </pre>
+                    <p>输出(data):</p>
+            <pre>
+        [
+            {
+                orderUuid:'订单Uuid',
+                costUuid:'成本记录Uuid',
+                fundsName:'款项名称',
+                tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+                tourOperatorOrChannelTypeCode:'地接社/渠道商的类型Code',
+                tourOperatorOrChannelName:'地接社/渠道商 的名称',
+                tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid',
+
+                invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                PNR:'PNR编号',//大编号为PNR的时候才有意义
+                tourOperatorUuid:'地接社Uuid'//大编号为地接社的时候才有意义
+                tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+
+                airlineName:'航段名称'
+                peopleCount:'人数',
+                currencyUuid:'转换前币种Uuid',
+                amount:'转换前金额',
+                exchangeRate:'汇率',
+                convertedCurrencyUuid:'转换后币种Uuid',
+                convertedAmount:'转换后金额',
+                inputPerson:'录入人',
+                state:'状态',//成本记录状态
+                stateCode:'状态',
+                memo:'备注'
+            }
+        ]
+            </pre>
+                </div>
+
+                <h3>订单成本记录-详情</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/getCostDetail</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+        {
+            orderUuid:'订单Uuid',
+            costUuid:'成本记录Uuid'
+        }
+            </pre>
+                    <p>输出(data):</p>
+            <pre>
+        {
+                orderUuid:'订单Uuid',
+                costUuid:'成本记录Uuid',
+                fundsName:'款项名称'
+
+                invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                invoiceOriginalUuid:'大编号id',
+                PNR:'PNR编号',//大编号为PNR的时候才有意义
+                tourOperatorUuid:'地接社Uuid'//大编号为地接社的时候才有意义
+                tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+
+                peopleCount:'人数',
+                currencyUuid:'币种Uuid',
+                price:'单价',
+                exchangeRate:'汇率',
+                convertedCurrencyUuid:'转换币种Uuid',
+                convertedAmount:转化后金额',
+                tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+                tourOperatorOrChannelTypeCode:'地接社/渠道商的类型Code',
+                tourOperatorOrChannelName:'地接社/渠道商 的名称',
+                tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid',
+                paymentBank:'付款行名称',
+                paymentAccount:'付款账户',
+                memo:'备注'
+                airlineName:'航段名称'
+                costTotalDeposit:'成本定金总额'
+        }
+          </pre>
+                </div>
+
+                <h3>成本记录-提交</h3>
+
+                <div>
+                    <p class="mark">描述:将成本记录的状态修改为提交</p>
+
+                    <p>接口路径:mtourfinance/submitCostRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+        {
+                orderUuid:'订单Uuid',
+                costUuid:'成本记录Uuid'
+        }
+            </pre>
+                    <p>输出(data):无</p>
+
+                </div>
+
+                <h3>成本记录-批量提交</h3>
+
+                <div>
+                    <p class="mark">描述:将选择的成本记录的状态修改为提交</p>
+
+                    <p>接口路径:mtourfinance/batchSubmitCostRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+    [
+        {
+                orderUuid:'订单Uuid',
+                costUuid:'成本记录Uuid'
+        }
+    ]
+            </pre>
+                    <p>输出(data):无</p>
+
+                </div>
+
+                <h3>成本记录-删除</h3>
+
+                <div>
+                    <p class="mark">描述:将成本记录删除</p>
+
+                    <p>接口路径:order/deleteCostRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+        {
+                orderUuid:'订单Uuid',
+                costUuid:'成本记录Uuid'
+        }
+            </pre>
+                    <p>输出(data):无</p>
+
+                </div>
+                <h3>成本记录-撤回</h3>
+
+                <div>
+                    <p class="mark">描述:将成本记录撤回</p>
+
+                    <p>接口路径:mtourfinance/cancelCostRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+        {
+                orderUuid:'订单Uuid',
+                costUuid:'成本记录Uuid'
+        }
+            </pre>
+                    <p>输出(data):无</p>
+
+                </div>
+                <h3>成本记录-获取航段名称</h3>
+
+                <div>
+                    <p class="mark">描述:根据orderUuid、大编号uuid获取航段名称</p>
+
+                    <p>接口路径:mtourfinance/getAirlineNames</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+        {
+                orderUuid:'订单Uuid',
+                invoiceOriginalUuid:'大编号uuid'
+
+        }
+            </pre>
+                    <p>输出(data):无</p>
+            <pre>
+                    [
+                        {
+                            airlineName:'航段名称',
+                            airlineUuid:'航段名称uuid'
+                        }
+                    ]
+            </pre>
+                </div>
+
+                <h3>成本记录-录入/修改</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/saveOrUpdateCostRecord--美图使用</p>
+                    <p>接口路径:mtourfinance/saveOrUpdateCostRecord4Old---华尔远航使用</p>
+
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                saveType:'保存类型',//'0':保存,'1':提交
+                orderUuid:'订单Uuid',
+                costUuid:'成本记录Uuid',
+                fundsName:'款项名称'
+
+                invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                invoiceOriginalUuid:'大编号id',
+                PNR:'PNR编号',//大编号为PNR的时候才有意义
+                tourOperatorUuid:'地接社Uuid'//大编号为地接社的时候才有意义
+                tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+                exchangeRate:'6.4',
+                peopleCount:'人数',
+                currencyUuid:'币种Uuid',
+                price:'单价',
+                convertedCurrencyUuid:'转换币种Uuid',
+                convertedAmount:转化后金额',
+
+                tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+                tourOperatorOrChannelTypeCode:'地接社/渠道商的类型Code',
+                tourOperatorOrChannelName:'地接社/渠道商 的名称',
+                tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid',
+                
+                paymentBank:'付款行名称',
+                paymentAccount:'付款账户',
+                memo:'备注'
+                airlineUuid:'航段名称uuid'
+                airlineName:'航段名称'
+                <!--airlineName:'航段名称'-->
+                costTotalDeposit:'成本定金总额'
+            }
+            </pre>
+                    <p>输出(data):无</p>
+                </div>
+
+                <h3 class="bg-danger">成本记录-录入/修改-大编号</h3>
+
+                <div>
+                    <p class="mark">描述:获取指定订单的所有大编号</p>
+
+                    <p>接口路径:order/getAirticketOrderPNCByOrderUuid（以此接口为准）</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+         [
+            {
+                orderUuid:'订单Uuid'
+            }
+        ]
+            </pre>
+                    <p>输出(data):</p>
+            <pre>
+                [
+                    {
+                        invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                        invoiceOriginalUuid:'大编号id',
+                        PNR:'PNR编号',//大编号为PNR的时候才有意义
+                        tourOperatorUuid:'地接社Uuid'//大编号为地接社的时候才有意义
+                        tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+                    }
+                ]
+            </pre>
+                </div>
+
+                <h3>成本记录-录入/修改-查询（大编号-以此为准 ）</h3>
+
+                <div>
+                    <p class="mark">描述:获取指定订单的所有大编号,渠道信息</p>
+
+                    <p>接口路径:order/getAirticketOrderPNCListByOrderUuid</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+         [
+            {
+                orderUuid:'订单Uuid'
+            }
+        ]
+            </pre>
+                    <p>输出(data):</p>
+            <pre>
+    {
+        invoiceOriginals: [
+            {
+                invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                invoiceOriginalUuid:'大编号id',
+                PNR:'PNR编号',//大编号为PNR的时候才有意义
+                tourOperatorTypeCode:'地接社类型Code',
+                tourOperatorTypeName:'地接社类型Name',
+                tourOperatorUuid:'地接社Uuid'
+                tourOperatorName:'地接社Name',
+                receiveBank:'收款行名称',
+                receiveAccountNo:'收款行账户'
+            }
+        ],
+        channelType:{
+            channelTypeCode:'渠道类型Code',
+            channelTypeName:'渠道类型名称'
+        }
+        channel:{
+            channelUuid:'渠道Uuid',
+            channelName:'渠道名称',
+        }
+    }
+            </pre>
+                </div>
+
+
+                <h3>其他收入记录-列表</h3>
+
+                <div>
+                    <p class="mark">描述:</p>
+
+                    <p>接口路径:mtourfinance/getOtherCostRecords</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                  orderUuid:'订单Uuid'
+            }</pre>
+                    <p>输出(data)</p>
+            <pre>
+    [
+        {
+                orderUuid:'订单Uuid',
+                otherRevenueUuid:'其他收入记录Uuid'
+                receiveUuid：'收款记录'//91需求中其他收入记录的收入单中的uuid和财务收款列表的收入记录数据要保持一致
+                fundsName:'款项名称',
+
+                tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+                tourOperatorOrChannelTypeCode:'地接社/渠道商的类型Code',
+                tourOperatorOrChannelName:'地接社/渠道商 的名称',
+                tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid',
+
+                invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                PNR:'PNR编号',//大编号为PNR的时候才有意义
+                tourOperatorUuid:'地接社Uuid'//大编号为地接社的时候才有意义
+                tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+
+                currencyUuid:'转换前币种Uuid',
+                amount:'转换前金额',
+                exchangeRate:'汇率',
+                convertedCurrencyUuid:'转换后币种Uuid',
+                convertedAmount:'转换后金额',
+                inputPerson:'录入人',
+                state:'状态',//其他收入状态
+                stateCode:'状态',
+                memo:'备注'
+        }
+    ]
+            </pre>
+                </div>
+
+                <h3>其他收入记录-详情</h3>
+
+                <div>
+                    <p class="mark">描述:详情页面未显示的字段将在跳转到修改页面使用</p>
+
+                    <p>接口路径:order/getOtherReceiptDetail</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+               otherRevenueUuid:'其他收入记录Uuid'
+            }</pre>
+                    <p>输出(data)</p>
+            <pre>
+
+        {
+                paymentMethodCode:'2',
+                paymentMethodName:'现金',
+                orderUuid:'订单Uuid',
+                otherRevenueUuid:'其他收入记录Uuid'
+                fundsName:'款项名称'
+                exchangeRate:'汇率',
+                currencyUuid:'币种Uuid',
+                currencyCode:'$',
+                amount:'12000',
+                convertedCurrencyUuid:'转换币种Uuid',
+                convertedCurrencyCode:'￥',
+                convertedAmount:转化后金额',
+                <!--receiveTypeCode:'收款类别Code',-->
+                tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+                tourOperatorOrChannelTypeCode:'地接社/渠道商的类型Code',
+                tourOperatorOrChannelName:'地接社/渠道商 的名称',
+                tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid',
+
+                payer:'付款单位',
+                checkNo:'支票号',//收款方式为支票时有效
+                checkIssueDate:'开票日期',//收款方式为支票时有效
+                paymentBank:'付款行Uuid',//收款方式为汇款时有效
+                paymentAccount:'付款账号'.//收款方式为汇款时有效
+                receiveBank:'收款账户Uuid',//收款方式为汇款时有效
+                receiveAccount:'收款账户',//收款方式为汇款时有效
+                attachments:[//收款凭证
+                    {
+                        attachmentUuid:'收款凭证Uuid',
+                        attachmentUrl:'收款凭证url',
+                        fileName：'收款凭证',
+                    }
+                ],
+                memo:'备注'
+        }
+
+            </pre>
+                </div>
+
+
+                <h3>其他收入记录-提交</h3>
+
+                <div>
+                    <p class="mark">描述:表格中的提交按钮(将状态由临时保存修改为提交)</p>
+
+                    <p>接口路径:mtourfinance/submitCostRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                orderUuid:'订单Uuid',
+                otherRevenueUuid:'其他收入记录Uuid'
+            }</pre>
+                    <p>输出(data):无</p>
+                </div>
+
+
+                <h3>其他收入记录-撤回</h3>
+
+                <div>
+                    <p class="mark">描述:表格中的撤回按钮(将状态由临时保存修改为撤回)</p>
+
+                    <p>接口路径:mtourfinance/cancelCostRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                orderUuid:'订单Uuid',
+                otherRevenueUuid:'其他收入记录Uuid'
+            }</pre>
+                    <p>输出(data):无</p>
+                </div>
+
+
+                <h3>其他收入记录-删除</h3>
+
+                <div>
+                    <p class="mark">描述:表格中的删除按钮</p>
+
+                    <p>接口路径:order/deleteCostRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                orderUuid:'订单Uuid',
+                otherRevenueUuid:'其他收入记录Uuid'
+            }</pre>
+                    <p>输出(data):无</p>
+                </div>
+
+
+                <h3>其他收入记录-录入/修改</h3>
+
+                <div>
+                    <p class="mark">描述:其他收入的保存/提交</p>
+
+                    <p>接口路径:mtourfinance/saveOrUpdateOtherCostRecord</p>
+
+
+                    <p>输入(param):</p>
+            <pre>
+            {
+                saveType:'保存类型',//'0':保存,'1':提交
+                orderUuid:'订单Uuid',
+                otherRevenueUuid:'其他收入记录Uuid'
+                speedyClearance:'即时结算',/'0':否,'1':是
+
+                fundsName:'款项名称'
+
+                invoiceOriginalTypeCode:'PNR或者地接社的的代码',//大编号(票源类型)
+                PNR:'PNR编号',//大编号为PNR的时候才有意义
+                tourOperatorUuid:'地接社Uuid'//大编号为地接社的时候才有意义
+                tourOperatorName:'地接社Name'//大编号为地接社的时候才有意义
+                exchangeRate:'6.4',
+                currencyUuid:'币种Uuid',
+                amount:'单价',
+                convertedCurrencyUuid:'转换币种Uuid',
+                convertedAmount:转化后金额',
+                paymentMethodCode: '3',//1 支票 2 仙现金 3 汇款
+                tourOperatorChannelCategoryCode:'区分 地接社/渠道商 ',
+                tourOperatorOrChannelTypeCode:'地接社/渠道商的类型Code',
+                tourOperatorOrChannelName:'地接社/渠道商 的名称',
+                tourOperatorOrChannelUuid:'地接社/渠道商 的Uuid',
+
+                payer:'付款单位',
+                checkNo:'支票号',//收款方式为支票时有效
+                checkIssueDate:'开票日期',//收款方式为支票时有效
+                paymentBank:'付款行Uuid',//收款方式为汇款时有效
+                paymentAccount:'付款账号'.//收款方式为汇款时有效
+                receiveBank:'收款账户Uuid',//收款方式为汇款时有效
+                receiveAccount:'收款账户',//收款方式为汇款时有效
+                attachments:[//收款凭证
+                    {
+                        attachmentUuid:'收款凭证Uuid',
+                        attachmentUrl:'收款凭证url',
+                        fileName：'收款凭证',
+                    }
+                ],
+                memo:'备注'
+            }
+            </pre>
+                    <p>输出(data):无</p>
+
+                </div>
+            </div>
+        </div>
+        <doc-footer></doc-footer>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+<li>
+    <label>{{labelText}}：</label>
+    <span ng-repeat="item in items">
+        {{item.startDate?item.startDate:'不限'}}~{{item.endDate?item.endDate:'不限'}}
+        <em class="fa fa-close" ng-click="remove(item)"></em>
+    </span>
+</li>

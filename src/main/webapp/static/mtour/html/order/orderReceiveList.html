@@ -1,0 +1,81 @@
+<div style=" ">
+    <table width="600" class="table-list-md">
+        <thead>
+            <tr>
+                <th class="table-th-default-width">收款方式</th>
+                <th class="table-th-default-width">收款类别</th>
+                <th class="table-th-default-width">金额</th>
+                <th class="table-th-default-width">转化后币种/汇率</th>
+                <th class="table-th-default-width">转化后金额</th>
+                <th class="table-th-default-width">日期</th>
+                <th class="table-th-default-width">是否已确认达帐</th>
+                <th class="table-th-default-width">收款凭证</th>
+                <th class="table-th-default-width">收款人</th>
+                <th class="table-th-default-width">备注</th>
+                <th style="width: 200px">操作
+                    <div class="table-close fa fa-times " ng-click="toggleSubTable()"></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="active" ng-class="{'even':$even,'odd':$odd}" ng-repeat="orderReceive in newList">
+            <tr>
+                <td>
+                    <span ng-bind="orderReceive.receiveMethod.paymentMethodName"></span>
+                </td>
+                <td>
+                    <span ng-bind="orderReceive.selectedReceiveType.receiveTypeName"></span>
+                </td>
+                <td>
+                    <span ng-bind="orderReceive.receiveAmount|qcCurrency:orderReceive.currency.currencyCode"></span>
+                </td>
+                <td>
+                    <span ng-bind="orderReceive.convertedCurrency.currencyCode+'/'+(orderReceive.exchangeRate)"></span>
+                </td>
+                <td>
+                    <span ng-bind="orderReceive.receiveAmount*orderReceive.exchangeRate | qcCurrency: orderReceive.convertedCurrency.currencyCode"></span>
+                </td>
+                <td>
+                    <span ng-bind="orderReceive.receiveDate"></span>
+                </td>
+                <td>
+                    <span ng-bind="orderReceive.accountCompleteStatus.accountCompleteStatusName"></span>
+                </td>
+                <td>
+                    <span class="base-operator">
+                        <button show-Attachment="orderReceive.attachments"
+                                ng-disabled="!orderReceive.attachments.length">收款凭证
+                        </button>
+                    </span>
+                </td>
+                <td>
+                    <span ng-bind="orderReceive.receiver"></span>
+                </td>
+                <td>
+                    <span class="table-th-default-width ellipsis" ng-bind="orderReceive.memo"></span>
+                </td>
+                <td><span class="base-operator">
+                    <button href="javascript:void(0)" ng-click="showOrderReceiveDetail(orderReceive)">详情</button>
+                     <button   order-uuid="orderReceive.orderUuid"
+                               ng-if="companyRoleCode==0"
+                               ng-disabled="orderReceive.accountCompleteStatus.accountCompleteStatusCode!='0' && orderReceive.accountCompleteStatus.accountCompleteStatusCode!='2' || orderReceive.repeatSubmit =='1'"
+                          ng-click="submitAgain(orderReceive)">重新提交
+                    </button>
+                <button href="javascript:void(0);" ng-click="cancelOrderReceive(orderReceive)"
+                        ng-disabled="orderReceive.completeCheck==2||orderReceive.completeCheck==1||orderReceive.completeCheck==0 || lockStatus==1">
+                                                                        撤销
+                </button>
+                    <!--90需求start-->
+                <button ng-if="companyRoleCode=='0'&&isRole('mtourOrder:orderList:income')" href="javascript:void(0)"
+                        print-income-button
+                        receive-uuid="orderReceive.receiveUuid" funds-Type="orderReceive.selectedReceiveType.receiveTypeCode"
+                        ng-disabled="orderReceive.completeCheck==0||orderReceive.completeCheck==2">收入单
+                </button>
+                     <!--90需求start-->
+                </span>
+                </td>
+            </tr>
+        </tbody>
+        <tbody class="display-none"></tbody>
+
+    </table>
+</div>

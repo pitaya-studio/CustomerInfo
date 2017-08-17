@@ -1,0 +1,122 @@
+@import "variables.less";
+@import "mixins.less";
+
+/*S表格操作列样式文件*/
+
+//操作列样式文件
+.qc-table-operator{          
+    position: @position-absolute;
+    z-index: 100;
+    display: @display-none;
+    height: 400px;
+    width: 154px;
+    padding: 10px;
+    background-color:#FFECE6;
+    border: 1px solid #edd5d0;
+        button{
+            display:@display-in-line-block;
+            float: left;
+            min-width: 60px;
+            text-align: @text-center;
+            max-width: 130px;
+//          width: 45%; 
+            padding: 0 3px;
+            margin: 5px;
+            background-color:transparent;
+            border: none;
+            white-space:nowrap; 
+            word-wrap:break-word;
+            text-overflow:ellipsis;
+            color: @text-color-light;
+            cursor: @cursor;
+            &:hover{
+            .border-radius(3px);
+            background-color:#db8a83 ;
+            color: @text-color-white;
+            }
+            &.active{
+            .border-radius(3px);
+            background-color:#db8a83;
+            color: @text-color-white;
+            }
+            &[disabled]{
+            color: #cccccc;
+            cursor: default;
+            background-color: transparent !important;
+            &:hover{
+                background-color: transparent !important;
+                color: #cccccc;
+            }
+            }
+        }
+        &:hover{
+            background-color: #FFECE6;
+        }
+}
+.base-operator{
+    a{
+        &:link,
+        &:hover{
+            color:@qc-color-link ;
+            margin-right: 5px;
+        }
+    }
+    em{
+        margin: 0 5px;
+        &.fa{
+            cursor: @cursor;
+            &.fa-times{
+                color:#ffb55e;
+                &:hover{
+                    color:#ff8c0a;                    
+                }               
+            }
+            &.fa-plus{
+                color:#c7ddb2;
+                &:hover{
+                    color:#2ba01b;                   
+                }               
+            }
+            &:hover{
+                color: #ff8c0a;
+                cursor: @cursor;
+            }
+        }
+    }
+}
+
+
+//表格行默认初始状态背景色
+.qc-table-operator-tbody{
+}
+//表格行激活状态背景色
+//.qc-table-operator-tbody {
+//  table tbody&{
+//          background-color:#f4f4f4; 
+//          &:nth-child(2n+1){
+//              background-color: #ffffff;
+//      
+//      }       
+//      &.active{
+//          td{
+//              background-color: #fef5f3;  
+//          }
+//      }
+//      tr{
+//          &:hover{
+//              background-color: #fef5f3; 
+//              td{
+//                  &.empty{
+//                      background-color: #000000;
+//                  }
+//              }               
+//          }
+//          td{
+//              word-break: normal;           
+//      } 
+//      }   
+//  }
+//}
+
+
+/*E表格操作列样式文件*/

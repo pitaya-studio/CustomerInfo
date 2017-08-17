@@ -1,0 +1,155 @@
+/*S文本框样式文件*/
+.text-input-huge {
+  width: 300px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-huge-remarks {
+  width: 250px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-huge-second {
+  width: 200px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-lg {
+  width: 170px;
+  height: 20px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border: 1px solid #ffe0c1;
+  border-radius: 2px;
+}
+.text-input-lg-second {
+  width: 170px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-lg-third {
+  float: left;
+  width: 150px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-md {
+  width: 130px;
+  height: 20px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-md-second {
+  width: 130px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-md-second-table {
+  width: 120px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-md-third {
+  width: 100px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-md-third-d {
+  width: 95px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-sm {
+  width: 80px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.text-input-xs {
+  width: 60px;
+  height: 20px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border: 1px solid #ffe0c1;
+  border-radius: 2px;
+}
+.text-input-xs-second {
+  width: 37px;
+  height: 26px;
+  padding: 1px 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 2px;
+}
+.multi-text-lg {
+  width: 300px;
+  height: 100px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  font-size: 12px;
+}
+.multi-text-lg-second {
+  width: 100%;
+  height: 100px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  font-size: 12px;
+}
+/*E输入框、文本框、下拉样式文件*/

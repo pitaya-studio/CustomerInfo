@@ -1,0 +1,26 @@
+<div>
+    <div class="qc-dialog-header">
+        <div class="qc-dialog-title">附件</div>
+    </div>
+    <div class="qc-dialog-body qc-scroll" style="max-height: 220px;">
+          <table class="table-list-md">
+              <thead>
+                  <th class="table-th-sm-width">上传者</th>
+                  <th class="table-th-md-width">附件</th>
+              </thead>
+              <tbody ng-repeat="file in attachment" ng-class="{'odd':$odd,'even':$even}">
+                  <tr>
+                      <td>
+                         <span class="table-th-sm-width ellipsis" title="{{file.uploadUserName}}">{{file.uploadUserName}}</span> </td>
+                      <td>
+                          <a ng-href="{{uploadFileUrl+file.attachmentUuid}}" target="_blank">
+                                <span class="table-th-md-width ellipsis" title="{{file.fileName}}">{{file.fileName}}</span>
+                          </a>
+                      </td>
+                  </tr>
+              </tbody>
+              <tbody style="display: none"></tbody>
+          </table>
+    </div>
+
+</div>

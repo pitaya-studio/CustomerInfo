@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <style type="text/css">
+        @keyframes ShowProduct {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes HideProduct {
+            0% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+        }
+
+        .active {
+            color: #ff0000;
+        }
+
+        .tab-height {
+            height: 200px;;
+        }
+
+        table thead th {
+            text-align: center;
+        }
+
+
+    </style>
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+    <script type="text/javascript" src="/src/components/angular-animate/angular-animate.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.subTable.js"></script>
+
+    <script type="text/javascript">
+        var subTable = angular.module('subTable', ['qc', 'ngAnimate']);
+        subTable.controller('SubTableController', ['$scope', function ($scope) {
+            $scope.show = function (txt) {
+                alert(txt);
+            }
+        }]);
+    </script>
+</head>
+<body ng-app="subTable">
+<div class="container">
+    <div ng-controller="SubTableController" qc-sub-table-container>
+        <div class="page-header">
+            <h3>子表格</h3>
+        </div>
+        <table class="table table-bordered" >
+            <thead>
+            <tr>
+                <th width="20%">团号</th>
+                <th width="20%">产品名称</th>
+                <th width="20%">价格</th>
+                <th width="20%">操作</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr>
+                <td>OT01201</td>
+                <td>新马泰7日无购物畅游</td>
+                <td>¥131,420.00</td>
+                <td>
+                    <button qc-sub-table-anchor qc-sub-table-id="order1">toggle order</button>
+                    <button qc-sub-table-anchor qc-sub-table-id="sale1">toggle sale</button>
+                </td>
+            </tr>
+            </tbody>
+
+            <tbody>
+                <tr class="">
+                    <td colspan="4">
+                        <div qc-sub-table qc-sub-table-id="order1">
+                            order1!!
+                            <hr/>
+                            看来真2
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr class="">
+                <td colspan="4">
+                    <div qc-sub-table qc-sub-table-id="sale1">
+                        order1!!
+                        <br/>
+                        看来真2
+                        <br/>
+                        看来真2
+
+                    </div>
+
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

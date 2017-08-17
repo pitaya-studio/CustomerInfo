@@ -1,0 +1,25 @@
+<div class="main-search">
+    <div qc-dropdown dropdown-text="{{' '}}"
+         ng-model="selectedSearchType"
+         item-text='{{qcDropdownItem.searchTypeName}}'
+         list-width="150"
+         items="searchTypes" class="f-l"></div>
+
+    <!--ng-keyup="searchKeyEnter($event)"-->
+    <input  ng-show="selectedSearchType.searchTypeName!='产品名称'&& selectedSearchType.searchTypeName!='PNR'&& selectedSearchType.searchTypeName!='航段名称'"
+            class="text-area" type="text" ng-model="searchKey"
+             placeholder="{{'请输入'+selectedSearchType.searchTypeName}}"
+             onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5\w]/g,'')"
+             this.value=this.value.replace(/[^\u4e00-\u9fa5\w]/g,'')>
+
+
+
+    <input ng-show="selectedSearchType.searchTypeName=='产品名称'||selectedSearchType.searchTypeName=='PNR'||selectedSearchType.searchTypeName=='航段名称'"
+           class="text-area" type="text" ng-model="searchKey"
+           placeholder="{{'请输入'+selectedSearchType.searchTypeName}}"
+           this.value=this.value>
+          <!-- onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5\w\s\+\-]/g,'')"
+           this.value=this.value.replace(/[^\u4e00-\u9fa5\w\s\+\-]/g,'')>-->
+    <span class="fa fa-search" ng-click="search()"></span>
+    <!--  /[^\u4e00-\u9fa5\w]/g 原本是这样，只让输入字母，数字，以及汉字 -->
+</div>

@@ -1,0 +1,94 @@
+<!--其他收入收款记录-->
+<div style=" ">
+    <table width="600" class="table-list-md">
+        <thead>
+            <tr>
+                <th class="table-th-default-width">款项名称</th>
+                <th class="table-th-md-width">地接社/渠道商</th>
+                <th class="table-th-default-width">转换前金额</th>
+                <th class="table-th-default-width">转换后币种/汇率</th>
+                <th class="table-th-default-width">转换后金额</th>
+                <th class="table-th-default-width">录入人</th>
+                <th class="table-th-default-width">状态</th>
+                <th class="table-th-md-width">备注</th>
+                <th style="width: 240px">操作
+                    <div class="table-close fa fa-times " ng-click="toggleSubTable()"></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="even active" ng-repeat="otherRevenue in newList">
+            <tr>
+                <td>
+                    <p class="table-th-default-width ellipsis" title="{{otherRevenue.fundsName}}">
+                        <span ng-bind="otherRevenue.fundsName"></span>
+                    </p>
+                </td>
+                <td class="table-th-default-width ellipsis">
+                    <span ng-bind="otherRevenue.tourOperatorOrChannelName"
+                          title="{{otherRevenue.tourOperatorOrChannelName}}"></span>
+                </td>
+                <td>
+                    <span ng-bind="otherRevenue.amount|qcCurrency:otherRevenue.currency.currencyCode"></span>
+                </td>
+                <td>
+                    <span ng-bind="otherRevenue.convertedCurrency.currencyCode+'/'+(otherRevenue.exchangeRate)"></span>
+                </td>
+                <td>
+                    <span ng-bind="otherRevenue.amount*otherRevenue.exchangeRate|qcCurrency:otherRevenue.convertedCurrency.currencyCode"></span>
+                </td>
+                <td>
+                    <span class="ellipsis table-th-default-width " title="{{otherRevenue.userName}}"
+                          ng-bind="otherRevenue.userName"></span>
+                </td>
+                <td>
+                    <span ng-bind="otherRevenue.state"></span>
+                </td>
+                <td>
+                    <span class="ellipsis table-th-md-width " title="{{otherRevenue.memo}}"
+                          ng-bind="otherRevenue.memo"></span>
+                </td>
+                <td><span class="base-operator">
+                    <a href="javascript:void(0)" ng-click="showOtherRevenueDetail(otherRevenue)">详情</a>
+                 <button href="javascript:void(0);" operator-type="1"
+                         other-revenue="otherRevenue"
+                         order-uuid="otherRevenue.orderUuid"
+                         settlement-lock-status="otherRevenue.lockStatus"
+                         other-revenue-input-btn=""
+                         ng-disabled="otherRevenue.stateCode==3||otherRevenue.stateCode==1||otherRevenue.stateCode==4">
+                     修改
+                 </button><button href="javascript:void(0);" ng-click="submitOtherRevenue(otherRevenue)"
+                                  ng-disabled="otherRevenue.stateCode==3||otherRevenue.stateCode==1||otherRevenue.stateCode==4 || otherRevenue.lockStatus==1">
+                    提交
+                </button><button
+                        href="javascript:void(0);" ng-click="deleteOtherRevenue(otherRevenue)"
+                        ng-disabled="otherRevenue.stateCode==3||otherRevenue.stateCode==1||otherRevenue.stateCode==4">删除
+                </button><button
+                        href="javascript:void(0);" ng-click="cancelOtherRevenue(otherRevenue)"
+                        ng-disabled="otherRevenue.stateCode==2||otherRevenue.stateCode==1||otherRevenue.stateCode==4|| otherRevenue.lockStatus==1">
+                    撤回
+                </button>
+                     <!--90需求start-->
+                <button ng-if="companyRoleCode=='0'&&isRole('mtourOrder:orderList:income')" href="javascript:void(0)" print-income-button
+                        receive-uuid="otherRevenue.receiveUuid" funds-Type="5" ng-disabled="otherRevenue.stateCode==2||otherRevenue.stateCode==4">
+                    收入单
+                </button>
+                    <!--90需求start-->
+                </span>
+                </td>
+            </tr>
+        </tbody>
+        <tbody class="display-none">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

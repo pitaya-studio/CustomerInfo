@@ -1,0 +1,13 @@
+<div style="display: none">
+    <label>全站搜索结果<i>{{allCountInfo.count}}</i>条：</label>
+    <span class="active" ng-if="currentCountInfo">
+        <em>{{currentCountInfo.listCategoryName}}</em>
+        <i class="ci-count">{{currentCountInfo.count}}</i>
+    </span>
+    <span class="spacer"></span>
+    <span class="" ng-repeat="countInfo in otherCountInfos">
+        <em><a href="javascript:void(0);">{{countInfo.listCategoryName}}</a></em>
+        <i class="ci-count">{{countInfo.count}}</i>
+    </span>
+
+</div>

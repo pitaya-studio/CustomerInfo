@@ -1,0 +1,17 @@
+
+ @charset "utf-8";
+.hedear-left{width:750px;}
+.hedear-logo{width:107px; height:54px; margin-top:-10px;background:url(../logo/logo-lmels.jpg) no-repeat;}
+.jbox .jbox-container .jbox-title-panel{background:#0d60a8;}
+.main-left,#sea .nav{ background:#1491ff;}
+.main-nav li{ border-top:#40a6ff 1px solid;}
+#sea .nav li.active a, #sea .nav li a:hover {background:#0d60a8;  }
+#sea .nav li.active> a, #sea .nav li >a:hover,#sea .nav-tabs li.current >a {background:#0d60a8;   
+-moz-box-shadow:1px 1px 8px #333 inset;              
+-webkit-box-shadow:1px 1px 8px #333 inset;           
+box-shadow:1px 1px 8px #333 inset;  }
+#sea .nav-tabs li.current  a{ background:#0d60a8;color:#fba700;}
+#sea .nav li a, .nav-tabs > li > a { border-color:#275985;}
+.hedear-left{padding-left:3px;}
+.lmels-ts{ padding-left:30px; height:28px; line-height:28px; text-align:center; width:100%; overflow:hidden; padding-top:15px; color:#fb401b; font-size:16px; font-weight:bold;}
+.lmels-ts img{ margin-right:10px;}

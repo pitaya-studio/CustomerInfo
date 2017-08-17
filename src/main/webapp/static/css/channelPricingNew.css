@@ -1,0 +1,81 @@
+.table-lists table tbody tr.height_30{height:30px;}
+.table-lists table tbody tr td.tr,.tr{text-align: right;}
+.paddingR{padding-right:20px;}
+.paddingL{padding-left:15px;}
+.order_remark{color:#999999;}
+.color_red{color: #ff5050;}
+.reminder-i{font-size: 14px;}
+.count{
+    font-size: 14px;
+    font-style: normal;
+}
+
+.table-lists table tbody tr.tr_child{
+    border-top: none;
+    background: url("../images/xuxian.png") repeat-x;
+    background-clip: padding-box;
+}
+#ProTab tbody tr.tr_child:hover {
+    border-top: none;
+}
+.table-lists table tbody tr.tr_hover{
+    background-color: #f2fbff;
+    border-color: #D4e6ff;
+    background-clip: padding-box;
+}
+.table-lists table tbody tr{
+    background-clip: padding-box;
+}
+
+.Mrn{margin-right: 0;}
+/*.MinW{min-width: 1170px;}*/
+.orderUndo{margin-left: 15px;}
+
+.relative{position:relative;}
+.arrow_new{
+    background: url("../images/newNew.png") no-repeat;
+    width:30px;
+    height:30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.processingOperations a{
+    margin:0 6px;
+}
+.vaTop{vertical-align: top;}
+#tbody {
+    counter-reset:sectioncounter;
+}
+.abcTd:after{
+    content:counter(sectioncounter);
+    counter-increment:sectioncounter;
+}
+.add_intermodalType {
+    padding: 10px 0 0 68px;
+    overflow: hidden;
+    line-height: 30px;
+}
+.overflowE{
+    overflow: hidden;
+   display: inline-block;
+    word-break: break-all;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .overflowE{
+        word-break: break-word;
+    }
+}
+.order-title {
+    width: 50%;
+}
+.order-right{
+    text-align: right;
+    display: inline-flex;
+    width: 50%;
+    word-break: break-all;
+}
+.processingOperations a{
+    display: inline-block;
+    white-space: nowrap;
+}

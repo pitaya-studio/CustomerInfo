@@ -1,0 +1,66 @@
+<div class="order-info">
+    <table class="table-order-info">
+        <thead>
+        <tr>
+            <th class="table-th-default-width">订单总额</th>
+            <th class="table-th-default-width">外报总额</th>
+            <th class="table-th-default-width">成本总额</th>
+            <th class="table-th-default-width">退款金额</th>
+            <th class="table-th-default-width">预计利润</th>
+            <th class="table-th-default-width">应收金额</th>
+            <th class="table-th-default-width">已收金额</th>
+            <th class="table-th-default-width">未收金额</th>
+            <th class="table-th-default-width">到账金额</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <p >
+                    {{orderAmount|qcCurrency:'¥   '}}
+                </p>
+            </td>
+            <td>
+                <p >
+                    {{totalSalePrice|qcCurrency:'¥   '}}
+                </p>
+            </td>
+            <td>
+                <p >
+                    {{totalCost|qcCurrency:'¥   '}}
+                </p>
+            </td>
+            <td>
+                <p >
+                    {{return|qcCurrency:'¥   '}}
+                </p>
+            </td>
+            <td>
+                <p>
+                    {{profit|qcCurrency:'¥   '}}
+                </p>
+            </td>
+            <td>
+                <p>
+                    {{receivable|qcCurrency:'¥   '}}
+                </p>
+            </td>
+            <td>
+                <p >
+                    {{received|qcCurrency:'¥   '}}
+                </p>
+            </td>
+            <td>
+                <p >
+                    {{unreceive|qcCurrency:'¥   '}}
+                </p>
+            </td>
+            <td>
+                <p >
+                    {{arrived|qcCurrency:'¥   '}}
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

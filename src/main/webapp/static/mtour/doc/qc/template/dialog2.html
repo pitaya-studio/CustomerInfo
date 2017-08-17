@@ -1,0 +1,15 @@
+<div class="qc-dialog-body qc-scroll" qc-Scroll-Options="{zindex:20000,createDelay:1200}" style="height: 400px;">
+   this template is a html file!
+
+    <div class="well"> {{url}}</div>
+    <div class="clearfix"><button class=" pull-right" ng-click="getUrl()">getUrl</button></div>
+
+    <h3>输入desc</h3>
+    <div>
+        <textarea ng-model="desc" style="width: 100%;height:360px;;"></textarea>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <button class="btn btn-default" ng-click="save()">save</button>
+    <button class="btn btn-default" ng-click="closeThisDialog()">close</button>
+</div>

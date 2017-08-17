@@ -1,0 +1,30 @@
+<div class="pagination-sort-container">
+    <div class="pagination-sort">
+        <ul>
+            <li>
+	            <span  ng-click="setSort1(key,theSame)" ng-repeat="key in payOrderSortKeys">
+	                {{key.name}}
+                    <em class="fa fa-sort-asc" ng-class="{'fa-active':(payOrderSortInfo.sortKey==key.code&&upAsc)}"></em>
+                    <em class="fa fa-sort-desc" ng-class="{'fa-active':(payOrderSortInfo.sortKey==key.code&&downDesc)}"></em>
+                   <!-- <em class="fa fa-sort" ng-class="{'active':payOrderSortInfo.sortKey==key.code}"></em>-->
+	            </span>
+
+            </li>
+            <li ng-if="canFoldAll">
+                <span style="display: none" ng-click="spreadAll()">展开全部<em class="fa fa-table  active"></em></span>
+                <i  ng-click="foldAll1()">收起</i>
+            </li>
+            <li>
+	            <span>
+	                <em ng-click="pre1()"
+                        ng-class="{'disabled':pageInfo.currentIndex==1}"
+                        class="fa fa-angle-left page-self"></em>
+	                {{payorder_pageInfo.currentIndex}}/{{calculatePageCount1()}}
+	                <em ng-click="next1()" ng-class="{'disabled':payorder_pageInfo.currentIndex==calculatePageCount1()}"
+                        class="fa fa-angle-right page-self"></em>
+	            </span>
+            </li>
+        </ul>
+    </div>
+</div>
+

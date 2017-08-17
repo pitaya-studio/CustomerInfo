@@ -1,0 +1,35 @@
+<div class="pagination">
+    <div class="endPage">
+        <ul>
+            <li ng-class="{'disabled':pageInfo.currentIndex==1}">
+                <span href="javascript:void(0)" ng-click="pre()">&lt;</span>
+            </li>
+
+            <!--第一页-->
+            <li  ng-class="{'active':1==pageInfo.currentIndex}"><span ng-click="goto(1)">1</span></li>
+
+            <li class="disabled" ng-show="isShowPreEllipsis()"><span>...</span></li>
+
+            <li ng-repeat=" centerIndex in getCenterList()" ng-class="{'active':centerIndex==pageInfo.currentIndex}">
+                <span ng-click="goto(centerIndex)">{{centerIndex}}</span>
+            </li>
+
+
+            <li class="disabled" ng-show="isShowNextEllipsis()"><span>...</span></li>
+
+            <!--最后1页-->
+            <li  ng-if="calculatePageCount()>1"  ng-class="{'active':calculatePageCount()==pageInfo.currentIndex}" ><span ng-click="goto(calculatePageCount())">{{calculatePageCount()}}</span></li>
+
+            <li ng-class="{'disabled':pageInfo.currentIndex==calculatePageCount()}">
+                <span href="javascript:void(0)" ng-click="next()">&gt;</span>
+            </li>
+            <li class="disabled controls">
+                <span href="javascript:">共 {{pageInfo.totalRowCount}} 条 到第
+                <input type="text" ng-model="currentIndex"> 页 <button ng-click="confirmCurrentIndex()">确认</button>
+                    每页显示<select ng-model="pageInfo.rowCount" ng-options="value as value for value in [10,20,50]"></select>条
+                </span>
+            </li>
+        </ul>
+        <div style="clear:both;"></div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<state-machine>
+    <state id="start" value="0" desc="未录入" class="com.trekiz.admin.modules.cost.state.OperatorStartState" >
+        <next-state event="commit" ref="operatorCommited" />
+        <next-state event="save" ref="operatorSaved" />
+    </state>
+    
+    <state id="operatorCommited" desc="计调成本已提交" value="1" class="com.trekiz.admin.modules.cost.state.OperatorCommitedState" >
+        <next-state event="commit" ref="financeAccepted" />
+    </state>
+    
+    <state id="operatorSaved" desc="计调成本已保存" value="2" class="com.trekiz.admin.modules.cost.state.OperatorSavedState">
+        <next-state event="commit" ref="operatorCommited" />
+        <next-state event="save" ref="operatorSaved" />
+    </state>
+
+    <state id="financeAccepted" desc="计调成本已提交" value="1" class="com.trekiz.admin.modules.cost.state.FinanceAcceptedState" >
+        <next-state event="commit" ref="financeCommited" />
+        <next-state event="save" ref="financeSaved" />
+    </state>
+
+    <state id="financeCommited" desc="财务成本已提交" value="4" class="com.trekiz.admin.modules.cost.state.FinanceCommitedState" >
+        <next-state event="commit" ref="directorAccepted" />
+    </state>
+
+    <state id="financeSaved" desc="财务成本已保存" value="3" class="com.trekiz.admin.modules.cost.state.FinanceSavedState" >
+        <next-state event="commit" ref="financeCommited" />
+        <next-state event="save" ref="financeSaved" />
+    </state>
+    
+    <state id="directorAccepted" desc="待总经理审核" value="4" class="com.trekiz.admin.modules.cost.state.DirectorAcceptedState" >
+        <next-state event="commit" ref="directorCommited" />
+        <next-state event="refuseoperator" ref="operatorRollback" />
+        <next-state event="refusefinance" ref="financeRollback" />
+        <next-state event="refuseBoth" ref="operatorFinanceRollback" />
+    </state>
+    
+    <state id="directorCommited" desc="审批通过" value="7" class="com.trekiz.admin.modules.cost.state.DirectorCommitedState" >
+    </state>
+
+    <state id="operatorRollback" desc="计调成本被驳回" value="8" class="com.trekiz.admin.modules.cost.state.OperatorRollbackState" >
+        <next-state event="commit" ref="directorAccepted" />
+        <next-state event="save" ref="operatorSaved" />
+    </state>
+
+    <state id="financeRollback" desc="财务成本被驳回" value="9" class="com.trekiz.admin.modules.cost.state.FinanceRollbackState" >
+        <next-state event="commit" ref="directorAccepted" />
+        <next-state event="save" ref="financeSaved" />
+    </state>
+    
+    
+    <state id="operatorFinanceRollback" desc="计调财务成本被驳回" value="10" class="com.trekiz.admin.modules.cost.state.OperatorFinanceRollbackState" >
+        <next-state event="commit" ref="financeAcceptedInOperatorFinanceRollback" />
+        <next-state event="save" ref="operatorSaved" />
+    </state>
+    
+    <state id="financeAcceptedInOperatorFinanceRollback" desc="计调财务成本被驳回，计调成本已重新修改" value="11" class="com.trekiz.admin.modules.cost.state.FinanceAcceptedInOperatorFinanceRollbackState" >
+        <next-state event="commit" ref="directorAccepted" />
+        <next-state event="save" ref="financeAcceptedInOperatorFinanceRollback" />
+    </state>
+    
+    <bean name="operator" class="com.trekiz.admin.modules.cost.entity.OperatorSpecificCost" start="start" />
+    <bean name="operatorBudget" class="com.trekiz.admin.modules.cost.entity.OperatorBudgetCost" start="start" />
+    <bean name="finance" class="com.trekiz.admin.modules.cost.entity.FinanceSpecificCost" start="financeAccepted" />
+    
+    <bean name="activityGroup" class="com.trekiz.admin.modules.activity.entity.ActivityGroup" start="start" />
+</state-machine>

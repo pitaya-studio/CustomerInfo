@@ -1,0 +1,192 @@
+<div class="contact-info " ng-class="{'spread':!fold,'fold':fold}" ng-init="fold=true" ng-show="companyRoleCode!='0'">
+    <div class="name-tel-info" ng-if="editModel=='edit'">
+        <span>
+            <i class="fa fa-plus" ng-if="fold && saveModel!='commit'" ng-click="add()"></i>
+            <label>
+                <span class="require">*</span>
+                联系人：
+            </label>
+             <div class="show-text-md" ng-if="saveModel=='commit'">{{contact.name}}</div>
+            <input class="text-input-md-third"
+                   qc-valid-required="" ng-if="saveModel!='commit'"
+                   ng-model="contact.name" type="text"/>
+        </span>
+        <span>
+            <label>
+                <span class="require">*</span>
+                电话：
+            </label>
+              <div class="show-text-md" ng-if="saveModel=='commit'">{{contact.phone}}</div>
+            <input class="text-input-md-third"
+                   qc-valid-required="" ng-if="saveModel!='commit'"
+                   ng-model="contact.phone" type="text" maxlength="15"/>
+        </span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="toggle()"></em>
+        <div class="del fa fa-times" ng-if="canDelete && !fold &&saveModel!='commit'" ng-click="remove(contact)"></div>
+
+        <div class="close fa fa-times"
+             ng-if="canDelete && fold &&saveModel!='commit'"
+             ng-click="remove(contact)">
+        </div>
+    </div>
+    <div class="other-info" ng-if="!fold && editModel=='edit'">
+        <span>
+            <label>固定电话：</label>
+            <input class="text-input-md-third"
+                   ng-model="contact.tel" type="text" maxlength="15"/>
+        </span>
+        <span>
+            <label>邮编：</label>
+            <input class="text-input-md-third"
+                   ng-model="contact.zipcode" type="text"/>
+        </span>
+        <span class="address">
+            <label>地址：</label>
+            <input class="text-input-md-third"
+                   ng-model="contact.address" type="text"/>
+        </span>
+        <span>
+            <label>传真：</label>
+            <input class="text-input-md-third"
+                   ng-model="contact.tax" type="text"/>
+        </span>
+        <div class="add fa fa-plus"
+             ng-if="!fold && saveModel!='commit'"
+             ng-click="add()"></div>
+    </div>
+
+
+    <div class="name-tel-info" ng-if="editModel!='edit'">
+        <span>
+            <label>
+                <span class="require">*</span>
+                联系人：
+            </label>
+            <div class="show-text-md" title="{{contact.name}}">{{contact.name}}</div>
+        </span>
+        <span>
+            <label>
+                <span class="require">*</span>
+                电话：
+            </label>
+            <div class="show-text-md" title="{{contact.phone}}">{{contact.phone}}</div>
+        </span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="toggle()"></em>
+        <!--        <div class=" del fa fa-times" "></div>-->
+    </div>
+
+    <div class="other-info" ng-if="!fold && editModel!='edit'">
+        <span>
+            <label>固定电话：</label>
+            <div class="show-text-md" title="{{contact.tel}}">{{contact.tel}}</div>
+        </span>
+        <span>
+            <label>邮编：</label>
+            <div class="show-text-md" title="{{contact.address}}">{{contact.zipcode}}</div>
+        </span>
+        <span class="address">
+            <label>地址：</label>
+            <div class="show-text-md" title="{{contact.address}}">{{contact.address}}</div>
+        </span>
+        <span>
+            <label>传真：</label>
+            <div class="show-text-md" title="{{contact.tax}}">{{contact.tax}}</div>
+        </span>
+    </div>
+</div>
+<div class="contact-info " ng-class="{'spread':!fold,'fold':fold}" ng-init="fold=true" ng-show="companyRoleCode=='0'">
+    <div class="name-tel-info" ng-if="editModel=='edit'">
+        <span>
+            <i class="fa fa-plus" ng-if="fold" ng-click="add()"></i>
+            <label>
+                <span class="require">*</span>
+                联系人：
+            </label>
+             <!--<div class="show-text-md" ng-if="saveModel=='commit'">{{contact.name}}</div>-->
+            <input class="text-input-md-third"
+                   qc-valid-required=""
+                   ng-model="contact.name" type="text"/>
+        </span>
+        <span>
+            <label>
+                <span class="require">*</span>
+                电话：
+            </label>
+              <!--<div class="show-text-md" ng-if="saveModel=='commit'">{{contact.phone}}</div>-->
+            <input class="text-input-md-third"
+                   qc-valid-required=""
+                   ng-model="contact.phone" type="text" maxlength="15"/>
+        </span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="toggle()"></em>
+        <div class="del fa fa-times" ng-if="canDelete && !fold" ng-click="remove(contact)"></div>
+
+        <div class="close fa fa-times"
+             ng-if="canDelete && fold"
+             ng-click="remove(contact)">
+        </div>
+    </div>
+    <div class="other-info" ng-if="!fold && editModel=='edit'">
+        <span>
+            <label>固定电话：</label>
+            <input class="text-input-md-third"
+                   ng-model="contact.tel" type="text" maxlength="15"/>
+        </span>
+        <span>
+            <label>邮编：</label>
+            <input class="text-input-md-third"
+                   ng-model="contact.zipcode" type="text"/>
+        </span>
+        <span class="address">
+            <label>地址：</label>
+            <input class="text-input-md-third"
+                   ng-model="contact.address" type="text"/>
+        </span>
+        <span>
+            <label>传真：</label>
+            <input class="text-input-md-third"
+                   ng-model="contact.tax" type="text"/>
+        </span>
+        <div class="add fa fa-plus"
+             ng-if="!fold"
+             ng-click="add()"></div>
+    </div>
+
+
+    <div class="name-tel-info" ng-if="editModel!='edit'">
+        <span>
+            <label>
+                <span class="require">*</span>
+                联系人：
+            </label>
+            <div class="show-text-md" title="{{contact.name}}">{{contact.name}}</div>
+        </span>
+        <span>
+            <label>
+                <span class="require">*</span>
+                电话：
+            </label>
+            <div class="show-text-md" title="{{contact.phone}}">{{contact.phone}}</div>
+        </span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="toggle()"></em>
+        <!--        <div class=" del fa fa-times" "></div>-->
+    </div>
+
+    <div class="other-info" ng-if="!fold && editModel!='edit'">
+        <span>
+            <label>固定电话：</label>
+            <div class="show-text-md" title="{{contact.tel}}">{{contact.tel}}</div>
+        </span>
+        <span>
+            <label>邮编：</label>
+            <div class="show-text-md" title="{{contact.address}}">{{contact.zipcode}}</div>
+        </span>
+        <span class="address">
+            <label>地址：</label>
+            <div class="show-text-md" title="{{contact.address}}">{{contact.address}}</div>
+        </span>
+        <span>
+            <label>传真：</label>
+            <div class="show-text-md" title="{{contact.tax}}">{{contact.tax}}</div>
+        </span>
+    </div>
+</div>

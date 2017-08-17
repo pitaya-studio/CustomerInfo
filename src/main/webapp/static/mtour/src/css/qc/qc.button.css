@@ -1,0 +1,463 @@
+/*S按钮样式文件*/
+.butn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.butn:hover,
+.butn:focus,
+.butn.focus {
+  color: #333333;
+  text-decoration: none;
+}
+.butn:active,
+.butn.active {
+  outline: 0;
+  background-image: none;
+}
+.butn.disabled,
+.butn[disabled],
+fieldset[disabled] .butn {
+  cursor: not-allowed;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  box-shadow: none;
+}
+a.butn.disabled,
+fieldset[disabled] a.butn {
+  pointer-events: none;
+}
+.butn-default {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.butn-default:focus,
+.butn-default.focus {
+  color: #333333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.butn-default:hover {
+  color: #333333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.butn-default:active,
+.butn-default.active,
+.open > .dropdown-toggle.butn-default {
+  color: #333333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.butn-default:active:hover,
+.butn-default.active:hover,
+.open > .dropdown-toggle.butn-default:hover,
+.butn-default:active:focus,
+.butn-default.active:focus,
+.open > .dropdown-toggle.butn-default:focus,
+.butn-default:active.focus,
+.butn-default.active.focus,
+.open > .dropdown-toggle.butn-default.focus {
+  color: #333333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+.butn-default:active,
+.butn-default.active,
+.open > .dropdown-toggle.butn-default {
+  background-image: none;
+}
+.butn-default.disabled,
+.butn-default[disabled],
+fieldset[disabled] .butn-default,
+.butn-default.disabled:hover,
+.butn-default[disabled]:hover,
+fieldset[disabled] .butn-default:hover,
+.butn-default.disabled:focus,
+.butn-default[disabled]:focus,
+fieldset[disabled] .butn-default:focus,
+.butn-default.disabled.focus,
+.butn-default[disabled].focus,
+fieldset[disabled] .butn-default.focus,
+.butn-default.disabled:active,
+.butn-default[disabled]:active,
+fieldset[disabled] .butn-default:active,
+.butn-default.disabled.active,
+.butn-default[disabled].active,
+fieldset[disabled] .butn-default.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.butn-default .badge {
+  color: #ffffff;
+  background-color: #333333;
+}
+.butn-primary {
+  color: #ffffff;
+  background-color: #337ab7;
+  border-color: #2d6da3;
+}
+.butn-primary:focus,
+.butn-primary.focus {
+  color: #ffffff;
+  background-color: #285f8f;
+  border-color: #122a3f;
+}
+.butn-primary:hover {
+  color: #ffffff;
+  background-color: #285f8f;
+  border-color: #204d73;
+}
+.butn-primary:active,
+.butn-primary.active,
+.open > .dropdown-toggle.butn-primary {
+  color: #ffffff;
+  background-color: #285f8f;
+  border-color: #204d73;
+}
+.butn-primary:active:hover,
+.butn-primary.active:hover,
+.open > .dropdown-toggle.butn-primary:hover,
+.butn-primary:active:focus,
+.butn-primary.active:focus,
+.open > .dropdown-toggle.butn-primary:focus,
+.butn-primary:active.focus,
+.butn-primary.active.focus,
+.open > .dropdown-toggle.butn-primary.focus {
+  color: #ffffff;
+  background-color: #204d73;
+  border-color: #122a3f;
+}
+.butn-primary:active,
+.butn-primary.active,
+.open > .dropdown-toggle.butn-primary {
+  background-image: none;
+}
+.butn-primary.disabled,
+.butn-primary[disabled],
+fieldset[disabled] .butn-primary,
+.butn-primary.disabled:hover,
+.butn-primary[disabled]:hover,
+fieldset[disabled] .butn-primary:hover,
+.butn-primary.disabled:focus,
+.butn-primary[disabled]:focus,
+fieldset[disabled] .butn-primary:focus,
+.butn-primary.disabled.focus,
+.butn-primary[disabled].focus,
+fieldset[disabled] .butn-primary.focus,
+.butn-primary.disabled:active,
+.butn-primary[disabled]:active,
+fieldset[disabled] .butn-primary:active,
+.butn-primary.disabled.active,
+.butn-primary[disabled].active,
+fieldset[disabled] .butn-primary.active {
+  background-color: #337ab7;
+  border-color: #2d6da3;
+}
+.butn-primary .badge {
+  color: #337ab7;
+  background-color: #ffffff;
+}
+.butn-success {
+  color: #ffffff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.butn-success:focus,
+.butn-success.focus {
+  color: #ffffff;
+  background-color: #449d44;
+  border-color: #255625;
+}
+.butn-success:hover {
+  color: #ffffff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.butn-success:active,
+.butn-success.active,
+.open > .dropdown-toggle.butn-success {
+  color: #ffffff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.butn-success:active:hover,
+.butn-success.active:hover,
+.open > .dropdown-toggle.butn-success:hover,
+.butn-success:active:focus,
+.butn-success.active:focus,
+.open > .dropdown-toggle.butn-success:focus,
+.butn-success:active.focus,
+.butn-success.active.focus,
+.open > .dropdown-toggle.butn-success.focus {
+  color: #ffffff;
+  background-color: #398439;
+  border-color: #255625;
+}
+.butn-success:active,
+.butn-success.active,
+.open > .dropdown-toggle.butn-success {
+  background-image: none;
+}
+.butn-success.disabled,
+.butn-success[disabled],
+fieldset[disabled] .butn-success,
+.butn-success.disabled:hover,
+.butn-success[disabled]:hover,
+fieldset[disabled] .butn-success:hover,
+.butn-success.disabled:focus,
+.butn-success[disabled]:focus,
+fieldset[disabled] .butn-success:focus,
+.butn-success.disabled.focus,
+.butn-success[disabled].focus,
+fieldset[disabled] .butn-success.focus,
+.butn-success.disabled:active,
+.butn-success[disabled]:active,
+fieldset[disabled] .butn-success:active,
+.butn-success.disabled.active,
+.butn-success[disabled].active,
+fieldset[disabled] .butn-success.active {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.butn-success .badge {
+  color: #5cb85c;
+  background-color: #ffffff;
+}
+.butn-info {
+  color: #ffffff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.butn-info:focus,
+.butn-info.focus {
+  color: #ffffff;
+  background-color: #31b0d5;
+  border-color: #1b6d85;
+}
+.butn-info:hover {
+  color: #ffffff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.butn-info:active,
+.butn-info.active,
+.open > .dropdown-toggle.butn-info {
+  color: #ffffff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.butn-info:active:hover,
+.butn-info.active:hover,
+.open > .dropdown-toggle.butn-info:hover,
+.butn-info:active:focus,
+.butn-info.active:focus,
+.open > .dropdown-toggle.butn-info:focus,
+.butn-info:active.focus,
+.butn-info.active.focus,
+.open > .dropdown-toggle.butn-info.focus {
+  color: #ffffff;
+  background-color: #269abc;
+  border-color: #1b6d85;
+}
+.butn-info:active,
+.butn-info.active,
+.open > .dropdown-toggle.butn-info {
+  background-image: none;
+}
+.butn-info.disabled,
+.butn-info[disabled],
+fieldset[disabled] .butn-info,
+.butn-info.disabled:hover,
+.butn-info[disabled]:hover,
+fieldset[disabled] .butn-info:hover,
+.butn-info.disabled:focus,
+.butn-info[disabled]:focus,
+fieldset[disabled] .butn-info:focus,
+.butn-info.disabled.focus,
+.butn-info[disabled].focus,
+fieldset[disabled] .butn-info.focus,
+.butn-info.disabled:active,
+.butn-info[disabled]:active,
+fieldset[disabled] .butn-info:active,
+.butn-info.disabled.active,
+.butn-info[disabled].active,
+fieldset[disabled] .butn-info.active {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.butn-info .badge {
+  color: #5bc0de;
+  background-color: #ffffff;
+}
+.butn-warning {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.butn-warning:focus,
+.butn-warning.focus {
+  color: #ffffff;
+  background-color: #ec971f;
+  border-color: #985f0d;
+}
+.butn-warning:hover {
+  color: #ffffff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.butn-warning:active,
+.butn-warning.active,
+.open > .dropdown-toggle.butn-warning {
+  color: #ffffff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.butn-warning:active:hover,
+.butn-warning.active:hover,
+.open > .dropdown-toggle.butn-warning:hover,
+.butn-warning:active:focus,
+.butn-warning.active:focus,
+.open > .dropdown-toggle.butn-warning:focus,
+.butn-warning:active.focus,
+.butn-warning.active.focus,
+.open > .dropdown-toggle.butn-warning.focus {
+  color: #ffffff;
+  background-color: #d58512;
+  border-color: #985f0d;
+}
+.butn-warning:active,
+.butn-warning.active,
+.open > .dropdown-toggle.butn-warning {
+  background-image: none;
+}
+.butn-warning.disabled,
+.butn-warning[disabled],
+fieldset[disabled] .butn-warning,
+.butn-warning.disabled:hover,
+.butn-warning[disabled]:hover,
+fieldset[disabled] .butn-warning:hover,
+.butn-warning.disabled:focus,
+.butn-warning[disabled]:focus,
+fieldset[disabled] .butn-warning:focus,
+.butn-warning.disabled.focus,
+.butn-warning[disabled].focus,
+fieldset[disabled] .butn-warning.focus,
+.butn-warning.disabled:active,
+.butn-warning[disabled]:active,
+fieldset[disabled] .butn-warning:active,
+.butn-warning.disabled.active,
+.butn-warning[disabled].active,
+fieldset[disabled] .butn-warning.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.butn-warning .badge {
+  color: #f0ad4e;
+  background-color: #ffffff;
+}
+.butn-danger {
+  color: #ffffff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.butn-danger:focus,
+.butn-danger.focus {
+  color: #ffffff;
+  background-color: #c9302c;
+  border-color: #761c19;
+}
+.butn-danger:hover {
+  color: #ffffff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.butn-danger:active,
+.butn-danger.active,
+.open > .dropdown-toggle.butn-danger {
+  color: #ffffff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.butn-danger:active:hover,
+.butn-danger.active:hover,
+.open > .dropdown-toggle.butn-danger:hover,
+.butn-danger:active:focus,
+.butn-danger.active:focus,
+.open > .dropdown-toggle.butn-danger:focus,
+.butn-danger:active.focus,
+.butn-danger.active.focus,
+.open > .dropdown-toggle.butn-danger.focus {
+  color: #ffffff;
+  background-color: #ac2925;
+  border-color: #761c19;
+}
+.butn-danger:active,
+.butn-danger.active,
+.open > .dropdown-toggle.butn-danger {
+  background-image: none;
+}
+.butn-danger.disabled,
+.butn-danger[disabled],
+fieldset[disabled] .butn-danger,
+.butn-danger.disabled:hover,
+.butn-danger[disabled]:hover,
+fieldset[disabled] .butn-danger:hover,
+.butn-danger.disabled:focus,
+.butn-danger[disabled]:focus,
+fieldset[disabled] .butn-danger:focus,
+.butn-danger.disabled.focus,
+.butn-danger[disabled].focus,
+fieldset[disabled] .butn-danger.focus,
+.butn-danger.disabled:active,
+.butn-danger[disabled]:active,
+fieldset[disabled] .butn-danger:active,
+.butn-danger.disabled.active,
+.butn-danger[disabled].active,
+fieldset[disabled] .butn-danger.active {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.butn-danger .badge {
+  color: #d9534f;
+  background-color: #ffffff;
+}
+.butn-lg {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+.butn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.butn-xs {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.butn-block {
+  display: block;
+  width: 100%;
+}
+.butn-block + .butn-block {
+  margin-top: 5px;
+}
+input[type="submit"].butn-block,
+input[type="reset"].butn-block,
+input[type="button"].butn-block {
+  width: 100%;
+}
+/*E按钮样式文件*/

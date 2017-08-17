@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>美途国际组件库</title>
+<link href="http://www.trekiz.com/favicon.ico" rel="shortcut icon" />
+<link href="../../components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="../../components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<link href="../../css/qc/quauq.css" rel="stylesheet" type="text/css">
+<link href="../../components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">       
+    </head>
+        <body>        
+        <p>上部分分页</p>
+        <div class="pagination-sort">
+        	<ul>
+            	<li><span>创建时间<em class="fa fa-sort active"></em></span> <span>更新时间<em  class="fa fa-sort"></em></span> <span>出团日期<em  class="fa fa-sort active"></em></span></li>
+                <li><span>展开全部<em  class="fa fa-table  active"></em></span> <i>收起</i></li>
+                <li><span><em class="fa fa-angle-left"></em>10/999<em  class="fa fa-angle-right"></em></span></li>
+            </ul>	
+        </div>
+        <p>下部分分页</p>
+        <div class="page">
+              <div class="pagination">
+                <div class="endPage">
+                  <ul>
+                    <li class="disabled"><a href="javascript:">< 上一页</a></li>
+                    <li class="active"><a href="javascript:">1</a></li>
+                    <li><a href="javascript:page(2,10);">2</a></li>
+                    <li><a href="javascript:page(3,10);">3</a></li>
+                    <li><a href="javascript:page(4,10);">4</a></li>
+                    <li><a href="javascript:page(5,10);">5</a></li>
+                    <li><a href="javascript:page(6,10);">6</a></li>
+                    <li><a href="javascript:page(7,10);">7</a></li>
+                    <li><a href="javascript:page(8,10);">8</a></li>
+                    <li class="disabled"><a href="javascript:">...</a></li>
+                    <li><a href="javascript:page(25,10);">25</a></li>
+                    <li><a href="javascript:page(2,10);">下一页 ></a></li>
+                    <li class="disabled controls"><a href="javascript:">当前
+                      <input type="text" value="5" onkeypress="var e=window.event||event||this;var c=e.keyCode||e.which;if(c==13)page(this.value,10);" onclick="this.select();"/>
+                      /
+                      <input type="text" value="30" onkeypress="var e=window.event||event||this;var c=e.keyCode||e.which;if(c==13)page(1,this.value);" onclick="this.select();"/>
+                      条，共 242 条</a></li>
+                  </ul>
+                  <div style="clear:both;"></div>
+                </div>
+              </div>
+            </div>
+            
+</body>
+</html>

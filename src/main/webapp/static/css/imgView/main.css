@@ -1,0 +1,153 @@
+/* Basic style
+ * -------------------------------------------------------------------------- */
+
+/* Header */
+
+.docs-header {
+  margin-bottom: 0;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+  border-color: #337ab7;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: #337ab7;
+}
+
+.docs-jumbotron {
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+.docs-jumbotron .version {
+  font-size: 14px;
+  color: #fff;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+.docs-header {
+  position: relative;
+}
+
+.docs-header > small {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.docs-pictures{
+margin-right: -58px;
+margin-top: 20px;
+margin-bottom: 55px;
+}
+.docs-pictures li {
+  width: 311px;
+  height: 216px;
+  float: left;
+  text-align:center;
+  font-size:128px;
+  margin-right: 50px;
+  border: 2px solid #c5932c;
+  padding: 5px 10px;
+  margin-bottom: 50px;
+}
+/*.docs-pictures li div{*/
+/*display:table-cell;*/
+/*width: 310px;*/
+/*height: 220px;*/
+/*font-size:118px;*/
+/*vertical-align:middle;*/
+/*}*/
+.docs-pictures li div img{
+vertical-align:middle;
+max-height: 220px;
+max-width: 310px;
+font-size: 12px;
+height: 216px;
+width: 310px;
+cursor: pointer;
+}
+
+.docs-toggles > .btn,
+.docs-toggles > .btn-group {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+  .docs-collapse {
+    display: block;
+  }
+}
+
+.docs-buttons > .btn-group,
+.docs-buttons > .input-group {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.docs-buttons .input-group-btn {
+  width: 50%;
+}
+
+.docs-buttons .input-group-btn .btn {
+  width: 100%;
+}
+
+
+/* Footer */
+
+.docs-footer {
+  overflow: hidden;
+}
+
+.hearts {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #ddd;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.hearts:hover {
+  color: #ff4136;
+}
+
+.hearts:before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  display: block;
+  height: 0;
+  border-top: 1px solid #eee;
+  content: " ";
+}
+
+.hearts:after {
+  position: relative;
+  z-index: 1;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #fff;
+  content: "♥";
+}
+
+
+/* Google Code Prettify
+ * -------------------------------------------------------------------------- */
+
+.prettyprint {
+  margin-bottom: 0;
+  padding: 15px !important;
+  border: 1px solid #ddd !important;
+}

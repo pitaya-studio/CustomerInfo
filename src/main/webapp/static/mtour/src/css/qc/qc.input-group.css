@@ -1,0 +1,45 @@
+/*S*/
+.qc-input-group-md {
+  width: 90px;
+  height: 20px;
+}
+.qc-input-group-md-second {
+  width: 80px;
+  height: 28px;
+}
+.qc-input-group-base-seond {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  background-color: #ffffff;
+}
+.qc-input-group-base-seond > .qc-dropdown {
+  float: left;
+  width: 30px;
+  height: 18px;
+  border: none;
+}
+.qc-input-group-base-seond .text-input {
+  float: left;
+  width: 30px;
+  padding: 0 5px;
+  background-color: transparent;
+  border: none;
+}
+.qc-input-group-base {
+  border: 1px solid #ffe0c1;
+  background-color: #ffffff;
+}
+.qc-input-group-base > .qc-dropdown {
+  float: left;
+  width: 30px;
+  height: 18px;
+  border: none;
+}
+.qc-input-group-base .text-input {
+  float: left;
+  width: 50px;
+  background-color: transparent;
+  border: none;
+}
+/*E*/

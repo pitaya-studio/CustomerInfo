@@ -1,0 +1,151 @@
+	*{font-family: 微软雅黑, Arial, 宋体;color:#fff;font-size:12px;padding:0;margin:0;}
+	html{
+		height:100%;
+		overflow: hidden;}
+	label,button{
+		cursor: pointer;
+	}
+	body{
+		background: url(../images/huiTeng/back1.jpg)no-repeat;
+		/*min-height: 680px;*/
+		/*background-size: 100%;*/
+		position: relative;
+		height: 100%;
+	}
+	li{list-style: none;}
+	.login_content{
+	}
+	.opacity_back{
+		width: 345px;
+    	min-height: 375px;
+	    margin: 200px auto;
+	    margin-top: 132px;
+	    box-shadow: 0px 0px 45px -8px #262626;
+	    background: url(../images/huiTeng/bg_white_20.png);
+	    border-radius: 10px;
+	    text-align: center;
+    	padding: 40px 70px;
+	}
+	/*.login_part{
+		margin-top: 30px
+	}
+	.login_part li{
+		line-height: 40px;
+		margin-top: 20px;
+
+	}
+	.input_style{
+		border: 1px solid #ffffff;
+    	border-radius: 5px;
+	}*/
+
+	input[type="text"],input[type="password"]{
+    border: 1px #fff solid;
+    border-radius: 5px;
+    width: 282px;
+    height: 30px;
+    margin-bottom: 20px;
+    background: url("../images/huiTeng/password-bg.png") no-repeat -1px -1px;
+    line-height: 30px;
+    padding-left: 50px;
+    color:#fff;
+	}
+	input:focus{
+	outline:none;
+    border:1px #fff solid;
+
+	}
+	input[type="text"]{
+		margin-top:32px;
+		background: url("../images/huiTeng/user-bg.png") no-repeat -1px -1px;
+	}
+
+	#remember-forget{
+		color:#fff;
+		text-align: left;
+		margin-top: 4px;
+		clear: both;
+	}
+
+	#remember-forget input{
+		margin: 0;
+    	vertical-align: middle;
+	}
+
+	#remember-forget a{
+	    color: #fff;
+	    text-decoration: none;
+	    float: right;
+	}
+	button{
+	width: 343px;
+    height: 40px;
+    background: #ff9600;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-top: 22px;
+	}
+	p.brower{
+		margin-top: 0;
+		padding-top: 0;
+		border: none;
+		width: 100%;
+		clear: both;
+	}
+	.brower a {
+    text-indent: -9999em;
+    overflow: hidden;
+    vertical-align: top;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    margin-right: 10px;
+    background: url(../images/huiTeng/browser-new.png) no-repeat;
+}
+
+.brower a.browser-ie8 {
+    background-position: -27px 0;
+}
+.brower a.browser-gg {
+    background-position: -52px 0;
+}
+
+footer{
+	position:fixed;
+	bottom:30px;
+	left: 42px;
+	text-shadow: 0 0 20px #000;
+}
+
+@media screen and (max-height:638px){
+
+.opacity_back{
+	margin-top:3%;
+}
+
+}
+
+form{
+	margin-bottom:10px;
+}
+	#validateCode{
+		background: url("../images/huiTeng/user-bg.png") no-repeat -48px -1px;
+		height: 17px;
+		margin-top: 0px;
+		padding-left: 5px;
+		line-height: 17px;
+	}
+	.opacity_back .validateCode {
+		padding-left: 0px;
+		text-align: left;
+		margin-top: -11px;
+	}
+	.opacity_back .mid {
+		margin-top: 0;
+	}
+	#messageBox{
+		padding-left: 5px;
+		margin-left: 0px;
+	}

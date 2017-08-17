@@ -1,0 +1,217 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>成本录入</span>
+    </div>
+</div>
+<div
+        class="dialog-body-md-collect-other dialog-body-cost-input qc-scroll">
+    <div class="first-step-info">
+        <ul>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    款项名称：
+                </label>
+                <input class="text-input-huge" name="" type="text"
+                       ng-model="fundsName" qc-valid-required=""/>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    大编号：
+                </label>
+
+                <div class="qc-dropdown-md mar-r-default" qc-dropdown
+                     ng-model="selectedInvoiceOriginal" qc-valid-required=""
+                     item-text="{{qcDropdownItem.invoiceOriginalTypeCode=='0'?qcDropdownItem.PNR:qcDropdownItem.tourOperatorName}}"
+                     dropdown-text="{{selectedItem.invoiceOriginalTypeCode=='0'?selectedItem.PNR:selectedItem.tourOperatorName}}"
+                     items="bigCodes.invoiceOriginals"></div>
+            </li>
+            <li ng-show="companyRoleCode=='0'">
+                <label>
+                    <i
+                            class="require">*
+                    </i>
+                    航段名称：
+                </label>
+
+                <div class="qc-dropdown-md mar-r-default" qc-dropdown
+                     ng-model="selectedAirLineName" qc-valid-required=""
+                     item-text="{{qcDropdownItem.airlineName}}"
+                     dropdown-text="{{selectedItem?selectedItem.airlineName:''}}" items="airlineNames"></div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    人数：
+                </label>
+                <input class="text-input-huge" name="" type="text"
+                       ng-model="peopleCount" qc-valid-required="" qc-input-int=""/>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    单价：
+                </label>
+
+                <div class="qc-input-group-base-third qc-input-group-md-third">
+                    <div class="qc-dropdown" qc-dropdown ng-model="selectedCurrency"
+                         qc-valid-required="" item-text="{{qcDropdownItem.currencyCode}}"
+                         dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                         items="currencies" list-width="100"></div>
+                    <input class="text-input" name="" type="text" ng-model="price"
+                           qc-input-negative-amount="" qc-valid-required="" ng-show="companyRoleCode=='0'">
+                    <input class="text-input" name="" type="text" ng-model="price"
+                           qc-input-amount="" qc-valid-required="" ng-show="companyRoleCode!='0'">
+                </div>
+            </li>
+        </ul>
+        <div class="money-total order-cost">
+			<span class="current"><label>货币换算：</label><em
+                    ng-bind="defaultCurrency.currencyCode"></em>汇率=<input style="width: 60px" qc-input-exchange-rate=""
+                                                                          ng-show="companyRoleCode=='0'&&selectedCurrency.currencyUuid!=defaultCurrency.currencyUuid"
+                                                                          ng-model="exchangeRate"><em
+                    ng-bind="exchangeRate"
+                    ng-show="companyRoleCode!='0'||(companyRoleCode=='0'&&selectedCurrency.currencyUuid==defaultCurrency.currencyUuid)"></em></span> <span><label>
+            转换后金额：
+        </label><em
+                ng-bind="convertedAmount()|qcCurrency:defaultCurrency.currencyCode"></em></span>
+            <div class="cl-both" ng-show="companyRoleCode=='0'"></div>
+            <div ng-show="companyRoleCode=='0'">
+				<span class="current"><label>
+                    <i class="require">*</i>
+                    定金总额：
+                </label><em
+                        ng-bind="selectedCurrency.currencyCode"></em>/<em
+                        ng-bind="exchangeRate"></em> <input
+                        class="text-input-huge" qc-input-amount="" type="text"
+                        qc-valid-required="" ng-model="costTotalDeposit"> </span>
+            </div>
+        </div>
+    </div>
+    <div class="second-step-info">
+        <ul ng-show="companyRoleCode=='0'">
+            <li>
+                <label>
+                    <!--<i class="require">*</i>--> 地接社类型：
+                </label>
+                <span ng-bind="selectedInvoiceOriginal.tourOperatorTypeName"></span>
+            </li>
+            <li>
+                <label>
+                    <!--<i class="require">*</i>--> 地接社名称：
+                </label><span class="ellipsis show-text-default" title="{{selectedInvoiceOriginal.tourOperatorName}}"
+                              ng-bind="selectedInvoiceOriginal.tourOperatorName"></span>
+            </li>
+            <!-- 
+            <li ng-show="tourOperatorChannelCategoryCode=='2'">
+                <label>渠道类型：</label>
+                <span ng-bind="channelType.channelTypeName"></span>
+            </li>
+            <li ng-show="tourOperatorChannelCategoryCode=='2'"
+                class="ellipsis show-text-base">
+                <label>渠道名称：</label> <span
+                    ng-bind="channel.channelName" title="{{channel.channelName}}"></span>
+            </li>
+             -->
+            <li>
+                <label>收款行名称：</label>
+                <span ng-bind="selectedInvoiceOriginal.receiveBank"></span>
+            </li>
+            <li>
+                <label>收款账户：</label>
+                <span ng-bind="selectedInvoiceOriginal.receiveAccountNo"></span>
+            </li>
+            <li>
+                <label>备注：</label> <textarea class="multi-text-lg" name="" maxlength="150" ng-model="memo"></textarea>
+            </li>
+        </ul>
+        <ul ng-show="companyRoleCode!='0'">
+            <ul>
+                <li class="collect"><span> <label> 类别选择：</label>
+				</span> <span><label class="name-info">
+                    <input class="choice"
+                           ng-model="tourOperatorChannelCategoryCode" value="1" type="radio"/>
+                    地接社
+                </label> </span> <span> <label class="name-info">
+                    <input
+                            class="choice" ng-model="tourOperatorChannelCategoryCode"
+                            type="radio" value="2"/>
+                    渠道商
+                </label>
+				</span>
+                </li>
+            </ul>
+            <li ng-show="tourOperatorChannelCategoryCode=='1'">
+                <label>
+                    <!--<i class="require">*</i>--> 地接社类型：
+                </label> <span ng-show="selectedInvoiceOriginal.invoiceOriginalTypeCode==1"
+                               ng-bind="tourOperatorType.tourOperatorTypeName"></span>
+                <div class="qc-dropdown-md" qc-dropdown ng-model="tourOperatorType"
+                     item-text="{{qcDropdownItem.tourOperatorTypeName}}"
+                     filter-Expression="tourOperatorTypeName"
+                     dropdown-text="{{selectedItem?selectedItem.tourOperatorTypeName:''}}"
+                     items="tourOperatorTypes"
+                     ng-show="selectedInvoiceOriginal.invoiceOriginalTypeCode==0"></div>
+            </li>
+            <li ng-show="tourOperatorChannelCategoryCode=='1'">
+                <label>
+                    <!--<i class="require">*</i>--> 地接社选择：
+                </label> <span class="ellipsis show-text-default" title="{{selectedInvoiceOriginal.tourOperatorName}}"
+                               ng-show="selectedInvoiceOriginal.invoiceOriginalTypeCode==1"
+                               ng-bind="selectedInvoiceOriginal.tourOperatorName"></span>
+                <div tour-operator-dropdown=""
+                     tour-Operator-Type-Code="tourOperatorType.tourOperatorTypeCode"
+                     ng-model="tourOperator"
+                     class="search-condition-item qc-dropdown-md"
+                     ng-show="selectedInvoiceOriginal.invoiceOriginalTypeCode==0"></div>
+            </li>
+            <li ng-show="tourOperatorChannelCategoryCode=='2'">
+                <label>渠道类型：</label>
+                <span ng-bind="channelType.channelTypeName"></span>
+            </li>
+            <li ng-show="tourOperatorChannelCategoryCode=='2'"
+                class="ellipsis show-text-base">
+                <label>渠道名称：</label> <span
+                    ng-bind="channel.channelName" title="{{channel.channelName}}"></span>
+            </li>
+            <li>
+                <label>收款行名称：</label>
+                <input class="text-input-huge" name=""
+                       type="text" ng-model="selectedPayBankName"
+                       ng-show="tourOperatorChannelCategoryCode=='2'&&channelType.channelTypeCode=='2'"/>
+
+                <div class="qc-dropdown-md" qc-dropdown ng-model="selectedPayBank"
+                     item-text="{{qcDropdownItem.bankName}}"
+                     dropdown-text="{{selectedItem?selectedItem.bankName:''}}"
+                     items="paymentBanks"
+                     ng-show="tourOperatorChannelCategoryCode=='2'&&channelType.channelTypeCode=='1'||tourOperatorChannelCategoryCode=='1'"></div>
+            </li>
+            <li>
+                <label>收款账户：</label>
+                <input class="text-input-huge" name=""
+                       type="text" ng-model="selectedPayAccountNo"
+                       ng-show="tourOperatorChannelCategoryCode=='2'&&channelType.channelTypeCode=='2'"/>
+
+                <div class="qc-dropdown-md" qc-dropdown
+                     ng-model="selectedPayAccount"
+                     item-text="{{qcDropdownItem.accountNo}}"
+                     dropdown-text="{{selectedItem?selectedItem.accountNo:''}}"
+                     items="selectedPayBank.accounts"
+                     ng-show="tourOperatorChannelCategoryCode=='2'&&channelType.channelTypeCode=='1'||tourOperatorChannelCategoryCode=='1'"></div>
+            </li>
+            <li>
+                <label>备注：</label>
+                <textarea class="multi-text-lg" name="" ng-model="memo"></textarea>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="butn butn-default" ng-disabled="settlementLockStatus==1" ng-click="save('1')">保存并提交
+        </button>
+        <button class="butn butn-primary" ng-click="save('0')">保存</button>
+    </div>
+</div>

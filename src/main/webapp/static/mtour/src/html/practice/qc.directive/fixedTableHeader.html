@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.scroll.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.table.fixedheader.css">
+    <style type="text/css">
+        .qc-table-container {
+            background-color: #aea1c3;
+        }
+        table{
+            table-layout:fixed;
+        }
+        table th{
+            background-color: #eea1c3;
+        }
+        table.table{
+            margin-bottom: 0px;
+        }
+        html,body{
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script src="/src/components/jquery-nicescroll/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+    <script type="text/javascript" src="/src/components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="/src/components/angular-resource/angular-resource.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.scroll.js"></script>
+    <script type="text/javascript" src="/src/js/qc/directive/qc.table.fixedHeader.js"></script>
+    <script type="text/javascript">
+        var fixedTableHeader = angular.module('fixedTableHeader', ['qc', 'ngAnimate']);
+        fixedTableHeader.controller('FixedHeaderController', ['$scope', function ($scope) {
+            $scope.list = [];
+            for (var i = 0; i < 50; i++) {
+                $scope.header={
+                    name:'姓名'
+                };
+                $scope.list.push({
+                    name: 'z3',
+                    age: 12,
+                    salary: 2000,
+                    desc: '好家伙'
+                })
+            }
+        }]);
+    </script>
+</head>
+<body ng-app="fixedTableHeader">
+<div class="page-header">
+    <h1>固定列头</h1>
+</div>
+<div class="qc-table-container qc-scroll" ng-controller="FixedHeaderController">
+    <table qc-table-fixed-header="" class=" table table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 50px;">{{list.length}}</th>
+                <th style="width: 200px;">{{header.name}}</th>
+
+                <th style="width: 100px;">age</th>
+
+                <th style="width: 150px;">salary</th>
+
+                <th style="width: 400px;">desc</th>
+                <th style="width: 800px;">empty</th>
+                <th style="width: 600px;">empty</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="p in list">
+            <tr>
+                <td>{{$index}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.age}}</td>
+                <td>{{p.salary}}</td>
+                <td>{{p.desc}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+   <div class="pull-right"> paging</div>
+</div>
+</body>
+</html>

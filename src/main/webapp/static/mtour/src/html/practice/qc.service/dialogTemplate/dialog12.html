@@ -1,0 +1,502 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+    	<span>快速生成订单</span>
+        <ul class="tab">
+            <li class="active">录入1 <em class="fa fa-times"></em></li>
+        	<li class=""  title="录入文字测试大是多少">录入文字测试大是多少</li>
+            <li>录入3</li>
+            <li>录入4</li>
+            <li>录入5</li>
+            <li>录入6</li>
+            <li>录入7</li>
+            <li>录入8</li>
+            <li>录入9</li>
+            <li>录入10</li>
+        </ul>
+        <span class="add abled">
+        	<em class="fa fa-plus"></em>
+        </span>
+    </div>
+</div>
+<div class="dialog-body-md-fast-build-order dialog-body-cost-input qc-scroll">
+	<div class="left">
+    	<div class="subheading">
+        	<span>订单基本信息</span>
+            <em class="fa fa-angle-double-down"></em>
+        </div>
+        <div class="second-step-info">
+    	<ul>
+        	<li><label>产品名称：</label>
+            	<div class="qc-dropdown-md-second" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+            <li><label>出发机场：</label>
+            	<div class="qc-dropdown-md-second" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+            <li><label>到达机场：</label>
+            	<div class="qc-dropdown-md-second" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+            <li><label>出团日期：</label>
+            	<div class="qc-dropdown-md-second" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+            <li><label>预定人数：</label>
+            	<div class="qc-dropdown-md-second" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+            <li><label>线路国家：</label>
+            	<div class="qc-dropdown-md-second" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+            <li><label>下单人：</label>
+            	<div class="qc-dropdown-md-second" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+            <li><label>票务：</label>
+            	<div class="qc-dropdown-md-second" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+            <li><label>计调：</label>
+            	<div class="qc-dropdown-md-second" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="subheading">
+        	<span>预订人信息</span>
+            <em class="fa fa-angle-double-down"></em>
+        </div>
+        <div class="channel">
+        	<div class="qc-dropdown-xs-channel f-l" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+                <div class="qc-dropdown-md-second f-l" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+        </div>
+        <div class="reservation-info-container">
+        	<div class="contact-info spread">
+            	<div class="name-tel-info">
+					<span><label>联系人：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>电话：</label><input class="text-input-md-third" name="" type="text" /></span>
+                    <em class="fa fa-chevron-right"></em> 
+                </div>
+                <div class="other-info">
+                	<span><label>固定电话：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>邮编：</label><input class="text-input-md-third" name="" type="text" /></span>
+                    <span ><label>地址：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>传真：</label><input class="text-input-md-third" name="" type="text" /></span>
+                </div>
+            </div>
+            <div class="contact-info fold">
+            	<div class="name-tel-info">
+					<span><i class="fa fa-plus"></i><label>联系人：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>电话：</label><input class="text-input-md-third" name="" type="text" /></span>
+                    <em class="fa fa-chevron-right"></em>
+                    <div class="close fa fa-times"></div>
+                </div>
+                <div class="other-info">
+                	<span><label>固定电话：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>邮编：</label><input class="text-input-md-third" name="" type="text" /></span>
+                    <span ><label>地址：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>传真：</label><input class="text-input-md-third" name="" type="text" /></span>
+                </div>
+            </div>
+            <div class="contact-info fold">
+            	<div class="name-tel-info">
+					<span><i class="fa fa-plus"></i><label>联系人：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>电话：</label><input class="text-input-md-third" name="" type="text" /></span>
+                    <em class="fa fa-chevron-right"></em>
+                    <div class="close fa fa-times"></div>
+                </div>
+                <div class="other-info">
+                	<span><label>固定电话：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>邮编：</label><input class="text-input-md-third" name="" type="text" /></span>
+                    <span ><label>地址：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>传真：</label><input class="text-input-md-third" name="" type="text" /></span>
+                </div>
+            </div>
+            <div class="contact-info fold">
+            	<div class="name-tel-info">
+					<span><i class="fa fa-plus"></i><label>联系人：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>电话：</label><input class="text-input-md-third" name="" type="text" /></span>
+                    <em class="fa fa-chevron-right"></em>
+                    <div class="close fa fa-times"></div>
+                </div>
+                <div class="other-info">
+                	<span><label>固定电话：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>邮编：</label><input class="text-input-md-third" name="" type="text" /></span>
+                    <span ><label>地址：</label><input class="text-input-md-third" name="" type="text" /></span>
+					<span><label>传真：</label><input class="text-input-md-third" name="" type="text" /></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+    	<div class="subheading">
+        	<span>费用</span>
+            <em class="fa fa-angle-double-down"></em>
+        </div>
+    	<div class="wrap-number-container spread">
+    	<div class="number">
+       	    <span class="fa fa-plus-square"></span>
+             <span>
+             	<label>大编号：</label>
+             <div class="qc-dropdown-sm" qc-dropdown
+                                                     ng-model="item.orderer"
+                                                     item-text="{{qcDropdownItem.name}}"
+                                                      filter-expression="name"
+                                                     dropdown-text="{{selectedItem?selectedItem.name:''}}"
+                 items="currencies">
+                </div>
+           	 <input type="text" class="text-input-lg-second" value="供应商" /></span>
+             <span><label>航空公司：</label><input type="text" class="text-input-lg-second" value="供应商" /></span>
+            <span class="fa fa-chevron-down"></span>
+        </div>
+        <div class="air-line">
+        	<table>
+            	<thead>
+                	<tr>
+                    <th>&nbsp;</th>
+                    <th>航段名称</th>
+                    <th></th>
+                    <th>币种/汇率</th>
+                    <th>人数</th>
+                    <th>成本单价</th>
+                    <th>成本总额</th>
+                    <th>定金总额</th>
+                    <th>余款总额</th>
+                </tr>
+                </thead>
+            	<tbody>
+                	<tr>
+                        <td></td>
+                        <td rowspan="3"><input type="text" class="text-input-md-second" value="请输入航段名称" /></td>
+                        <td><img src="../../../img/common/background/qc-zs-4_13.png" width="25" height="38" /></td>
+                        <td><div class="qc-input-group-base-seond qc-input-group-md-second">
+                            <div class="qc-dropdown"
+                                                    qc-dropdown="qc-dropdown"
+                                                     ng-model="item.currencyCode"
+                                                     item-text="{{qcDropdownItem.code}}"
+                                                     dropdown-text="{{selectedItem?selectedItem.code:''}}"
+                                                     items="currencies"> </div>
+                            <input class="text-input" name="" type="text"value="/6.4" />
+                        </div></td>
+                        <td><input class="text-input-xs-second"  name="" type="text" />X</td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="input" type="text" value="/6.4"/><span class="base-operator"><em class="fa fa-times"></em><em class="fa fa-plus"></em> </span>
+                            
+                        </td>
+                	</tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="7" class="line-dash-base">
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><img src="../../../img/common/background/qc-zs-4_13-2.png" width="25" height="38" /></td>
+                        <td><div class="qc-input-group-base-seond qc-input-group-md-second"><div class="qc-dropdown"
+                                                    qc-dropdown
+                                                     ng-model="item.currencyCode"
+                                                     item-text="{{qcDropdownItem.code}}"
+                                                     dropdown-text="{{selectedItem?selectedItem.code:''}}"
+                                                     items="currencies"> 
+                                                </div><input class="text-input" name="" type="text"value="/6.4"></div></td>
+                        <td><input class="text-input-xs-second"  name="" type="text" />X</td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input  name="input" type="text" class="text-input-sm" value="/6.4" /><span class="base-operator"><em class="fa fa-times"></em> <em class="fa fa-plus"></em> </span></td>
+                	</tr>
+                </tbody>
+             </table>
+             <table>
+            	<thead>
+                	<tr>
+                    <th>&nbsp;</th>
+                    <th>航段名称</th>
+                    <th></th>
+                    <th>币种/汇率</th>
+                    <th>人数</th>
+                    <th>成本单价</th>
+                    <th>成本总额</th>
+                    <th>定金总额</th>
+                    <th>余款总额</th>
+                </tr>
+                </thead>
+            	<tbody>
+                	<tr>
+                        <td></td>
+                        <td rowspan="3"><input type="text" class="text-input-md-second" value="请输入航段名称" /></td>
+                        <td><img src="../../../img/common/background/qc-zs-4_13.png" width="25" height="38" /></td>
+                        <td><div class="qc-input-group-base-seond qc-input-group-md-second">
+                            <div class="qc-dropdown"
+                                                    qc-dropdown="qc-dropdown"
+                                                     ng-model="item.currencyCode"
+                                                     item-text="{{qcDropdownItem.code}}"
+                                                     dropdown-text="{{selectedItem?selectedItem.code:''}}"
+                                                     items="currencies"> </div>
+                            <input class="text-input" name="" type="text"value="/6.4" />
+                        </div></td>
+                        <td><input class="text-input-xs-second"  name="" type="text" />X</td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="input" type="text" value="/6.4"/><span class="base-operator"><em class="fa fa-times"></em> <em class="fa fa-plus"></em></span>
+                            
+                        </td>
+                	</tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="7" class="line-dash-base">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><img src="../../../img/common/background/qc-zs-4_13-2.png" width="25" height="38" /></td>
+                        <td><div class="qc-input-group-base-seond qc-input-group-md-second"><div class="qc-dropdown"
+                                                    qc-dropdown
+                                                     ng-model="item.currencyCode"
+                                                     item-text="{{qcDropdownItem.code}}"
+                                                     dropdown-text="{{selectedItem?selectedItem.code:''}}"
+                                                     items="currencies"> 
+                                                </div><input class="text-input" name="" type="text"value="/6.4"></div></td>
+                        <td><input class="text-input-xs-second"  name="" type="text" />X</td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input class="text-input-sm"  name="" type="text" /></td>
+                        <td><input  name="input" type="text" class="text-input-sm" value="/6.4" /><span class="base-operator"><em class="fa fa-times"></em> <em class="fa fa-plus"></em> </span></td>
+                	</tr>
+                </tbody>
+            </table>
+
+        </div>	
+        <div class="time-limit">
+        <table class="table-list-md">
+    		<thead>
+            	<tr>
+                <th>出票期限</th>
+                <th>定金期限</th>
+                <th>名单期限</th>
+                <th>改名期限</th>
+                <th>取消期限</th>
+                </tr>
+        	</thead>
+        	<tbody>
+            	<tr>
+                <td><input type="text" class="text-input-md-third fa fa-calendar" value="2015-12-01" qc-date></td>
+				<td><input class="text-input-md-third fa fa-calendar" type="text" value="2015-12-01" qc-date></td>
+                <td><input class="text-input-md-third fa fa-calendar" type="text" value="2015-12-01" qc-date></td>
+                <td><input class="text-input-md-third fa fa-calendar" type="text" value="2015-12-01" qc-date></td>
+                <td><input class="text-input-md-third fa fa-calendar" type="text" value="2015-12-01" qc-date></td>			
+                </tr>
+        	</tbody>
+		</table>
+        </div>		
+    </div>
+    
+    <div class="add-final-cost">
+    	<span>
+        	<button type="button"  style="btn">追加成本</button>
+        	<div class="table-final-cost">
+            	<ul>
+                    <li><label>款项名称：</label>
+                        <input class="text-input-md-second" type="text" value="" qc-date>
+                    </li>
+                    <li><label>金额：</label>
+                        <div class="qc-input-group-base-third qc-input-group-md-third">
+                                            <div class="qc-dropdown"
+                                                    qc-dropdown
+                                                     ng-model="item.currencyCode"
+                                                     item-text="{{qcDropdownItem.code}}"
+                                                     dropdown-text="{{selectedItem?selectedItem.code:''}}"
+                                                     items="currencies"> 
+                            </div><input type="text" class="text-input" value="22103254"></div>
+                    </li>
+                    <li><label>申请人：</label>
+                    	<input class="text-input-sm" type="text" value="" qc-date>
+                    </li>
+                    <li></li>
+                </ul>
+                <div class="line-solid"></div>
+                <ul>
+                    <li><label>款项名称：</label>
+                        <input class="text-input-md-second" type="text" value="" qc-date>
+                    </li>
+                    <li><label>金额：</label>
+                        <div class="qc-input-group-base-third qc-input-group-md-third">
+                                            <div class="qc-dropdown"
+                                                    qc-dropdown
+                                                     ng-model="item.currencyCode"
+                                                     item-text="{{qcDropdownItem.code}}"
+                                                     dropdown-text="{{selectedItem?selectedItem.code:''}}"
+                                                     items="currencies"> 
+                            </div><input type="text" class="text-input" value="22103254"></div>
+                    </li>
+                    <li><label>申请人：</label>
+                    	<input class="text-input-sm" type="text" value="" qc-date>
+                    </li>
+                    <li></li>
+                </ul>
+            </div>
+        </span>
+        <span><button type="button"  style="btn">外报价修改</button></span>
+    </div>
+    <div class="line-dash"></div>
+    <div class="order-info">
+    	<table class="table-order-info">
+                <thead>
+                    <tr>
+                    <th class="table-th-default-width">订单总额</th>
+                    <th class="table-th-default-width">外报总额</th>
+                    <th class="table-th-default-width">成本总额</th>
+                    <th class="table-th-default-width">退款金额</th>
+                    <th class="table-th-default-width">预计利润</th>
+                    <th class="table-th-default-width">应收金额</th>
+                    <th class="table-th-default-width">已收金额</th>
+                    <th class="table-th-default-width">未收金额</th>
+                    <th class="table-th-default-width">到账金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><p>$ 5,876,298.00</p><p>￥ 6,298.00</p><p>￥ 6,298.00</p></td>
+                    <td><p>$ 5,876,298.00</p><p>￥ 6,298.00</p><p>￥ 6,298.00</p></td>
+                    <td><p>$ 5,876,298.00</p><p>￥ 6,298.00</p><p>￥ 6,298.00</p></td>
+                    <td><p>$ 5,876,298.00</p><p>￥ 6,298.00</p><p>￥ 6,298.00</p></td>
+                    <td><p>$ 5,876,298.00</p><p>￥ 6,298.00</p><p>￥ 6,298.00</p></td>
+                    <td><p>$ 5,876,298.00</p><p>￥ 6,298.00</p><p>￥ 6,298.00</p></td>
+                    <td><p>$ 5,876,298.00</p><p>￥ 6,298.00</p><p>￥ 6,298.00</p></td>
+                    <td><p>$ 5,876,298.00</p><p>￥ 6,298.00</p><p>￥ 6,298.00</p></td>
+                    <td><p>$ 5,876,298.00</p><p>￥ 6,298.00</p><p>￥ 6,298.00</p></td>				
+                    </tr> 
+                </tbody>
+			</table>
+    </div>
+    <div class="subheading">
+        	<span>添加航班信息</span>
+            <em class="fa fa-angle-double-down"></em>
+        </div>
+        <div class="add-air-info">
+			 <table class="table-air-info">
+                <thead>
+                    <tr>
+                    <th class="table-th-default-width">航班号</th>
+                    <th class="table-th-default-width">出发日期</th>
+                    <th class="table-th-default-width">出发机场</th>
+                    <th class="table-th-default-width">到达机场</th>
+                    <th class="table-th-sm-width">出发时间--到达时间</th>
+                    <th class="table-th-sm-width">备注</th>
+                    <th >   </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><input class="text-input-sm fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-sm fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-sm fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-sm fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-md-second fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-md-second fa fa-calendar" type="text" qc-date></td>
+                    <td><span class="base-operator"><em class="fa fa-times"></em> <em class="fa fa-plus"></em> </span></td>				
+                    </tr>
+                    <tr>
+                    <td><input class="text-input-sm fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-sm fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-sm fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-sm fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-md-second fa fa-calendar" type="text" qc-date></td>
+                    <td><input class="text-input-md-second fa fa-calendar" type="text" qc-date></td>
+                    <td><span class="base-operator"><em class="fa fa-times"></em> <em class="fa fa-plus"></em> </span></td>				
+                    </tr>
+                </tbody>
+			</table>
+        </div>
+        <div class="subheading">
+        	<span>上传附件</span>
+            <em class="fa fa-angle-double-down"></em>
+        </div>
+        <div class="second-step-info">
+    	<ul>
+            <li class="certificate-list">
+            	<button class="btn btn-default" type="button" name="" id="">上传附件</button><span class="remarks">（支持格式：jpg，jpeg，gif，png，pdf，tif）</span>
+            </li>
+            <div class="list">
+                	<ul>
+                    	<li><i class="fa fa-paperclip"></i><span>的算法的发的发的发撒的啊的算法的发的发的发撒的啊</span><em>上传中......</em></li>
+                        <li><i class="fa fa-paperclip"></i><span title="的算法的发的发的发撒的啊的算法的发的发的发撒的啊">的算法的发的发的发撒的啊的算法的发的发的发撒的啊</span><em class="sucess">上传成功！</em><i class="fa fa-times"></i></li>
+                        <li><i class="fa fa-paperclip"></i><span>的算法的发的发的发撒的啊的算法的发的发的发撒的啊</span><i class="fa fa-times"></i></li>
+                    </ul>
+            </div>
+        </ul>
+    </div>
+        <div class="subheading">
+        	<span>添加游客信息</span>
+            <em class="fa fa-angle-double-down"></em>
+        </div>
+        <div class="tourist">
+			 <table class="table-tourist-info">
+                <thead>
+                    <tr>
+                    <th>姓名</th>
+                    <th>英文姓名</th>
+                    <th>性别</th>
+                    <th>价格</th>
+                    <th>备注</th>
+                    <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><div class="qc-dropdown-xs-channel f-l" qc-dropdown="qc-dropdown" ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies"></div></td>
+                    <td><input class="text-input-md-third fa fa-calendar" type="text" qc-date="qc-date" /></td>
+                    <td><div class="qc-dropdown-xs-channel f-l" qc-dropdown="qc-dropdown" ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies"></div></td>
+                    <td><input class="text-input-md-third fa fa-calendar" type="text" qc-date="qc-date" /></td>
+                    <td rowspan="3"><textarea class="multi-text-lg-second" qc-date="qc-date"></textarea></td>
+                    <td rowspan="3">
+                    	<span class="base-operator"><em class="fa fa-times"></em> <em class="fa fa-plus"></em> </span>
+                    </td>			
+                    </tr>
+                    <tr>
+                        <td colspan="2">签证国家及类型</td>
+                        <td colspan="2">证件类型/证件号码/有效期</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                        	<div class="qc-dropdown-xs-channel f-l country " qc-dropdown="qc-dropdown" ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies"></div>
+                        	<div class="qc-dropdown-xs-channel f-l" qc-dropdown="qc-dropdown" ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies"></div>
+                            <span class="base-operator"><em class="fa fa-times"></em> <em class="fa fa-plus"></em> </span>
+                        </td>
+                        <td colspan="2">
+                            <div class="qc-dropdown-xs-channel f-l" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                    </div>
+                    <input class="text-input-md-third fa fa-calendar" type="text" qc-date="qc-date" />
+                    <span class="base-operator"><em class="fa fa-times"></em> <em class="fa fa-plus"></em> </span>
+                		</td>
+                    </tr>
+                </tbody>
+			</table>
+        </div>
+        <div class="subheading">
+        	<span>备注</span>
+            <em class="fa fa-angle-double-down"></em>
+        </div>
+        
+        <div class="remarks">
+        	<textarea class="multi-text-lg" name=""></textarea>
+        </div>
+    </div>
+     
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="btn btn-default" ng-click="ok(selectedPerson1)">清空</button>
+        <button class="btn btn-default" ng-click="closeThisDialog()">保存</button>
+        <button class="btn btn-primary " ng-click="ok(selectedPerson1)">生成订单</button>
+        <button class="btn btn-primary " ng-click="closeThisDialog()">生成并收款</button>
+    </div>
+</div>
+<div class="qc-dialog-close"></div>

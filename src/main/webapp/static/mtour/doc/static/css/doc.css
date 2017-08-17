@@ -1,0 +1,18 @@
+body.fixed-top{
+    padding-top: 60px;
+}
+
+.docs-header{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: left;
+    color: rgb(205, 191, 227);
+    background-color:#6f5499;
+}
+.right-menu{
+    right: 10px;
+    top:100px;
+    width: 200px;
+}

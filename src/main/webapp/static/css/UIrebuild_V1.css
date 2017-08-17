@@ -1,0 +1,1567 @@
+/*css initial*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,
+fieldset,legend,input,button,textarea,blockquote,th,td {
+    margin:0;
+    padding:0;
+    text-decoration: none;
+
+}
+input,textarea{
+    padding:4px 6px
+}
+
+textarea:focus,
+input:focus{
+    box-shadow:none !important;
+}
+/*初始化页面链接颜色及其他样式*/
+a {
+    color:#3781d6;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/*--header--Start*/
+/*高度 背景色 边框*/
+.hedear {
+    font-size: 12px;
+    height: 60px;
+    min-width: 1000px;
+    padding: 0 30px;
+    position: relative;
+    z-index: 99;
+    background-color: #3781D6;
+    border:none;
+}
+
+/*logo上边距*/
+.hedear-left {
+    width: 301px;
+    float: left;
+    height: 60px;
+    margin-top:0;
+    position: absolute;
+    z-index: 2;
+    padding-left: 22px;
+    left: 0;
+}
+/*logo图片更改*/
+.hedear-logo {
+    height: 60px;
+    width: 105px;
+    float: left;
+    background-image: url(../images/logo-t2/logo-New.png);
+    background-repeat: no-repeat;
+    background-position:left center;
+}
+
+/*header右部信息上下居中*/
+.hedear-right {
+    height: 40px;
+    margin-top: 0;
+    float: right;
+    position: absolute;
+    right: 0px;
+}
+
+/*header右部信息字体颜色改为白色*/
+.header-user {
+    float: right;
+    margin: 0;
+    color: #fff;
+    padding-top: 18px;
+    line-height: 28px;
+}
+
+.hedear-nav {
+    padding: 0;
+    margin: 0;
+    height: 20px;
+    line-height: 20px;
+    list-style: none;
+    float: right;
+    padding-top: 18px;
+    margin-right: 38px;
+}
+
+.hedear-nav li.head-contract {
+    color: #fff;
+    position: relative;
+    margin: 0 -10px 0 0;
+}
+
+.head-contract dl {
+    height: 31px;
+    margin: 0;
+}
+
+/*通知中心去掉边框*/
+.head-contract dl dd {
+    float: left;
+    margin: 0;
+    padding: 1px 18px 1px 16px;
+    width: 81px;
+    line-height: 29px;
+    height: 29px;
+    overflow: hidden;
+    border-radius: 0 2px 2px 0;
+    border: none;
+    border-left-width: 0;
+}
+
+/*通知中心 后台首页 订单跟踪 门市名录 退出 改为白色logo*/
+.head-contract dd em,
+.hedear-nav li.head-home,
+.popup_first,
+.hedear-nav li.head-logout,
+.order-track-btn{
+    background: url(../images/head-icon-rebuild-V1.png) -15px -125px no-repeat;
+}
+/*通知中心*/
+.head-contract dd em {
+    background-position: -11px -15px;
+    width: 22px;
+    height: 14px;
+    margin: 0 5px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+/*后台首页*/
+.hedear-nav li.head-home {
+    background-position: -13px -43px;
+    padding-left: 23px;
+}
+
+.popup_first {
+    background-position: -15px -91px;
+    /* display: inline-block!important; */
+    vertical-align: text-top;
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+}
+
+.popup_sec {
+    background: url(../images/T1T2/menshiminglu-icon.png) -52px -5px no-repeat;
+    /* display: inline-block!important; */
+    vertical-align: text-top;
+    width: 15px;
+    height: 15px;
+}
+
+/*通知中心字体颜色改为白色*/
+.head-contract dd span {
+    cursor: pointer;
+    color: #fff;
+}
+
+.hedear-nav li {
+    float: left;
+    margin: 0 10px 0 20px;
+}
+
+.hedear-nav li a {
+    display: inline-block;
+    height: 28px;
+    color: #fff;
+    line-height: 28px;
+}
+
+.hedear-nav .noticeList a{
+    color: #666666;
+}
+/*门市名录*/
+.hedear-nav li.head-popup {
+    height: 20px;
+}
+/*订单跟踪*/
+.order-track-btn {
+    background-position: -15px -161px;
+    width: 18px;
+    vertical-align: middle;
+    height: 21px;
+    margin-right: 3px;
+    display: inline-block;
+}
+/*--header--End*/
+
+/*main--Start*/
+
+
+/*左侧菜单--Start*/
+/*一级菜单改变背景色 去掉上边距*/
+.main-left {
+    float: left;
+    width: 130px;
+    padding-top: 0px;
+    background-color: #393e43;
+    min-height: 720px;
+}
+
+.mainMenu {
+    padding-bottom: 1px;
+    font-weight: normal;
+    margin: 0;
+    height: 50px;
+    padding-left: 33px;
+    line-height: 50px;
+    font-size: 14px;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border-bottom: 1px solid #484e54;
+    transition: background 0.5s ease-in-out 0s;
+}
+.mainMenu-ul a {
+    display: block;
+    font-size: 12px;
+    color: #fff;
+    padding: 8px 10px 8px 15px;
+    line-height: 16px;
+    margin: 0 2px;
+}
+
+/*一级菜单选中 改变背景色 下边框消失*/
+.mainMenu-on {
+    border:none;
+    background:#525a61;
+    transition: background 0.5s ease-in-out 0s;
+}
+
+/*一级菜单右侧箭头*/
+.iconMenu-arrow {
+    display: block;
+    width: 8px;
+    height: 8px;
+    overflow: hidden;
+    position: absolute;
+    top: 23px;
+    right: 7px;
+    background: url(../images/iconMenu.png) -192px 0 no-repeat;
+    transition: background-position 0.5s ease-in 0s;
+}
+.mainMenu-on .iconMenu-arrow {
+    background-position: -192px -9px;
+}
+
+/*一级菜单栏图标--Start*/
+
+.iconMenu {
+    display: block;
+    height: 36px;
+    width: 29px;
+    position: absolute;
+    /* left: 15px; */
+    left: 10px;
+    top: 8px;
+    background-image: url(../images/iconMenu.png);
+    background-position: 0 -9px;
+    background-repeat: no-repeat;
+}
+.iconMenu-1 {/*报名*/
+    background-position: 3px -6px;
+}
+.iconMenu-2 {/*订单*/
+    background-position: 1px -46px;
+}
+.iconMenu-3 {/*渠道*/
+    background-position: 0 -100px;
+}
+.iconMenu-4 {/*财务*/
+    background-position: 0 -147px;
+}
+.iconMenu-5 {/*产品*/
+    background-position: 0 -197px;
+}
+.iconMenu-6 {/*运控*/
+    background-position: 2px -247px;
+}
+.iconMenu-7 {/*系统设置*/
+    background-position: 0px -296px;
+}
+.iconMenu-8 {/*基础信息维护*/
+     background-position: 0px -346px;
+ }
+.iconMenu-10 {/*询价*/
+    background-position: 0 -449px;
+}
+.iconMenu-11 {/*区域*/
+    background-position: -40px -297px;
+}
+.iconMenu-12 {/*批发商管理*/
+    background-position: -40px -449px;
+}
+.iconMenu-14 {/*公告管理*/
+    background-position: -40px -198px;
+}
+.iconMenu-15 {/*角色*/
+    background-position: -37px -344px;
+}
+.iconMenu-21 {/*审批*/
+    background-position: -40px -99px;
+}
+.iconMenu-23 {/*部门*/
+    background-position: -0px -525px;
+}
+.iconMenu-24 {/*地接社管理*/
+    background-position: -39px -523px;
+}
+/*菜单栏图标--End*/
+
+/*展开二级菜单 改变背景色*/
+.mainMenu-ul {
+    display: none;
+    margin: 0;
+    border-bottom-width: 1px;
+    border-top: none;
+    background-color: #2a2f35;
+}
+
+.mainMenu-ul li {
+    position: relative;
+}
+/*二级菜单去掉下边框*/
+.mainMenu-ul li {
+     background: none;
+}
+/*二级菜单选中后改变背景色*/
+.mainMenu-ul .mainMenu-ul-on{
+    background: #3781d6 !important;
+}
+/*二级菜单选中后文字颜色不变，出现白色竖线*/
+.mainMenu-ul .mainMenu-ul-on a {
+    color: #fff;
+    background: url(../images/mainMenu_ul_lia_white.png) 5px 10px no-repeat;
+}
+/*二级菜单hover时颜色不变，出现白色竖线*/
+.mainMenu-ul a:hover {
+    color: #fff;
+    text-decoration: none;
+    background: url(../images/mainMenu_ul_lia_white.png) 5px 10px no-repeat;
+}
+/*提醒红点*/
+.untreated_verify {
+    background: url("../images/icon-dot.png") no-repeat scroll 0% 0% transparent;
+    width: 10px;
+    height: 8px;
+    position: absolute;
+    display: block;
+    z-index: 999;
+    top: 15px;
+    left: 60px;
+}
+/*上方菜单展示收起 added by Tlw*/
+#menuToggle {
+    background: #393E43;
+    height: 40px;
+    line-height: 40px;
+    padding-top: 8px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #484e54;
+}
+
+#menuToggle p{
+    background-image: url(../mtour/src/img/common/background/ico_03.png);
+    background-repeat: no-repeat;
+    height: 21px;
+    width: 24px;
+    margin-left: 12px;
+    margin-bottom: 0px;
+    display: none;
+}
+
+.mainMenu-ul em {
+    color: #FFF;
+    height: 14px;
+    padding-left: 5px;
+    position: absolute;
+    z-index: 1;
+    line-height: 14px;
+    font-style: normal;
+    background-image: url(../images/ernav_liem.png);
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    right: 5px;
+}
+
+.mainMenu-ul em span {
+    float: left;
+    background-color: #F00;
+}
+
+.mainMenu-ul em p {
+    display: inline-block;
+    background: url(../images/ernav_liem.png) no-repeat scroll -9px -14px transparent;
+    padding-right: 5px;
+    height: 14px;
+    margin: 0px;
+}
+/*左侧菜单--End*/
+
+/*右侧--开始*/
+.main-right {
+    background: #ffffff;
+    margin-left: 130px;
+    /* padding: 0px 30px; */
+    min-width: 1030px;
+    position: relative;
+}
+/* 上方tab--开始*/
+.nav-tabs {
+    height: 40px;
+    padding-left: 0px;
+    margin: 0;
+    background-color: #e1e6ec;
+    border: none;
+    padding-left:25px;
+}
+
+.nav-tabs li {
+    height: 36px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    margin-right: 1px;
+}
+
+.nav-tabs li > a {
+    color: #5e5e5e;
+    display: block;
+    /* padding: 14px 20px; */
+    padding: 0 16px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 0;
+    margin-right: 0;
+    border: none;
+    position: relative;
+}
+
+.nav-tabs li.active > a,
+.nav-tabs li.active > a:hover,
+.nav-tabs li.active > a:focus,
+.nav-tabs li.current > a,
+.nav-tabs li.current > a:hover,
+.nav-tabs li.current > a:focus {
+    border: none;
+    color: #3781d6;
+    background-color: #fff;
+    text-decoration: none;
+    outline: none;
+    border-radius: 5px 5px 0 0;
+}
+
+.nav-tabs li.ernav > a {
+    position: relative;
+    padding-right: 30px;
+}
+
+.nav-tabs li.ernav > a i {
+    width: 8px;
+    height: 6px;
+    background: url(../images/ernav_lih_down.png) no-repeat;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.nav-tabs li.ernav > a:hover i {
+    background: url(../images/ernav_lih_down_blue.png) no-repeat;
+}
+
+.nav-tabs li.current > a i {
+    background: url(../images/ernav_lih_down_blue.png) no-repeat !important;
+}
+
+.nav-tabs li > a em {
+    color: #fff;
+    height: 14px;
+    padding-left: 5px;
+    position: absolute;
+    z-index: 3;
+    line-height: 14px;
+    top: 2px;
+    right: 5px;
+    font-style: normal;
+    background: url(../images/ernav_liem.png) no-repeat;
+}
+
+.nav-tabs li.ernav > a em {
+    right: 15px;
+}
+
+.nav-tabs li > a em span {
+    float: left;
+    background-color: #ff0000;
+}
+
+.nav-tabs li > a em p {
+    display: inline-block;
+    background: url(../images/ernav_liem.png) -9px -14px no-repeat;
+    padding-right: 5px;
+    height: 14px;
+    margin: 0;
+}
+
+.nav-tabs #grouprate{
+    min-width: 100px;
+    max-width: 400px;
+    width: 40%;
+    line-height: 34px;
+    color: #5e5e5e;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mainMenu-ul_new em {
+    color: #FFF;
+    height: 14px;
+    padding-left: 5px;
+    position: absolute;
+    z-index: 99999;
+    line-height: 14px;
+    top: 2px;
+    font-style: normal;
+    background-image: url(../images/ernav_liem.png);
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+}
+
+.mainMenu-ul_new em p {
+    display: inline-block;
+    background: url(../images/ernav_liem.png) no-repeat scroll -9px -14px transparent;
+    padding-right: 5px;
+    height: 14px;
+    margin: 0px;
+}
+
+.nav-tabs dl {
+    border: 0px;
+    position: absolute;
+    left: 0px;
+    overflow: hidden;
+    right: 0;
+    visibility: hidden;
+    z-index: 2;
+    height: 36px;
+    margin: 0;
+    background: none;
+    border: none;
+    border-top-left-radius:0;
+}
+
+.nav-tabs dt {
+    float: left;
+    overflow: hidden;
+    line-height: 36px;
+}
+
+.nav-tabs dl a {
+    float: left;
+    background: none;
+    width: auto;
+    border: 0px;
+    font-weight: normal;
+    overflow: hidden;
+    color: #5f7795;
+}
+
+.nav-tabs dl a:hover,
+.nav-tabs dt a.active{
+    text-decoration: none;
+    font-weight: normal;
+    color: #3781d6;
+}
+
+.nav-tabs dt span {
+    width: 10px;
+    text-align: center;
+    color: #5f7795;
+    float: right;
+    font-weight: normal;
+    padding: 0px 15px;
+}
+
+.bottom-first {
+    min-width: 100px;
+    max-width: 400px;
+    width: 40%;
+    line-height: 40px;
+    height: 40px;
+    color: #5e5e5e;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mainMenu-ul_new em span {
+    float: left;
+    background-color: #F00;
+    padding: 0 !important;
+    color: #ffffff;
+    width: auto;
+}
+
+/* 上方tab--结束*/
+
+/*主体--Start*/
+.bgMainRight {
+    background-color: #fff;
+    padding: 25px 25px 25px;
+    background:none;
+}
+/*清除浮动*/
+.bgMainRight:after{
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;}
+
+/*主体--End*/
+
+/*footer--Start*/
+.bs-footer {
+    position: relative;
+    height: 30px;
+    padding: 0px 0;
+    font-size: 12px;
+    line-height: 16px;
+    color: #5e5e5e;
+    background: none;
+    margin-top: 5px;
+    bottom:0;
+    width:100%;
+    text-align: center;
+}
+
+.bs-footer p {
+    padding: 0px 25px;
+    margin: 5px auto 9px auto;
+    width: 550px;
+    min-width:550px;
+    /*bug17385 start*/
+    display:block;
+    /*bug17385 end*/
+}
+
+.footer-by {
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 25px;
+    top: -4px;
+    background: none;
+    text-indent: -9999px;
+}
+/*footer--End*/
+
+/*右侧--结束*/
+/*main--End*/
+
+.clear {
+    clear: both;
+    padding: 0;
+    margin: 0;
+    height: 0;
+    width: auto;
+    margin-top: 0px;
+    overflow: hidden;
+}
+
+
+
+
+/*--公用表单组件--Start*/
+
+/*输入框一般样式*/
+.inputTxt,input.ui-widget-content{
+    /*bug17553 17552line-height设置过大导致IE10下显示不全*/
+    line-height: normal;
+    width: 93px;
+    padding: 0 5px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    color: #333;
+    /*border-radius: 4px 0 0 4px;*/
+    cursor: text;
+}
+/*bug17604 加上.activitylist_bodyer_right_team_co，否则会影响到二级页面 添加新团期 选择日期 日历插件 样式 */
+.activitylist_bodyer_right_team_co .ui-state-default,
+.activitylist_bodyer_right_team_co .ui-widget-content .ui-state-default,
+.activitylist_bodyer_right_team_co .ui-widget-header .ui-state-default {
+    background: #fff !important;
+}
+
+/*--按钮共有样式及次按钮样式--Start*/
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+.main-right-topbutt>a,
+input.gray,
+#btnCancel,
+/*以下是二级页面不规范按钮*/
+a.ydbz_x,
+a.ydbz_s.gray,a.ydbz_x.gray
+span.ydbz_x,
+a.ydbz_s,
+div.ydbz_x{
+    background:#f7f7f7;
+    border:1px solid #d9d9d9;
+    color:#333;
+    /*--按钮共有样式--*/
+    line-height: 26px;
+    font-size: 12px;
+    border-radius: 4px !important;
+    padding: 0 15px;
+    text-align: center;
+    margin-left: 10px;
+    height: 28px;
+    width:auto;
+}
+/*某些提交、下一步按钮*/
+#btnSubmit {
+    padding: 0px 15px;
+}
+
+a.ydbz_x, a.ydbz_s,
+div.ydbz_x, div.ydbz_s
+{
+    margin-right:3px;
+}
+input[type='button']:hover,
+input[type='submit']:hover,
+input[type='reset']:hover,
+.main-right-topbutt a:hover,
+input.gray:hover,
+#btnCancel:hover,
+/*以下是二级页面不规范按钮*/
+a.ydbz_x:hover,
+a.ydbz_s.gray:hover{
+    background:#e9f2ff;
+    border:1px solid #3781d6;
+    color:#3781d6;
+}
+/*覆盖huanqiu-style.css中的样式 */
+.main-right-topbutt a:hover{
+    color:#3781d6 !important;
+}
+input[type='button']:active,
+input[type='submit']:active,
+input[type='reset']:active,
+.main-right-topbutt a:active,
+input.gray:active,
+#btnCancel:active,
+/*以下2个是二级页面不规范按钮*/
+a.ydbz_x:active,
+a.ydbz_s.gray:active{
+    background:#d9e4f4;
+    border:1px solid #3781d6;
+    color:#3781d6;
+    box-shadow:none;
+    outline:none;
+}
+/*bug17460 按钮点击出现蓝框问题 start*/
+input[type='button']:focus,
+input[type='submit']:focus,
+input[type='reset']:focus,
+.main-right-topbutt a:focus,
+input.gray:focus,
+#btnCancel:focus,
+/*以下3个是二级页面不规范按钮*/
+a.ydbz_x:focus,
+a.ydbz_s.gray:focus{
+    outline:none;
+}
+/*bug17460 按钮点击出现蓝框问题 end*/
+/*覆盖huanqiu-style.css中的样式 */
+.main-right-topbutt a:active{
+    color:#3781d6 !important;
+}
+/*--按钮共有样式及次按钮样式--End*/
+/*不可点击按钮样式*/
+
+/*--主按钮btn-primary--*/
+/*--右侧按钮main-right-topbutt a--*/
+input.btn-primary,
+.main-right-topbutt a.primary,
+/*以下是二级页面不规范按钮*/
+a.ydbz_x,
+span.ydbz_x,
+a.ydbz_s,
+div.ydbz_x
+{
+    background:#3781d6;
+    border:1px solid #3781d6;
+    color:#fff;
+}
+input.btn-primary:hover,
+.main-right-topbutt a.primary:hover,
+/*以下是二级页面不规范按钮*/
+a.ydbz_x:hover,
+span.ydbz_x:hover,
+a.ydbz_s:hover,
+div.ydbz_x:hover
+{
+    background:#609dec;
+    border:1px solid #609dec;
+    color:#fff !important;
+}
+input.btn-primary:active,
+.main-right-topbutt a.primary:active,
+.btn-primary:focus,
+.main-right-topbutt a.primary:focus,
+/*以下3个是二级页面不规范按钮*/
+a.ydbz_x:focus,
+span.ydbz_x:focus,
+a.ydbz_s:focus,
+div.ydbz_x:focus
+{
+    background:#2a76ce;
+    border:1px solid #2a76ce;
+    color:#fff !important;
+    box-shadow:none;
+}
+.main-right-topbutt {
+    margin: 0;
+    position: static;
+    z-index: 5;
+    float:right
+}
+.main-right-topbutt>a {
+    border-radius: 4px;
+    padding: 0 15px;
+    font-size: 12px;
+    height: 26px;
+    line-height: 26px;
+    position: static;
+    top: 0;
+    right: 0;
+    display: inline-block;
+}
+/*--主按钮样式--End*/
+/*--不可点击按钮样式--Start*/
+.btn.disabled, .btn[disabled]{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background:#f7f7f7;
+    border:1px solid #d9d9d9;
+    color:#bfbfbf;
+    cursor: not-allowed;
+}
+.btn.disabled:hover,.btn[disabled]:hover{
+    background:#f7f7f7;
+    border:1px solid #d9d9d9;
+    color:#bfbfbf !important;
+}
+/*--不可点击按钮样式--End*/
+
+.filter_btn input{
+    margin-bottom:10px;
+}
+
+/*--select自定义样式--Start*/
+.selectStyle{
+    background: url(../images/select_bg.png) right center no-repeat #fff;
+    width: 100px;
+    height: 26px;
+    border: solid 1px #d9d9d9;
+    border-radius: 4px;
+    overflow: hidden;
+
+}
+.selectStyle select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none !important;
+    /*padding-left: 10px;*/
+    width: 140px;
+    height: 100%;
+    line-height: 21px;
+    box-shadow: none !important;
+    outline:none;
+}
+/*--select自定义样式--End*/
+
+.activitylist_bodyer_right_team_co1 input[readonly].dateinput, .activitylist_bodyer_right_team_co1 .dateinput {
+    background: url(../images/dateinputbg.png) no-repeat right center #fff;
+    width: 106px;
+    cursor: pointer;
+}
+
+/*--公用表单组件--End*/
+
+
+/*--筛选--Start*/
+.form_submit {
+    float: left;
+    overflow: hidden;
+}
+
+.activitylist_bodyer_right_team_co  {
+    width: 100%;
+    padding: 20px 0;
+    padding-bottom: 20px !important;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.activitylist_bodyer_right_team_co2 {
+    width: auto !important;
+    height: 28px;
+    float: left;
+    margin-left: 0;
+}
+
+/*搜索项一般样式*/
+.activitylist_bodyer_right_team_co2 input {
+    width: 135px;
+    font-size: 12px;
+    margin-bottom: 0;
+    height:18px;
+    padding:4px 6px;
+}
+
+/*搜索框下拉选择高度*/
+.activitylist_bodyer_right_team_co2 .ui-widget-content{
+    height:26px;
+}
+/*搜索项是长搜索框 */
+.activitylist_bodyer_right_team_co2 input.searchInput,
+#wholeSalerKey{
+    border-radius:4px 0 0 4px;
+    border-color: #d9d9d9;
+    width: 315px;
+}
+/*没有筛选按钮时搜索框四个圆角*/
+.activitylist_bodyer_right_team_co2 input.radius4{
+    border-radius:4px!important;
+}
+/*搜索项有下拉框*/
+.activitylist_bodyer_right_team_co2 .selectStyle{
+    width: 180px;
+    float: left;
+}
+.activitylist_bodyer_right_team_co2 .selectStyle select{
+    width: 205px;
+}
+/*筛选框外筛选项有两个，且带有label的情况：*/
+/*每个筛选项外添加.activitylist_bodyer_right_team_co2,第一个添加wpr20*/
+/*label添加.activitylist_team_co2_text*/
+.activitylist_bodyer_right_team_co2 .activitylist_team_co2_text{
+    float:left;
+    margin-top:4px;
+    width:auto;
+    line-height: 20px;
+    vertical-align: middle;
+}
+/*展开/收起筛选按钮，solo：不和搜索框连接的展开/收起筛选按钮 start*/
+.activitylist_bodyer_right_team_co .zksx,
+.activitylist_bodyer_right_team_co .filterButton_solo {
+    color: #333;
+    background: url(../images/zksx_rebuild.png) #f7f7f7 40px 12px no-repeat;
+    float: left;
+    display: inline;
+    height: 26px;
+    line-height: 26px;
+    cursor: pointer;
+    padding: 0 24px 0 10px;
+    border: 1px solid #d9d9d9;
+    margin: 0 0 0 -1px;
+    border-radius: 0 4px 4px 0;
+}
+/*展开筛选后筛选按钮箭头向上*/
+.activitylist_bodyer_right_team_co .zksx-on
+{
+    background-image:url(../images/zksx_on_rebuild.png);
+}
+.activitylist_bodyer_right_team_co .filterButton_solo{
+    border-radius: 4px;
+    margin-left:10px;
+}
+.zksx:hover {
+    color: #333;
+}
+
+/*展开/收起筛选按钮，solo：不和搜索框连接的展开/收起筛选按钮 end*/
+
+.ydbz_x, .ydbz_s {
+    float: left;
+    display: block;
+    margin: 0;
+    cursor: pointer;
+}
+
+.ydxbd {
+    min-width: 0;
+    padding: 15px 15px 0 15px;
+    margin-top: 40px;
+    position: relative;
+    overflow: visible;
+    /*overflow: hidden;*/
+    background: #f4f4f4;
+    display: none;
+    width: 100%;
+}
+.ydxbd:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+/*指向筛选按钮的小三角*/
+.ydxbd>span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10.5px 10px 10.5px;
+    border-color: transparent transparent #f4f4f4 transparent;
+    top: -9px;
+    left: 344px;
+}
+
+.ydxbd input{
+    border-color:#d9d9d9 !important;
+}
+
+/*activitylist_bodyer_right_team_co1: input长度为116px*/
+/*activitylist_bodyer_right_team_co3: input长度为253px*/
+/*activitylist_bodyer_right_team_co4: 一个select和两个input的情况，select70px，input78px*/
+
+.ydxbd .activitylist_bodyer_right_team_co1,
+.ydxbd .activitylist_bodyer_right_team_co3,
+.ydxbd .activitylist_bodyer_right_team_co4{
+    width: 336px;
+    height: 28px;
+    float: left;
+    margin: 0 3% 15px 0;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.ydxbd .activitylist_team_co3_text {
+    height: 28px;
+    line-height: 28px;
+    width: 84px;
+    text-align: right;
+    float: left;
+}
+
+.ydxbd .activitylist_bodyer_right_team_co1 input {
+    width: 104px;
+    font-size: 12px;
+    margin-bottom: 0;
+    padding:0 5px;
+    height:26px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+}
+
+.ydxbd input[readonly].dateinput,
+.ydxbd .dateinput {
+    background: url(../images/dateinputbg.png) no-repeat right center #fff;
+    width: 104px;
+    cursor: pointer;
+    /*筛选项里的日期插件有圆角*/
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+}
+/*bug17538 带币种符号的输入框 */
+.ydxbd input.rmb, .rmb {
+    background-image: url(../images/icon-rmb.gif);
+    background-position: 7px center;
+    background-repeat: no-repeat;
+    padding-left: 17px;
+    width:92px;
+}
+
+.ydxbd .activitylist_bodyer_right_team_co1 .custom-combobox-input,
+.ydxbd .activitylist_bodyer_right_team_co1 .custom-combobox input[type="text"] {
+    padding: 0 5px;
+    line-height: 26px;
+    width: 85px;
+    background: #fff;
+    border-radius: 4px 0 0 4px !important;
+}
+
+.ydxbd .activitylist_bodyer_right_team_co1 .selectStyle{
+    width: 114px;
+}
+
+.ydxbd .activitylist_bodyer_right_team_co1 .selectStyle style{
+    width: 134px;
+}
+/**/
+.ydxbd .activitylist_bodyer_right_team_co1 .ui-spinner {
+    width: 113px;
+    border: 1px solid #d9d9d9;
+}
+
+.ydxbd .activitylist_bodyer_right_team_co3 .custom-combobox-input,
+.ydxbd .activitylist_bodyer_right_team_co3 .custom-combobox input[type="text"]{
+    width: 221px;
+    border-color:#d9d9d9 !important;
+    border-radius: 4px 0 0 4px !important;
+}
+.ydxbd .activitylist_bodyer_right_team_co3 .selectStyle {
+    width: 247px;
+}
+
+.ydxbd .activitylist_bodyer_right_team_co3 .selectStyle select {
+    /*bug17556 by tlw at20170310*/
+    width: 273px;
+}
+
+.ydxbd .activitylist_bodyer_right_team_co3 input[type=text] {
+    width: 235px;
+
+}
+
+.ydxbd .activitylist_bodyer_right_team_co4 .selectStyle{
+    width: 74px;/*bug17565*/
+    display:inline-block;
+}
+.ydxbd .activitylist_bodyer_right_team_co4 .selectStyle select {
+    width: 100px;
+    padding-left:2px;/*bug17565*/
+}
+
+.ydxbd .activitylist_bodyer_right_team_co4 .inputTxt{
+    width:62px;
+    margin-top:-11px;
+    display: inline-block;
+}
+.ydxbd .activitylist_bodyer_right_team_co4 span{
+    position: relative;
+    top: -10px;
+}
+
+
+.ydxbd .ui-spinner-input{
+    width: 85px;
+    border: none;
+    height: 22px;
+    padding: 0;
+}
+
+#targetAreaButton, .input-append .appendbtn {
+    padding-left: 0;
+    padding-right: 0;
+    left: 89px;
+    width: 35px;
+    border-left-width: 0;
+    border-right-width: 1px;
+    margin-left: -9px;
+}
+
+/*可下拉可搜索组件样式 start*/
+.activitylist_bodyer_right_team_co1 .ui-button-icon-only,
+.seach_r .ui-button-icon-only,
+.activitylist_bodyer_right_team_co3 .ui-button-icon-only {
+    width: 18px;
+}
+
+.ydxbd .ui-button {
+    margin-right: 0;
+}
+
+.custom-combobox-toggle {
+    height: 26px;
+    margin: 0 0 0 -1px;
+    padding: 0;
+}
+/*可下拉可搜索组件样式 end*/
+
+/*--筛选--End*/
+
+/*--页签--Start*/
+.supplierLine {
+    height: auto;
+    line-height: normal;
+    overflow: hidden;
+    margin-bottom:20px;
+}
+
+.supplierLine a {
+    float: left;
+    padding: 0 15px;
+    color: #333;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    height:26px;
+    line-height:26px;
+    margin-right:-1px;
+}
+
+.supplierLine a.select {
+    color: #3781d6;
+    background: #fff;
+    border: 1px solid #3781d6;
+    z-index: 29;
+    position: relative;
+}
+
+.supplierLine a:hover {
+    color: #3781d6;
+}
+
+.supplierLine + .supplierLine{
+    margin-top:15px;
+}
+/*--页签--End*/
+/*--排序--Start*/
+.activitylist_bodyer_right_team_co_paixu {
+    width: 100%;
+    height: 26px;
+    /* background-color: #f5f5f5; */
+    margin: 0 0 10px 0;
+}
+
+.activitylist_paixu {
+    height: 26px;
+    padding:0;
+}
+
+.activitylist_paixu_left {
+    width: 80%;
+    float: left;
+}
+
+.activitylist_paixu_left ul li {
+    width: auto;
+    padding: 0 10px;
+    height: 26px;
+    float: left;
+    margin-right: 10px;
+    line-height: 26px;
+    text-align: center;
+}
+.activitylist_paixu_left_biankuang,
+.activitylist_paixu_left_biankuang:hover,
+.activitylist_paixu_moren {
+    background: url(../images/activitylist_paixu.png) no-repeat #e8e8e8;
+}
+.activitylist_paixu_left ul .activitylist_paixu_left_biankuang a {
+    display: block;
+    cursor: pointer;
+    color: #666;
+}
+.activitylist_paixu_moren,.activitylist_paixu_moren:hover{
+    background-color: #e0eeff;
+}
+.activitylist_paixu_left .activitylist_paixu_moren a{
+    color: #3781d6;
+}
+
+.activitylist_paixu_left_biankuang a i {
+    width: 0;
+    height: 0;
+    background: none;
+    margin: 0;
+}
+
+.activitylist_paixu_moren a i {
+    width: 7px;
+    height: 10px;
+    background: url(../images/activitylist_paixu_i_rebuild.png) -8px 0px no-repeat;
+    margin: 3px 0 0 5px;
+}
+.activitylist_paixu_moren a i.icon-arrow-up {
+    background-position: -1px 0;
+}
+
+/*--排序--End*/
+/*--主表格--Start*/
+#sea table.mainTable {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom:20px;
+    border-right: none;
+    border-top:none;
+}
+
+#sea .mainTable>thead>tr>th {
+    padding: 6px 5px;
+    /*height: 40px;*/
+    text-align: center;
+    vertical-align: middle;
+    border-left: 1px solid #b8d1f2;
+    border-bottom: 1px solid #b8d1f2;
+    border-top: 1px solid #b8d1f2;
+    color: #717171;
+    background: #f5f9ff;
+}
+#sea .mainTable>thead>tr>th:last-child {
+    border-right: 1px solid #b8d1f2;
+}
+
+#sea .mainTable>thead>tr:not(:first-child)>th {
+    border-top:none;
+}
+
+.mainTable th, #contentTable td, #contentTable_warning td {
+    height: 40px;
+}
+
+.activitylist_bodyer_table.mainTable>tbody>tr>td {
+    padding: 5px 7px;
+    text-align: left;
+    vertical-align: top;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-top: 0;
+    background-color: #FFFFFF;
+}
+
+.activitylist_bodyer_table.mainTable .tr-hover>td {
+    background-color: #c7dbec;
+    background-image: url(../images/tr-hoverbg.gif);
+    background-repeat: repeat-x;
+    color: #394b61;
+    border-bottom: 1px solid #b5c8db;
+    border-left: 1px solid #b5c8db;
+}
+
+.activitylist_bodyer_table>tbody>tr:hover>td {
+    background-color: #f5f5f5;
+}
+
+/*.activitylist_bodyer_table>tbody>tr:hover>td {*/
+    /*background-color: #c7dbec;*/
+/*}*/
+
+.mainTable>tbody>tr>td:last-child {
+    border-right: 1px solid #ddd;
+}
+
+.mainTable .activity_team_top1 .team_top {/*一级页面 展开子表格*/
+    border: 1px solid #93a5bb;
+    padding: 0 0 5px 0;
+    margin-bottom: 20px;
+    background-color: #e1e8ed;
+}
+
+/*--主表格--End*/
+
+/*--分页--Start*/
+
+.pagination{
+    /*影响到分页显示 先去掉 for bug by tlw  */
+    /*overflow: hidden;*/
+    text-align: right;
+}
+.pagination ul>li {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.pagination ul>li>a, .pagination ul>li>span {
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    padding: 0 10px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    color:#333;
+    background: #fff;
+}
+
+.pagination ul>li>a:hover, .pagination ul>li>span:hover {
+    border-color: #3781d6;
+    color:#3781d6;
+    background: #fff;
+}
+
+.pagination ul>.active>a, .pagination ul>.active>span {
+    border-color: #3781d6;
+    background: #f5f9ff;
+    color: #3781d6;
+}
+.pagination ul>.active>a:hover, .pagination ul>.active>span:hover {
+    background: #f5f9ff;
+}
+.pagination ul li.controls a,
+.pagination ul>.disabled:last-child>a:hover{
+    white-space: nowrap;
+    border:none;
+    height:28px;
+    line-height:28px;
+    color:#333
+}
+.pagination input {
+    vertical-align: top !important;
+    margin-top: 0 !important;
+    height: 18px;
+}
+
+.pagination dl {
+    float: left;
+    height: 28px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.pagination dd input{
+    width:auto;
+    height:28px;
+}
+.pagination dt input[type=checkbox]{
+    vertical-align:middle !important;
+}
+
+.pagination dl dd {
+    min-width: 200px;
+    width:auto;
+    float: left;
+    overflow: hidden;
+    padding-right: 5px;
+}
+/*bug17532 覆盖huanqiu-style的样式*/
+.batch_del2 dl dd {
+     width: auto;
+    float: left;
+    overflow: hidden;
+    padding-right: 5px;
+}
+
+/*--分页--End*/
+
+/*出发城市 分页下方保存按钮的容器*/
+.t-type-add{
+    width:100px;/*bug17615*/
+    margin:25px auto;
+    padding:0;
+
+}
+
+/*基础信息维护--机场信息 查询结果和页签在同一行*/
+.supplierLine .filter_num{
+    float: right;
+}
+
+/*bug 17535 查询结果数值为黑色 覆盖huanqiu*/
+.filter_num strong {
+    margin: 0 8px;
+    color: #000;
+}
+
+
+/*顶部右侧按钮有悬浮下拉框的情况：*/
+
+form .main-right-topbutt.pullDown{
+    margin-top:20px;
+    position: absolute;
+    right: 25px;
+}
+
+/*去到账号列表 导出 start*/
+.main-right-topbutt #exports{
+    background: url(../images/zksx_rebuild.png) #f7f7f7 40px 12px no-repeat;
+    padding: 0 24px 0 10px;
+    border: 1px solid #d9d9d9;
+    color: #333;
+    line-height: 26px;
+    font-size: 12px;
+    border-radius: 4px !important;
+    text-align: center;
+    margin-left: 10px;
+    height: 28px;
+    width: auto;
+    display: inline-block;
+    cursor:default;
+    position: relative;
+}
+#exports span{
+    position: absolute;
+    top: 28px;
+    right: 0;
+    display: none;
+    padding-top: 5px;
+    height: 64px;
+    width: 119px;
+    z-index: 1000000;
+}
+#exports a,#exports a:hover{
+    display: block;
+    width: auto;
+    position: static;
+    background: #fff;
+    font-size: 12px;
+    text-align: left;
+    color: #333;
+    padding: 2px 10px 0 10px;
+    border:1px solid #d9d9d9;
+    border-top:none;
+    border-bottom:none;
+
+}
+#exports a:first-child,#exports a:first-child:hover{
+    border-bottom:none;
+    border-top:1px solid #d9d9d9;
+    border-radius:4px 4px 0 0;
+}
+#exports a:last-child,#exports a:last-child:hover{
+    border-top:none;
+    border-bottom:1px solid #d9d9d9;
+    border-radius:0 0 4px 4px;
+}
+#exports:hover span{
+    display:block;
+}
+/*去到账号列表 导出 end*/
+/*背景颜色放在最后防止刷新时闪屏*/
+.main {
+    /* overflow: hidden; */
+    background: #393e43;
+    zoom: 1;
+}
+/*搜索框placeholder颜色   by ruiqi.zhang    2017-3-13 21:17:44*/
+#searchForm .activitylist_bodyer_right_team_co .pr input#wholeSalerKey:-ms-input-placeholder{
+    color: #999;
+}
+
+
+
+
+/*暂时放在这 部分二级页面 给按钮组容器定宽过小 造成按钮不能水平排列*/
+.dbaniu {
+    width: 320px !important;
+}
+.ydBtn.ydBtn2 {
+    width: 188px !important;
+}
+
+.ydBtn {
+    width: 95px !important;
+}
+
+.huanjia dd {
+    width: 170px !important;
+}
+
+/*bug17602 产品修改部分 代码用a模拟按钮后内部又放了个input...*/
+#datepicker_input{
+    padding:0;
+    margin:0;
+}
+
+.gai-price-btn,.clear-btn{
+    float: none;
+}

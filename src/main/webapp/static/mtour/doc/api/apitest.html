@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+        <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+        <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+        <script type="text/javascript"
+                src="/trekiz_wholesaler_tts/static/mtour/static/js/common/quauq.base64.js"></script>
+        <script type="text/javascript">
+            var mtourApiUrl = 'http://localhost:8080/trekiz_wholesaler_tts/a/mtour/';
+            var apiTestModule = angular.module('apiTestModule', ['qc', 'docModule']);
+
+            apiTestModule.controller('NavController', ['$scope', 'docNavInfo', function ($scope, docNavInfo) {
+                $scope.navInfo = docNavInfo;
+                $scope.navInfo.current = 'api';
+                $scope.navInfo.sub = 'apitest';
+            }]);
+            apiTestModule.controller('ApiTestController', ['$scope', '$http', 'qcApi', 'urlConfig', function ($scope, $http, qcApi, urlConfig) {
+                $scope.test2 = function () {
+                    qcApi.post($scope.url.replace(urlConfig.mtourApiUrl, ''), angular.fromJson($scope.params ? $scope.params : undefined))
+                            .success(function (data, header, config, status) {
+                                $scope.result = angular.toJson(data, true);
+                            }).error(function (data, header, config, status) {
+                                data.error = true;
+                                $scope.result = angular.toJson(data, true);
+                            });
+                }
+            }]);
+        </script>
+    </head>
+    <body class="fixed-top" ng-app="apiTestModule">
+        <doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+        <div class="container">
+
+            <div class="breadcrumb">Quauq Doc > Api文档 > api test</div>
+            <div ng-controller="ApiTestController">
+                <button ng-click="test2()">test</button>
+                <hr>
+
+                <label>POST请求地址</label>
+                <input type="text" class="form-control" ng-model="url"/>
+                <label>请求参数</label>
+                <textarea class="form-control" style="height:150px;" ng-model="params"></textarea>
+
+                <label>请求结果</label>
+                <textarea class="form-control" style="height:400px;" ng-model="result"></textarea>
+
+            </div>
+        </div>
+        <doc-footer></doc-footer>
+    </body>
+</html>

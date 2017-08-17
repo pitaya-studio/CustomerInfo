@@ -1,0 +1,159 @@
+<div>
+
+    <div class="subheading">
+        <span>添加游客信息</span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="fold=!fold;"></em>
+    </div>
+    <div class="tourist" ng-if="!fold">
+		<table class="table-tourist-info" ng-repeat="traveler in travelers"
+               ng-if="editModel=='edit'"
+               ng-init="initTraveler(traveler)">
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>英文姓名</th>
+                <th>性别</th>
+                <th>价格</th>
+                <th>备注</th>
+                <th class="table-th-sm-fifty">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input ng-if="editModel=='edit'"
+                           type="text"
+                           class="text-input-md-second-table"
+                           ng-model="traveler.name"/>
+                </td>
+                <td>
+                    <input class="text-input-md-second-table" type="text" qc-input-english-name=""
+                           ng-model="traveler.englishName"/>
+                </td>
+                <td>
+                    <div  class="qc-dropdown-xs-channel f-l"
+                         qc-dropdown
+                         ng-model="traveler.sex"
+                         item-text="{{qcDropdownItem.sexName}}"
+                         dropdown-text="{{selectedItem?selectedItem.sexName:''}}"
+                         items="sexes">
+                    </div>
+                </td>
+                <td>
+                    <div class="qc-input-group-base-seond qc-input-group-md-second">
+                        <div class=""
+                             qc-dropdown
+                             ng-model="traveler.currency"
+                             item-text="{{qcDropdownItem.currencyCode}}"
+                             dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                             items="currencies"></div>
+                        <input class="text-input" type="text"
+                               qc-input-amount=""
+                               ng-model="traveler.amount"/>
+                    </div>
+                </td>
+                <td>
+                    <input class="text-input-huge-remarks" type="text"
+                          ng-model="traveler.memo"/>
+                </td>
+                <td rowspan="3">
+                    <span class="base-operator">
+                       <em class="fa fa-times" ng-click="travelers.remove(traveler)"
+                           ng-if="travelers.length>1"></em>
+                       <em class="fa fa-plus" ng-click="travelers.push({})"></em>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="country-style" colspan="2">签证国家及类型</td>
+                <td class="country-style" colspan="3">证件类型/证件号码/有效期</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="loop-container"  ng-repeat="visa in traveler.visas" ng-init="initVisa(visa)">
+                        <div   visa-country=""
+                             ng-model="visa.country"></div>
+                        <div  class="qc-dropdown-xs-channel f-l"
+                             qc-dropdown="qc-dropdown"
+                             ng-model="visa.visaType"
+                             item-text="{{qcDropdownItem.visaTypeName}}"
+                             dropdown-text="{{selectedItem?selectedItem.visaTypeName:''}}" items="visaTypes">
+                        </div>
+                        <span  class="base-operator">
+                        	<em class="fa fa-plus" ng-click="traveler.visas.push({})"></em>
+                            <em class="fa fa-times" ng-click="traveler.visas.remove(visa)"
+                                ng-if="traveler.visas.length>1"></em>
+                        </span>
+                    </div>
+                </td>
+                <td colspan="3">
+                    <div class="loop-container" ng-repeat="credential in  traveler.credentials">
+                        <div class="qc-dropdown-xs-channel f-l" qc-dropdown
+                             ng-model="credential.credentialsType"
+                             item-text="{{qcDropdownItem.credentialsTypeName}}"
+                             dropdown-text="{{selectedItem?selectedItem.credentialsTypeName:''}}" items="credentialsTypes">
+                        </div>
+                        <input  class="text-input-md" type="text" ng-model="credential.credentialsNo"/>
+                        <input  class="text-input-md-third fa fa-calendar" type="text"
+                               qc-date="qc-date" qc-date-format="yy-mm-dd"
+                               ng-model="credential.credentialsExpire"/>
+                        <span class="base-operator">
+                        	 <em class="fa fa-plus" ng-click="traveler.credentials.push({})"></em>
+                             <em class="fa fa-times" ng-click="traveler.credentials.remove(credential)"  ng-init="initCredential(credential)"
+                                 ng-if="traveler.credentials.length>1"></em>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table-tourist-info" ng-repeat="traveler in travelers"
+               ng-if="editModel!='edit'"
+               ng-init="initTraveler(traveler)">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>英文姓名</th>
+                    <th>性别</th>
+                    <th>价格</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span >{{traveler.name}}</span>
+                    </td>
+                    <td>
+                        <span >{{traveler.englishName}}</span>
+                    </td>
+                    <td>
+                        <span >{{traveler.sexName}}</span>
+                    </td>
+                    <td>
+                        <span >{{traveler.amount|qcCurrency:traveler.currencyCode}}</span>
+                    </td>
+                    <td rowspan="3">
+                        <span class="remarks tourist-information">{{traveler.memo}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="country-style" colspan="2">签证国家及类型</td>
+                    <td class="country-style" colspan="2">证件类型/证件号码/有效期</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="loop-container"  ng-repeat="visa in traveler.visas" ng-init="initVisa(visa)">
+                            <span >{{formatVisa(visa)}}</span>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="loop-container" ng-repeat="credential in  traveler.credentials" ng-init="initCredential(credential)">
+                            <span >{{formatCredential(credential)}}</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

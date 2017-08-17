@@ -1,0 +1,199 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
+<html>
+<head>
+<title>添加产品库存警告</title>
+<meta name="decorator" content="wholesaler"/>
+<link href="${ctxStatic}/common/Pager.css" rel="stylesheet" />
+<link rel="stylesheet" href="${ctxStatic}/jqueryUI/themes/base/jquery.ui.all.css" />
+<script src="${ctxStatic}/jqueryUI/ui/jquery.ui.core.js"></script>
+<script src="${ctxStatic}/jqueryUI/ui/jquery.ui.position.js"></script>
+<script src="${ctxStatic}/jqueryUI/ui/jquery.ui.datepicker.js"></script>
+<script src="${ctxStatic}/jquery-validation/1.11.0/jquery.validate.js" type="text/javascript"></script>
+    <script src="${ctxStatic}/common/jquery.pager.js" type="text/javascript"></script>
+    <script src="${ctxStatic}/common/pageHandler/jquery.pagerhandler.js" type="text/javascript"></script>
+    
+<script type="text/javascript">
+$(function(){
+   $('.attend_up').click(function() {
+	var vals = parseInt($(this).siblings('.duration').val());
+	if (vals>=0) {
+		$(this).siblings('.duration').val(vals + 1);
+	} else {
+		$(this).siblings('.duration').val(0)
+	}
+})
+$('.attend_down').click(function(){	
+	var vals = parseInt($(this).siblings('.duration').val());
+	if (vals>0) {
+		$(this).siblings('.duration').val(vals - 1);
+	} else {
+		$(this).siblings('.duration').val(0)
+	}
+
+});
+$('.show_up').toggle(function(){
+	$(this).html('收起');
+	$('.group_con').show()
+},function(){
+	$(this).html('展开');
+	$('.group_con').hide();	
+})
+
+
+ })
+ 
+   </script>
+
+<style type="text/css">
+.groupTable{ width:100%;margin:10px 0;}
+.groupTable td{padding:4px 12px;text-align:left;font:12px Arial,'微软雅黑,宋体';border:1px solid #DDDDDD}
+.groupTable th{padding:12px;text-align:left;color:#fff;font-size:12px;font-weight:bold;border:1px solid #DDDDDD}
+a.attend_down,a.attend_up{display:inline-block;border-radius:4px;width:20px;text-align:center;background:#62AFE7;color:#fff;text-decoration:none;height: 26px;line-height: 26px;}
+.attend_down:hover,.attend_up:hover{text-decoration:none; color:#fff;}
+.stock,.input_textarea,.duration{background:#FFF;border:1px solid #CCC;border-radius:4px;box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset;color:#333;cursor:text;height:26px;line-height:26px;padding:0 5px;width:50px;}
+.btnSubmit,.btnCancel,.btnSubmit:hover{background:#62AFE7;color:#fff;border:none;box-shadow:none;font:12px Arial,'宋体'; padding:4px 16px;text-shadow:none;}
+.btnCancel,.btnCancel:hover{background:#CCC;color:#fff;}
+.sub_actions{text-align:center;}
+.line-name{background-color: #F5F5F5;border-radius: 4px;list-style: none outside none;margin: 0 0 20px;}
+.line-shop{ width:80%;padding:8px 15px 5px 10px;}
+.line-shop li{ display:inline;font:12px '微软雅黑'; padding-right:20px;}
+.line-shop label{display:inline-block;}
+.group_tit{background-color:#3A7851;padding:10px 20px;color:#fff;font:12px/1.5 '微软雅黑'}
+</style>
+</head>
+<body>
+<ul class="nav nav-tabs">
+    	 <li><a href="#">修改切位</a></li>
+		 <li class="active"><a href="#">产品申请</a></li>
+	</ul>
+   <div class="line-name">
+   	<ul class="line-shop">
+   		<li><label>线路名称：</label><span><strong style="font-weight:500">【童话之旅】</strong>1月12日德+法意瑞12天</span></li>
+     		<li>
+         	<label>占位渠道：</label>
+         	<select style="width:80px;font-size:12px;margin-bottom:0;">
+         		<option>天马</option>
+         		<option>天马</option>
+            </select>
+         </li>
+   		<li><a style="padding-left:20px;" href="#">查看全部产品占位</a></li>
+   </div>
+   <div class="group">
+   	<div class="group_tit">申请新切位<span class="show_up" style="float:right">展开</span></div>
+      <div class="group_con" style="display:none;">
+         <div class="group_date">	
+            <div style="font-size:12px; padding:10px 20px;">选择出团日期：<span style="color:#F00">温馨提示：请在日历框中选择出团日期</span></div>
+            <div>sdfsdfsfdsdfsfsdf</div>
+         </div>
+      	<div  class="group_tit">填写团期切位信息</div>
+            <table class="groupTable">
+               <thead style="background:#403738">
+                  <tr>
+                     <th>出团日期</th>
+                     <th>订单金额</th>
+                     <th>申请人数</th>
+                     <th>余位数量</th>
+                     <th>成人同行价</th>
+                     <th>儿童同行价</th>
+                     <th>单房差</th>
+                     <th>预收人数</th>
+                     <th>备注</th>
+                     <th>操作</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>2014-1-09</td>
+                     <td><input type="text" class="stock" style="margin-bottom:0;" value="5000"><span style=" padding-left:5px;">元/人</span></td>
+                     <td><a href="javascript:void(0)" class="attend_down">‐</a>
+                        <input class="duration" name="duration" type="text" value="1" style="margin-bottom:0;"/>
+                        <a href="javascript:void(0)" class="attend_up">+</a></td>
+                     <td>3</td>
+                     <td>3000</td>
+                     <td>5000</td>
+                     <td>300</td>
+                     <td>50</td>
+                     <td><textarea  rows="1" class="input_textarea" maxlength="100" style="width:200px;margin-bottom:0" name="comments" style="margin-bottom:0;"></textarea></td>
+                     <td><a href="#" style="padding-right:10px;">确认</a><a href="#">删除</a></td>
+                  </tr>
+                  <tr>
+                     <td>2014-1-09</td>
+                     <td><input type="text" class="stock" style="margin-bottom:0;" value="5000"><span style=" padding-left:5px;">元/人</span></td>
+                     <td><a href="javascript:void(0)" class="attend_down">‐</a>
+                        <input class="duration" name="duration" type="text" value="1" style="margin-bottom:0;"/>
+                        <a href="javascript:void(0)" class="attend_up">+</a></td>
+                     <td>3</td>
+                     <td>3000</td>
+                     <td>5000</td>
+                     <td>300</td>
+                     <td>50</td>
+                     <td><textarea  rows="1" class="input_textarea" maxlength="100" style="width:200px;margin-bottom:0" name="comments" style="margin-bottom:0;"></textarea></td>
+                     <td><a href="#" style="padding-right:10px;">确认</a><a href="#">删除</a></td>
+                  </tr>
+               </tbody>
+   			</table>
+            <div class="sub_actions">
+            <input type="button" onClick="history.go(-1)" value="取消申请" class="btn btnCancel">   &nbsp; <input type="submit" value="提交申请" class="btn btn-primary btnSubmit">
+            </div> 
+      </div>
+   </div>
+   <div class="group_box" style="margin-top:20px;">
+   	<div  class="group_tit">填写团期切位信息</div>
+       <table class="groupTable">
+               <thead style="background:#403738">
+                  <tr>
+                     <th>出团日期</th>
+                     <th>订单金额</th>
+                     <th>申请人数</th>
+                     <th>余位数量</th>
+                     <th>成人同行价</th>
+                     <th>儿童同行价</th>
+                     <th>单房差</th>
+                     <th>预收人数</th>
+                     <th>备注</th>
+                     <th>操作</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>2014-1-09</td>
+                     <td>5000<input type="text" class="sto" style="margin-bottom:0;display:none;" value="5000"><span style=" padding-left:5px;">元/人</span></td>
+                     <td>
+                     	5
+                     	<span style="display:none;">
+                     		<a href="javascript:void(0)" class="attend_down">‐</a>
+                        	<input class="duration" name="duration" type="text" value="1" style="margin-bottom:0;"/>
+                        	<a href="javascript:void(0)" class="attend_up">+</a>
+                     	</span>
+                        </td>
+                     <td>3</td>
+                     <td>3000</td>
+                     <td>5000</td>
+                     <td>300</td>
+                     <td>50</td>
+                     <td><textarea  rows="1" class="input_textarea" maxlength="100" style="width:200px;margin-bottom:0" name="comments" style="margin-bottom:0;"></textarea></td>
+                     <td><a href="#" style="padding-right:10px;">编辑</a><a href="#">删除</a></td>
+                  </tr>
+                  <tr>
+                     <td>2014-1-09</td>
+                     <td><input type="text" class="stock" style="margin-bottom:0;" value="5000"><span style=" padding-left:5px;">元/人</span></td>
+                     <td><a href="javascript:void(0)" class="attend_down">‐</a>
+                        <input class="duration" name="duration" type="text" value="1" style="margin-bottom:0;"/>
+                        <a href="javascript:void(0)" class="attend_up">+</a></td>
+                     <td>3</td>
+                     <td>3000</td>
+                     <td>5000</td>
+                     <td>300</td>
+                     <td>50</td>
+                     <td><textarea  rows="1" class="input_textarea" maxlength="100" style="width:200px;margin-bottom:0" name="comments" style="margin-bottom:0;"></textarea></td>
+                     <td><a href="#" style="padding-right:10px;">确认</a><a href="#">删除</a></td>
+                  </tr>
+               </tbody>
+   			</table>
+            <div class="sub_actions">
+            <input type="button" onClick="history.go(-1)" value="取消申请" class="btn btnCancel">   &nbsp; <input type="submit" value="提交申请" class="btn btn-primary btnSubmit">
+            </div> 
+   </div>
+</body>
+</html>

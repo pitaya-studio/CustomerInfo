@@ -1,0 +1,144 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>款项明细</span>
+    </div>
+</div>
+<div class="qc-scroll">
+
+
+    <div class="paddingleft">
+        <table>
+            <tr>
+                <td class="table-th-default-width">团号：</td>
+                <td class="table-th-md-width">{{fundsTypeDetailList.groupNo}}</td>
+                <td class="table-th-default-width">付款对象：</td>
+                <td class="table-th-md-width">{{fundsTypeDetailList.paymentObjectName}}</td>
+            </tr>
+            <tr>
+                <td class="table-th-default-width">应付总额：</td>
+                <td class="table-md-default-width">{{fundsTypeDetailList.payableTotalAmount}}</td>
+                <td class="table-th-default-width">已付总额：</td>
+                <td class="table-md-default-width">{{fundsTypeDetailList.paidTotalAmount}}</td>
+            </tr>
+        </table>
+        <div class="blank-container"></div>
+        <p>
+            <input type="checkbox" id="chkAll" ng-click="chkAll($event)">
+            <label for="chkAll">全选</label>
+        </p>
+        <table class="table-list-md mar-top-primary" ng-repeat="result in fundsTypeDetailList.results">
+            <thead>
+                <tr class="">
+                    <th>
+                        <input type="checkbox" ng-model="result.batchChecked" ng-checked="result.batchChecked">
+                    </th>
+                    <th colspan="2" class="table-th-default-width">
+                        <span class="payment-state-mark">{{result.paymentStatusName}}</span>
+                        <span class="payment-state-markc">{{result.fundsTypeName}}</span>
+                    </th>
+                    <th class="table-th-default-width bold">报批时间:</th>
+                    <th class="table-th-md-width normal">{{result.approvalDateTime}}</th>
+                    <th class="table-th-default-width bold">申请人:</th>
+                    <th class="table-th-default-width normal">{{result.applicant}}</th>
+                    <th class="table-th-default-width bold">应付金额:</th>
+                    <th class="table-th-default-width text-right normal">{{result.strPayableAmount}}</th>
+                    <th class="table-th-default-width bold">已付金额:</th>
+                    <th class="table-th-default-width normal">{{result.strPaidAmount}}</th>
+                </tr>
+            </thead>
+            <tbody ng-show="result.fundsType=='4'">
+                <tr>
+                    <td rowspan="4" class="borderBottom">明细</td>
+                    <td class="table-th-default-width bold">款项名称：</td>
+                    <td class="table-th-default-width normal">{{result.fundsName}}</td>
+                    <td class="table-th-default-width bold">大编号：</td>
+                    <td class="table-th-default-width normal">{{result.PNR}}</td>
+                    <td class="table-th-default-width bold">人数：</td>
+                    <td class="table-th-default-width normal">{{result.peopleCount}}</td>
+                    <td class="table-th-default-width bold">单价：</td>
+                    <td colspan="3" class="table-th-default-width normal">{{result.costUnitPrice}}</td>
+                </tr>
+                <tr class="borderBottom">
+                    <td class="table-th-default-width bold">汇率：</td>
+                    <td class="table-th-default-width normal">{{result.exchangeRate}}</td>
+                    <td class="table-th-default-width bold">转换后总价：</td>
+                    <td colspan="7" class="table-th-default-width normal">{{result.convertedTotalAmount}}</td>
+
+                </tr>
+                <tr class="borderBottom">
+                    <td class="table-th-default-width bold">收款行名称：</td>
+                    <td class="table-th-default-width normal">{{result.receiveBank}}</td>
+                    <td class="table-th-default-width bold">收款账户：</td>
+                    <td colspan="7" class="table-th-default-width normal">{{result.receiveAccountNo}}</td>
+
+                </tr>
+                <tr>
+                    <td class="table-th-default-width bold">备注：</td>
+                    <td colspan="9" class="table-th-default-width normal">{{result.memo}}</td>
+                </tr>
+            </tbody>
+            <tbody ng-show="result.fundsType=='3'" class="normal-bg">
+                <tr class="borderBottom">
+                    <td rowspan="2">明细</td>
+                    <td class="table-th-default-width bold">款项名称：</td>
+                    <td class="table-th-default-width normal">{{result.fundsName}}</td>
+                    <td class="table-th-default-width bold">累计追加金额：</td>
+                    <td class="table-th-default-width normal">
+                        {{result.totalAddAmount}}
+                    </td>
+                    <td class="table-th-default-width bold">本次追加金额：</td>
+                    <td colspan="5" class="table-th-default-width normal">{{result.currentAddAmount}}</td>
+                </tr>
+                <tr>
+                    <td class="table-th-default-width bold">备注：</td>
+                    <td colspan="9" class="table-th-default-width normal">{{result.memo}}</td>
+                </tr>
+            </tbody>
+            <tbody ng-show="result.fundsType=='2'" class="normal-bg">
+                <tr class="borderBottom">
+                    <td rowspan="2">明细</td>
+                    <td class="table-th-default-width bold">款项名称：</td>
+                    <td class="table-th-default-width normal">{{result.fundsName}}</td>
+                    <td class="table-th-default-width bold">累计退款金额：</td>
+                    <td class="table-th-default-width normal">
+                        {{result.totalRefundAmount}}
+                    </td>
+                    <td class="table-th-default-width bold">本次退款金额：</td>
+                    <td colspan="5" class="table-th-default-width normal">{{result.currentRefundAmount}}</td>
+                </tr>
+                <tr>
+                    <td class="table-th-default-width bold">备注：</td>
+                    <td colspan="9" class="table-th-default-width normal">{{result.memo}}</td>
+                </tr>
+            </tbody>
+            <tbody ng-show="result.fundsType=='1'" class="normal-bg">
+                <tr class="borderBottom">
+                    <td rowspan="2">明细</td>
+                    <td class="table-th-default-width bold">款项名称：</td>
+                    <td class="table-th-default-width normal">{{result.fundsName}}</td>
+                    <td class="table-th-default-width bold">累计借款金额：</td>
+                    <td class="table-th-default-width normal">
+                        {{result.totalBorrowAmount}}
+                    </td>
+                    <td class="table-th-default-width bold">本次借款金额：</td>
+                    <td colspan="5" class="table-th-default-width normal">{{result.currentBorrowAmount}}</td>
+                </tr>
+                <tr>
+                    <td class="table-th-default-width bold">备注：</td>
+                    <td colspan="9" class="table-th-default-width normal">{{result.memo}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="blank-container"></div>
+        <p>
+            <button ng-click="generateOutPayPage()" ng-disabled="!penditureBtnEnabled()">
+                生成支出单
+            </button>
+        </p>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="butn butn-default " ng-click="closeThisDialog()">关闭</button>
+    </div>
+</div>

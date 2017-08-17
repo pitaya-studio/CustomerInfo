@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta contenttype="text/html; charset=utf-8">
+    <title></title>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+    <script type="text/javascript">
+        var standardModule = angular.module('standardModule',['qc','docModule']);
+        standardModule.controller('NavController',['$scope','docNavInfo', function ($scope,docNavInfo) {
+            $scope.navInfo = docNavInfo;
+            $scope.navInfo.current = 'standard';
+        }]);
+    </script>
+</head>
+<body class="fixed-top"  ng-app="standardModule">
+<doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+<div class="container">
+    <div class="docs-header">
+       <h1>项目的规范</h1>
+       <p>
+          定义项目中html,js,css,image,目录等的各项 标准
+       </p>
+   </div>
+</div>
+<doc-footer></doc-footer>
+</body>
+</html>

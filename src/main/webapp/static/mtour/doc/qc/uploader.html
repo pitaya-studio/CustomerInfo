@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/static/css/component/qc.uploader.css"/>
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/static/css/common/bootstrap.css"/>
+
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/component/webuploader.js"></script>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/component/qc.uploader.js"></script>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+    <script type="text/javascript">
+        var uploaderModule = angular.module('uploaderModule', ['qc', 'qc.uploader','docModule']);
+        uploaderModule.controller('NavController',['$scope','docNavInfo', function ($scope,docNavInfo) {
+            $scope.navInfo = docNavInfo;
+            $scope.navInfo.current = 'qc';
+            $scope.navInfo.sub = 'uploader';
+        }]);
+        uploaderModule.controller('UploadImageController',['$scope', function ($scope) {
+            $scope.imageList=[];
+            $scope.qcUploaderOptions={
+                makeThumb: true,
+                swf: '/static/components/flash/Uploader.swf',
+//                server: 'http://192.168.130.4:3000/files/uploading',
+                server: 'http://192.168.110.95:8080/trekiz_wholesaler_tts/a/mtour/common/upload',
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/*'
+                },
+                auto: true,
+                resize: false
+            };
+        }]);
+
+        uploaderModule.controller('UploadFileController',['$scope', function ($scope) {
+            $scope.fileList=[];
+            $scope.qcUploaderOptions={
+                makeThumb: false,
+                swf: '/static/components/flash/Uploader.swf',
+//                server: 'http://192.168.130.4:3000/files/uploading',
+                server: 'http://192.168.110.95:8080/trekiz_wholesaler_tts/a/mtour/common/upload',
+                submitSelector:'#btnUploader',//开发上传按钮(auto: false 时有效)
+                accept:null,
+                auto: false,
+                resize: false
+            };
+            $scope.remove = function (file) {
+                $scope.fileList.remove(file);
+            };
+        }]);
+    </script>
+</head>
+<body class="fixed-top" ng-app="uploaderModule">
+<doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+<div class="container">
+    <div class="docs-header">
+        <h1>文件上传</h1>
+
+        <p>
+            项目文件上传组件
+        </p>
+    </div>
+    <div class="page-header">
+        <h1>
+            qcUploader说明
+        </h1>
+    </div>
+    <div>
+        <h3>准备工作</h3>
+        <div>
+            <p>依赖项:jquery.js,angular.js,qc.js,webuploader.js,qc.uploader.js</p>
+            <p>依赖模块:qc module,qc.uploader module</p>
+            <pre>    &lt;script type="text/javascript" src="/static/js/common/src/jquery.js">&lt;/script>
+    &lt;script type="text/javascript" src="/static/js/common/src/jquery-ui.js">&lt;/script>
+    &lt;script type="text/javascript" src="/static/js/common/angular.js">&lt;/script>
+    &lt;script type="text/javascript" src="/static/js/common/qc.basic.js">&lt;script>
+    &lt;script type="text/javascript" src="/static/js/common/qc.js">&lt;/script>
+    &lt;script type="text/javascript" src="/static/js/component/src/webuploader.js">&lt;/script>
+    &lt;script type="text/javascript" src="/static/js/component/src/qc.uploader.js">&lt;/script>
+    &lt;script type="text/javascript">
+        var uploaderModule = angular.module('uploaderModule', ['qc', 'qc.uploader']);
+    &lt;/script></pre>
+        </div>
+        <h3>webuploader</h3>
+        <div>
+            <p>本项目的上传组件是基于<cite>百度</cite>的webuploader开发的!</p>
+            <p>使用angular的mvvm方式进行了封装,使开发者更加容易的使用上传组件.</p>
+            <p>关于webuploader的详细信息请参考其<a href="http://fex.baidu.com/webuploader/doc/index.html" target="_blank">官方网站</a></p>
+        </div>
+        <h3>qc-uploader-picker</h3>
+        <div>
+            <p>qc uploader 组件,也是选择文件的按钮</p>
+        </div>
+        <h3>qc-uploader-options</h3>
+        <div>
+            <p>uploader组件配置项,详情请参考<a href="http://fex.baidu.com/webuploader/doc/index.html/#WebUploader_Uploader_options" target="_blank">webuploader官方网站</a></p>
+            <p>自定义配置项:submitSelector,开始文件上传按钮的选择器.只有配置项中的自动上传(auto)为false的时候才有实际意义</p>
+        </div>
+        <h3>ng-model</h3>
+        <div>
+            <p>和上层scope交互的接口,是一个文件数组.</p>
+            <p>uploader的文件添加,状态变更后,该文件数组页会相应的改变.</p>
+            <p>删除该数组的某个文件后,uploader也会删除该文件</p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>
+            示例
+        </h1>
+    </div>
+    <div>
+        <h3>图片上传12</h3>
+        <pre>    uploaderModule.controller('UploadImageController',['$scope', function ($scope) {
+        $scope.imageList=[];
+        $scope.qcUploaderOptions={
+            makeThumb: true,
+            swf: '/static/components/flash/Uploader.swf',
+            server: 'http://192.168.130.4:3000/files/uploading',
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            },
+            auto: true,
+            resize: false
+        };
+    }]);</pre>
+        <pre>    &lt;div ng-controller="UploadImageController">
+        &lt;div class="clearfix">
+             &lt;span qc-uploader-picker
+                   ng-model="imageList"
+                   qc-uploader-options="qcUploaderOptions"
+                   class="pull-left">上传图片&lt;/span>
+        &lt;/div>
+        &lt;div class="list-group">
+            &lt;div class="list-group-item"  ng-repeat="image in imageList">
+                &lt;img ng-src="<span>{{</span>image.thumbSrc}}"/>
+                &lt;h3><span>{{</span>image.name}}&lt;/h3>
+                status:<span>{{</span>image.status}}
+                &lt;hr/>
+                size:<span>{{</span>image.size|fileSize:'kb'}}
+                &lt;hr/>
+                &lt;div class="progress" >
+                    &lt;div class="progress-bar progress-bar-success"
+                         ng-style="{'width': image.ProgressPercentage*100+'%'}">
+                    &lt;/div>
+                &lt;/div>
+                &lt;div>
+                    serverUrl: &lt;span class="text-primary"><span>{{</span>image.url}}&lt;/span>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div></pre>
+        <div ng-controller="UploadImageController">
+            <div class="clearfix">
+                 <span qc-uploader-picker
+                       ng-model="imageList"
+                       qc-uploader-options="qcUploaderOptions"
+                       class="pull-left">上传图片</span>
+            </div>
+            <div class="list-group">
+                <div class="list-group-item"  ng-repeat="image in imageList">
+                    <img ng-src="{{image.thumbSrc}}"/>
+                    <h3>{{image.name}}</h3>
+                    status:{{image.status}}
+                    <hr/>
+                    size:{{image.size|fileSize:'kb'}}
+                    <hr/>
+                    <div class="progress" >
+                        <div class="progress-bar progress-bar-success"
+                             ng-style="{'width': image.ProgressPercentage*100+'%'}">
+                        </div>
+                    </div>
+                    <div>
+                        serverUrl: <span class="text-primary">{{image.url}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>文件上传</h3>
+        <pre>    uploaderModule.controller('UploadFileController',['$scope', function ($scope) {
+        $scope.fileList=[];
+        $scope.qcUploaderOptions={
+            makeThumb: false,
+            swf: '/static/components/flash/Uploader.swf',
+            server: 'http://192.168.130.4:3000/files/uploading',
+            submitSelector:'#btnUploader',
+            accept:null,
+            auto: false,
+            resize: false
+        };
+        $scope.remove = function (file) {
+            $scope.fileList.remove(file);
+        };
+    }]);</pre>
+        <pre>    &lt;div ng-controller="UploadFileController">
+        &lt;div class="clearfix">
+             &lt;span qc-uploader-picker
+                   ng-model="fileList"
+                   qc-uploader-options="qcUploaderOptions"
+                   class="pull-left">选择文件&lt;/span>
+            &lt;button class="btn btn-default" id="btnUploader">上传&lt;/button>
+        &lt;/div>
+        &lt;ul class="list-group">
+            &lt;li class="list-group-item"  ng-repeat="file in fileList">
+                &lt;h3><span>{{</span>file.name}}&lt;/h3>
+                status:<span>{{</span>file.status}}
+                &lt;hr/>
+                size:<span>{{</span>file.size|fileSize:'kb'}}
+                &lt;hr/>
+                &lt;div class="progress" >
+                    &lt;div class="progress-bar progress-bar-success"
+                         ng-style="{'width': file.ProgressPercentage*100+'%'}">
+                    &lt;/div>
+                &lt;/div>
+                &lt;div>
+                    serverUrl: &lt;span class="text-primary"><span>{{</span>file.url}}&lt;/span>
+                &lt;/div>
+                &lt;button class="btn btn-default" ng-click="remove(file)" ng-disabled="['complete','progress'].indexOf(file.status)>=0">remove&lt;/button>
+            &lt;/li>
+        &lt;/ul>
+    &lt;/div></pre>
+        <div ng-controller="UploadFileController">
+            <div class="clearfix">
+                 <span qc-uploader-picker
+                       ng-model="fileList"
+                       qc-uploader-options="qcUploaderOptions"
+                       class="pull-left">选择文件</span>
+                <button class="btn btn-default" id="btnUploader">上传</button>
+            </div>
+          <ul class="list-group">
+              <li class="list-group-item"  ng-repeat="file in fileList">
+                    <h3>{{file.name}}</h3>
+                  status:{{file.status}}
+                  <hr/>
+                  size:{{file.size|fileSize:'mb'}}
+                  <hr/>
+                  <div class="progress" >
+                      <div class="progress-bar progress-bar-success"
+                           ng-style="{'width': file.ProgressPercentage*100+'%'}">
+                      </div>
+                  </div>
+                  <div>
+                      serverUrl: <span class="text-primary">{{file.url}}</span>
+                  </div>
+                  <button class="btn btn-default" ng-click="remove(file)" ng-disabled="['complete','progress'].indexOf(file.status)>=0">remove</button>
+              </li>
+          </ul>
+        </div>
+    </div>
+</div>
+<doc-footer></doc-footer>
+</body>
+</html>

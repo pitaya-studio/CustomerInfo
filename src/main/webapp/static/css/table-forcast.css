@@ -1,0 +1,47 @@
+.main-list{
+	border-collapse: collapse;
+	border-top: 1px solid gray;
+	border-left: 1px solid gray;
+	text-align: center;
+	width: 700px;
+    margin: 0 auto;
+	font-family: "Microsoft YaHei UI", arial;
+    font-size: 14px;
+    color: #555;
+}
+.main-list tr td{
+	height: 20px;
+	border-right: 1px solid gray;
+	border-bottom: 1px solid gray;
+	empty-cells: show;
+}
+.main-list tr td.remove-border{
+	border-bottom: none;
+	padding: 0px;
+}
+.main-list tr td.remove-border td.no-right{
+	border-right: none;
+}
+.main-list tr td.nav-info{
+	line-height: 20px;
+	background-color: #eee;
+	overflow: hidden;
+    white-space: nowrap;
+    table-layout: fixed;
+    padding: 0px 5px;
+}
+.sub-list{
+	width: 700px;
+    border-collapse: collapse;
+}
+.sub-list tr td{
+	border-right: 1px solid gray;
+	border-bottom: 1px solid gray;
+}
+h2{
+	width:700px;
+	text-align:center;
+	margin:20px auto;
+}
+
+   

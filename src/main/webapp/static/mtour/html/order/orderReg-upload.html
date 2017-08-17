@@ -1,0 +1,40 @@
+
+        <ul>
+            <li class="certificate-list" ng-if="editModel == 'edit'">
+                <span type="button" qc-uploader-picker="" ng-model="newAttachments"
+                      qc-uploader-options="qcUploaderOptions">上传附件</span>
+                      <!--<button  qc-uploader-picker="" ng-model="newAttachments"
+                      qc-uploader-options="qcUploaderOptions">上传附件</button>-->
+                <!--<span class="remarks">（支持格式：jpg，jpeg，gif，png，pdf，tif）</span>-->
+            </li>
+            <div class="list">
+                <!--已经上传的文件-->
+                <ul>
+                    <li ng-repeat="file in attachment" ng-init="file.status='complete'">
+
+                        <i class="fa fa-paperclip"></i>
+                        <a ng-href="{{uploadFileUrl+file.attachmentUuid}}" target="_blank">
+                            <span title="{{file.fileName|| file.name}}">{{file.fileName|| file.name}}</span>
+                        </a>
+                        <em ng-if="file.status=='complete' && editModel == 'edit'"
+                            class="sucess">上传成功！</em>
+                        <i class="fa fa-times"
+                           ng-if="editModel == 'edit'"
+                           ng-click="remove(file)"></i>
+                    </li>
+                </ul>
+                <!--正在上传，或者上传出问题的文件-->
+                <ul>
+                    <li ng-repeat="file in newAttachments" ng-if="file.status!='cancelled'">
+                        <i class="fa fa-paperclip"></i>
+                        <span title="{{file.fileName|| file.name}}">{{file.fileName|| file.name}}</span>
+                        <em ng-if="file.status=='progress'">上传中......</em>
+                        {{file.status}}
+                        <em ng-if="file.status=='complete'" class="sucess">上传成功！</em>
+                        <i class="fa fa-times" ng-click="newAttachments.remove(file)"></i>
+                    </li>
+                </ul>
+            </div>
+
+        </ul>
+    </div>

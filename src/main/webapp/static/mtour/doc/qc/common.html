@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta  contentType="text/html;charset=utf-8">
+    <title></title>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/common/sortable.js"></script>
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+    <script type="text/javascript">
+        var commonModule = angular.module('commonModule', ['qc', 'docModule', 'ui.sortable']);
+        commonModule.controller('NavController',['$scope','docNavInfo', function ($scope,docNavInfo) {
+            $scope.navInfo = docNavInfo;
+            $scope.navInfo.current = 'qc';
+            $scope.navInfo.sub = 'common';
+        }]);
+        commonModule.controller('DdlController', ['$scope', function ($scope) {
+            $scope.list = [
+                {id: "1", name: '张三疯',short:'zsf'},
+                {id: "2", name: '李四癫',short:'lsd'},
+                {id: "3", name: '王五痴',short:'wwc'},
+                {id: "4", name: '孙六怨',short:'sly'},
+                {id: "5", name: '胜七狂',short:'sqk'}
+            ];
+            $scope.selected1 = $scope.list[1];
+            $scope.selected2 = null;
+            $scope.selected3 = [];
+            $scope.selected3.push($scope.list[1]);
+            $scope.selected3.push($scope.list[3]);
+        }]);
+        commonModule.controller('DialogController', ['$scope', 'qcDialog', function ($scope, qcDialog) {
+            $scope.show1 = function () {
+                var dialog = qcDialog.open({
+                    title: 'this is dialog title(我可以拖哦!)',
+                    template: '<div style="padding: 10px;">this is dialog body' +
+                    '<br>可以点击关闭图标来关闭,也可以按esc键来关闭,还可以点击弹窗外的区域来关闭' +
+                    '</div>' +
+                    '<div class="qc-dialog-footer" > this is dialog footer(给我加个按钮会有惊xi[a])</div>',
+                    plain: true,
+                    closeByDocument: true,
+                    closeByEscape: true,
+                    scope: $scope
+
+                });
+                dialog.closePromise.then(function () {
+                    alert('this is closePromise!!!');
+                });
+            };
+            $scope.show2 = function () {
+                qcDialog.open({
+                    title: 'title2',
+                    template: 'template/dialog2.html',
+                    plain: false,
+                    showClose: false,
+                    width: 600,
+                    controller: ['$scope', '$window', function (dialogScope, $win) {
+                        dialogScope.desc = $scope.desc;
+                        dialogScope.getUrl = function () {
+                            dialogScope.url = $win.location.href;
+                        };
+                        dialogScope.save = function () {
+                            $scope.desc = dialogScope.desc;
+                            dialogScope.closeThisDialog();
+                        };
+                    }]
+                });
+            };
+            $scope.show3 = function () {
+                qcDialog.openCover({
+                    template: '<div class="qc-dialog-body">' +
+                    '<h3>this is a cover dialog</h3>' +
+                    'you can click the next button to show 2nd floor dialog<button ng-click="show4()">show4</button>' +
+                    '</div>',
+                    plain: true,
+                    controller: ['$scope', function (dialogScope) {
+                        dialogScope.show4 = function () {
+                            qcDialog.open({
+                                title: 'title4',
+                                template: '',
+                                plain: true
+                            });
+                        };
+                    }]
+                });
+            };
+        }]);
+        commonModule.controller('SortableController', ['$scope', function ($scope) {
+            $scope.item1 = ['北京', '天津', '上海', '重庆'];
+            $scope.item2 = ['台湾', '香港', '澳门'];
+            $scope.item3 = [];
+            $scope.sortableOptions1 = {
+                connectWith: ['#item2', '#item3']
+            };
+        }]);
+        commonModule.controller('MessageController', ['$scope', 'qcMessage', function ($scope, qcMessage) {
+            $scope.warning = function () {
+                qcMessage.warning('没事别瞎点!');
+            };
+            $scope.error = function () {
+                qcMessage.error('发生未知异常<br>请联系管理员!');
+            };
+            $scope.confirm = function () {
+                qcMessage.confirm('今天天气不是很好.<br>你确认外出打鸡血吗?')
+                        .then(function () {
+                            alert('什么也不能阻止我对鸡血的渴望!!!');
+                        }, function () {
+                            alert('今天还有人查水表,还是算了吧!!!');
+                        });
+            };
+            $scope.showTip = function () {
+                if ($scope.tipMessage) {
+                    qcMessage.tip($scope.tipMessage);
+                } else {
+                    qcMessage.tip('naochi啊你!!!你不输入你想提示个毛啊?');
+                }
+            };
+            $scope.showInfo = function () {
+                if ($scope.infoMessage) {
+                    qcMessage.info($scope.infoMessage);
+                } else {
+                    qcMessage.info('naochi啊你!!!你不输入你想info个毛啊?');
+                }
+            };
+        }]);
+        commonModule.controller('DateController', ['$scope', function ($scope) {
+            $scope.inDate = '2015-09-15';
+            $scope.dateOptions = {
+                yearRange: '2015:2016',
+                maxDate: '2016-09-30',
+                //numberOfMonths: [1, 3],
+                showOtherMonths: true,
+                showButtonPanel: true,
+                selectOtherMonths: true
+            };
+        }]);
+    </script>
+</head>
+<body class="fixed-top" ng-app="commonModule">
+<doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+<div class="container">
+    <div class="docs-header">
+        <h1>常用组件</h1>
+
+        <p>
+            项目中使用频率较高的组件
+        </p>
+    </div>
+    <div class="breadcrumb">Quauq Doc > 前端开发文档 > 常用组件</div>
+    <div class="page-header">
+        <h1>下拉框</h1>
+    </div>
+    <div ng-controller="DdlController">
+        <h3>准备工作</h3>
+
+        <div>
+            <p>依赖项:jquery.js,angular.js,qc.basic.js,qc.js</p>
+
+            <p>依赖模块:qc module</p>
+        <pre>    &lt;script type="text/javascript" src="/static/js/common/angular.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="/static/js/common/qc.basic.js"&gt;&lt;script&gt;
+    &lt;script type="text/javascript" src="/static/js/common/qc.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+          var commonModule = angular.module('commonModule', ['qc']);//加载qc模块
+    &lt;/script&gt;</pre>
+
+            <h3>上层scope数据</h3>
+             <pre>    ddlModule.controller('ddlController', ['$scope', function ($scope) {
+         $scope.list = [
+             {id: 1, name: '张三疯'},
+             {id: 2, name: '李四癫'},
+             {id: 3, name: '王五痴'},
+             {id: 4, name: '孙六怨'},
+             {id: 5, name: '胜七狂'}
+         ];
+         $scope.selected1 = $scope.list[1];
+         $scope.selected2 = null;
+         $scope.selected3 = [];
+         $scope.selected3.push(  $scope.list[1]);
+         $scope.selected3.push(  $scope.list[3]);
+    }]);</pre>
+        </div>
+        <h3>下拉框设置</h3>
+
+        <div>
+            <p>qc-dropdown:定义该元素为下拉框组件</p>
+
+            <p>items:绑定的数据源</p>
+
+            <p>multiple:多选</p>
+
+            <p>ng-model:选中的项(可多选的时候是一个数组).用来和外层scope交互</p>
+
+            <p>item-text:自定义列表中显示的信息(qcDropdownItem是每个列表对象)</p>
+
+            <p> filter-expression:过滤表达式,通常是数据源的某几个属性(比如name或者name,id),多个的时候用","分隔</p>
+
+            <p>list-width:自定义下拉列表的宽度</p>
+
+            <p>list-max-height:下拉列表最大高度.通常用于列表项过多的时候</p>
+        </div>
+        <h3>最简单的单选框</h3>
+
+        <div>
+    <pre>    &lt;div qc-dropdown
+        items="list"
+        ng-model="selected1"
+        item-text=<span>"{{</span>qcDropdownItem.name<span>}}"</span>
+    &lt;/div></pre>
+            <div qc-dropdown style="width: 200px;"
+                 items="list"
+                 ng-model="selected1"
+                 item-text="{{qcDropdownItem.name}}">
+            </div>
+        </div>
+        <h3>可输入的单选框</h3>
+
+        <div>
+        <pre>    &lt;div qc-dropdown  style="width: 200px;"
+        items="list"
+        item-text="&lt;span class='text-danger'><span>{{</span>qcDropdownItem.name}}:<span>{{</span>qcDropdownItem.id}}&lt;/span>"
+        ng-model="selected2"
+        filter-expression="name,id,short"
+        list-max-height="120"
+        list-width="300">
+    &lt;/div></pre>
+            <div qc-dropdown style="width: 200px;"
+                 items="list"
+                 item-text="<span class='text-danger'>{{qcDropdownItem.name}}:{{qcDropdownItem.id}}:{{qcDropdownItem.short}}</span>"
+                 ng-model="selected2"
+                 filter-expression="name,id,short"
+                 list-max-height="120"
+                 list-width="300">
+            </div>
+        </div>
+        <h3>多选框</h3>
+
+        <div>
+        <pre>    &lt;div qc-dropdown style="width: 200px;"
+        ng-model="selected3"
+        multiple="multiple"
+        filter-expression="name"
+        item-text="<span>{{qcDropdownItem.name}}</span>"
+        items="list">
+    &lt;/div>
+    &lt;span class="form-control" style="width: 100px;display: inline-block;margin-left: 6px;"ng-repeat="item in selected3 | orderBy:'id'">
+         <span>{{</span>item.name}}
+         &lt;span class="pull-right text-danger" style="cursor: pointer" ng-click="selected3.remove(item)">X &lt;/span>
+    &lt;/span></pre>
+
+            <div qc-dropdown style="width: 200px;"
+                 ng-model="selected3"
+                 qc-valid-required
+                 multiple="multiple"
+                 filter-expression="name"
+                 item-text="<span>{{qcDropdownItem.name}}</span>"
+                 items="list">
+            </div>
+        <span class="form-control" style="width: 100px;display: inline-block;margin-left: 6px;"
+              ng-repeat="item in selected3 | orderBy:'id'">
+            {{item.name}}
+            <span class="pull-right text-danger" style="cursor: pointer" ng-click="selected3.remove(item)">X</span>
+        </span>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>拖拽</h1>
+    </div>
+    <div ng-controller="SortableController">
+        <h3>准备工作</h3>
+
+        <div>
+            <p>依赖项:jquery.js,jquery-ui.js,angular.js,sortable.js</p>
+
+            <p>依赖模块:ui.sortable module</p>
+        </div>
+        <h3>使用说明</h3>
+
+        <div>
+            <p>参考angular:<a href="https://github.com/angular-ui/ui-sortable" target="_blank">ui-sortable</a></p>
+
+            <p>参考jquery-ui:<a href="http://api.jqueryui.com/sortable/" target="_blank">sortable</a></p>
+        </div>
+        <h3>实例</h3>
+
+        <div>
+            controller 代码
+            <pre>    commonModule.controller('sortableController', ['$scope', function ($scope) {
+        $scope.item1 = ['北京', '天津', '上海', '重庆'];
+        $scope.item2 = ['台湾', '香港', '澳门'];
+        $scope.item3 = [];
+        $scope.sortableOptions1 = {
+            connectWith: ['#item2', '#item3']
+        };
+    }]);</pre>
+            页面代码
+            <pre>    &lt;div>item1:<span>{{</span>item1}}&lt;/div>
+        &lt;div ui-sortable="sortableOptions1"
+                id="item1" class="well well-sm" ng-model="item1">
+        &lt;span style="margin-left: 10px;cursor: pointer"
+                class="label label-info"
+                ng-repeat="city in item1"><span>{{</span>city}}&lt;/span>
+        &lt;/div>
+        &lt;div>item2:<span>{{</span>item2}}&lt;/div>
+        &lt;div ui-sortable="{connectWith:['#item1','#item3']}"
+                id="item2" class="form-control" ng-model="item2">
+            &lt;span style="margin-left: 10px;cursor: pointer"
+                class="label label-primary"
+                ng-repeat="city in item2"><span>{{</span>city}}&lt;/span>
+        &lt;/div>
+        &lt;div>item3:<span>{{</span>item3}}&lt;/div>
+        &lt;div ui-sortable="{connectWith:['#item1','#item2'],cursor: 'move'}"
+                id="item3" class="form-control" ng-model="item3">
+        &lt;span style="margin-left: 10px;cursor: pointer"
+                class="label label-danger"
+                ng-repeat="city in item3"><span>{{</span>city}}&lt;/span>
+    &lt;/div></pre>
+            <div>item1:{{item1}}</div>
+            <div ui-sortable="sortableOptions1" id="item1" class="well well-sm" ng-model="item1">
+                <span style="margin-left: 10px;cursor: pointer" class="label label-info" ng-repeat="city in item1">{{city}}</span>
+            </div>
+            <div>item2:{{item2}}</div>
+            <div ui-sortable="{connectWith:['#item1','#item3']}" id="item2" class="form-control" ng-model="item2">
+                <span style="margin-left: 10px;cursor: pointer" class="label label-primary" ng-repeat="city in item2">{{city}}</span>
+            </div>
+            <div>item3:{{item3}}</div>
+            <div ui-sortable="{connectWith:['#item1','#item2'],cursor: 'move'}" id="item3" class="form-control"
+                 ng-model="item3">
+                <span style="margin-left: 10px;cursor: pointer" class="label label-danger" ng-repeat="city in item3">{{city}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>日期选择</h1>
+    </div>
+    <div ng-controller="DateController">
+        <h3>准备工作</h3>
+
+        <div>
+            <p>依赖项:jquery.js,jquery-ui.js,angular.js,qc.basic.js,qc.js</p>
+
+            <p>依赖模块:qc module</p>
+        </div>
+
+        <h3>qc-date配置项</h3>
+
+        <div>
+            <p>基本和jQuery UI 一样,请参考 <a href="http://api.jqueryui.com/datepicker/" target="_blank">jQuery UI
+                DatePicker</a></p>
+        </div>
+        <h3>qc-date-format</h3>
+
+        <div>
+            <p>当需要和$scope交互的时候,需要添加指令 ng-model,同时,如果配置了qc-date-format,$scope中 对应ng-model的属性就是该格式的字符串.否则为Date类型</p>
+        </div>
+        <h3>示例</h3>
+
+        <div>
+            <pre>    commonModule.controller('DateController', ['$scope', function ($scope) {
+        $scope.date = '2015-09-15';
+        $scope.dateOptions = {
+            yearRange: '2015:2016',//可选年的跨度
+            maxDate: '2016-09-30',//最大日期
+            //numberOfMonths: [1, 3],//出现几个月的日期供选择
+            showOtherMonths: true,//是否显示非本月日期
+            selectOtherMonths: true//是否可选择非本月日期
+        };
+    }]);</pre>
+            <pre>    &lt;input qc-date="dateOptions" name="DateOfBirth"
+        qc-date-format="yy-mm-dd" ng-model="date" readonly>
+        date:<span>{{</span>date}}</pre>
+            <input qc-date="dateOptions" name="DateOfBirth" qc-date-format="yy-mm-dd" ng-model="inDate"
+                   readonly> inDate:{{inDate}}
+            <br/>
+            <br/>
+            <pre>    &lt;div qc-date="{numberOfMonths:[1,4],showMonthAfterYear: false}" ng-model="modifyDate">&lt;/div>
+    modifyDate:<span>{{</span>modifyDate}}</pre>
+            <div qc-date="{numberOfMonths:[1,4],showMonthAfterYear: false}" ng-model="modifyDate"></div>
+            modifyDate:{{modifyDate}}
+        </div>
+    </div>
+</div>
+<doc-footer></doc-footer>
+</body>
+</html>

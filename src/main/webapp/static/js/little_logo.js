@@ -1,0 +1,1 @@
+document.writeln("<link href=\"http://t215.quauqsystem.com.cn/favicon.ico\" rel=\"shortcut icon\" />");

@@ -1,0 +1,260 @@
+.opera-new{
+	padding:0 5px;
+}
+.opera-new  span,.opera-new  div{
+	color: #08c;
+	cursor: pointer;
+}
+.opera-new  span:hover,.opera-new  div:hover{
+	color: #005580;	
+}
+#contentTable .withdraw-td{
+    padding:0;
+}
+
+.withdraw-relative{
+    display:inline-block;
+    position:relative;
+    line-height:50px;
+    min-height:64px;
+    /*height:100%;*/
+    /*width:100%;*/
+    padding-left: 0;
+
+}
+
+.withdraw-relative span{
+    display: inline-block;
+    max-width: 79px;
+    line-height: 14px;
+    margin-top: 25px;
+}
+
+.withdraw-td input[type="checkbox"]{
+    margin-top:23px;
+
+}
+
+.withdraw-relative .withdraw-hover,
+.withdraw-relative .grounding-hover{
+    display:inline-block;
+    position:absolute;
+    top: -4px;
+    left: -2px;
+    height:15px;
+    padding:1px;
+    background:#22ac38;
+    text-align:center;
+    padding-left:2px;
+    padding-right:2px;
+    font-size:12px;
+    line-height:15px;
+    color:#fff;
+    border-radius:2px;
+    display:none;
+    width:112px;
+
+}
+.withdraw-relative .withdraw-hover{
+    background:#ce2b2b;
+}
+
+.withdraw-relative input[type="text"]{
+    width:77%;
+    margin-top: 7%;
+    margin-left:5px;
+}
+
+
+.withdraw-relative .grounding,
+.withdraw-relative .withdraw
+{
+    background: url(../images/g-w.png) no-repeat 0 0px;
+    height: 26px;
+    width: 25px;
+    display: inline-block;
+    position: absolute;
+    top: -5px;
+    left: -2px;
+    z-index:2;
+}
+
+.withdraw-relative .withdraw{
+    background-position: -25px 0;
+    top:-2px;
+}
+
+.morePrice-parent{
+    position:relative;
+    display:inline-block;
+    height:20px;
+}
+.mp-floating{
+    position: absolute;
+    top: 24px;
+    width: 375px;
+    height: 136px;
+    border: 1px solid #cacaca;
+    right: -30px;
+    z-index:111;
+    background-color:#fff;
+
+}
+.mp-floating span{
+    display: block;
+    height: 10px;
+    width: 20px;
+    background: url(../images/arrow.png) no-repeat;
+    margin-top: -10px;
+    margin-left: 312px;
+
+}
+.morePrice-parent .mp-floating .table_fixed{
+    border:0px;
+}
+.morePrice-parent .mp-floating .table_fixed th{
+    height: 40px;
+    padding-left: 20px;
+    text-align: left;
+    color: #666;
+    background-color:#e3e3e3;
+    border-top: 0 !important;
+    border-right:1px solid #cacaca !important;
+}
+.morePrice-parent .mp-floating .table_fixed td{
+    height: 22px !important;
+    padding-left: 0px;
+    text-align: left;
+    color: #666;
+    background-color:#fff;
+    border-bottom:0;
+    border-left:0;
+    border-top:0;
+    border-right:1px solid #cacaca !important;
+
+}
+.morePrice-parent .mp-floating .table_fixed .mp-name{
+    padding-left:20px;
+    border:0 !important;
+}
+.mp-floating {
+    top: 26px !important; 
+    right: -6px !important;
+}
+.mp-floating span {
+    margin-left: 342px !important;
+}
+.mp-floating .table_fixed th {
+    height: 40px  !important;
+    padding-left: 20px  !important;
+    text-align: left  !important;
+    color: #666  !important;
+    background-color: #e3e3e3 !important;
+    border-top: 0 !important;
+    border-right: 1px solid #cacaca !important;
+    border-radius:0 !important;
+}
+.mp-floating .table_fixed td {
+    height: 24px !important;
+    line-height: 24px !important;
+    padding-left: 0px  !important;
+    text-align: left  !important;
+    color: #666  !important;
+    background-color: #fff  !important;
+    border-bottom: 0  !important;
+    border-left: 0  !important;
+    border-top: 0  !important;
+    border-right: 1px solid #cacaca !important;
+}
+.mp-floating .table_fixed .mp-name {
+    padding-left: 20px  !important;
+    border: 0 !important;
+}
+
+.mp-floating .table_fixed td,.mp-floating .table_fixed th{
+    white-space: nowrap;
+}
+
+.morePrice-parent{
+    position:relative;
+    display:inline-block;
+    height:20px;
+}
+.mp-floating{
+    position: absolute;
+    top: 24px;
+    width: 375px;
+    height: 146px;
+    border: 1px solid #cacaca;
+    right: -30px;
+    z-index:111;
+    background-color:#fff;
+    border-right: 0;
+
+}
+.mp-floating span{
+    display: block;
+    height: 10px;
+    width: 20px;
+    background: url(../images/arrow.png) no-repeat;
+    margin-top: -10px;
+    margin-left: 312px;
+
+}
+.morePrice-parent .mp-floating .table_fixed{
+    border:0px;
+}
+.morePrice-parent .mp-floating .table_fixed th{
+    height: 40px;
+    padding-left: 20px;
+    text-align: left;
+    color: #666;
+    background-color:#e3e3e3;
+    border-top: 0 !important;
+    border-right:1px solid #cacaca !important;
+
+}
+.morePrice-parent .mp-floating .table_fixed td{
+    height: 22px !important;
+    padding-left: 0px;
+    text-align: left;
+    color: #666;
+    background-color:#fff;
+    border-bottom:0;
+    border-left:0;
+    border-top:0;
+    border-right:1px solid #cacaca !important;
+
+}
+.morePrice-parent .mp-floating .table_fixed .mp-name{
+    padding-left:20px;
+    border:0 !important;
+}
+.selectInTable {
+    margin-top: 10px;
+    margin-left: 11px;
+}
+.selectInTable input[type="button"]{
+    padding:2px 9px;
+
+}
+.selectInTable input[type="checkbox"]{
+    margin-top: -3px;
+}
+.table-checkReverse,.selectInTable input[type="button"]{
+    margin-left:13px;
+    cursor:pointer;
+
+}
+.table-checkReverse:hover{
+    color: #08c;
+}
+
+.morePrice:focus{
+    color: #08c;
+    text-decoration: none;
+}
+
+#modTable tbody td{
+    vertical-align: middle;
+}

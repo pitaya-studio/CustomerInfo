@@ -1,0 +1,21 @@
+﻿.disabledClass{
+    background-color:transparent !important; 
+    border:0px !important; 
+    box-shadow :0 0 0 !important; 
+    cursor: auto !important;
+}
+
+.displayClick{
+	display: none !important;
+}
+.disabledshowspan{
+	float: none;
+	font-family:'宋体';
+	font-size:12px;
+	font-weight:normal;
+	margin-left:0px;
+	text-align: left;
+	display:-moz-inline-box;
+    display:inline-block;
+    
+}

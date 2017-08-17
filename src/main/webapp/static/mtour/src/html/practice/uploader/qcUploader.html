@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/components/webuploader/webuploader.css"/>
+    <link rel="stylesheet" href="/src/css/qc/qc.dialog.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dialog-theme-default.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dialog-theme-cover.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dropdown.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.loadingBar.css">
+
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/src/components/webuploader/webuploader.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.flashVersion.js"></script>
+    <script type="text/javascript" src="/src/js/component/qc.uploader.js"></script>
+
+    <script type="text/javascript">
+        var uploaderModule = angular.module('uploaderModule', ['qc', 'qc.uploader']);
+        var UploaderController = uploaderModule.controller('UploaderController', ['$scope', function ($scope) {
+            $scope.fileList = [];
+            $scope.remove = function (file) {
+                $scope.fileList.remove(file);
+            };
+            $scope.uploaderOptions = {
+//                accept: {
+//                    title: 'Images',
+//                    extensions: 'gif,jpg,jpeg,bmp,png',
+//                    mimeTypes: 'image/*'
+//                },
+                makeThumb: true,
+                submitSelector:'#btnUploader',//开发上传按钮(auto: false 时有效)
+                auto: false
+            };
+        }]);
+    </script>
+</head>
+<body ng-app="uploaderModule">
+
+<div class="container">
+    <div class="page-header">
+        <h1>qc uploader</h1>
+    </div>
+    <div ng-controller="UploaderController">
+        <div style="border: 1px solid #000000" class="clearfix">
+            <span qc-uploader-picker="" class="pull-right"
+                  qc-uploader-options="uploaderOptions"
+                  ng-model="fileList">选择文件</span>
+            <button class="btn btn-primary pull-right" id="btnUploader">上传</button>
+        </div>
+        <div class="list-group">
+            <div class="list-group-item" ng-cloak=""
+                 ng-repeat="file in fileList">
+                <img ng-src="{{file.thumbSrc}}" alt="不能生产预览"/>
+
+                <h3>{{file.name}}</h3>
+                status:{{file.status}}
+                <hr/>
+                size:{{file.size|fileSize:'kb'}}
+                <hr/>
+                <div class="progress" >
+                    <div class="progress-bar progress-bar-success"
+                         ng-style="{'width': file.ProgressPercentage*100+'%'}">
+                    </div>
+                </div>
+                <div>
+                    serverUrl: <span class="text-primary">{{file.url}}</span>
+                </div>
+                <button class="btn btn-default" ng-click="remove(file)" ng-disabled="['complete','progress'].indexOf(file.status)+1">remove</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

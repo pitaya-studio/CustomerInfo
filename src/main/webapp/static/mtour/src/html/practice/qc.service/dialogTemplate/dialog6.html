@@ -1,0 +1,46 @@
+<div class="qc-dialog-header"> 
+	<div class="qc-dialog-title ng-binding"><span>付款</span></div> 
+</div>
+<div class="dialog-body-md-pay"> 
+	<div class="first-step-info">
+    	<ul>
+        	<li class="money">
+            	<span><label>应付金额：</label>￥38847</span>
+            </li>
+        </ul>
+    </div>
+    <div class="section-select">
+    	<span><input name="" type="radio" value="" /><label>支票</label></span>
+        <span><input name="" type="radio" value="" /><label>现金</label></span>
+        <span><input name="" type="radio" value="" /><label>外汇</label></span>
+    </div>
+    <div class="second-step-info">
+    	<ul>
+        	<li><label>付款金额：</label>
+            	<div class="qc-dropdown-md" qc-dropdown ng-model="item.orderer" item-text="{{qcDropdownItem.name}}" filter-expression="name" dropdown-text="{{selectedItem?selectedItem.name:''}}" items="currencies">
+                </div>
+            </li>
+            <li><label>收款单位：</label>
+            	<input class="text-input-huge" name="" type="text">
+            </li>
+            <li class="certificate-list"><label>收款凭证：</label>
+            	<button class="btn btn-default" type="button" name="" id="">上传凭证</button><span class="remarks">（支持格式：jpg，jpeg，gif，png，pdf，tif）</span>
+            </li>
+            <div class="list">
+                	<ul>
+                    	<li><i class="fa fa-paperclip"></i><span>的算法的发的发的发撒的啊的算法的发的发的发撒的啊</span><em>上传中......</em></li>
+                        <li><i class="fa fa-paperclip"></i><span title="的算法的发的发的发撒的啊的算法的发的发的发撒的啊">的算法的发的发的发撒的啊的算法的发的发的发撒的啊</span><em class="sucess">上传成功！</em><i class="fa fa-times"></i></li>
+                        <li><i class="fa fa-paperclip"></i><span>的算法的发的发的发撒的啊的算法的发的发的发撒的啊</span><i class="fa fa-times"></i></li>
+                    </ul>
+            </div>
+            <li><label>备注：</label>
+                <textarea class="multi-text-lg" name=""></textarea>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <button class="btn btn-primary " ng-click="ok(selectedPerson1)">提交</button>
+    </div>
+</div><div class="qc-dialog-close"></div>

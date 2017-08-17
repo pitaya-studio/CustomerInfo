@@ -1,0 +1,385 @@
+<div ng-if="companyRoleCode=='0'">
+    <!--编辑模式-->
+    <div class="additional-cost-container" ng-if="editModel=='edit' && saveModel!='commit' ">
+        <div class="additional-cost-tab">
+            <div class="additional-cost-butn-container"
+                 ng-class="{'active':showType=='additional'}">
+                <button class="additional-cost-butn" type="button" ng-click="showAdditionalCost()">追加成本</button>
+            </div>
+            <div class="additional-cost-butn-container"
+                 ng-class="{'active':showType=='salePrice'}">
+                <button class="additional-cost-butn" type="button" ng-click="showSalePrice()">外报价修改</button>
+            </div>
+        </div>
+        <div ng-if="showType=='additional'" class="additional-cost">
+            <ul>
+                <li ng-repeat="additionalCost in priceChange.additionalCosts"
+                    ng-init="initAdditionalCost(additionalCost)">
+                    <label class="f-l">款项名称：</label>
+                    <input class="text-input-md-second f-l" type="text" ng-model="additionalCost.fundsName">
+                    <label class="f-l margin-left-twenty">币种/汇率：</label>
+                    <div
+                            class="qc-input-group-base-seond qc-input-group-md-second f-l">
+                        <div class=""
+                             qc-dropdown
+                             ng-model="additionalCost.currency"
+                             item-text="{{qcDropdownItem.currencyCode}}"
+                             fee-watch=""
+                             dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                             items="currencies">
+                        </div>
+                        <span class="f-l">/</span>
+                        <input type="text" class="text-input"
+                               qc-input-amount="" readonly="readonly"
+                               ng-model="additionalCost.exchangeRate"
+                               ng-show="additionalCost.currency.currencyUuid==defaultCurrency.currencyUuid">
+
+                        <input type="text" class="text-input"
+                               qc-input-exchange-rate=""
+                               fee-watch=""
+                               ng-model="additionalCost.exchangeRate"
+                               ng-show="additionalCost.currency.currencyUuid!=defaultCurrency.currencyUuid">
+                    </div>
+
+                    <label class="f-l margin-left-twenty">
+                        <i class="require">*</i>
+                        金额：
+                    </label>
+                    <input
+                            class="text-input-md-second f-l" type="text"
+                            qc-input-amount="" fee-watch=""
+                            ng-model="additionalCost.amount" qc-valid-required="">
+                    <span
+                            class="base-operator f-r">
+                        <em class="fa fa-times"
+                            ng-if="priceChange.additionalCosts.length>1"
+                            ng-click="removeAdditionalCost(additionalCost)"></em>
+                        <em class="fa fa-plus"
+                            ng-click="priceChange.additionalCosts.push({})"></em>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div ng-if="showType=='salePrice'" class="quote-change additional-cost">
+            <ul>
+                <li ng-repeat="salePrice in priceChange.salePrices" ng-init="initSalePrice(salePrice)">
+                    <label class="f-l">币种/汇率：</label>
+                    <div
+                            class="f-l change"
+                            qc-dropdown fee-watch=""
+                            ng-model="salePrice.changeType"
+                            item-text="{{qcDropdownItem}}"
+                            dropdown-text="{{selectedItem}}"
+                            items="changeTypes">
+                    </div>
+                    <div
+                            class="qc-input-group-base-seond qc-input-group-md-second f-l">
+                        <div class="f-l"
+                             qc-dropdown
+                             ng-model="salePrice.currency" fee-watch=""
+                             item-text="{{qcDropdownItem.currencyCode}}"
+                             dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                             items="currencies">
+                        </div>
+                        <span class="f-l">/</span>
+                        <input type="text" class="text-input"
+                               qc-input-amount="" readonly="readonly"
+                               ng-model="salePrice.exchangeRate"
+                               ng-show="salePrice.currency.currencyUuid==defaultCurrency.currencyUuid">
+                        <input type="text" class="text-input"
+                               qc-input-exchange-rate=""
+                               fee-watch=""
+                               ng-model="salePrice.exchangeRate"
+                               ng-show="salePrice.currency.currencyUuid!=defaultCurrency.currencyUuid">
+                    </div>
+
+                    <label class="f-l margin-left-twenty">
+                        <i class="require">*</i>
+                        金额：
+                    </label>
+                    <input type="text" class="text-input-md-second f-l"
+                           qc-input-amount="" fee-watch=""
+                           ng-model="salePrice.amount" qc-valid-required="">
+                    <label class="f-l margin-left-twenty">备注：</label>
+                    <input
+                            class="text-input-md-second f-l" type="text" ng-model="salePrice.memo">
+
+                     <span
+                             class="base-operator f-r">
+                        <em class="fa fa-times"
+                            ng-if="priceChange.salePrices.length>1"
+                            ng-click="removeSalePrice(salePrice)"></em>
+                        <em class="fa fa-plus"
+                            ng-click="priceChange.salePrices.push({})"></em>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--查看模式-->
+    <div class="additional-cost-container" ng-if="editModel!='edit'">
+
+        <!--        <div class="line-solid"></div>-->
+        <div class="additional-cost border-none">
+            <ul>
+                <li ng-repeat="additionalCost in priceChange.additionalCosts"
+                    ng-init="initAdditionalCost(additionalCost)">
+                    <label class="f-l mar-r-primary">追加成本：</label>
+                    <label class="f-l">款项名称：</label>
+                    <div class="show-text-md">{{additionalCost.fundsName}}</div>
+                    <label class="f-l margin-left-twenty">币种/汇率：</label>
+                    <div class="show-text-md">{{additionalCost.currencyCode}}/{{additionalCost.exchangeRate}}
+                    </div>
+                    <label class="f-l margin-left-twenty">金额：</label>
+                    <div class="show-text-md">{{additionalCost.amount|number:2}}</div>
+
+                </li>
+            </ul>
+            <ul class="quote-change">
+                <li ng-repeat="salePrice in priceChange.salePrices" ng-init="initSalePrice(salePrice)">
+                    <label class="f-l mar-r-primary">外报价修改：</label>
+
+                    <label class="f-l margin-left-twenty">币种/汇率：</label>
+
+                    <div class="show-text-md">{{salePrice.currencyCode}}/{{salePrice.exchangeRate}}</div>
+
+                    <label class="f-l margin-left-twenty">金额：</label>
+
+
+                    <div class="show-text-md" ng-if="salePrice.amount">
+                        {{salePrice.changeType}}{{salePrice.amount|number:2}}
+                    </div>
+                    <label class="f-l">备注：</label>
+
+                    <div class="show-text-md" title="{{salePrice.memo}}">{{salePrice.memo}}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--编辑模式--0024-->
+    <div class="additional-cost-container" ng-if="editModel=='edit' && saveModel=='commit' ">
+        <div class="additional-cost border-none">
+            <ul>
+                <li ng-repeat="additionalCost in priceChange.additionalCosts"
+                    ng-init="initAdditionalCost(additionalCost)">
+                    <label class="f-l mar-r-primary">追加成本：</label>
+                    <label class="f-l">款项名称：</label>
+                    <div class="show-text-md">{{additionalCost.fundsName}}</div>
+                    <label class="f-l margin-left-twenty">币种/汇率：</label>
+                    <div class="show-text-md">{{additionalCost.currencyCode}}/{{additionalCost.exchangeRate}}
+                    </div>
+                    <label class="f-l margin-left-twenty">金额：</label>
+                    <div class="show-text-md">{{additionalCost.amount|number:2}}</div>
+
+                </li>
+            </ul>
+        </div>
+        <div class="additional-cost-tab" ng-if="priceChange.salePrices.length>0">
+            <div class="additional-cost-butn-container active">
+                <button class="additional-cost-butn" type="button" ng-click="showSalePrice()">外报价修改</button>
+            </div>
+        </div>
+        <div ng-if="showType=='salePrice'" class="quote-change additional-cost">
+            <ul>
+                <li ng-repeat="salePrice in priceChange.salePrices" ng-init="initSalePrice(salePrice)">
+                    <label class="f-l">币种/汇率：</label>
+                    <div
+                            class="f-l change"
+                            qc-dropdown fee-watch=""
+                            ng-model="salePrice.changeType"
+                            item-text="{{qcDropdownItem}}"
+                            dropdown-text="{{selectedItem}}"
+                            items="changeTypes">
+                    </div>
+                    <div
+                            class="qc-input-group-base-seond qc-input-group-md-second f-l">
+                        <div class="f-l"
+                             qc-dropdown
+                             ng-model="salePrice.currency" fee-watch=""
+                             item-text="{{qcDropdownItem.currencyCode}}"
+                             dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                             items="currencies">
+                        </div>
+                        <span class="f-l">/</span>
+                        <input type="text" class="text-input"
+                               qc-input-amount="" readonly="readonly"
+                               ng-model="salePrice.exchangeRate" ng-show="salePrice.currency.currencyUuid==defaultCurrency.currencyUuid">
+                        <input type="text" class="text-input"
+                               qc-input-exchange-rate=""
+                               fee-watch=""
+                               ng-model="salePrice.exchangeRate" ng-show="salePrice.currency.currencyUuid!=defaultCurrency.currencyUuid">
+                    </div>
+
+                    <label class="f-l margin-left-twenty">
+                        <i class="require">*</i>
+                        金额：
+                    </label>
+                    <input type="text" class="text-input-md-second f-l"
+                           qc-input-amount="" fee-watch=""
+                           ng-model="salePrice.amount" qc-valid-required="">
+                    <label class="f-l margin-left-twenty">备注：</label>
+                    <input
+                            class="text-input-md-second f-l" type="text" ng-model="salePrice.memo">
+
+                     <span
+                             class="base-operator f-r">
+                        <em class="fa fa-times"
+                            ng-if="priceChange.salePrices.length>1"
+                            ng-click="removeSalePrice(salePrice)"></em>
+                        <em class="fa fa-plus"
+                            ng-click="priceChange.salePrices.push({})"></em>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div ng-if="companyRoleCode!='0'">
+    <!--编辑模式-->
+    <div class="additional-cost-container" ng-if="editModel=='edit' && saveModel!='commit' ">
+        <div class="additional-cost-tab">
+            <div class="additional-cost-butn-container"
+                 ng-class="{'active':showType=='additional'}">
+                <button class="additional-cost-butn" type="button" ng-click="showAdditionalCost()">追加成本</button>
+            </div>
+            <div class="additional-cost-butn-container"
+                 ng-class="{'active':showType=='salePrice'}">
+                <button class="additional-cost-butn" type="button" ng-click="showSalePrice()">外报价修改</button>
+            </div>
+        </div>
+        <div ng-if="showType=='additional'" class="additional-cost">
+            <ul>
+                <li ng-repeat="additionalCost in priceChange.additionalCosts"
+                    ng-init="initAdditionalCost(additionalCost)">
+                    <label class="f-l">款项名称：</label>
+                    <input class="text-input-md-second f-l" type="text" ng-model="additionalCost.fundsName">
+                    <label class="f-l margin-left-twenty">币种/汇率：</label>
+                    <div
+                            class="qc-input-group-base-seond qc-input-group-md-second f-l">
+                        <div class=""
+                             qc-dropdown
+                             ng-model="additionalCost.currency"
+                             item-text="{{qcDropdownItem.currencyCode}}"
+                             fee-watch=""
+                             dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                             items="currencies">
+                        </div>
+                        <span class="f-l">/</span>
+                        <input type="text" class="text-input"
+                               qc-input-amount="" readonly="readonly"
+                               ng-model="additionalCost.currency.exchangeRate">
+                    </div>
+
+                    <label class="f-l margin-left-twenty">
+                        <i class="require">*</i>
+                        金额：
+                    </label>
+                    <input
+                            class="text-input-md-second f-l" type="text"
+                            qc-input-amount="" fee-watch=""
+                            ng-model="additionalCost.amount" qc-valid-required="">
+                    <span
+                            class="base-operator f-r">
+                        <em class="fa fa-times"
+                            ng-if="priceChange.additionalCosts.length>1"
+                            ng-click="removeAdditionalCost(additionalCost)"></em>
+                        <em class="fa fa-plus"
+                            ng-click="priceChange.additionalCosts.push({})"></em>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div ng-if="showType=='salePrice'" class="quote-change additional-cost">
+            <ul>
+                <li ng-repeat="salePrice in priceChange.salePrices" ng-init="initSalePrice(salePrice)">
+                    <label class="f-l">币种/汇率：</label>
+                    <div
+                            class="f-l change"
+                            qc-dropdown fee-watch=""
+                            ng-model="salePrice.changeType"
+                            item-text="{{qcDropdownItem}}"
+                            dropdown-text="{{selectedItem}}"
+                            items="changeTypes">
+                    </div>
+                    <div
+                            class="qc-input-group-base-seond qc-input-group-md-second f-l">
+                        <div class="f-l"
+                             qc-dropdown
+                             ng-model="salePrice.currency" fee-watch=""
+                             item-text="{{qcDropdownItem.currencyCode}}"
+                             dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}"
+                             items="currencies">
+                        </div>
+                        <span class="f-l">/</span>
+                        <input type="text" class="text-input"
+                               qc-input-amount="" readonly="readonly"
+                               ng-model="salePrice.currency.exchangeRate">
+                    </div>
+
+                    <label class="f-l margin-left-twenty">
+                        <i class="require">*</i>
+                        金额：
+                    </label>
+                    <input type="text" class="text-input-md-second f-l"
+                           qc-input-amount="" fee-watch=""
+                           ng-model="salePrice.amount" qc-valid-required="">
+                    <label class="f-l margin-left-twenty">备注：</label>
+                    <input
+                            class="text-input-md-second f-l" type="text" ng-model="salePrice.memo">
+
+                     <span
+                             class="base-operator f-r">
+                        <em class="fa fa-times"
+                            ng-if="priceChange.salePrices.length>1"
+                            ng-click="removeSalePrice(salePrice)"></em>
+                        <em class="fa fa-plus"
+                            ng-click="priceChange.salePrices.push({})"></em>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--查看模式-->
+    <div class="additional-cost-container" ng-if="editModel!='edit' || saveModel=='commit'">
+
+        <!--        <div class="line-solid"></div>-->
+        <div class="additional-cost border-none">
+            <ul>
+                <li ng-repeat="additionalCost in priceChange.additionalCosts"
+                    ng-init="initAdditionalCost(additionalCost)">
+                    <label class="f-l mar-r-primary">追加成本：</label>
+                    <label class="f-l">款项名称：</label>
+                    <div class="show-text-md">{{additionalCost.fundsName}}</div>
+                    <label class="f-l margin-left-twenty">币种/汇率：</label>
+                    <div class="show-text-md">{{additionalCost.currencyCode}}/{{additionalCost.exchangeRate|number:2}}
+                    </div>
+                    <label class="f-l margin-left-twenty">金额：</label>
+                    <div class="show-text-md">{{additionalCost.amount|number:2}}</div>
+
+                </li>
+            </ul>
+            <ul class="quote-change">
+                <li ng-repeat="salePrice in priceChange.salePrices" ng-init="initSalePrice(salePrice)">
+                    <label class="f-l mar-r-primary">外报价修改：</label>
+
+                    <label class="f-l margin-left-twenty">币种/汇率：</label>
+
+                    <div class="show-text-md">{{salePrice.currencyCode}}/{{salePrice.exchangeRate|number:2}}</div>
+
+                    <label class="f-l margin-left-twenty">金额：</label>
+
+
+                    <div class="show-text-md" ng-if="salePrice.amount">
+                        {{salePrice.changeType}}{{salePrice.amount|number:2}}
+                    </div>
+                    <label class="f-l">备注：</label>
+
+                    <div class="show-text-md" title="{{salePrice.memo}}">{{salePrice.memo}}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

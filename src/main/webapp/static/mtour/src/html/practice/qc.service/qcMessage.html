@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta charset="UTF-8">
+    <title></title>
+    <title></title>
+    <link rel="stylesheet" href="/src/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dialog.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dialog-theme-default.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dialog-theme-cover.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.message.css">
+    <link rel="stylesheet" href="/src/css/qc/qc.dropdown.css">
+
+    <script type="text/javascript" src="/src/components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/src/components/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/src/components/angular/angular.js"></script>
+
+    <script type="text/javascript" src="/src/js/qc/qc.basic.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.basic.prototype.js"></script>
+    <script type="text/javascript" src="/src/js/qc/qc.module.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.dialog.js"></script>
+    <script type="text/javascript" src="/src/js/qc/service/qc.message.js"></script>
+
+    <script type="text/javascript">
+        var dialogModule = angular.module('dialogModule', ['qc']);
+        dialogModule.controller('dialogController', ['$scope', 'qcMessage', function ($scope, qcMessage) {
+            $scope.warning = function () {
+                qcMessage.warning('你有病啊,没事瞎点!!!<br>瞎啊!瞎啊!!!');
+            };
+            $scope.error = function () {
+                qcMessage.error('系统今天来大*&*妈了!!!<br>有事没事,去玩qiu去!');
+            };
+            $scope.confirm = function () {
+                qcMessage.confirm('今天天气不是很好!<br>你确认外出打鸡血吗?').then(
+                        function () {
+                            alert('您选择了确认');
+                        }, function () {
+                            alert('您选择了取消');
+                        }
+                );
+            };
+            $scope.tip = function () {
+                if ($scope.tipMsg) {
+                    qcMessage.tip($scope.tipMsg);
+                }else{
+                    qcMessage.tip('naochi啊你!!!你不输入你想提示个毛啊?');
+                }
+            };
+            $scope.info = function () {
+                if ($scope.infoMsg) {
+                    qcMessage.info($scope.infoMsg);
+                }else{
+                    qcMessage.info('naochi啊你!!!你不输入你想提示个毛啊?');
+                }
+            }
+        }]);
+    </script>
+</head>
+<body ng-app="dialogModule">
+<div class="container" ng-controller="dialogController">
+    <div class="page-header">
+        <h1>消息窗</h1>
+    </div>
+    <div>
+
+        <button class="btn btn-warning" ng-click="warning()">warning</button>
+        <button class="btn btn-danger" ng-click="error()">error</button>
+        <button class="btn btn-primary" ng-click="confirm()">confirm</button>
+        <hr/>
+        tip message
+        <input type="text" class="form-control" ng-model="tipMsg"/>
+        <button class="btn btn-info" ng-click="tip()">show tip</button>
+        <br/> <br/>
+        info message
+        <input type="text" class="form-control" ng-model="infoMsg"/>
+        <button class="btn btn-info" ng-click="info()">show info</button>
+    </div>
+
+</div>
+
+</body>
+</html>

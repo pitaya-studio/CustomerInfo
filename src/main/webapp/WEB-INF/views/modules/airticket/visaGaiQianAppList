@@ -1,0 +1,247 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
+<html>
+<head>
+<title>审核-还签证收据审核列表</title>
+<!-- 页面左边和上边的装饰 -->
+<meta name="decorator" content="wholesaler" />
+
+<link href="http://www.trekiz.com/favicon.ico" rel="shortcut icon" />
+<link href="${ctxStatic}/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="${ctxStatic}/css/jbox.css" />
+<link type="text/css" rel="stylesheet" href="${ctxStatic}/css/jh-style.css" />
+<link type="text/css" rel="stylesheet" href="${ctxStatic}/css/huanqiu-style.css" />
+<link type="text/css" rel="stylesheet" href="${ctxStatic}/css/jquery.validate.min.css" />
+<script type="text/javascript" src="${ctxStatic}/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="${ctxStatic}/js/jquery-migrate-1.js"></script>
+<script type="text/javascript" src="${ctxStatic}/js/common.js"></script>
+<script src="${ctxStatic}/jqueryUI/ui/jquery.ui.datepicker.js"></script>
+<script src="${ctxStatic}/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//搜索条件筛选
+		launch();
+		//操作浮框
+		operateHandler();
+		//团号和产品切换
+		switchNumAndPro();
+	});
+	function page(n, s) {
+		$("#pageNo").val(n);
+		$("#pageSize").val(s);
+		$("#searchForm").submit();
+		return false;
+	};
+	function orderBySub(sortBy, obj) {
+		  var temporderBy = $("#orderBy").val();
+		   if(temporderBy.match(sortBy)){
+			   sortBy = temporderBy;
+			   if(sortBy.match(/ASC/g)){
+				   sortBy = sortBy.replace(/ASC/g,"");
+			   }else{
+				   sortBy = $.trim(sortBy)+" ASC";
+			   }
+		   }
+		 
+		$("#orderBy").val(sortBy);
+		$("#searchForm").submit();
+		return false;
+	};
+	function statusChoose(statusNum) {
+		$("#statusChoose").val(statusNum);
+		$("#searchForm").submit();
+	};
+	
+	function reviewListByRoleRealedLevel(roleChoose) {
+		//alert(roleChoose);
+		$("#roleId").val(roleChoose);
+		$("#searchForm").submit();
+	};
+</script>
+</head>
+<body>
+
+            	<div class="rolelist_btn">
+			   		<c:forEach items="${reviewRelatedRoles}" var="roleObj"  varStatus="status">
+				   		    <c:choose>
+		   		                   <c:when test="${conditionsMap.roleId==roleObj.id}">
+				   		                   <a class="ydbz_x"  onclick="reviewListByRoleRealedLevel('${roleObj.id}');" >${roleObj.name} 审核</a>
+				   		          </c:when>
+				   		          <c:otherwise>
+				   		                  <a class="ydbz_x gray"   onclick="reviewListByRoleRealedLevel('${roleObj.id}');" >${roleObj.name} 审核</a>
+				   		          </c:otherwise>
+				   		    </c:choose>
+					 </c:forEach>
+               </div>
+
+            	 <!--右侧内容部分开始-->
+                 <form id="searchForm" action="${ctx}/visa/workflow/returnreceipt/visaReturnReceiptReviewList" method="post">
+                 
+                 <input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}" />
+                 <input id="pageSize" name="pageSize"  type="hidden" value="${page.pageSize}" /> 
+                 <input id="orderBy" name="orderBy" type="hidden" value="${page.orderBy}" /> <!-- ${conditionsMap.orderBy} -->
+                 
+                 <!-- 处理一个流程涉及多个角色审核不同level的情况的情况   -->
+                 <input id="roleId" name="roleId"  type="hidden" value="${conditionsMap.roleId}" />
+                 
+                 <input id="flowType" name="flowType"  type="hidden" value="${conditionsMap.flowType}" />
+                 
+				 <!-- 排序字段 默认为1 -->
+				 <input id="statusChoose" name="statusChoose" type="hidden" value="${conditionsMap.statusChoose}" />
+            
+				 <!-- 状态过滤  默认为全部 -->
+				<input name="active" type="hidden" value="1" />
+                	<div class="activitylist_bodyer_right_team_co">
+                    	<div class="activitylist_bodyer_right_team_co2 pr wpr20">
+                        	<label>团号：</label><input style="width:260px" class="txtPro inputTxt inquiry_left_text" id="wholeSalerKey" name="groupCode" value="${conditionsMap.groupCode}" type="text" />
+                        </div>
+                        <div class="form_submit">
+                        	<input class="btn btn-primary" value="搜索" type="submit"/>
+                        </div>
+                        <a class="zksx">展开筛选</a>
+                        <div class="ydxbd">
+                            <div class="activitylist_bodyer_right_team_co2">
+									<label>报批日期：</label>
+									<input id="" class="inputTxt dateinput" name="startTime" value="${conditionsMap.startTime}" onfocus="WdatePicker()" readonly="" /> 
+									<span> 至 </span> 
+									<input id=""  class="inputTxt dateinput" name="endTime" value="${conditionsMap.endTime}"  onclick="WdatePicker()" readonly="" />
+							</div>
+                            <div class="kong"></div>
+                            <div class="kong"></div>
+                            <div class="activitylist_bodyer_right_team_co3">
+									<div class="activitylist_team_co3_text">渠道：</div>
+									<select name="channel">
+										<option value="">不限</option>
+										<c:if test="${not empty fns:getAgentList() }">
+											<c:forEach items="${fns:getAgentList()}" var="agentinfo">
+												<option value="${agentinfo.id }" <c:if test="${conditionsMap.channel==agentinfo.id }">selected="selected"</c:if> >
+												    ${agentinfo.agentName}
+												</option>
+											</c:forEach>
+										</c:if>
+									</select>
+								</div>
+                            <div class="activitylist_bodyer_right_team_co2">
+									<div class="activitylist_team_co3_text">销售：</div>
+									<select class="sel-w1" style='height : 28px' name="saler">
+										<option value="" selected="selected">不限</option>
+										<c:forEach items="${fns:getSaleUserList('1')}" var="userinfo">
+											<!-- 用户类型  1 代表销售 -->
+											<option value="${userinfo.id }" <c:if test="${conditionsMap.saler==userinfo.id }">selected="selected"</c:if>>${userinfo.name }</option>
+										</c:forEach>
+									</select>
+							</div>
+                            <div class="activitylist_bodyer_right_team_co1">
+									<div class="activitylist_team_co3_text">计调：</div>
+									<select name='meter'>
+										<option value="" selected="selected">不限</option>
+										<c:forEach items="${fns:getSaleUserList('3')}" var="userinfo">
+											<!-- 用户类型  3 代表计调 -->
+											<option value="${userinfo.id }" <c:if test="${conditionsMap.meter==userinfo.id }">selected="selected"</c:if> >${userinfo.name }</option>
+										</c:forEach>
+									</select>
+							</div>
+                        </div>
+                        <div class="kong"></div>
+                    </div>
+                </form>
+                <div class="activitylist_bodyer_right_team_co_paixu">
+                	<div class="activitylist_paixu">
+                    	<div class="activitylist_paixu_left">
+								<ul>
+									 <li
+										style=" width:50px;border:none; background:none; height:28px; line-height:28px;">排序</li>
+									<li class="activitylist_paixu_left_biankuang licreatetime"><!-- activitylist_paixu_moren -->
+										<a onClick="orderBySub('createtime',this);">创建时间
+											<!-- i class="icon icon-arrow-down"></i -->
+										</a>
+									</li>
+									<li class="activitylist_paixu_left_biankuang liupdatetime">
+										<a onClick="orderBySub('updatetime',this);">更新日期
+											<!-- i class="icon icon-arrow-down"></i--> 
+										</a>
+									</li>
+								</ul>
+							</div>
+                        <div class="activitylist_paixu_right">查询结果&nbsp;&nbsp;<strong>${page.count}</strong>&nbsp;条</div>
+                        <div class="kong"></div>
+                    </div>
+                </div>
+                <!--状态开始-->
+					<div class="supplierLine">
+						<a class="select" onClick="statusChoose('');">全部</a> <a
+							onClick="statusChoose(1);">待审核</a> <a onClick="statusChoose(0);">未通过</a>
+						<a onClick="statusChoose(2);">已通过</a>
+					</div>
+					<!--状态结束-->
+                <table id="contentTable" class="table activitylist_bodyer_table">
+                    <thead>
+                        <tr>
+                            <th width="4%">序号</th>
+                            <th width="10%">订单编号</th>
+                            <th width="13%">团号</th>
+                            <th width="5%">计调</th>
+                            <th width="5%">销售</th>
+                            <th width="5%">游客</th>
+                            <th width="9%">下单时间</th>
+                            <th width="9%">报批日期</th>
+                            <th width="10%">收据金额</th>
+                            <th width="7%">上一环节<br />审批人</th>
+                            <th width="11%">原因备注</th>
+                            <th width="6%">审核状态</th>
+                            <th width="4%">操作</th>
+							
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!-- 遍历显示结果 start -->
+							<%
+								int n = 1;
+							%>
+							<c:forEach items="${page.list}" var="returnReviewInfo">
+                    	<tr>
+                        	<td><%=n++%></td>
+                            <td>${returnReviewInfo.orderno}</td>
+                            <td>
+                            	<div class="tuanhao_cen onshow">${returnReviewInfo.groupcode}</div>
+                    		</td>
+                            <td>${fns:getUserNameById(returnReviewInfo.jidcreateby)}</td>
+                            <td>${fns:getUserNameById(returnReviewInfo.salecreateby)}</td>
+                            <td>${returnReviewInfo.tname}</td><!-- tid 为游客id -->
+                            <td class="tc"><fmt:formatDate value="${returnReviewInfo.orderdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                            <td class="tc"><fmt:formatDate value="${returnReviewInfo.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                            <td class="tr">¥&nbsp;<span class="fbold tdorange">${returnReviewInfo.myValue}</span></td>
+                            <td>${fns:getUserNameById(returnReviewInfo.lastoperator)}</td>
+                            <td>${returnReviewInfo.createReason}</td>
+                            
+                                <c:if test = "${('审核通过').equals(returnReviewInfo.revstatus) || ('驳回').equals(returnReviewInfo.revstatus)}">
+                            	 <td class="invoice_yes">${returnReviewInfo.revstatus}</td>
+                           </c:if>			         
+                            <c:if test = "${!('审核通过').equals(returnReviewInfo.revstatus) && !('驳回').equals(returnReviewInfo.revstatus)}">
+	                            <td class="invoice_yes">${fns:getDictLabel(returnReviewInfo.revstatus,
+							'review_result_type', returnReviewInfo.revstatus)}</td>
+							</c:if>
+							
+                            <td class="p0">
+                                <dl class="handle">
+                                    <dt><img  src="${ctxStatic}/images/handle_cz.png"/></dt>
+                                    <dd class="">
+                                    <p>
+                                        <span></span>
+                                        <c:if test="${returnReviewInfo.revstatus == '1'}">
+                                        <a href="${ctx}/visa/workflow/returnreceipt/visaReturnReceiptReviewDetail?orderId=${returnReviewInfo.orderid}&travelerId=${returnReviewInfo.tid}&flag=0&revid=${returnReviewInfo.revid}&flowType=${returnReviewInfo.flowType}&nowLevel=${returnReviewInfo.curlevel}&flowType=${conditionsMap.flowType}">审批</a><br />
+                                        </c:if>
+										<a href="${ctx}/visa/workflow/returnreceipt/visaReturnReceiptReviewDetail?orderId=${returnReviewInfo.orderid}&travelerId=${returnReviewInfo.tid}&flag=1&revid=${returnReviewInfo.revid}&flowType=${returnReviewInfo.flowType}&nowLevel=${returnReviewInfo.curlevel}&flowType=${conditionsMap.flowType}">查看</a>
+                                    </p>
+                                    </dd>
+                                </dl>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            	<!-- 分页部分 -->
+					<div class="pagination clearFix">${page}</div>
+				<!--右侧内容部分结束-->
+</body>
+</html>

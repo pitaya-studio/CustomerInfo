@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd"
+	default-lazy-init="true">
+	
+	<bean id="OrdertTask" class="com.trekiz.admin.modules.order.task.OrdertTask"  scope="singleton"></bean>
+	<bean id="ChangeUserStatusTask" class="com.trekiz.admin.modules.order.task.ChangeUserStatus"  scope="singleton"></bean>
+	<!-- <bean id="SynchronizeExceptionSendMail" class="com.trekiz.admin.modules.synchronize.task.SynchronizeExceptionSendMail"  scope="singleton"></bean> -->
+
+	<!--还款日期提醒定时任务  -->
+	<bean id="refundDateTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean" scope="singleton">
+		<property name="targetObject">
+			<!--指定要定时执行的方法所在类，将定时任务定义成bean -->
+			<bean class="com.trekiz.admin.modules.order.task.RefundDateTask"/>
+		</property>
+		<property name="targetMethod"  value="execute"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+	<!-- 还款日期提醒定时任务定义触发时间 -->
+	<bean id="refundDateTaskJobdoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="refundDateTask" />  
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>0 10 20 * * ?</value>
+		</property>
+	</bean>
+
+	<!--应收账款到期定时任务  -->
+	<bean id="receivePayTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean" scope="singleton">
+		<property name="targetObject">
+			<!--指定要定时执行的方法所在类，将定时任务定义成bean -->
+			<bean class="com.trekiz.admin.modules.cost.task.ReceivePayTask"/>
+		</property>
+		<!--  <property name="targetMethod"  value="changeOrderStatus"/>-->
+		<property name="targetMethod"  value="execute"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+	<!-- 应收账款到期定时任务定义触发时间 -->
+	<bean id="receivePayTaskJobdoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="receivePayTask" />  
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>0 40 18 * * ?</value>
+		</property>
+	</bean>
+	<!--要定时执行的方法 -->
+	<bean id="corderStatus"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<!--指定要定时执行的方法所在类，将定时任务定义成bean -->
+			<bean class="com.trekiz.admin.modules.airticketorder.task.OrderStatus"/>
+		</property>
+		<!--  <property name="targetMethod"  value="changeOrderStatus"/>-->
+		<property name="targetMethod"  value="execute"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+
+	<bean id="ordertTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<!--指定要定时执行的方法所在类，将定时任务定义成bean -->
+			<ref bean="OrdertTask" />
+		</property>
+		<property name="targetMethod">
+			<!--指定定时执行的方法 -->
+			<!-- <value>cancelOrderWithRemainDays</value> -->
+			<value>execute</value>
+		</property>
+		<property name="concurrent">
+			<!--指定目标封装为有状态的任务，有状态的任务不能并发执行，无状态的任务可并发执行 -->
+			<value>false</value>
+		</property>
+	</bean>
+	
+	<bean id="userStatusTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<!--指定要定时执行的方法所在类，将定时任务定义成bean -->
+			<ref bean="ChangeUserStatusTask" />
+		</property>
+		<property name="targetMethod">
+			<!--指定定时执行的方法 -->
+			<value>execute</value>
+		</property>
+		<property name="concurrent">
+			<!--指定目标封装为有状态的任务，有状态的任务不能并发执行，无状态的任务可并发执行 -->
+			<value>false</value>
+		</property>
+	</bean>
+	
+	<!-- <bean id="mtourLogCollectJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			指定要定时执行的方法所在类，将定时任务定义成bean
+			<ref bean="mtourLogMessageCollector" />
+		</property>
+		<property name="targetMethod">
+			指定定时执行的方法
+			<value>collect</value>
+		</property>
+		<property name="concurrent">
+			指定目标封装为有状态的任务，有状态的任务不能并发执行，无状态的任务可并发执行
+			<value>false</value>
+		</property>
+	</bean> -->
+
+	<!-- 定义触发时间 -->
+	<bean id="ordertTaskJobdoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="ordertTaskJob" />
+		</property>
+		<!-- cron表达式，此处是每天10点42执行 -->
+		<property name="cronExpression">
+			<value>0 0 * * * ?</value>
+			<!-- <value>0 * * * * ?</value> -->
+		</property>
+	</bean>
+	
+	<!-- 定义触发时间 -->
+	<bean id="userStatusTaskJobdoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="userStatusTaskJob" />
+		</property>
+		<!-- cron表达式，此处是每天早上3点执行 -->
+		<property name="cronExpression">
+			<value>0 0 3 * * ?</value>
+		</property>
+	</bean>
+	
+	
+<!-- 	<bean id="mtourLogCollectJobdoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="mtourLogCollectJob" />
+		</property>
+		cron表达式，此处是每0秒执行一次
+		<property name="cronExpression">
+			<value>0 * * * * ?</value>
+		</property>
+	</bean> -->
+	
+	
+<!-- 定义触发时间 -->
+	<bean id="changeOrderJobdoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="corderStatus" />  
+		<!-- cron表达式，此处是每天10点42执行 -->
+		<property name="cronExpression">
+			<value>0 0 0 * * ?</value>
+			<!-- <value>0 * * * * ?</value> -->
+		</property>
+	</bean>
+
+    <!--T1首页区域数据，每10分钟执行一次-->
+	<!--<bean id="t1HomeTask" class="com.trekiz.admin.modules.t1.task.T1HomeTask" scope="singleton"></bean>-->
+	<!--<bean id="t1HomeTaskJob"
+		  class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			&lt;!&ndash;指定要定时执行的方法所在类，将定时任务定义成bean &ndash;&gt;
+			<ref bean="t1HomeTask" />
+		</property>
+		<property name="targetMethod">
+			&lt;!&ndash;指定定时执行的方法 &ndash;&gt;
+			<value>execute</value>
+		</property>
+		<property name="concurrent">
+			&lt;!&ndash;指定目标封装为有状态的任务，有状态的任务不能并发执行，无状态的任务可并发执行 &ndash;&gt;
+			<value>false</value>
+		</property>
+	</bean>-->
+	<!--<bean id="t1HomeTaskJobdoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="t1HomeTaskJob" />
+		</property>
+		&lt;!&ndash; cron表达式，此处是每..执行 &ndash;&gt;
+		<property name="cronExpression">
+			<value>0 0/10 * * * ?</value>
+		</property>
+	</bean>-->
+
+	<!--启动工作 -->
+	<bean lazy-init="false"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- 这里添加多个定时任务触发器，对应第2步的bean id -->
+				<ref local="ordertTaskJobdoTime" />
+				<ref local="changeOrderJobdoTime" />
+				<!--<ref local="t1HomeTaskJobdoTime" />-->
+				<ref local="userStatusTaskJobdoTime" />
+
+				<!-- <ref local="mtourLogCollectJobdoTime" /> -->
+				<!-- 应收账款到期定时任务触发器 -->
+				<ref local="receivePayTaskJobdoTime"/>
+				<!-- 还款日期到期定时任务触发器 -->
+				<ref local="refundDateTaskJobdoTime"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 定时任务 原来在spring mvc.xml中-->
+    <task:scheduled-tasks>
+    	<!-- <task:scheduled ref="overTimeTaskService" method="overTimeTask" cron="${cron.message.timeOut}"/> -->
+    	<task:scheduled ref="overTimeTaskService" method="execute" cron="${cron.message.timeOut}"/>
+    </task:scheduled-tasks>
+    
+    <!-- 定时任务 -->
+    <task:scheduled-tasks>
+    	<!-- <task:scheduled ref="overTimeTaskService" method="overTimeTask" cron="${cron.message.timeOut}"/> -->
+    	<task:scheduled ref="travelActivityUpdateTask" method="execute" cron="0 0 0 * * ?"/>
+    </task:scheduled-tasks>
+    <task:scheduled-tasks>
+    	<!-- <task:scheduled ref="overTimeTaskService" method="overTimeTask" cron="${cron.message.timeOut}"/> -->
+    	<task:scheduled ref="travelActivityOfflineTask" method="execute" cron="0 0 0 * * ?"/>
+    </task:scheduled-tasks>
+
+</beans>

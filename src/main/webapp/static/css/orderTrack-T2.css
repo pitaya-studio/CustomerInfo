@@ -1,0 +1,24 @@
+@charset "utf-8";
+/*订单跟踪页面样式*/
+.orderT_cont_btn .ot_choose{
+    color: #ffffff!important;
+    background-color: #58ceff!important;
+}
+.orderT_cont_btn .ot_choose:hover{
+    color: #ffffff!important;
+}
+.orderT_cont_btn span:hover{
+    color:#58ceff!important;
+}
+.orderT_top:hover{
+    background-color: #58ceff!important;
+}
+.orderT_top_select3 .ot_refresh:hover{
+    color: #58ceff !important;
+}
+.orderT_close:hover{
+    background: url(../images/T1T2/menshiminglu-icon.png) -5px -96px no-repeat!important;
+}
+.ot_refresh i{
+    color: #58ceff!important;
+}

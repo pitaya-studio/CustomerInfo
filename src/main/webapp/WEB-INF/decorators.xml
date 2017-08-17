@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/views">
+	
+	<!-- 接待社默认装饰页面, 在需要装饰的页面增加<meta name="decorator" content="wholesaler"/> -->
+    <decorator name="default" page="layouts/default.jsp" />
+	<decorator name="wholesaler" page="layouts/wholesaler.jsp" />
+
+	<decorator name="show_head" page="head/showHead.jsp" />
+
+
+	<decorator name="activity_op_head" page="head/activityHead.jsp" />
+	<decorator name="activity_visa_head" page="head/visaActivityHead.jsp" />
+    <decorator name="agent_op_head" page="head/agentHead.jsp" />
+
+    <decorator name="agent_invoice_op_head" page="head/agentInvoiceHead.jsp" />
+ 	<decorator name="supplier_op_head" page="head/supplierHead.jsp" /> 
+    <decorator name="supplier_invoice_op_head" page="head/supplierInvoiceHead.jsp" />
+
+    <decorator name="order_op_head" page="head/orderHead.jsp" />
+    <decorator name="visaXS_order_head" page="head/orderHead4VisaXSOrder.jsp" />
+    <decorator name="visaQW_order_head" page="head/orderHead4VisaQWOrder.jsp" />
+    <decorator name="airticketOrder_head" page="head/airticketOrderHead.jsp" />
+    <decorator name="island_order_head" page="head/islandOrderHead.jsp" />
+    <decorator name="hotel_controller" page="head/hotlecontroller.jsp" />
+    <decorator name="hotel_order_head" page="head/hotelOrderHead.jsp" />
+    <decorator name="stock_op_head" page="head/stockHead.jsp" />
+    <decorator name="cost_input_head" page="head/costInputHead.jsp" />
+    <decorator name="cost_review_head" page="head/costReviewHead.jsp" />
+    <decorator name="pay_review_head" page="head/payReviewHead.jsp" />
+    <decorator name="payment_review_head" page="head/paymentReviewHead.jsp" />
+    <decorator name="new_cost_review_head" page="head/newCostReviewHead.jsp" />
+    <decorator name="cost_review_manager" page="head/costReviewManager.jsp" />
+    <decorator name="finance_op_head" page="head/financeHead.jsp" />
+     <decorator name="islandStatusHead" page="head/islandStatusHead.jsp" />
+    <decorator name="department_op_head" page="head/departmentHead.jsp" />
+	<decorator name="singleOrder_op_head" page="head/singleOrderHead.jsp" />
+	
+    <decorator name="airticket_order_detail" page="head/airticketOrderDetail.jsp" />
+	<decorator name="airticket_order_modify" page="head/airticketOrderModify.jsp" />
+	 <decorator name="eprice_traffic_create" page="head/epriceTrafficCreate.jsp" />
+	  <decorator name="eprice_admit_create" page="head/epriceAdmitCreate.jsp" />
+	  <!-- 询价记录  -询价详情-->
+	  <decorator name="eprice_details" page="head/epriceDetails.jsp" />
+	  <!-- 询价记录  -询价统计-->
+	  <decorator name="eprice_record_statistics" page="head/epriceRecordStatistics.jsp" />
+	  	 <!-- 单团再次询价  -->
+	   <decorator name="eprice_admit_create_again" page="head/epriceAdmitCreateAgain.jsp" />
+	    <!-- 机票再次询价 -->
+	   <decorator name="eprice_traffic_create_again" page="head/epriceTrafficCreateAgain.jsp" />
+	     <!-- 确认报价 -->
+	   <decorator name="eprice_recordinfo_Change" page="head/epriceRecordinfoChange.jsp" />
+	    <!--地接报价回复 -->
+	    <decorator name="eprice_aop_repay" page="head/epriceAopRepay.jsp" />
+	     <!--机票报价回复 -->
+	     <decorator name="eprice_top_repay" page="head/epriceTopRepay.jsp" />
+	   <!--报价记录 -->
+	     <decorator name="eprice_repay_record" page="head/epriceRepayRecord.jsp" />
+	    <!-- 询价记录  -询价记录-->
+	  <decorator name="eprice_record_list" page="head/epriceRecordList.jsp" />
+	  <!-- 退款审核三级菜单文件 -->
+	  <decorator name="refund_review_head" page="head/refundReviewHead.jsp" />
+	  <!-- 收据管理三级菜单文件 -->
+	  <decorator name="receipt_head" page="head/receiptHead.jsp" />
+      <!-- (财务审核) 退款审核三级菜单文件 -->
+      <decorator name="refundment_review_head" page="head/refundmentReviewHead.jsp" />
+	  <!-- 改价审核三级菜单文件 -->
+	  <decorator name="changeprice_review_head" page="head/changePriceReviewHead.jsp" />
+	  <!-- (财务审核)改价审核三级菜单文件 -->
+	  <decorator name="changepricement_review_head" page="head/changePricementReviewHead.jsp" />
+	
+	<!--基础信息维护 -->
+	<decorator name="sys_menu_head" page="head/sysMenuHead.jsp" />	  
+	<decorator name="payed_confirm" page="modules/order/list/payedConfirm.jsp" />	
+	<!-- 公告消息相关 -->
+	<!-- 接受公告消息列表 -->
+	<decorator name="message_list" page="head/messageList.jsp" />	  
+	<!-- 发布公告、草稿列表 -->
+	<decorator name="message_my_create" page="head/messageMyCreate.jsp" />
+	<decorator name="borrowing_review_head" page="head/borrowingReviewHead.jsp" />	
+	<decorator name="rebates_review_head" page="head/rebatesReviewHead.jsp" /> 
+	<decorator name="rebates_review_head2" page="head/rebatesReviewHead2.jsp" />	 
+	<!-- 行政区域管理 列表-->  
+	<decorator name="sys_geography" page="head/sysGeographyHeader.jsp" />
+	<!-- 行政区域管理 增加子类-->  
+	<decorator name="sys_geographyaveListHeader" page="head/sysGeographySaveListHeader.jsp" />	 
+	<!-- 地理区域管理 列表-->  
+	<decorator name="sys_region" page="head/sysRegionListHeader.jsp" />	 
+	<!-- 地理区域管理 详情-->  
+	<decorator name="sys_regionDetail" page="head/sysRegionListDetail.jsp" />	 
+	<!-- 地理区域管理  增加、修改-->  
+	<decorator name="sys_regionAdd" page="head/sysRegionAddHeader.jsp" />	
+	<!-- 新增国内、国际顶级区域-->  
+	<decorator name="sys_geographyAddTopList" page="head/sysgeographyAddTopList.jsp" /> 
+	<!-- 城市维护-->  
+	<decorator name="sys_cityList" page="head/sysCityList.jsp" /> 
+	<!-- 目的地维护-->  
+	<decorator name="sys_destinationList" page="head/sysDestinationList.jsp" /> 
+	<!-- 控房表-->  
+	<decorator name="hotel_control" page="head/hotelControl.jsp" /> 
+	<decorator name="hotel_control_add" page="head/hotelcontroladd.jsp" />
+	<decorator name="hotel_control_update" page="head/hotelcontrolupdate.jsp" /> 
+		
+	<!-- 机票库存-->  
+	<decorator name="flight_control" page="head/flightControl.jsp" /> 
+	<decorator name="flight_control_add" page="head/flightcontroladd.jsp" />
+	<decorator name="flight_control_update" page="head/flightcontrolupdate.jsp" />
+	 
+	<!-- 海岛游产品修改-->
+	<decorator name="activity_island_update" page="head/activityIslandUpdate.jsp" /> 
+	
+	<!-- 海岛游产品、团期-->  
+	<decorator name="activity_island" page="head/activityIsland.jsp" /> 
+	<decorator name="activity_island_order" page="head/activityIslandOrder.jsp" />
+	<!-- 海岛游转团-->  
+	<decorator name="activity_island_change_list" page="head/changeList.jsp" />
+	<decorator name="activity_island_change_info" page="head/changeInfo.jsp" />
+	<decorator name="activity_island_change_applications" page="head/change.jsp" />
+	<!-- 酒店产品列表 --> 
+	<decorator name="activity_hotel" page="head/activityHotel.jsp" /> 
+	<decorator name="hotel_order" page="head/hotelOrder.jsp" />
+	<!--切位草稿箱 -->
+	<decorator name="activity_are" page="head/activityAre.jsp" /> 
+	<!-- 设置费率 -->
+	<decorator name="group_rate" page="head/quauqGroupRateHead.jsp" /> 
+	
+	<decorator name="exitGroup_review_head" page="head/exitGroupReviewHead.jsp" />
+	<decorator name="changeGroup_review_head" page="head/changeGroupReviewHead.jsp" />	
+	<decorator name="transFerMoney_review_head" page="head/transFerMoneyReviewHead.jsp" />	 
+</decorators>

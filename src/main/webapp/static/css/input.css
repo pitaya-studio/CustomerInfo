@@ -1,0 +1,57 @@
+input{
+    color: #555;
+    padding: 0px 5px;
+}
+
+/*search*/
+.search-content input{
+    border: 2px solid #c0cBD9;
+    height: 100%;
+    line-height: 31px;
+    vertical-align: middle;
+    width: 286px;
+    float: left;
+    border-right: none;
+    display: inline-block;
+    /*覆盖bootstrap样式 0810*/
+    padding:0 5px;
+    border-radius: 0;
+    font-size:12px;
+    box-sizing:border-box;
+}
+
+/*覆盖bootstrap样式 0810*/
+.search-content input:focus{
+	border-color: none;
+	box-shadow:none;
+}
+/*table 第三个表格 2016/8/10*/
+.table_checkbox{
+    position: relative;
+	margin:0px 2px 0px 0px!important;
+}
+
+/*费率设置页面（505）2016/8/10*/
+.all-checked{
+    vertical-align: middle;
+}
+
+/*日期控件*/
+.dateinput{
+    padding: 3px 6px !important;
+    margin-bottom: 0px !important;/*覆盖boostrap*/
+    border: 1px solid #ccc;
+    height: 17px!important;
+    font-size: 12px!important;
+    background: url(../images/dateinputbg.png) no-repeat right center #fff;
+    width: 116px;
+    cursor: pointer;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border linear .2s,box-shadow linear .2s;
+    -moz-transition: border linear .2s,box-shadow linear .2s;
+    -o-transition: border linear .2s,box-shadow linear .2s;
+    transition: border linear .2s,box-shadow linear .2s;
+}

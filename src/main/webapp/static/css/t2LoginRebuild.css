@@ -1,0 +1,267 @@
+/*css initial*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,
+fieldset,legend,input,button,textarea,p,blockquote,th,td,a{
+    margin:0;
+    padding:0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #fff;
+    font-family:微软雅黑, Arial,宋体;
+}
+
+a:hover, a:focus {
+    color: #fff;
+    text-decoration: underline;
+}
+
+body {
+    color: #333;
+    background:#ffffff;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+li{
+    list-style:none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus{
+    border-color:rgba(255, 255, 255, 0.4);
+    box-shadow:none;
+}
+
+.bg,.bg-cover{
+    background: url("../images/login-t2/bg.jpg")center center no-repeat;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-animation:bgScale 2s;
+    -o-animation:bgScale 2s;
+    animation: bgScale 2s;
+
+}
+/*背景缩放动画*/
+@keyframes bgScale
+{
+    0%   {background-size:200% 200%;}
+    100% {background-size:100% 100%;}
+}
+
+/*遮罩*/
+.bg-cover{
+    background-color: rgba(0,0,0,.5);
+    background-image: none;
+    z-index: -1;
+    height: 100%;
+
+}
+/*头部信息*/
+header{
+    height:60px;
+    width:100%;
+    background: rgba(255,255,255,.1);
+    position: fixed;
+    top:0;
+}
+
+header .logo{
+    background:url("../images/login-t2/logo.png") left center no-repeat;
+    height: 60px;
+    width: 105px;
+    float: left;
+    margin-left: 100px;
+    margin-right:20px;
+}
+
+header span{
+    height: 25px;
+    color: #fff;
+    font-size: 16px;
+    padding-right: 20px;
+    margin-right: 20px;
+    display: inline-block;
+    margin-top: 16px;
+    padding-top: 5px;
+}
+
+header .title{
+    border-right:1px #666 solid;
+}
+
+.loginDiv {
+    background: none;
+    margin: 14% auto;
+    height:510px;
+    color: #fff;
+    width:860px;
+    overflow:hidden;
+}
+
+@media only screen and (max-width: 1366px){
+    .loginDiv {
+        margin: 10% auto;
+    }
+}
+
+.slogan{
+    background: url("../images/login-t2/slogan.png") no-repeat;
+    height:155px;
+    width:325px;
+    float:left;
+    margin-top: 147px;
+    -webkit-animation:upToDown 1s;
+    -o-animation:upToDown 1s;
+    animation: upToDown 1s;
+}
+/*从上进入 动画*/
+@keyframes upToDown
+{
+    0%   {margin-top: -150px;}
+    100% {margin-top:147px;}
+}
+
+.loginDiv .login-w{
+    float: left;
+    height: 510px;
+    margin-left: 100px;
+    padding-left: 100px;
+    border-left: 1px solid #fff;
+    padding-top: 75px;
+}
+
+.loginDiv .login{
+    -webkit-animation:downToUp 1s;
+    -o-animation:downToUp 1s;
+    animation:downToUp 1s;
+}
+/*从下进入 动画*/
+@keyframes downToUp
+{
+    0%   {margin-top: 440px;}
+    100% {margin-top:0px;}
+}
+
+.loginCon dt{
+    margin-bottom: 10px;
+}
+
+.loginDiv input[type="checkbox"] {
+    margin:0;
+}
+
+#loginForm input[type='text'],
+#loginForm input[type='password']{
+    height: 37px;
+    background: rgba(0,0,0,.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 35px;
+    padding: 2px 15px;
+    color: #fff;
+}
+.loginCon input{
+    width: 330px;
+}
+.loginCon dl {
+    margin-bottom: 10px;
+}
+
+.rememberme{
+    margin-bottom: 25px;
+    margin-top: 10px;
+    clear: both;
+}
+
+.rememberme label{
+    font-size:12px;
+}
+
+.login-btn{
+    color:#fff;
+    background:#f0820b;
+    padding:0 34px;
+    font-size:18px;
+    border:none;
+    border-radius:35px;
+    height:37px;
+    line-height: 37px;
+    margin-bottom: 20px;
+}
+
+.brower{
+    margin-top:20px;
+}
+
+.brower a {
+    text-indent: -9999em;
+    overflow: hidden;
+    vertical-align: top;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    background: url(../images/login-t2/browser-white.png)-25px 0 no-repeat;
+}
+
+.brower .browser-ie8{
+    background-position:-48px 0;
+}
+
+.brower .browser-gg{
+    background-position:0 0;
+}
+
+.login-error {
+    float: left;
+    padding-right: 9px;
+    height: 22px;
+    line-height: 22px;
+    color: #ffffff;
+    font-family: '宋体',Arial, Helvetica, sans-serif;
+    border-radius: 2px;
+    background-color: #dc6868;
+    background-color: rgba(220,104,104,0.6);
+    margin-bottom: 5px;
+}
+
+.login-error i {
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    margin-left: 9px;
+    margin-top: -2px;
+    vertical-align: middle;
+    background: url(../images/login-icon.png) 0 -138px no-repeat;
+}
+
+.error{
+    font-size:12px;
+}
+
+div.validateCode{
+    clear: both;
+    margin-top: 50px;
+}
+
+/*footer*/
+.loginFooter {
+    height: 45px;
+    background: none;
+    position: fixed;
+    right:50px;
+    bottom:5px;
+    text-align: right;
+}
+
+.loginFooter-txt {
+    line-height: 44px;
+    color: #999;
+    font-size: 12px;
+}

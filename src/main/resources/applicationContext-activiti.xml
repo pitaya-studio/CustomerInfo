@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="dbProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:application.properties" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+
+	<!-- json处理 -->
+	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
+
+	<!--uuid主键策略bean-->
+	<bean id="idGenerator" class="com.trekiz.admin.review.configuration.extend.UuidGenerator" />
+	<!-- Activiti begin -->
+	<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+		<!--Activiti 主键使用uuid-->
+		<property name="idGenerator" ref="idGenerator" />
+		<!--流程配置中的方法bean-->
+		<property name="beans">
+			<map>
+				<entry key="salerDeptChecker" value-ref="salerDeptChecker" />
+			</map>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="databaseSchemaUpdate" value="true" />
+		<property name="jobExecutorActivate" value="false" />
+		<property name="history" value="full" />
+		<property name="processDefinitionCacheLimit" value="10" />
+
+
+		<!-- 生成流程图的字体 -->
+		<property name="activityFontName" value="${diagram.activityFontName}" />
+		<property name="labelFontName" value="${diagram.labelFontName}" />
+
+		<!-- 缓存支持 <property name="processDefinitionCache"> <bean class="me.kafeitu.demo.activiti.util.cache.DistributedCache" 
+			/> </property> -->
+
+		<!-- 自动部署 <property name="deploymentResources"> <list> <value>classpath*:/deployments/*</value> 
+			</list> </property> -->
+
+		<!-- JPA -->
+		<property name="jpaEntityManagerFactory" ref="entityManagerFactory" />
+		<property name="jpaHandleTransaction" value="false" />
+		<property name="jpaCloseEntityManager" value="false" />
+
+		<!-- 全局事件 <property name="typedEventListeners"> <map> <entry key="VARIABLE_CREATED" 
+			> <list> <ref bean="variableCreateListener"/> </list> </entry> </map> </property> -->
+
+		<!-- 自定义用户组服务 -->
+		<property name="customSessionFactories">
+			<list>
+				<bean
+					class="com.quauq.activiti.extend.ActUserEntityServiceFactory" />
+				<bean
+					class="com.quauq.activiti.extend.ActGroupEntityServiceFactory" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+		<property name="processEngineConfiguration" ref="processEngineConfiguration" />
+	</bean>
+
+	<bean id="repositoryService" factory-bean="processEngine"
+		factory-method="getRepositoryService" />
+	<bean id="runtimeService" factory-bean="processEngine"
+		factory-method="getRuntimeService" />
+	<bean id="formService" factory-bean="processEngine"
+		factory-method="getFormService" />
+	<bean id="identityService" factory-bean="processEngine"
+		factory-method="getIdentityService" />
+	<bean id="taskService" factory-bean="processEngine"
+		factory-method="getTaskService" />
+	<bean id="historyService" factory-bean="processEngine"
+		factory-method="getHistoryService" />
+	<bean id="managementService" factory-bean="processEngine"
+		factory-method="getManagementService" />
+	<!-- Activiti end -->
+	<!-- 审批条件配置-->
+	<bean id="conditionConfiguration" class="com.quauq.review.core.extend.condition.ConditionAssigneeConfiguration">
+		<!-- 审批条件在页面上显示的标签 key为条件的唯一key，value为显示标签 -->
+		<property name="displayLabels">
+			<map>
+				<entry key="operator" value="产品发布人"/>
+			</map>
+		</property>
+		<!-- 审批条件解析器配置 key为条件的唯一key，value为审批条件解析器bean的引用-->
+		<property name="assingeeResolvers">
+			<map>
+				<entry key="operator" value-ref="operatorCondition" />
+			</map>
+		</property>
+	</bean>
+	<!-- 审批条件（产品发布者）解析器实现类 -->
+	<bean id="operatorCondition" class="com.trekiz.admin.review.configuration.service.ProductCreatorResolver"/>
+
+	<!--认证服务扩展类，查找组成员（通过部门职务查找用户列表） 注意，此id固定-->
+	<bean id="identityServiceExtend" class="com.trekiz.admin.review.configuration.extend.QuauqIdentityServiceExtend" />
+
+	<!--审批环节标签选择器（决定当前执行审批操作的人都有哪些职务） 注意，此id固定-->
+	<bean id="tagChooser" class="com.trekiz.admin.review.configuration.extend.QuauqTagChooser" />
+</beans>

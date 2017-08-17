@@ -1,0 +1,471 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #ffffff;
+  font-family: "Microsoft YaHei UI", arial;
+  font-size: 12px;
+  color: #333333;
+}
+.page-print {
+  table-layout: fixed;
+  width: 700px;
+  margin: 20px auto 0 auto;
+  border-collapse: collapse ;
+  line-height: 30px;
+  white-space: nowrap;
+}
+.page-print.title .address {
+  line-height: 20px;
+}
+.page-print .dayinzy_w1 {
+  overflow: hidden;
+  width: 170px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w2 {
+  overflow: hidden;
+  width: 120px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w3 {
+  overflow: hidden;
+  width: 590px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w4 {
+  overflow: hidden;
+  width: 380px;
+  height: 60px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w5 {
+  overflow: hidden;
+  width: 312px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w6 {
+  overflow: hidden;
+  width: 170px;
+  height: 60px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w7 {
+  overflow: hidden;
+  float: left;
+  width: 130px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w8 {
+  overflow: hidden;
+  float: left;
+  width: 54px;
+  height: 30px;
+  border-left: 1px solid #000;
+  line-height: 30px;
+}
+.page-print .dayinzy_w9 {
+  overflow: hidden;
+  float: left;
+  width: 64px;
+  height: 30px;
+  border-right: 1px solid #000;
+  line-height: 30px;
+}
+.page-print .dayinzy_w10 {
+  overflow: hidden;
+  float: left;
+  width: 102px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w11 {
+  overflow: hidden;
+  float: left;
+  width: 40px;
+  height: 30px;
+  border-left: 1px solid #000;
+  line-height: 30px;
+}
+.page-print .dayinzy_w12 {
+  overflow: hidden;
+  float: left;
+  width: 364px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w13 {
+  overflow: hidden;
+  float: left;
+  width: 30px;
+  height: 60px;
+  border-right: 1px solid #000;
+  line-height: 30px;
+}
+.page-print .dayinzy_w14 {
+  overflow: hidden;
+  float: left;
+  width: 60px;
+  height: 30px;
+  border-right: 1px solid #000;
+  line-height: 30px;
+}
+.page-print .dayinzy_w15 {
+  overflow: hidden;
+  float: left;
+  width: 40px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w140_2 {
+  float: left;
+  overflow: hidden;
+  width: 120px;
+  max-height: 60px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w40_2 {
+  overflow: hidden;
+  width: 40px;
+  max-height: 60px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w80_2 {
+  float: left;
+  overflow: hidden;
+  width: 70px;
+  max-height: 60px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w90_2 {
+  float: left;
+  overflow: hidden;
+  width: 80px;
+  max-height: 60px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w272_2 {
+  float: left;
+  overflow: hidden;
+  width: 232px;
+  max-height: 60px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w275 {
+  float: left;
+  overflow: hidden;
+  width: 235px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w275_2 {
+  float: left;
+  overflow: hidden;
+  width: 235px;
+  max-height: 60px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w272 {
+  float: left;
+  overflow: hidden;
+  width: 232px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w140 {
+  float: left;
+  overflow: hidden;
+  width: 120px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w50 {
+  float: left;
+  overflow: hidden;
+  width: 50px;
+  height: 30px;
+  border-left: 1px solid #000;
+  line-height: 30px;
+}
+.page-print .dayinzy_w300 {
+  overflow: hidden;
+  width: 260px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w320 {
+  overflow: hidden;
+  width: 280px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w698 {
+  overflow: hidden;
+  width: 628px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w373 {
+  overflow: hidden;
+  width: 323px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w193 {
+  overflow: hidden;
+  width: 173px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w130 {
+  overflow: hidden;
+  width: 110px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print .dayinzy_w152 {
+  overflow: hidden;
+  width: 122px;
+  height: 30px;
+  line-height: 30px;
+}
+.page-print tr {
+  overflow: hidden;
+  width: 700px;
+  max-height: 30px;
+}
+.page-print td {
+  table-layout: fixed;
+  overflow: hidden;
+  border: solid 1px #000;
+  vertical-align: top;
+  text-overflow: ellipsis;
+  text-align: center;
+  white-space: nowrap;
+}
+.page-print .normal {
+  table-layout: fixed;
+  overflow: hidden;
+  white-space: normal;
+}
+.page-print .left {
+  float: left;
+}
+.page-print .right {
+  float: right;
+}
+.page-print .fl {
+  text-align: left;
+}
+.page-print .fc {
+  text-align: center;
+}
+.page-print .fr {
+  text-align: right;
+}
+.page-print .paddl {
+  padding-left: 20px;
+}
+.page-print .paddr {
+  padding-right: 20px;
+}
+.page-print .f1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+.page-print .f2 {
+  font-size: 12px;
+  font-weight: bold;
+}
+.page-print .f3 {
+  font-size: 12px;
+  font-weight: 400;
+}
+.page-print .f4 {
+  font-size: 12px;
+  font-weight: 400;
+}
+.page-print .noborder {
+  border: none;
+}
+.page-print .danhangnormal {
+  table-layout: fixed;
+  word-break: break-all;
+  overflow: hidden;
+  max-height: 60px;
+  white-space: normal !important;
+}
+.page-print .duohangnormal {
+  table-layout: fixed;
+  overflow: auto;
+  white-space: normal;
+  word-break: break-all;
+  line-height: 18px;
+}
+.page-print .memo {
+  white-space: pre-wrap;
+}
+.dayinzys {
+  width: 700px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin-top: 20px;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 40px;
+  table-layout: fixed;
+}
+.dayinzys table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+.dayinzys tr {
+  border-top: 1px solid gray;
+  border-left: 1px solid gray;
+}
+.dayinzys td {
+  table-layout: fixed;
+  overflow: hidden;
+  padding: 0 5px 0 5px;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  line-height: 20px;
+  white-space: nowrap;
+}
+.dayinzys .bgcolorccc {
+  background-color: #eeeeee;
+}
+.dayinzys .noborder {
+  border: none;
+}
+.dayinzys .danhangnormal {
+  table-layout: fixed;
+  overflow: hidden;
+  max-height: 38px;
+  white-space: normal !important;
+}
+.dayinzys .duohangnormal {
+  table-layout: fixed;
+  word-break: break-all;
+  overflow: hidden;
+  white-space: normal !important;
+}
+.dayinzys .leftmenu {
+  float: left;
+  width: 19px;
+  height: 100%;
+  padding: 0 5px 0 5px;
+  font-family: "Microsoft YaHei UI", arial;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  line-height: 20px;
+  text-align: center;
+}
+.dayinzys .w334 {
+  overflow: hidden;
+  width: 254px;
+  max-height: 40px;
+}
+.dayinzys .w364 {
+  overflow: hidden;
+  width: 325px;
+  max-height: 40px;
+}
+.dayinzys .danwkk {
+  margin-top: 1px;
+  border: 1px solid gray;
+  border-right: none;
+}
+.dayinzys .borderleft2 {
+  border-left: 2px solid gray;
+}
+.dayinzys .bordertop2 {
+  border-top: 2px solid gray;
+}
+.dayinzys .borderright2 {
+  border-right: 2px solid gray;
+}
+.dayinzys .borderbottom2 {
+  border-bottom: 2px solid gray;
+}
+.text_normal {
+  font-family: "Microsoft YaHei UI", arial;
+  font-size: 14px;
+  color: #555;
+  line-height: 0px;
+}
+.text_normal_white {
+  font-family: "Microsoft YaHei UI", arial;
+  font-size: 14px;
+  color: #FFF;
+  line-height: 0px;
+}
+.text_title {
+  font-family: "Microsoft YaHei UI", arial;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  line-height: 24px;
+}
+.text_little_title {
+  font-family: "Microsoft YaHei UI", arial;
+  font-size: 14px;
+  line-height: 0px;
+  font-weight: bold;
+  color: #333;
+}
+.table-head-bg {
+  background-color: #cccccc;
+}
+.table-head-bg02 {
+  background-color: #cccccc;
+}
+.text-vertical-middle {
+  vertical-align: middle !important;
+}
+.button-sm {
+  display: inline-block;
+  height: 28px;
+  padding: 0 15px;
+  margin: 0 3px;
+  border: medium none;
+  border-radius: 4px;
+  background: #5f7795;
+  box-shadow: none;
+  text-shadow: none;
+  color: #fff;
+  font-size: 12px;
+  line-height: 28px;
+  text-align: center;
+  cursor: pointer;
+}
+.button-sm:hover {
+  background: #28b2e6;
+  text-decoration: none;
+  color: #fff;
+}
+.button-sm.gray {
+  background: #A7A7A7 none repeat scroll 0% 0%;
+  color: #FFF;
+}
+.button-sm.gray.disable {
+  cursor: default !important;
+}
+.print-btn {
+  width: 100%;
+  height: 60px;
+  background-color: #cccccc;
+  line-height: 60px;
+  text-align: center;
+}
+.disable {
+  cursor: default !important;
+}

@@ -1,0 +1,90 @@
+<div style=" ">
+    <table width="900" class="table-list-md">
+        <thead>
+            <tr>
+                <th class="table-th-default-width">收款日期
+                    <br>
+                    银行到账日期
+                </th>
+                <th class="table-th-default-width">
+                    <span>款项名称</span>
+                </th>
+                <th class="table-th-default-width ">收款类别</th>
+                <th class="table-th-default-width ">
+                    <span>地接社</span>
+                    <br>
+                    <span>渠道商</span>
+                </th>
+                <th class="table-th-default-width">付款单位</th>
+                <th class="table-th-default-width">收款人</th>
+                <th class="table-th-default-width text-right">
+                    <span>已收金额</span>
+                    <br>
+                    <span>到账金额</span>
+                </th>
+                <th class="table-th-default-width">收款确认</th>
+                <th class="table-th-default-width">收款审核</th>
+                <th style="width: 180px">操作</th>
+            </tr>
+        </thead>
+        <tbody class="even active " ng-repeat="receive in results">
+            <tr>
+                <td><p>{{receive.receiveDate|dateString}}</p>
+
+                    <p>{{receive.arrivalBankDate|dateString}}</p></td>
+                <td>
+                    <span class="table-th-default-width ellipsis"
+                          title="{{receive.fundsName}}">{{receive.fundsName}}</span>
+                </td>
+                <td><p class=" ellipsis" title="{{receive.receiveTypeName}}">{{receive.receiveTypeName}}</p></td>
+                <td><p class="table-th-default-width ellipsis" title="{{receive.tourOperatorOrChannelName}}"
+                        >{{receive.tourOperatorOrChannelName}}</p></td>
+                <td>
+                    <p class="table-th-default-width ellipsis" title="{{receive.paymentCompany}}">
+                        {{receive.paymentCompany}}</p>
+                </td>
+                <td><p class="table-th-default-width ellipsis" title="{{receive.receiver}}">{{receive.receiver}}</p>
+                </td>
+                <td class="text-right">
+                    <p class="table-th-default-width">
+                        <em ng-repeat-start="amount in receive.receivedAmount">
+                            {{amount.amount|qcCurrency:amount.currencyCode}}
+                        </em>
+                        <em ng-repeat-end="" ng-show="!$last">+</em>
+                    </p>
+                    <!--<p class="table-th-default-width ellipsis" >---</p>-->
+                    <p class="table-th-default-width">
+                        <em ng-repeat-start="amount in receive.arrivedAmount">
+                            {{amount.amount|qcCurrency:amount.currencyCode}}
+                        </em>
+                        <em ng-repeat-end="" ng-show="!$last">+</em>
+                </td>
+                <td>{{receive.receiveStatusName}}</td>
+                <td>
+        <span class="base-operator">
+        <button ng-click="receiveorder_receiveConfirmPop(receive)"
+                ng-disabled="receive.receiveStatusCode!=99 || !isRole('mtourFinance:receive:confirm')">确认收款
+        </button>
+        <button ng-click="receiveorder_reject(receive)"
+                ng-disabled="receive.receiveStatusCode!=99 || !isRole('mtourFinance:receive:reject')">驳回
+        </button>
+        </span>
+                </td>
+                <td>
+        <span class="base-operator">
+        <button ng-disabled="!isRole('mtourFinance:receive:detail')"
+                ng-click="receiveorder_showReceiveDetail(receive)">详情
+        </button>
+        <button ng-disabled="!isRole('mtourFinance:receive:income')" print-income-button
+                receive-uuid="receive.receiveUuid" funds-Type="receive.receiveTypeCode">收入单
+        </button>
+        <button ng-click="receiveorder_cancel(receive)"
+                ng-disabled="receive.receiveStatusCode!=1">取消确认
+        </button>
+        </span>
+                </td>
+            </tr>
+        </tbody>
+        <tbody class="display-none"></tbody>
+    </table>
+</div>

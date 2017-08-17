@@ -1,0 +1,41 @@
+/* @group general styles
+---------------------------------------------------------------------------------------*/
+body,h1, h2, h3, h4, h5, h6,ul,ol,dl, dt, dd, li, blockquote,p,fieldset, legend,form,table,th,td,input,textarea,div,pre{margin:0;padding: 0;}
+body,input{font-size:12px; color:#666; font-family: "Microsoft YaHei", "WenQuanYi Micro Hei","FontAwesome",sans-serif; background:#fff;}
+h1, h2, h3, h4, h5, h6{ font-size:100%;}
+input, button, select, textarea { outline:none !important; box-shadow: none !important;}
+input{
+	/*modified for UG_V2 去掉border-radius, 统一input样式 by tlw at 20170302 start*/
+	/*border-radius: 0px;*/
+	/*modified for UG_V2 去掉border-radius, 统一input样式 by tlw at 20170302 end*/
+	/* line-height: inherit  !important; */
+	margin-bottom: 0px !important;
+	/*padding: 0px !important;*/
+	/*height: initial !important;*/
+}
+ol, ul { list-style:none; }
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+em,i{ font-style:normal; }
+table { border-collapse:collapse; border-spacing:0; }
+html,body{height: 100%;}/* 閽堝ie6寮规鑳屾櫙鍑烘潵浜嗛珮搴︿笉澶熷姞鐨�*/
+body{*position:relative;} /* 閽堝ie6body閲岄潰鏈塸osition鐨刡ug銆�/
+/* @group helper styles
+---------------------------------------------------------------------------------------*/
+.display-none{
+	display: none !important;
+}
+.align-left{
+    float: left;
+}
+.align-right{
+    float: right;
+}
+/* @group page structure
+---------------------------------------------------------------------------------------*/
+
+/* @group page compontents
+---------------------------------------------------------------------------------------*/
+
+/* @group overrides
+---------------------------------------------------------------------------------------*/

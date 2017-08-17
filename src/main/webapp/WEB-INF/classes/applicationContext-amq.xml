@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.2.xsd"
+	default-lazy-init="true">
+
+	<description>Active MQ Configuration</description>
+
+	<!-- 加载配置属性文件 -->
+	<context:property-placeholder
+		ignore-unresolvable="true" location="classpath*:/amq.properties" />
+
+	<!-- 线程池 -->
+	<bean id="executor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- <property name="threadFactory" ref="threadFactory" /> -->
+		<property name="corePoolSize" value="${amq.executor.corePoolSize}" />
+		<property name="maxPoolSize" value="${amq.executor.maxPoolSize}" />
+		<property name="queueCapacity" value="${amq.executor.queueCapacity}" />
+		<property name="keepAliveSeconds" value="${amq.executor.keepAliveSeconds}" />
+		<property name="rejectedExecutionHandler">
+			<bean class="java.util.concurrent.ThreadPoolExecutor$DiscardOldestPolicy" />
+		</property>
+	</bean>
+
+	<!-- amq 异步连接池 -->
+	<bean id="asyncConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
+		destroy-method="stop">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL">
+					<value>${amq.connection.url}</value>
+				</property>
+				<property name="useAsyncSend">
+					<value>true</value>
+				</property>
+				
+			</bean>
+		</property>
+		<property name="maxConnections" value="10"></property>  
+	</bean>
+	 
+	<!-- 配置异步JMS模版 -->
+	<bean id="asyncJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="asyncConnectionFactory" />
+	</bean>
+	
+	 <bean id="messageSupplierFactory" class="com.trekiz.admin.common.async.supply.MessageSupplierFactory">
+		<property name="executor" ref="executor"></property>
+		<property name="asyncJmsTemplate" ref="asyncJmsTemplate"></property> 
+		<property name="queueNames">
+			<list>
+				<value>${amq.mtour.log.key}</value>
+			</list>
+		</property>
+	</bean>
+	 
+	<bean id="mtourLogHander" class="com.trekiz.admin.modules.mtourCommon.log.MtourLogHander">
+		<property name="queueName" value="${amq.mtour.log.key}"></property>
+	</bean>
+	
+	<bean id="mtourLogMessageCollector" class="com.trekiz.admin.common.async.receive.MessageCollector">
+		<property name="connectionFactory" ref="asyncConnectionFactory"></property> 
+		<property name="hander" ref="mtourLogHander"></property>
+	</bean>
+	
+</beans>

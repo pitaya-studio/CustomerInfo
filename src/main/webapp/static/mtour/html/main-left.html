@@ -1,0 +1,24 @@
+<div  ng-class="{'main-left-fold':menuFold,'main-left':!menuFold}" >
+    <div class="band-logo"></div>
+    <div class="menu_switch" ng-click="menuSwitch()">
+        <p></p>
+    </div>
+    <ul class="qc-scroll" ng-class="{'menu-small':menuFold,'menu':!menuFold}">
+        <li ng-class="{'spread':menu.spread,'fold':!menu.spread}"
+            ng-show="menu.isShow==1"
+            ng-init="menu.spread=menu.active"
+            ng-repeat="menu in menus|orderBy:'sort'">
+            <span class="ico_01 fa fa-list" ng-click="menuToggle(menu)"></span>
+            <div ng-class="{'nav_small':menuFold}">
+                <h2 ng-click="menuToggle(menu)">{{menu.menuName}}<em></em></h2>
+                <ul>
+                    <li ng-class="{'active':subMenu.active}"
+                        ng-show="subMenu.isShow==1"
+                        ng-repeat="subMenu in menu.subMenus|orderBy:'sort'">
+                        <a ng-href="{{baseUrl+subMenu.subMenuUrl}}">{{subMenu.subMenuName}}</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

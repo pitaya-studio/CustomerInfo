@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/static/js/start.js"></script>
+    <link rel="stylesheet" href="/trekiz_wholesaler_tts/static/mtour/doc/static/css/doc.css"/>
+    <script type="text/javascript" src="/trekiz_wholesaler_tts/static/mtour/doc/static/js/doc.module.js"></script>
+    <script type="text/javascript">
+        var basicModule = angular.module('basicModule', ['qc', 'docModule']);
+        basicModule.controller('NavController',['$scope','docNavInfo', function ($scope,docNavInfo) {
+            $scope.navInfo = docNavInfo;
+            $scope.navInfo.current = 'qc';
+            $scope.navInfo.sub = 'basic';
+        }]);
+    </script>
+</head>
+<body class="fixed-top" ng-app="basicModule">
+<doc-nav nav="navInfo" ng-controller="NavController"></doc-nav>
+<div class="container">
+    <div class="docs-header">
+        <div class="h1">前端开发的基本</div>
+
+        <p>
+            描述项目中页面的基本设置,以及注意事项
+        </p>
+    </div>
+    <div class="breadcrumb">Quauq Doc > 前端开发文档 > 基础</div>
+    <div class="page-header">
+        <div class="h1">head</div>
+    </div>
+    <div>
+        <div class="h3">css提示</div>
+
+        <p>由于使用了WebStorm,其强大的js支持,使我们不用担心js的智能提示.但是css就不同了.</p>
+
+        <p>
+            通常情况下,我们会把项目中最常用的js/css 统一管理,让开发人员一次性引入这些资源.这样做的好处可以统一管理,避免开发人员进行不必要的重复工作.
+            但是这样做我们就需要对这些js和css进行一些技术处理,从而导致页面中不能够及时的识别哪些js/css被引入,也就导致编辑器无法进行智能提示.
+            js可以通过WebStorm的"Use Javascript Library"来解决,但是css到现在为止,我们还没有发现很好的办法.
+        </p>
+
+        <p>下面是临时解决方案:在head中添加下面代码</p>
+        <pre>&ltlink rel="stylesheet" href="您想提示的常用的css文件地址"></pre>
+
+        <div class="mark">由于在start.js中已经引入上面的文件,所以请在开发完成后,删除上面的代码</div>
+        <div class="h3" >公共js/cs</div>
+        <p>常用的js/css通过下面的方式加载</p>
+        <pre>&ltscript type="text/javascript" src="/static/js/start.js">&lt/script>//开发时</pre>
+        <pre>&ltscript type="text/javascript" src="/static/js/start.min.js">&lt/script>//发布时</pre>
+        
+  		<div class="h3" >其他js/css</div>
+        <blockquote>
+            引入顺序如下
+            <ol>
+                <li>外部css文件</li>
+                <li>内部css样式</li>
+                <li>外部js文件</li>
+                <li>内部script代码</li>
+            </ol>
+        </blockquote>
+        <div class="mark">注意:避免在body中添加css和js</div>
+    </div>
+    <div class="page-header">
+            <div class="h1">jQuery</div>
+    </div>
+    <div>
+   
+   <div class="h3" >强烈建议</div>
+        <p>本次项目尽量避免使用jQuery.</p>
+
+        <p>由于本次项目是一个CRUD的项目,很适合使用angular的MVVM框架思想,所以大部分情况可以不需要对dom进行直接的操作.
+            换句话说,jQuery的作用在本次项目会大打折扣.
+            为了避免逻辑混乱,编码思想不一致,建议大家不使用或者少使用jQuery
+        </p>
+        <blockquote>
+            一般需要使用jQuery的情况有下面几种
+            <ol>
+                <li>使用了jQuery Ui 的插件</li>
+                <li>兼容IE8的某些特性</li>
+                <li>需要对dom进行复杂的操作</li>
+                <li>to be continue...</li>
+            </ol>
+        </blockquote>
+    </div>
+    <div class="page-header">
+         <div class="h1">angular js</div>
+    </div>
+    <div>>
+   <div class="h3" >module</div>
+        <p>一个页面一般情况下只定义一个angular.module,module中的controller,directive等请进行分组,分别定义</p>
+        <div class="h6">bad</div>
+        <pre>angular.module('myModule',['qc']).controller('ctrl1',function($scope){
+        //...
+    }).directive('directive1',function(){
+        return{
+        //...
+        };
+    }).controller('ctrl2',function($scope){
+        //...
+    }).directive('directive2',function(){
+        return{
+            //...
+        };
+});</pre>
+       
+        <div class="h6" >good</div>
+        <pre>   var myModule = angular.module('myModule', ['qc']);
+    myModule.controller('ctrl1', ['$scope',function ($scope) {
+        //...
+    }]);
+    myModule.controller('ctrl2', ['$scope',function ($scope) {
+        //...
+    }];
+    myModule.directive('directive1', function () {
+        return {
+            //...
+        };
+    });
+    myModule.directive('directive2', function () {
+        return {
+            //...
+        };
+    });</pre>
+        <p>请优先定义config,最后定义run</p>
+    </div>
+</div>
+<doc-footer></doc-footer>
+</body>
+</html>

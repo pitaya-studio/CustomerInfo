@@ -1,0 +1,71 @@
+<div style=" ">
+    <table width="600" class="table-list-md">
+        <thead>
+            <tr>
+                <th class="table-th-sm-width">团号</th>
+                <th class="table-th-md-width">产品名称</th>
+                <th class="table-th-default-width"  style="width:180px;">操作</th>
+                <th class="table-th-default-width">下单人</th>
+                <th class="table-th-default-width">下单时间</th>
+                <th class="table-th-default-width">人数</th>
+                <th class="table-th-default-width">出团日期</th>
+                <th class="table-th-default-width">订单总额</th>
+                <th class="table-th-default-width"><p ng-if="companyRoleCode!='0'">已收金额</p>
+                    <p>到账金额</p>
+                </th>
+                <th class="table-th-sm-width">操作</th>
+            </tr>
+        </thead>
+        <tbody class="even active" ng-repeat="channelOrderDetail in newList" on-Finish-Render>
+            <tr>
+                <td>
+                    <span class="table-th-sm-width ellipsis" title="{{channelOrderDetail.groupNo}}" ng-bind="channelOrderDetail.groupNo"></span>
+                </td>
+                <td>
+                    <span class="table-th-md-width ellipsis" title="{{channelOrderDetail.productName}}">
+                        {{channelOrderDetail.productName}}</span>
+                </td>
+                <td>
+                    <span title="{{operators}}"    ng-if="channelOrderDetail.operator.length > 2">{{channelOrderDetail.operator[0]}}、{{channelOrderDetail.operator[1]}}...</span>
+                    <span ng-if="channelOrderDetail.operator.length == '2'">{{channelOrderDetail.operator[0]}}、{{channelOrderDetail.operator[1]}}</span>
+                    <span ng-if="channelOrderDetail.operator.length == '1'">{{channelOrderDetail.operator[0]}}</span>
+                </td>
+                <td>
+                    <span ng-bind="channelOrderDetail.orderer"></span>
+                </td>
+                <td>
+                    <span ng-bind="channelOrderDetail.orderTime"></span>
+                </td>
+                <td>
+                    <span ng-bind="channelOrderDetail.peopleCount"></span>
+                </td>
+                <td>
+                    <span ng-bind="channelOrderDetail.departureDate"></span>
+                </td>
+                <td>
+                    <p ng-repeat="amount in  channelOrderDetail.orderAmount">
+                        {{amount.amount|qcCurrency:amount.currencyCode}}</p>
+                </td>
+                <td>
+                    <p ng-repeat="amount in  channelOrderDetail.receivedAmount" ng-if="companyRoleCode!='0'">
+                        {{amount.amount|qcCurrency:amount.currencyCode}}</p>
+
+                    <div class="line-dash" ng-if="companyRoleCode!='0'"></div>
+                    <p ng-repeat="amount in  channelOrderDetail.arrivedAmount">
+                        {{amount.amount|qcCurrency:amount.currencyCode}}</p>
+                </td>
+                <td><span class="base-operator"><span class="ng-scope">
+                    <a href="javascript:void(0);"
+                       order-reg-button=""
+                       order-Uuid="channelOrderDetail.orderUuid" operator-Type="2"
+                       class="active">详情
+                    </a>
+                </span>
+                </span>
+                </td>
+            </tr>
+        </tbody>
+        <tbody class="display-none">
+        </tbody>
+    </table>
+</div>

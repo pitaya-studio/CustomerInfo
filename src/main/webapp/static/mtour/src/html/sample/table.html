@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>table layout test</title>
+		<style type="text/css">
+			* {
+				font-size: 12px;
+			}
+			.wrap-lg {
+				min-width: 1400px;
+			}
+</style>
+		<link href="../../css/qc/quauq.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+		<div class="wrap-lg">
+			<table class="table-list-lg">
+				<thead>
+					<th class="table-th-default-width">全选</th>
+					<th class="table-th-default-width">姓名</th>
+					<th class="table-th-default-width">电话</th>
+					<th class="table-th-default-width">性别</th>
+					<th class="table-th-default-width">地址</th>
+					<th class="table-th-default-width">操作</th>
+					<th class="">备注</th>
+				</thead>
+				<tbody class="fold">
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td>删除</td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+                    <tbody class="fold">
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td><a href="javascript:void(0);">刪除</a></td>
+						<td class="empty"></td>
+					</tr>
+                    </tbody>
+                    <tbody  class="spread">
+					<tr>
+						<td colspan="7">
+							<table class="table-list-md">
+								<thead>
+									<th class="">全选</th>
+									<th class="">姓名</th>
+									<th class="">电话</th>
+									<th class="">性别</th>
+									<th class="">地址</th>
+									<th class="">备注</th>
+									<th class="">下單人</th>
+									<tbody>
+										<tr>
+											<td>0</td>
+											<td>1</td>
+											<td>2</td>
+											<td>3</td>
+											<td>4</td>
+											<td>5</td>
+											<td>5</td>
+										</tr>
+                                      </tbody>
+                                      <tbody>
+										<tr>
+											<td>1</td>
+											<td>2</td>
+											<td>3</td>
+											<td>4</td>
+											<td>5</td>
+											<td>6</td>
+											<td>5</td>
+										</tr>
+									</tbody>
+							</table>
+                        </td>
+					</tr>
+					</tbody>
+                    <tbody class="fold">
+						<tr>
+						<td>00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>00</td>
+					</tr>
+					</tbody>
+					<tbody class="fold">
+						<tr>
+						<td>00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>0</td>
+					</tr>
+					</tbody>
+				</tbody>
+			</table>
+			<p>-------------------------------------------------------------------------------------------------</p>
+			<!--S列表-->
+			<table class="table-list-lg">
+				<thead>
+					<th>全选</th>
+					<th>姓名</th>
+					<th>电话</th>
+					<th>性别</th>
+					<th>地址</th>
+					<th>操作</th>
+					<th>备注</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td>删除</td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+					<tbody>
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td style="position: relative;">刪除
+					<div class="operation">
+						<a href="javascript:void(0);">详情</a>
+						<a href="javascript:void(0);">修改</a>
+						<a href="javascript:void(0);">取消订单</a>
+						<span class="divider"></span>
+						<a href="javascript:void(0);">追散</a>
+						<a href="javascript:void(0);">展开PNR</a>
+						<a href="javascript:void(0);">改价</a>
+						<a href="javascript:void(0);">改价记录</a>
+						<a href="javascript:void(0);">借款</a>
+						<a href="javascript:void(0);">借款记录</a>
+						<a href="javascript:void(0);">追加成本</a>
+						<a href="javascript:void(0);">追加预算</a>
+					</div>
+					</td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+					<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+					<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>d</td>
+						<td class="empty">0</td>
+					</tr>
+				</tbody>
+				<tbody>
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td>删除</td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+					<tbody>
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td>删除</td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+					<tbody>
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td>删除</td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+					<tbody>
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td>删除</td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+					<tbody>
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td>删除</td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+					<tbody>
+					<tr>
+						<td>
+							<input name="" type="checkbox" value="">
+						</td>
+						<td>孙喜超</td>
+						<td>15210669568</td>
+						<td>男</td>
+						<td>北京市朝阳区慈云寺北里</td>
+						<td>删除</td>
+						<td class="empty"></td>
+					</tr>
+					</tbody>
+					
+			</table>
+			<!--E列表-->
+
+		</div>
+	</body>
+
+</html>

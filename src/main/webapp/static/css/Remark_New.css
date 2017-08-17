@@ -1,0 +1,135 @@
+.remark_548{
+    width: 28px;
+    height: 16px;
+    background: #2CB5EB;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 12px;
+    border-radius: 2px;
+    position: absolute;
+   	top: 0;
+    right: 0; 
+    cursor: pointer;
+}
+.remark_div{
+    width: 480px;
+    height: 260px;
+    border-radius: 2px;
+    border:1px solid #c7dff2;
+    background: #ffffff;
+    position: absolute;
+    right: -15px;
+    top: 25px;
+    cursor: default;
+    display: none;
+    z-index:100;
+}
+.remark_div_head{
+    height: 40px;
+    background: #e7f4ff;
+    border-bottom: 1px solid #c7dff2;
+    color: #2cb5e8;
+    line-height: 40px;
+    text-align: left;
+}
+.remark_head_left{
+   margin-left: 20px;
+    display: inline-block;
+}
+.remark_head_right{
+    float: right;
+    margin-right:20px;
+}
+.remark_head_right div{
+    display: inline-block;
+}
+.remark_head_right input{
+    margin-top: -2px;
+}
+.remark_div_body div.remark_div_child{
+    height: 180px;
+    margin: 20px 0px 20px 20px ;
+}
+.arrows_548{
+    background: url(../images/arrows_548.png) no-repeat 0 6px;
+    display: inline-block;
+    width: 21px;
+    height: 36px;
+    position: absolute;
+    top: -12px;
+    right: 15px;
+}
+.green_548{
+    color: #057b5b;
+}
+.remark_div_child ul{
+    margin:0 10px;
+    /*overflow: hidden;*/
+}
+.remark_div_child ul li{
+    float: left;
+}
+.left_548{
+    width: 120px;
+    text-align: right;
+}
+.center_548{
+    width: 20px;
+    margin: 0 10px;
+    height: 1px;
+    position: relative;
+}
+/*bug 17110 添加了people_name_548的样式，修改了548里面color end*/
+.right_548{
+    color: #333333;
+    text-align: left;
+    position: relative;
+    width: 262px;
+}
+.right_548 .people_name_548{
+    color: #999999;
+}
+/*bug 17110 end*/
+ul:not(:last-child) .right_548:before{
+    content: "";
+    width: 3px;
+    top: 21px;
+    bottom: -6px;
+    left: -19px;
+    background: #e6e6e6;
+    position: absolute;
+}
+.right_head{
+    color: #333;
+    display: inline-block;
+}
+.right_body{
+    width: 260px;
+    min-height: 40px;
+    border:1px solid #c7dff2;
+    background: #FFFBF5;
+    border-radius: 2px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.right_body .remarks{
+    color:#2cb5e8;
+    display: inline-block;
+    margin-left: 5px;
+}
+.color_black{
+    color: #333;
+}
+.point-time{
+    top:inherit;
+    left: inherit;
+}
+.z_548{
+    z-index: 1;
+}
+.div_548{
+    top: -36px;
+    right: -2px;
+    position:relative;
+}

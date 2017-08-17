@@ -1,0 +1,84 @@
+<div style=" ">
+    <table width="600" class="table-list-md">
+        <thead>
+            <tr>
+                <th class="table-th-sm-width">大编号</th>
+                <th class="table-th-md-width">航空公司</th>
+                <th class="table-th-md-width">航段名称</th>
+                <th class="table-th-default-width">出票人数</th>
+                <th class="table-th-default-width">预定人数</th>
+                <th class="table-th-default-width">出票时限</th>
+                <th class="table-th-default-width">取消时限</th>
+                <th class="table-th-default-width">改名时限</th>
+                <th class="table-th-default-width">定金时限</th>
+                <th class="table-th-default-width">名单时限</th>
+                <th class="table-th-sm-width">操作
+                    <div class="table-close fa fa-times " ng-click="toggleSubTable()"></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody ng-repeat=" invoiceOriginalGroup in invoiceOriginalGroups"
+               ng-init="initInvoiceOriginalGroup(invoiceOriginalGroup)" ng-class="{'odd':$odd,'even':$even}">
+            <tr class="font-weight-normal" ng-repeat="invoiceOriginal in invoiceOriginalGroup.invoiceOriginals"
+                ng-init="invoiceOriginalLength= invoiceOriginalGroup.invoiceOriginals.length">
+                <td>
+                    <span class="ellipsis table-th-sm-width"
+                          title="{{invoiceOriginal.PNR||invoiceOriginal.tourOperatorName}}">{{invoiceOriginal.PNR||invoiceOriginal.tourOperatorName}}</span>
+                </td>
+                <td>{{invoiceOriginal.airlineCompanyName}}</td>
+                <td>
+                    <p ng-repeat="airline in invoiceOriginal.airlines">
+                        {{airline.airlineName}}
+                    </p>
+                </td>
+                <!--出票人数-->
+                <td rowspan="{{invoiceOriginalLength}}"
+                    ng-if="$first">
+                    <span ng-if="!invoiceOriginalGroup.edit">{{invoiceOriginalGroup.drawerCount}}</span>
+                    <input class="text-input-xs"
+                           qc-valid-required="" qc-input-int="{zero:true}"
+                           ng-if="invoiceOriginalGroup.edit" type="text" ng-model="invoiceOriginalGroup.drawerCount"/>
+                </td>
+                <!--预定人数-->
+                <td rowspan="{{invoiceOriginalLength}}"
+                    ng-if="$first">
+                    <span ng-if="!invoiceOriginalGroup.edit">{{invoiceOriginalGroup.reserveCount}}</span>
+                    <input class="text-input-xs"
+                           qc-valid-required="" qc-input-int="{zero:true}"
+                           ng-if="invoiceOriginalGroup.edit" type="text" ng-model="invoiceOriginalGroup.reserveCount"/>
+                </td>
+                <td>
+                    {{invoiceOriginal.deadline.ticketDeadline}}
+                </td>
+                <td>
+                    {{invoiceOriginal.deadline.cancelDeadline}}
+                </td>
+                <td>
+                    {{invoiceOriginal.deadline.renameDeadline}}
+                </td>
+                <td>
+                    {{invoiceOriginal.deadline.depositDeadline}}
+                </td>
+                <td>
+                    {{invoiceOriginal.deadline.listDeadline}}
+                </td>
+                <td rowspan="{{invoiceOriginalLength}}" ng-if="$first">
+                	<span class="base-operator">
+	                    <button ng-click="editInvoiceOriginalGroup(invoiceOriginalGroup)"
+                                ng-if="!invoiceOriginalGroup.edit" ng-disabled="lockStatus==1">
+                            修改人数
+                        </button>
+	                    <!--<button ng-click="showHistory(invoiceOriginalGroup)"  ng-if="!invoiceOriginalGroup.edit">查看记录</button>-->
+	                    <button ng-click="commitInvoiceOriginalGroup(invoiceOriginalGroup,this)"
+                                ng-if="invoiceOriginalGroup.edit">保存
+                        </button>
+	                    <button ng-click="cancelInvoiceOriginalGroup(invoiceOriginalGroup)"
+                                ng-if="invoiceOriginalGroup.edit">取消
+                        </button>
+					</span>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

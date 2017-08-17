@@ -1,0 +1,850 @@
+@import "variables.less";
+@import "mixins.less";
+
+
+/*S弹窗样式*/
+
+//追散部分
+.title-position{
+    position:@position-absolute;
+    top: 2px;
+    left: 20px;
+    span{
+        &.add-divider{
+            width: 30px;
+            font-weight: normal;
+            text-align:@text-center;
+        }
+        .text-input-sm{
+            width:72px;
+            height: 24px;
+//          margin-top: 2px;
+            border: none;
+            font-size: 18px;
+        }
+    }
+}
+//.number{
+//  span{
+//      &.fa{
+//          font-size: 20px;
+//      }
+//  }
+//}
+.title-pop{
+    color:@text-color-white;
+    line-height: 36px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.dialog-body-md{
+    max-height: 330px;
+    font-weight:@fontstyle;
+    color: @text-color-light;
+    .number{
+        position:@position-relative;
+        height: 60px;
+        background-color:#f2f2f2;
+        .qc-dropdown-md-second{
+            width: 170px;
+            margin-left: 3px;
+        }
+        
+        > span{
+            float:@floatleft;
+            padding: 15px 0;
+            &:first-child{
+                        float:@floatleft;
+                            &.fa{
+                                 margin: 0 15px;
+                                font-size:20px;
+                                color:#2ba01b; 
+                                line-height: 30px;
+                            }                
+                    }
+            &:last-child{
+                &.fa{
+                    float: right;
+                    color: #cccccc;
+                    font-size:@font-size-small;
+                    cursor: @cursor;
+                }                
+            }
+            &.fa{
+                margin: 0 15px;
+                font-size:12px;
+                color:#cccccc; 
+                line-height: 30px;
+            }
+            > label{
+                margin:0 0 0 10px;
+                font-weight: @fontstyle;
+            }
+        }
+    }
+    .air-line{
+        background-color:transparent;
+        .qc-input-group-base-seond{
+            .qc-dropdown{
+                width: 35px;                
+            }
+            .text-input{
+                width: 35px;                  
+            }
+        }
+        table{
+            margin: 10px 0;
+            width: 100%;
+            thead{
+                tr{
+                    th{
+                        height:28px;
+                        background-color:#fff9e7;
+                        font-weight:@fontstyle ;
+                    }
+                }
+            }
+        }
+        
+    }
+    .time-limit{
+        width: 760px;
+        height: 80px;
+        margin: 0;
+//      background-color: #f6f9ff;
+        .table-list-md{
+            width: 100%;
+            thead{
+                tr{
+                    th{
+                        background-color: #f4f4f4;
+                        border: 1px solid #e9e9e9;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td{
+                        background-color: #fbfbfb;
+                        border: 1px solid #e9e9e9;
+                        .text-input-md-third{
+                            width: 140px;
+                        }
+                    }
+                }
+            }
+        }
+        ul{
+            li{
+                float: @floatleft;
+                width: 210px;
+                height: 30px;
+                margin: 5px 10px;
+                label{
+                    display: @display-in-line-block;
+                    float: @floatleft;
+                    width: 80px;
+                    height: 30px;
+                    line-height: 30px;
+                    font-weight: @fontstyle;
+                }
+                .time-select{
+                    float: @floatleft;
+                    width: 130px;
+                    height: 28px;
+                    border: 1px solid #cccccc;
+                    &.fa .fa-calendar{
+                        right: 0;
+                        color: #000000;
+                                                
+                    }
+                }
+            }
+        }
+    }
+}
+//其他收入录入
+.dialog-body-md-collect-other{
+    height: 550px;
+//  overflow: auto;
+    ul{
+        li{
+            height: 30px;
+            margin:5px 0;
+            line-height: 30px;
+            label{
+                float: @floatleft;
+                width: 90px;
+                margin: 0 5px;
+                font-weight:@fontstyle;
+                text-align:@text-right;                
+            }
+        }
+    } 
+    .first-step-info{
+//      height: 200px;
+        padding: 10px 20px;
+        background-color:#fffaed;
+        font-weight:@fontstyle;
+        .qc-input-group-base-third{
+            .text-input{
+                color:@text-color-black;
+            }            
+        }
+        ul{
+            li{
+                height: 30px;
+                line-height: 30px;
+                
+            }
+        }
+        .money{
+            height:50px;
+            background-color:@background-color-white;
+            .border-radius(5px);
+            .current{
+                font-size: @font-size-small;
+                color:@text-color-lighter;
+            }
+            > span{
+                float: @floatleft; 
+//              padding:0 10px ;
+                line-height: 50px;
+                font-size:@font-size-md ;
+                color:@color-orange;
+                .qc-input-group-md-third{
+                    margin-top: 10px;
+                    border:none;
+                    >.text-input{
+                        color:@text-color-light;
+                    }
+                }
+                > label{
+                    width: 90px;
+                    font-size:@font-size-small ;
+                    color:@text-color-light;
+                    font-weight:@fontstyle;
+                    text-align:@text-right;
+                }     
+            }
+//          成本录入详情-新增定金总额 
+            &.order-cost{
+                height: 80px;
+                span{
+                    line-height: 40px;               
+                }
+                .show-text-base{
+                        line-height: 38px;
+                    } 
+            }               
+        }      
+    } 
+    .section-select{
+        height:40px ;
+        background-color: #f2f2f2;
+        border-top-width:1px ;
+        border-top-style:solid ;
+        border-top-color:#cccccc ;
+        text-align: @text-center;
+        line-height: 40px;
+        clear: both;
+        label{
+            margin: 0 10px 20px;
+            font-weight:@fontstyle;
+            text-align:@text-right;
+        }
+    }
+    .collect{
+    span{
+        float: @floatleft; 
+        width:100px;
+        label{
+            width: 30px;
+            margin: 0 5px;
+            &.name-info{
+                width: 50px;
+            }
+        }
+        .choice{
+                float:@floatleft;
+                margin-top: 8px;
+            }
+        &:first-child{
+        >label{
+            float:@floatleft;      
+            width:90px;
+            font-weight:@fontstyle;
+            text-align:@text-right;
+            }
+        }
+    }
+            
+}        
+}
+
+
+//收款部分
+
+.dialog-body-md-collect-money{
+    height: 550px;
+    ul{
+        li{
+            height: 30px;
+//          line-height: 30px;
+            label{
+                float:@floatleft;
+                width: 90px;
+                font-weight:@fontstyle;
+                text-align:@text-right;                
+            }
+        }
+    }
+    .first-step-info{
+//      height: 160px;
+        padding: 10px 20px;
+        background-color:#fffaed;
+        font-weight:@fontstyle;
+        ul{
+            li{
+                clear: both;
+                label{
+                    float:@floatleft;
+                    line-height: 30px;                     
+                }
+                .qc-dropdown-xs{
+                    float:@floatleft; 
+                    .qc-input-variant(50px;26px);
+                    margin: 0 5px 0 0;
+                    .qc-border-variant(1px;solid;#cccccc);
+                }
+            }
+        }
+        .money{
+            height:30px;
+            background-color:@background-color-white;
+            .border-radius(5px);
+            color:@color-orange;
+            margin-bottom: 15px;
+            span{
+                float: @floatleft; 
+                width: 45%;
+//              padding:0 10px ;
+                line-height: 30px;
+                > label{
+                    width: 90px;
+                    color:@text-color-light;
+                    font-weight:@fontstyle;
+                    text-align:@text-right;
+                }     
+            }                
+        }
+              
+    }
+.collect{
+    span{
+        float: @floatleft; 
+        width:100px;
+        label{
+            width: 30px;
+//          margin: 0 5px;
+        }
+        .choice{
+                float:@floatleft;
+                margin-top: 8px;
+            }
+        &:first-child{
+        >label{
+            float:@floatleft;      
+            width:90px;
+            font-weight:@fontstyle;
+            text-align:@text-right;
+            }
+        }
+    }
+            
+}
+.collect-type{  
+}
+.collcec-variables{
+    width: 194px;
+}
+}
+
+//付款部分
+.dialog-body-md-pay{
+    height: 460px;
+    ul{
+        li{
+            height: 30px;
+            line-height: 30px;
+            label{
+                float:@floatleft;
+                width: 90px;
+                font-weight:@fontstyle;
+                text-align:@text-right;                
+            }
+        }
+    }
+    .first-step-info{
+        padding: 10px 20px;
+        background-color:#fffaed;
+        font-weight:@fontstyle;
+        ul{
+            li{
+                clear: both;
+                label{
+                    float:@floatleft;                     
+                }
+                .qc-dropdown-xs{
+                    float:@floatleft; 
+                    .qc-input-variant(50px;28px);
+                    margin: 0 5px 0 0;
+                    .qc-border-variant(1px;solid;#cccccc);
+                }
+            }
+        }
+        .money{
+            height:30px;
+            background-color:@background-color-white;
+            .border-radius(5px);
+            color:@color-orange;
+            span{
+                float: @floatleft; 
+//              padding:0 10px ;
+                line-height: 30px;
+                > label{
+                    width: 90px;
+                    color:@text-color-light;
+                    font-weight:@fontstyle;
+                    text-align:@text-right;
+                }     
+            }                
+        }
+              
+    }
+.collect{
+    span{
+        float: @floatleft; 
+        width:100px;
+        label{
+            width: 30px;
+            margin: 0 5px;
+        }
+        .choice{
+                float:@floatleft;
+                margin-top: 8px;
+            }
+        &:first-child{
+        >label{
+            float:@floatleft;      
+            width:90px;
+            font-weight:@fontstyle;
+            text-align:@text-right;
+            }
+        }
+    }
+            
+}
+}
+//付款详情
+.payment-detail{
+    padding: 10px 20px;
+    background: #fffaed;
+    font-weight: normal;
+    border-bottom:1px solid #cccccc;
+}
+
+
+//快速生成订单
+
+
+
+.section-select{
+        height:40px ;
+        background-color: #f2f2f2;
+        border-top-width:1px ;
+        border-top-style:solid ;
+        border-top-color:#cccccc ;
+        text-align: @text-center;
+        line-height: 40px;
+        clear: both;
+        label{
+            margin: 0 10px 20px;
+            font-weight:@fontstyle;
+            text-align:@text-right;
+        }
+    }    
+.second-step-info{
+    height:auto;
+    border-top-width:1px ;
+    border-top-style:solid ;
+    border-top-color:#cccccc ;
+    padding: 20px 20px;
+    ul{
+        li{
+            clear: both;
+            > a{
+                color:@qc-color-link;
+            }
+            label{
+                float:@floatleft;
+                width:90px;
+                font-weight:@fontstyle;
+                text-align:@text-right;        
+            }
+            .qc-dropdown-md{
+                float:@floatleft;
+            }
+        }
+    }
+}
+
+//成本录入部分
+.dialog-body-cost-input{
+    height: 550px;
+}
+
+
+//删除部分
+
+.dialog-body-md-del{
+    height: 200px;
+    span{
+        display:table-cell;
+        width: 450px;
+        height: 200px;
+//      line-height: 200px;
+        line-height: 150%;
+        color:@text-color-light;
+        font-size:@font-size-large;
+        text-align:@text-center;
+        vertical-align: middle;
+        em{
+            margin: 0 5px;
+            font-size: 30px;
+            color:#ff8a00;
+        }
+    }
+    
+}
+
+
+
+@keyframes qc-dialog-fadeout {
+    .fade-out();
+}
+@keyframes qc-dialog-fadein {
+    .fade-in();
+}
+
+.qc-dialog {
+    box-sizing: @box-sizing-border-box;
+    position: @position-fixed;
+    overflow: @overflow-auto;
+    z-index: 10000;
+    .position-zero(0px);
+    *{
+        box-sizing: @box-sizing-content-inherit;
+        &:before,
+        &:after {
+            box-sizing: @box-sizing-content-inherit;
+        }
+    }
+    &.qc-dialog-disabled-animation{
+        animation: none !important;
+        .qc-dialog-overlay,
+        .qc-dialog-content{
+            animation: none !important; 
+        }
+        
+    }
+    .qc-dialog-overlay{
+        position: @position-fixed;
+        .position-zero(0px);
+        -moz-opacity:@opacity-lighter ;
+        filter: alpha(opacity=80);
+        opacity: 0.8;
+        background-color: #000000;
+        animation: qc-dialog-fadein @time-message-overlay-flyIn;
+    }
+    &.qc-dialog-closing{
+        .qc-dialog-overlay,
+        .qc-dialog-content{
+            animation: qc-dialog-fadeout @time-message-overlay-flyOut;
+        }
+    }
+    .qc-dialog-content {
+    background: @background-color-white;
+    animation: qc-dialog-fadein @time-message-overlay-flyIn;
+    }
+    .qc-dialog-close{
+        &:before{
+            font-family: 'Helvetica', Arial, sans-serif;
+            content: '\00D7';
+            color: @text-color-white;
+            cursor: @cursor; 
+        }
+    }
+    
+}
+.qc-dialog-open{
+    html&,
+    body&{
+       overflow: @overflow-hidden; 
+    }
+}
+.require{
+    color: @text-color-red;
+    line-height:30px;
+    vertical-align: middle;
+}
+span{
+    &.require{
+        float: none !important;
+        color:@text-color-red;
+        width: 3px !important; 
+        vertical-align: middle;
+    }
+}
+.remarks{
+    font-size: @font-size-small;
+    color: @text-color-lighter;
+}
+//高度自动
+.height-auto{
+    height: auto;
+    .qc-dropdown-list{
+        .qc-dropdown-list-search+.qc-dropdown-item{
+            height: auto;            
+        }
+    }
+}
+//超长文本溢出隐藏&列表列定宽
+.show-text-base{
+    float:@floatleft;
+    overflow:@overflow-hidden;
+    width: 350px;
+    height: 30px;
+    font-size:@font-size-small;
+    line-height: 30px;
+    color:@text-color-light;
+    text-align:@text-left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    span&{
+        line-height:1.7;
+    }
+    div&{
+        line-height: 30px;
+    }  
+}
+.show-text-default{
+    float:@floatleft;
+    overflow:@overflow-hidden;
+    width: 200px;
+    height: 30px;
+    font-size:@font-size-small;
+    line-height: 30px;
+    color:@text-color-light;
+    text-align:@text-left;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    span&{
+        line-height:1.5;
+    }
+    div{
+        line-height: 30px;
+    }   
+}
+.show-text-md{
+    float:@floatleft;
+    overflow:@overflow-hidden;
+    width: 90px;
+    height: 30px;
+    font-size:@font-size-small;
+    line-height: 30px;
+    color:@text-color-light;
+    text-align:@text-left;
+    text-overflow: ellipsis;
+    white-space: nowrap;   
+}
+.show-text-paragraph{
+    float:@floatleft;
+    width: 350px;
+    font-size:@font-size-small;
+    line-height: 30px;
+    color:@text-color-light;
+    text-align:@text-left;
+    word-break: break-word;
+}
+.certificate-list{
+    +.list{
+        padding: 20px 25px 20px 90px;
+        li{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            font-size:@font-size-small;
+            span{
+                display:@display-in-line-block;
+                max-width: 150px;
+                height: 30px;
+                float:@floatleft;
+                margin: 0 5px;
+                line-height: 30px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            em{
+                display: @display-in-line-block;
+                height: 30px;
+                float:@floatleft;
+                line-height: 30px;
+                &.sucess{
+                    color:@qc-color-success;
+                }                                
+            }
+            i{
+               height: 30px;
+               float:@floatleft;
+               line-height: 30px;
+               cursor: @cursor; 
+               &.fa{
+                   color:@text-color-lighter;
+                   &:hover{
+                       color:@text-color-lighter;                       
+                   }
+               }
+                
+            }            
+        }
+    }
+}
+
+//货币转换及总价
+.money-total{
+            height:50px;
+            background-color:@background-color-white;
+//          margin: 10px 20px;
+            margin: 10px 0;
+            .border-radius(5px);
+            .current{
+                float:@floatleft;
+                width: 40%;
+                font-size: @font-size-small;
+                color:@text-color-lighter;
+            }
+            span{
+                float: @floatright; 
+                width: 55%;
+                padding:0 10px ;
+                line-height: 50px;
+                font-size:@font-size-md ;
+                color:@color-orange;
+                .qc-input-group-md-third{
+                    margin-top: 10px;
+                    border:none;
+                    >.text-input{
+                        color:@text-color-light;
+                    }
+                }
+                label{
+                    width: 90px;
+                    font-size:@font-size-small ;
+                    color:@text-color-light;
+                    font-weight:@fontstyle;
+                    text-align:@text-right;
+                } 
+                em{
+                    
+                }    
+            }
+            &:first-child{
+                width: 40%;                
+            }
+            &.order-cost{
+                height:80px;
+                span{
+                    line-height:40px;
+                    .text-input-huge{
+                        width: 283px;
+                    }
+                    &:last-child{
+                        width: 100%;
+                    }
+                }                
+            }
+                          
+        }
+//支出申请单生成配置
+.payment-document-set-container{
+    width: 600px;
+    height: 400px;
+    .table-list-md{
+        width: 100%;
+        thead{
+            tr{
+                th{
+                    position:static ;
+                    border:1px solid #e9e9e9 ;
+                    &.text-center{
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    font-weight: normal;
+                    border:1px solid #e9e9e9 ;
+                    &.text-center{
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+.part-first{
+    ul{
+        li{
+            float: @floatleft;
+            width: 45%;
+            label{
+                float: @floatleft;
+                width: 90px;
+                font-weight: normal;
+                text-align: @text-right;
+            }
+        }
+    }
+}
+.part-second+p{
+    font-size:@font-size-md;
+    text-align:@text-right;
+    color: @color-orange;
+    label{
+        font-size:@font-size-md;
+        color:@text-color;
+    }
+}
+.cost-bank-name-container{
+	margin: 10px 10px 10px 33px;
+	height:26px;
+	label{
+		display:@display-in-line-block;
+		float:@floatleft;
+		margin:0 5px;
+	}
+	span{
+		display:@display-in-line-block;
+		float:@floatleft;
+		width:250px;
+		height: 26px;
+	}
+}
+
+
+/*E弹窗样式*/

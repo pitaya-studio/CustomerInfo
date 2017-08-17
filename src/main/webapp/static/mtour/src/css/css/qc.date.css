@@ -1,0 +1,14 @@
+/*S时间控件样式文件*/
+.date {
+  background-position: right center;
+  background-image: url(../../img/common/background/ico-date-1.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.time {
+  background-position: right center;
+  background-image: url(../../img/common/background/ico-time.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+/*E时间控件样式文件*/

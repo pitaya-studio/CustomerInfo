@@ -1,0 +1,222 @@
+@import "variables.less";
+@import "mixins.less";
+
+
+/*S按钮样式文件*/
+//一级按钮
+.butn {
+  display: @display-in-line-block;
+  margin-bottom: 0; // For input.btn
+  background-color: transparent;
+  height: 30px;
+  padding: 0px 20px;
+  .border-radius(@radius:2px;);
+  font-weight: @button-font-weight;
+  font-size: @font-size-small;
+  color: #2581e3;
+  text-decoration:underline;
+  text-align: @text-center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: @cursor;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  white-space:nowrap;
+  &:hover{
+      color:#2581e3;
+  }
+  &.disable{
+      color:#cccccc;
+      &:hover,
+      &:active,
+      &:visited
+      {
+          color:#cccccc;
+      }
+  }
+//.button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
+//.user-select(none);
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+//    .tab-focus();
+    }
+  }
+  &:focus,
+  &.focus {
+    color: @button-default-color;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+    .opacitys(.65);
+    box-shadow:none;
+  }
+  a& {
+    &.disabled,
+    fieldset[disabled] & {
+      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+    }
+  }
+}
+//二级按钮
+.butn-second {
+  display: @display-in-line-block;
+  height: 22px;
+  margin-bottom: 0; // For input.btn
+  background-color: #ffa148;
+  padding: 0px 4px;
+  .border-radius(@radius:2px;);
+  font-weight: @button-font-weight;
+  font-size: @font-size-small;
+  color: @text-color-white;
+  text-decoration:none;
+  text-align: @text-center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: @cursor;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid #e38a35;
+  white-space:nowrap;
+  &:hover{
+      color:@text-color-white;
+      background-color: #ff9900;
+  }
+//.button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
+//.user-select(none);
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+//    .tab-focus();
+    }
+  }
+  &:focus,
+  &.focus {
+    color: @button-default-color;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+    .opacitys(.65);
+    box-shadow:none;
+  }
+  a& {
+    &.disabled,
+    fieldset[disabled] & {
+      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+    }
+  }
+}
+//文字按钮
+.butn-text-link{
+    background-color: transparent;
+    border: none;
+    color:#3f8be5;
+}
+
+// Alternate buttons
+// --------------------------------------------------
+
+.butn-default {
+  .button-variant(@text-color-white; @button-default-bg; transparent);
+  text-decoration:none;
+  &:hover,
+  &:active,
+  &:visited{
+      color:@text-color-white;
+  }
+}
+.butn-primary {
+  .button-variant(#999999; #ffffff; #cccccc);
+  text-decoration:none;
+  &:hover{
+      background-color:#fffff;
+      border: 1px solid #cccccc;
+      color:#999999;
+  }
+}
+// Success appears as green
+.butn-success {
+  .button-variant(@button-success-color; @butn-success-bg; @button-success-border);
+}
+// Info appears as blue-green
+.butn-info {
+  .button-variant(@button-info-color; @butn-info-bg; @button-info-border);
+}
+// Warning appears as orange
+.butn-warning {
+  .button-variant(@button-warning-color; @butn-warning-bg; @button-warning-border);
+}
+// Danger and error appear as red
+.butn-danger {
+  .button-variant(@button-danger-color; @butn-danger-bg; @button-danger-border);
+}
+.butn-link{
+    font-size:@font-size-small;
+     text-decoration: underline;
+    .button-variant(@qc-color-info; @background-transparent; @button-danger-border);    
+}
+
+
+// 按钮大小
+// --------------------------------------------------
+
+.butn-lg {
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @buttn-border-radius-large);
+}
+
+.butn-sm {
+
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @buttn-border-radius-small);
+}
+.butn-xs {
+  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @buttn-border-radius-small);
+}
+
+
+// Block button
+// --------------------------------------------------
+
+.butn-block {
+  display: @display-blcok;
+  width: 100%;
+}
+
+// Vertically space out multiple block buttons
+.butn-block + .butn-block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.butn-block {
+    width: 100%;
+  }
+}
+
+
+/*E按钮样式文件*/

@@ -1,0 +1,6 @@
+/*S表单验证样式文件*/
+input.ng-invalid {
+  border: 1px solid #e2e2e2;
+  box-shadow: #920121 1px 1px 1px;
+}
+/*E表单验证样式文件*/

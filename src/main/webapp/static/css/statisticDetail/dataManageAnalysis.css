@@ -1,0 +1,248 @@
+/*标签切换的样式*/
+.dateinput {
+    padding: 3px 6px !important;
+    margin-bottom: 0px !important;
+    border: 1px solid #ccc;
+    height: 17px!important;
+    font-size: 12px!important;
+    background: url(../../images/dateinputbg.png) no-repeat right center #fff;
+    width: 116px;
+    cursor: pointer;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border linear .2s,box-shadow linear .2s;
+    -moz-transition: border linear .2s,box-shadow linear .2s;
+    -o-transition: border linear .2s,box-shadow linear .2s;
+    transition: border linear .2s,box-shadow linear .2s;
+}
+
+
+/*搜索切换样式 开始*/
+.tab_change{
+    height: 44px;
+    background-color: #fcfcfc;
+    border: 1px solid #e6e6e6;
+    line-height: 44px;
+    text-align: left;
+    border-radius: 10px;
+    color: #333333;
+    padding-left: 20px;
+}
+.margin_bottom{
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+.tab_change span{
+    padding: 0 13px;
+    height: 26px;
+    line-height: 26px;
+    display: inline-block;
+    margin-right: 6px;
+    cursor: pointer;
+}
+.tab_change .selected_span{
+    -webkit-animation-name: hvr-wobble-horizontal;
+    animation-name: hvr-wobble-horizontal;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    background-color: #4391e8;
+    border-radius: 5px;
+    color: #ffffff;
+    float: none;
+    margin-left: 0;
+}
+
+/* Wobble Horizontal */
+@-webkit-keyframes hvr-wobble-horizontal {
+    16.65% {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+
+    49.95% {
+        -webkit-transform: translateX(-2px);
+        transform: translateX(-2px);
+    }
+
+    75.25% {
+        -webkit-transform: translateX(1px);
+        transform: translateX(1px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.tab_change input[type=text]{
+    vertical-align: baseline;
+    width: 118px;
+    height: 22px!important;
+    border: 1px solid #ededed;
+    border-radius: 5px;
+}
+.tab_change input[type=button]{
+    vertical-align: baseline;
+    width: 40px;
+    height: 24px;
+    background: #e3e3e3;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    line-height: 14px;
+}
+.tab_change input[type=button]:hover{
+    transition:background-color 0.2s,color 0.3s,border 0.3s;
+    background: #4391e8;
+    border: 1px solid #3371c8;
+    color: #ffffff;
+}
+/*搜索切换样式 结束*/
+
+.ydxbd .activitylist_bodyer_right_team_co1,.ydxbd .activitylist_bodyer_right_team_co2{
+    width: 30%;
+}
+
+.activitylist_bodyer_right_team_co1 select{
+    width: 196px;
+}
+.activitylist_bodyer_right_team_co2 .inputTxt{
+    width: 78px;
+}
+.activitylist_team_co3_text { width: 80px; }
+/*placeholder靠左对齐 changying.huo*/
+.ipt-tips {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    white-space: nowrap;
+    color: #B2B2B2;
+    z-index: 1;
+}
+
+#btn_search{
+    background-color: #4391e8;
+    border: 1px solid #3371c8;
+    color: #ffffff;
+}
+.form_submit input[type=button]{
+    background: #e3e3e3;
+    border: 1px solid #d1d1d1;
+    color: #333333;
+}
+
+/*table*/
+.table_third{
+    width:100%;
+}
+.table_third tbody tr{
+    height: 60px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+.table_third thead tr{
+    height: 58px;
+    border: 1px solid #ddd;
+    background-color: #f2f2f2;
+}
+.table_third tbody tr:hover{
+    background-color: #f2fbff;
+    border-bottom: 1px solid #D4e6ff;
+}
+.table_third th{
+    text-align: left;
+}
+.table_third th:first-child,td:first-child{
+    padding-left: 15px;
+}
+.table_third td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.table_third td{
+    padding-right: 20px;
+}
+.table_third td[colspan]{
+     text-align: center;
+}
+.table_third .text_right_side{
+    padding-right: 20px;
+    text-align: right;
+}
+.table_third th .sort_thead{
+    cursor: pointer;
+}
+.table_third th i{
+    position: absolute;
+    margin-left: 2px;
+    /*为大图标而生！！！*/
+    font-size: 16px;
+    color: #bfbfbf;
+}
+.table_third th .fa-caret-up{
+    /*margin-top: 2px;*/
+    /*为大图标而生！！！*/
+    margin-top: -2px;
+}
+.table_third th .fa-caret-down{
+    margin-top: 7px;
+}
+.table_third th .sel_sort{
+    color: #4391e8;
+}
+
+.red_count_style{
+    color: #FF0036;
+    font-size: 16px;
+}
+
+
+
+/**** 数据管理详情V2 样式集合 *****/
+.sort_logo{
+    position: relative;
+}
+.sort_logo span{
+    background: url("../../images/statisticDetail/ranking.png") no-repeat;
+    display: inline-block;
+    width: 12px;
+    height: 15px;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.sort_logo .first_logo{
+    background-position:-8px -8px;
+}
+.sort_logo .second_logo{
+    background-position:-8px -32px;
+}
+.sort_logo .third_logo{
+    background-position:-8px -55px;
+}
+.table_third .text_right{
+    text-align: right;
+    padding-right: 29px;
+}
+
+/*按钮样式调整--可以删去--和改版样式重复 Start*/
+#sureButton{
+    padding: 0;
+}
+#btn_search:hover{
+    background: #609dec;
+    border: 1px solid #609dec;
+    color: #fff !important;
+}
+input.ydbz_x:hover{
+    background: #e9f2ff;
+    border: 1px solid #3781d6;
+    color: #3781d6!important;
+}
+/*按钮样式调整--可以删去--和改版样式重复 End*/

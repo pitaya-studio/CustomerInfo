@@ -1,0 +1,63 @@
+<div class="modal" ng-controller="KisBpmAssignmentPopupCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+                <h2 translate>PROPERTY.ASSIGNMENT.TITLE</h2>
+            </div>
+            <div class="modal-body">
+            
+            	<div class="row row-no-gutter">
+            		<div class="form-group">
+            			<label for="assigneeField">指定审批账号（如配置此项，候选项失效）</label><br/>
+<!--             			<input type="text" id="assigneeField" class="form-control" ng-model="assignment.assignee" placeholder="{{'PROPERTY.ASSIGNMENT.ASSIGNEE_PLACEHOLDER' | translate}}" /> -->
+						<select ng-options="item.id as item.name for item in assigneeFieldList" ng-model="assignment.assignee" class="form-control">
+							<option value="">请选择</option>
+						</select>
+            		</div>
+            	</div>
+            	
+                <div class="row row-no-gutter">
+                    <div class="form-group">
+                    	<label for="userField">候选审批账号</label>
+                        <div ng-repeat="candidateUser in assignment.candidateUsers">
+<!--             	            <input id="userField" class="form-control" type="text" ng-model="candidateUser.value" /> -->
+							<select id="userField" name="userField" ng-options="item.id as item.name for item in assigneeFieldList" class="form-control" type="text" ng-model="candidateUser.value">
+								<option value="">请选择</option>
+							</select>
+							<br/>
+            	            <i class="glyphicon glyphicon-minus clickable-property" ng-click="removeCandidateUserValue($index)"></i>
+            	            <i ng-if="$index == (assignment.candidateUsers.length - 1)" class="glyphicon glyphicon-plus clickable-property" ng-click="addCandidateUserValue($index)"></i>
+                        </div>
+                   	</div>
+            
+                    <div class="form-group">
+                    	<label for="groupField">候选部门职务</label>
+                        <div ng-repeat="candidateGroup in assignment.candidateGroups">
+<!--             	          	<input id="groupField" class="form-control" type="text" ng-model="candidateGroup.value" /> -->
+							<select id="groupField" name="groupField"  ng-options="item.id as item.name for item in candidateGroupList" class="form-control" type="text" ng-model="candidateGroup.value">
+								<option value="">请选择</option>
+							</select><br/>
+            	          	<i class="glyphicon glyphicon-minus clickable-property" ng-click="removeCandidateGroupValue($index)"></i>
+            	          	<i ng-if="$index == (assignment.candidateGroups.length - 1)" class="glyphicon glyphicon-plus clickable-property" ng-click="addCandidateGroupValue($index)"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-no-gutter">
+            		<div class="form-group">
+            			<label for="condition">其他候选人</label><br/>
+<!--             			<input type="text" id="condition" class="form-control" ng-model="assignment.assignee" placeholder="{{'PROPERTY.ASSIGNMENT.ASSIGNEE_PLACEHOLDER' | translate}}" /> -->
+						<select id="modelcondition" name="condition" ng-options="item.id as item.name for item in candidateConditionList" class="form-control" ng-model="assignment.condition">
+							<option value="">请选择</option>
+							<!--<option value="2">计调</option>-->
+						</select>
+            		</div>
+            	</div>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="close()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+                <button ng-click="save()" class="btn btn-primary" translate>ACTION.SAVE</button>
+            </div>
+        </div>
+    </div>
+</div>

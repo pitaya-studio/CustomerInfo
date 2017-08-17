@@ -1,0 +1,47 @@
+<div style=" ">
+    <table width="900" class="table-list-md">
+        <thead>
+            <tr>
+                <th class="table-th-default-width">付款对象</th>
+                <th class="table-th-md-width">应付金额</th>
+                <th class="table-th-md-width">已付金额</th>
+                <th class="table-th-default-width">付款确认</th>
+                <th class="table-th-sm-width">操作</th>
+            </tr>
+        </thead>
+        <tbody class="even active " ng-repeat="payment in newmergePayList">
+            <tr>
+                <td>
+                    <span ng-bind="payment.paymentObjectName"></span>
+                </td>
+                <td>
+                    <!--<span ng-bind="payment.payableAmount"></span>-->
+                    <em ng-repeat-start=" amount in payment.payableAmountArr"
+                        ng-bind="amount" style="display: inline-block"></em>
+                    <em ng-repeat-end="" ng-show="!$last">+</em>
+                </td>
+                <td>
+                    <!--<span ng-bind="payment.paidAmount"></span>-->
+                    <em ng-repeat-start=" amount in payment.paidAmountArr"
+                        ng-bind="amount" style="display: inline-block"></em>
+                    <em ng-repeat-end="" ng-show="!$last">+</em>
+                </td>
+                <td>
+                    <span ng-bind="payment.paymentStatusName"></span>
+                </td>
+                <td><span class="base-operator">
+                    <button ng-click="batchPayment(payment)">付款</button>
+                    <button ng-click="batchPaymentRecordList(payment)">
+                        付款记录
+                    </button>
+                    <button batch-payment-fundstype-detail="" order-uuid="payment.orderUuid"
+                            funds-type="payment.fundsType" payment-object-uuid="payment.paymentObjectUuid"
+                            touroperator-channel-category-code="payment.tourOperatorChannelCategoryCode">款项明细
+                    </button>
+                </span>
+                </td>
+            </tr>
+        </tbody>
+        <tbody class="display-none"></tbody>
+    </table>
+</div>

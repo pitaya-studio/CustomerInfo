@@ -1,0 +1,72 @@
+<div>
+    <div class="subheading">
+        <span>预订人信息</span>
+        <em class="fa" ng-class="{'fa-chevron-right':fold,'fa-angle-double-down':!fold}" ng-click="fold=!fold;"></em>
+    </div>
+    <div ng-show="!fold">
+        <div class="channel">
+            <ul>
+           <!--     {{reservations.editable}} ~{{reservations.editable.toString()==null}}~{{companyRoleCode}}~~{{saveModel}}-~-->
+                <li ng-if="reservations.editable.toString()=='true'&&companyRoleCode=='0'||reservations.editable.toString()==null">
+                    <i class="require f-l">*</i>
+
+                    <!-- <label ng-if="saveModel=='commit'">{{reservations.channelTypeName}}：</label>
+                    <div class="show-text-default" ng-if="saveModel=='commit'">{{reservations.channelName}}</div>-->
+
+                
+                    <div  class="qc-dropdown-xs-channel f-l"
+                          ng-if="saveModel=='commit'"
+                          qc-valid-required=""
+                         qc-dropdown ng-model="reservations.channelType"
+                         item-text="{{qcDropdownItem.channelTypeName}}"
+                         dropdown-text="{{selectedItem?selectedItem.channelTypeName:''}}" list-width="120"
+                         items="channelTypes">
+                    </div>
+                    <div channel="" ng-if="reservations.channelType.channelTypeCode=='1' && saveModel=='commit'"
+                         qc-valid-required=""
+                         channel-type-code="reservations.channelType.channelTypeCode"
+                         ng-model="reservations.channel"></div>
+                    <input type="text" class="text-input-lg-second f-l"
+                           qc-valid-required=""
+                           ng-if="reservations.channelType.channelTypeCode!='1' && saveModel=='commit'"
+                           ng-model="reservations.channelName">
+                    <input type="text" class="text-input-sm f-l"
+                           qc-valid-required="" qc-input-code
+                           ng-if="reservations.channelType.channelTypeCode!='1' && saveModel=='commit'"
+                           ng-model="reservations.channelCode">
+
+                    <div  class="qc-dropdown-xs-channel f-l"
+                          ng-if="saveModel!='commit'"
+                          qc-valid-required=""
+                         qc-dropdown ng-model="reservations.channelType"
+                         item-text="{{qcDropdownItem.channelTypeName}}"
+                         dropdown-text="{{selectedItem?selectedItem.channelTypeName:''}}" list-width="120"
+                         items="channelTypes">
+                    </div>
+                    <div channel="" ng-if="reservations.channelType.channelTypeCode=='1' && saveModel!='commit'"
+                         qc-valid-required=""
+                         channel-type-code="reservations.channelType.channelTypeCode"
+                         ng-model="reservations.channel"></div>
+                    <input type="text" class="text-input-lg-second f-l"
+                           qc-valid-required=""
+                           ng-if="reservations.channelType.channelTypeCode!='1' && saveModel!='commit'"
+                           ng-model="reservations.channelName">
+                    <input type="text" class="text-input-sm f-l"
+                           qc-valid-required="" qc-input-code
+                           ng-if="reservations.channelType.channelTypeCode!='1' && saveModel!='commit'"
+                           ng-model="reservations.channelCode">
+                </li>
+                <li  ng-if="reservations.editable.toString()=='false'||reservations.editable.toString()!=null&&reservations.editable.toString()!='true'||reservations.editable.toString()=='true'&&companyRoleCode=='1'">
+                    <i class="require f-l">*</i>
+                    <label>{{reservations.channelTypeName}}：</label>
+                    <div class="show-text-default">{{reservations.channelName}}</div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="reservation-info-container">
+            <div contact-info="" contact="contact" can-delete="reservations.contacts.length>1"
+                 ng-repeat="contact in reservations.contacts"></div>
+        </div>
+    </div>
+</div>

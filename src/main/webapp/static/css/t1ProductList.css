@@ -1,0 +1,231 @@
+/*BEGIN*/
+div#tab{
+    width: 100%;
+    height: 30px;
+    border-bottom:1px solid #ddd;
+}
+#tab span{
+    line-height: 30px;
+    cursor: pointer;
+    display: inline-block;
+    width: 70px;
+    float:left;
+    margin-right: 20px
+}
+#tab span.activeList{
+    color:#ff8d12;
+    border-bottom: 2px solid #ff8d12;
+}
+#tab span i{
+    margin-right: 5px;
+    margin-top: -3px;
+}
+
+#tab span.activeList i{
+    color: #ff8d12;
+}
+#tab input[type="button"]{
+    float: right;
+    height: 20px;
+    background: #fff;
+    color: #369;
+    border: 1px solid #369;
+    width: 118px;
+    border-radius: 2px !important;
+    margin-top: 5px;
+    cursor: pointer;
+}
+#tab input[type="button"]:hover{
+    background: #369;
+    color: #fff;
+}
+
+#productTable{
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
+}
+
+#productTable p{
+    display: block !important;
+}
+#productTable tbody tr:nth-child(even) {
+    background: #fff;
+}
+#productTable thead th{
+    box-sizing: border-box;
+}
+
+#productTable tbody td{
+    height: 110px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    box-sizing:border-box;
+}
+#productTable tbody td.first_t{
+    border-left: 1px solid #ddd;
+    padding-left: 22px;
+    padding-right: 10px;
+}
+#productTable tbody td.last_t{
+    border-right: 1px solid #ddd;
+    padding-right: 40px;
+}
+.buyNow{
+    height: 30px;
+    width:100px;
+    margin-top: 10px;
+    background: #ff8d12;
+    color:#fff;
+    border:none;
+    font-size:14px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+#productTable tbody tr:hover td{
+    border-color: #ff8d12;
+    background: #fafafa
+}
+#productTable tbody .buyNow:hover{
+    background: #ff6b09
+}
+#productTable .productInfo{
+    padding-right: 33px;
+    padding-bottom: 14px;
+}
+#productTable th.last_t{
+    padding-right: 40px;
+}
+.productInfo a {
+    font-size:16px;
+}
+.productInfo p span{
+    font-weight: bold;
+    display: inline-block;
+    /*margin-right: 10px;*/
+    color: #666;
+}
+
+.productInfo .pInfoContent{
+    font-weight: normal;
+    min-width:81px;
+    margin-right: 15px;
+
+}
+/*bug 主界面列表位置 出发城市错位 注释lineheight并添加vertical*/
+.productInfo .startCityInfo{
+    width: 82px;
+    /*line-height: 12px;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top;
+}
+.productInfo p{
+    margin-top: 10px;
+    display: block !important;
+}
+.productInfo p:first-child{
+    margin-top: 12px;
+    margin-bottom: 13px;
+}
+.supplierInfo .pop_permission{
+    display: inline-block;
+    color: #336699;
+    font-size: 12px;
+    margin-top:2px;
+    padding-left: 0;
+}
+.unit_color{
+    color: #ff7800;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 2px;
+}
+.money_color{
+    margin-right: 2px;
+}
+#productTable .systemPrice p:first-child{
+    font-weight: bold;
+    color: #999
+}
+.trade_price span del{
+    color:#999;
+}
+.pop-container {
+    position:relative;
+}
+.pop-container .pop_permission_show{
+    left: -5px;
+    top: 17px;
+}
+
+.productInfo .moreInfo{
+    font-size: 12px;
+    display: inline-block;
+    margin-left: 0;
+    color: #ff8d12;
+}
+.productInfo .moreInfo i{
+    color: #ff8d12;
+    padding-bottom: 3px;
+}
+
+div.jbox .jbox-button-panel{
+    background-color: #fff;
+}
+
+.jbox-button-panel button[value="0"]{
+    color: #999;
+    border: 1px solid #999;
+    background-color: #fff;
+}
+.jbox-button-panel button{
+    font-family: 微软雅黑, Arial, 宋体;
+}
+
+label[for="porductRadio"]{
+    display:inline-block;
+    margin-right:50px;
+}
+
+input[name="setViewMode"]{
+    margin-right:5px;
+}
+
+#setViewMode{
+    width:182px;
+    margin:52px auto;
+}
+
+i.realTime,i.nowQuest{
+    width: 30px;
+    height: 16px;
+    border: 1px solid #ff5000;
+    background: #ff765b;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    line-height: 15px;
+    float: right;
+}
+
+i.nowQuest{
+    color:#369;
+    border:none;
+    background: none;
+    padding:1px
+}
+
+#productTable tbody td.no-match {
+    border: none;
+}
+
+#productTable tbody tr:hover td.no-match {
+    border: none;
+    background: none;
+}
+
+ /*修复firefox th 自动换行 by ZRQ*/
+.table_width th { white-space: nowrap; }

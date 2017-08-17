@@ -1,0 +1,12 @@
+/*S表格(固定列头)的容器 */
+.qc-table-container {
+  position: relative;
+  width: 100%;
+}
+/*E表格(固定列头)的容器 */
+/*S表格 固定列头的样式*/
+.qc-table-fixed-header {
+  position: absolute;
+  top: 0px;
+}
+/*E表格 固定列头的样式*/

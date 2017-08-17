@@ -1,0 +1,9 @@
+<span>
+    <label>{{labelText}}</label>
+    <input type="text" ng-model="selectedAmount.minAmount" ng-show="companyRoleCode=='0'"  qc-input-negative-amount="" style="width: 66px" />
+    <input type="text" ng-model="selectedAmount.minAmount" ng-show="companyRoleCode=='1'"  qc-input-amount="" style="width: 66px" />
+    -
+    <input type="text" ng-model="selectedAmount.maxAmount" ng-show="companyRoleCode=='1'"   qc-input-amount=""  style="width: 66px"   />
+    <input type="text" ng-model="selectedAmount.maxAmount" ng-show="companyRoleCode=='0'"   qc-input-negative-amount=""  style="width: 66px"   />
+    <button ng-click="confirm()" ng-disabled="!selectedAmount.minAmount && !selectedAmount.maxAmount">确定</button>
+</span>

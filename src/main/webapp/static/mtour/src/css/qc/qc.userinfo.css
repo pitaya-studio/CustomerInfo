@@ -1,0 +1,39 @@
+/*S用户登录信息样式文件*/
+.user-info {
+  position: absolute;
+  right: 0;
+  width: 750px;
+  height: 47px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: normal;
+  color: #ffffff;
+}
+.user-info li {
+  float: left;
+  margin-right: 10px;
+  line-height: 47px;
+}
+.user-info li.spacer {
+  width: 1px;
+  height: 12px;
+  margin-top: 19px;
+  padding: 0px;
+  background: #ddd none repeat scroll 0% 0%;
+  overflow: hidden;
+}
+.user-info li span label {
+  color: #666666;
+  font-weight: normal;
+}
+.user-info li i {
+  padding: 0 10px;
+}
+.user-info .fa {
+  font-size: 16px;
+}
+.user-info .fa:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+/*E用户登录信息样式文件*/

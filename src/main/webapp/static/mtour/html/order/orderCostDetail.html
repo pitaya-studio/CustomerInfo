@@ -1,0 +1,129 @@
+<div class="qc-dialog-header">
+    <div class="qc-dialog-title ng-binding">
+        <span>成本录入-详情</span>
+    </div>
+</div>
+<div class="dialog-body-md-collect-other dialog-body-cost-input qc-scroll" style="height: 400px;">
+    <div class="first-step-info">
+        <ul>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    款项名称：
+                </label>
+
+                <div class="show-text-base" ng-bind="OrderCostDetail.fundsName">巨款</div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    大编号：
+                </label>
+
+                <div class="show-text-base"
+                     ng-bind="OrderCostDetail.invoiceOriginalTypeCode==0?OrderCostDetail.PNR:OrderCostDetail.tourOperatorName"></div>
+            </li>
+            <li ng-if="companyRoleCode=='0'">
+                <label>
+                    <i class="require">*</i>
+                    航段名称：
+                </label>
+
+                <div class="show-text-base"
+                     ng-bind="OrderCostDetail.airlineName"></div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    人数：
+                </label>
+
+                <div class="show-text-base" ng-bind="OrderCostDetail.peopleCount"></div>
+            </li>
+            <li>
+                <label>
+                    <i class="require">*</i>
+                    单价：
+                </label>
+
+                <div class="show-text-base"
+                     ng-bind="OrderCostDetail.price|qcCurrency:selectedCurrency.currencyCode"></div>
+            </li>
+            <!--<li class="money">
+            	<span><label>货币换算：</label>
+                <div class="qc-input-group-base-third qc-input-group-md-third">
+                    <div class="qc-dropdown" qc-dropdown ng-model="convertedSelectedCurrency"
+                         item-text="{{qcDropdownItem.currencyCode}}"
+                         dropdown-text="{{selectedItem?selectedItem.currencyCode:''}}" items="currencies"
+                         list-width="100"></div>
+                    <label>汇率:</label><span ng-bind="convertedSelectedCurrency.convertLowest"></span>
+                </div>
+                </span> <label>总价：</label><span
+                    ng-bind="convertedSelectedCurrency.currencyCode+OrderCostDetail.convertedAmount"></span>
+            </li>-->
+            <li class="money order-cost">
+                <span class="current"><label>货币换算：</label><em ng-bind="convertedCurrency.currencyCode"></em>汇率=<em
+                        ng-bind="OrderCostDetail.exchangeRate|number:3"></em></span>
+                <span><label>总价：</label>
+                    <!--<em ng-bind="(OrderCostDetail.peopleCount*OrderCostDetail.price*OrderCostDetail.exchangeRate)|qcCurrency:convertedCurrency.currencyCode"></em>-->
+                    <em ng-bind="OrderCostDetail.convertedAmount|qcCurrency:convertedCurrency.currencyCode"></em>
+                </span>
+                <div class="cl-both"></div>
+                <span ng-if="companyRoleCode=='0'">
+                <span class="current"><label>定金总额：</label></span>
+                <div class="show-text-base"
+                     ng-bind="OrderCostDetail.costTotalDeposit|qcCurrency:selectedCurrency.currencyCode">
+                </div></span>
+            </li>
+        </ul>
+    </div>
+    <div class="second-step-info">
+        <ul>
+            <li ng-show="OrderCostDetail.tourOperatorChannelCategoryCode==1">
+                <label>地接社类型：</label>
+
+                <div class="show-text-base" ng-bind="selectedTourType.tourOperatorTypeName"></div>
+            </li>
+            <li ng-show="OrderCostDetail.tourOperatorChannelCategoryCode==1">
+                <label>地接社名称：</label>
+
+                <div class="show-text-base" ng-bind="OrderCostDetail.tourOperatorOrChannelName"></div>
+            </li>
+            <li ng-show="OrderCostDetail.tourOperatorChannelCategoryCode==2">
+                <label>渠道类型：</label>
+
+                <div class="show-text-base" ng-bind="selectedChannelType.channelTypeName"></div>
+            </li>
+            <li ng-show="OrderCostDetail.tourOperatorChannelCategoryCode==2">
+                <label>渠道名称：</label>
+
+                <div class="show-text-base" ng-bind="OrderCostDetail.tourOperatorOrChannelName"></div>
+            </li>
+            <li>
+                <label>收款行名称：</label>
+
+                <div class="show-text-base" ng-bind="OrderCostDetail.paymentBank"></div>
+            </li>
+            <li>
+                <label>收款账户：</label>
+
+                <div class="show-text-base" ng-bind="OrderCostDetail.paymentAccount"></div>
+            </li>
+            <li>
+                <label>备注：</label>
+
+                <div class="show-text-paragraph" ng-bind="OrderCostDetail.memo"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="qc-dialog-footer">
+    <div class="text-center">
+        <!--<button class="butn disable " >测试文字</button>-->
+        <!--<button class="butn ">测试文字</button>-->
+        <button class="butn butn-default" ng-click="closeThisDialog()">关闭</button>
+        <!--<button class="butn butn-primary" operator-type="1" order-cost="OrderCostDetail"
+                order-cost-input-btn="">修改
+        </button>-->
+    </div>
+</div>

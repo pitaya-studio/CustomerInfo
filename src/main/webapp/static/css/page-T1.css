@@ -1,0 +1,77 @@
+.pagination {
+    margin-top: 30px;
+    float: right;
+    min-width:757px;
+    text-align: right;
+    width: 100%;
+}
+
+.pagination ul {
+    box-shadow:none;
+}
+
+.pagination ul li {
+    display: inline;
+    float:left;
+    line-height:26px;
+    min-width: 28px;
+    margin-right: 8px;
+    text-align: center;
+    border-radius: 3px;
+    border:1px solid #ddd;
+    cursor: pointer;
+}
+
+.pagination ul li:first-child{
+    margin-right: 16px;
+    border:none;
+}
+
+.pagination ul .active{
+    border: 1px solid #ff7d27;
+    background-color: #ff7d27;
+    color: #ffffff;
+}
+
+.pagination ul .skip {
+    border: none;
+    margin-left: 8px;
+}
+
+.pagination input, .pagination input[type="text"] {
+	box-sizing: border-box;
+    width: 50px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #e9eff4;
+    border-radius: 2px;
+    box-shadow: none;
+    padding: 0 5px;
+    margin: -3px 7px 0px 7px;
+}
+
+.pagination input:focus{
+	outline:none;
+}
+
+.pagination .fa {
+    display: inline-block;
+    width: 30px;
+    height: 28px;
+    border:none;    
+}
+
+.fa-angle-right {
+    background: url("../images/leftRight.png") -68px -51px no-repeat;
+}
+
+.fa-angle-left {
+    background: url("../images/leftRight.png") -29px -9px no-repeat;  
+}
+
+.fa-angle-right:hover {
+    background: url("../images/leftRight.png") -29px -51px no-repeat;
+}
+.fa-angle-left:hover {
+    background: url("../images/leftRight.png") -68px -9px no-repeat;
+}

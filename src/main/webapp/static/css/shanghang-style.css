@@ -1,0 +1,10 @@
+@charset "utf-8";
+/*上航假期*/
+.hedear .hedear-left{width:377px;}
+.hedear .hedear-logo{background:url(../images/hlog_shjq.png) no-repeat;width:620px;height:100px;}
+.hedear .hedear-left{height:100px;margin-top:0;padding-left:0}
+.hedear .hedear-logo-name{display:none}
+.denglu-hy .denglu-hy-center{display:none}
+.denglu-hy .denglu-hy-top{height:314px;background: url(../images/dengluhy_01_sh.jpg) center no-repeat}
+.denglu-hy  .denglu-hy-foot{height:314px;background: url(../images/dengluhy_02_sh.jpg) center no-repeat}
+
